@@ -1,8 +1,128 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
-a {
-  color: #00B7FF;
-}
+.container {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  background-color: red;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around; }
+  .container .topLeft {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    height: 45%;
+    width: 50%;
+    background-color: orange; }
+    .container .topLeft h1 {
+      -webkit-align-self: center;
+          -ms-flex-item-align: center;
+              align-self: center; }
+  .container .topRight {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    height: 45%;
+    width: 50%;
+    background-color: blue; }
+    .container .topRight h1 {
+      -webkit-align-self: center;
+          -ms-flex-item-align: center;
+              align-self: center; }
+  .container .playImages {
+    height: 200px;
+    width: 200px;
+    -webkit-align-self: center;
+        -ms-flex-item-align: center;
+            align-self: center; }
+  .container .field {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    height: 50%;
+    width: 100%;
+    background-color: green; }
+    .container .field .defensiveRead {
+      background-color: gray;
+      height: 75%;
+      width: 50%;
+      -webkit-align-self: center;
+          -ms-flex-item-align: center;
+              align-self: center; }
+  .container .buttons {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    background-color: gray;
+    -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    height: 26px;
+    width: 100%;
+    margin-top: 25px; }
+    .container .buttons .snap {
+      -webkit-align-self: center;
+          -ms-flex-item-align: center;
+              align-self: center;
+      margin: 0 auto; }
+    .container .buttons .WRbuttons {
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-flex-direction: row;
+          -ms-flex-direction: row;
+              flex-direction: row;
+      background-color: gray;
+      -webkit-justify-content: space-between;
+          -ms-flex-pack: justify;
+              justify-content: space-between;
+      height: 26px;
+      width: 100%;
+      margin-top: 25px;
+      display: none; }
+      .container .buttons .WRbuttons .wr1 {
+        background-color: orange;
+        padding-left: 25%; }
+      .container .buttons .WRbuttons .wr2 {
+        background-color: yellow;
+        -webkit-align-self: center;
+            -ms-flex-item-align: center;
+                align-self: center; }
+      .container .buttons .WRbuttons .wr3 {
+        background-color: blue;
+        padding-right: 25%; }
+  .container .birdsEyeView {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    height: 50vh;
+    width: 100%;
+    margin-top: 25px; }
+    .container .birdsEyeView .birdsEyeImg {
+      -webkit-align-self: center;
+          -ms-flex-item-align: center;
+              align-self: center;
+      height: 45vh;
+      width: 50vw; }
