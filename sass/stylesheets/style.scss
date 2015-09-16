@@ -2,7 +2,7 @@
   display: flex;
   height: 100vh;
   width: 100vw;
-  background-color: red;
+  // background-color: red;
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-around;
@@ -12,7 +12,7 @@
       flex-direction:column;
       height: 45%;
       width: 50%;
-      background-color: orange;
+      // background-color: orange;
 
         h1 {
           align-self: center;
@@ -23,7 +23,7 @@
       flex-direction: column;
       height: 45%;
       width: 50%;
-      background-color: blue;
+      // background-color: blue;
 
         h1 {
           align-self: center;
@@ -49,16 +49,17 @@
       }
 
       .defensiveRead {
-        background-color: gray;
+        // background-color: gray;
         height: 75%;
         width: 50%;
         align-self: center;
       }
+
   }
   .buttons{
     display: flex;
     flex-direction: row;
-    background-color: gray;
+    // background-color: gray;
     justify-content: space-between;
     height:26px;
     width: 100%;
@@ -76,7 +77,7 @@
     .WRbuttons {
       display: flex;
       flex-direction: row;
-      background-color: gray;
+      // background-color: gray;
       justify-content: space-between;
       height:26px;
       width: 100%;
@@ -85,18 +86,18 @@
 
 
       .wr1 {
-        background-color: orange;
+        // background-color: orange;
         // align-self: left;
         padding-left: 25%;
       }
 
       .wr2 {
-        background-color: yellow;
+        // background-color: yellow;
         align-self: center;
       }
 
       .wr3 {
-        background-color: blue;
+        // background-color: blue;
         // align-self: center;
         padding-right: 25%;
       }
@@ -109,6 +110,7 @@
     height: 50vh;
     width: 100%;
     margin-top: 25px;
+    visibility: hidden;
 
     .birdsEyeImg {
       align-self: center;
@@ -125,6 +127,8 @@
 
 .invisible {
   visibility: hidden;
+  height: 0px;
+  width: 0px
 }
 
 

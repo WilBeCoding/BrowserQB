@@ -41,13 +41,18 @@ var snapButton = document.getElementsByClassName('snap');
 
 function selectPlay() {
     var playImg = document.getElementsByClassName('playImages');
-    var snapButtonId = document.getElementById('snap');
+    var snapButton = document.getElementsByClassName('snap');
+    var topLeft = document.getElementsByClassName('topLeft');
+    var topRight = document.getElementsByClassName('topRight');
+    var preSnapDefense = document.getElementsByClassName('birdsEyeView');
 
     console.log("SelectPlay loads");
     for(var i = 0; i < playImg.length; i++) {
         playImg[i].addEventListener("click", function() {
-            snapButtonId.className = snapButtonId.className + 'visible' + 'snap';
-            playImg.classname = playImg.classname + 'invisible';
+            snapButton[0].className += 'visible';
+            topLeft[0].className = 'invisible';
+            topRight[0].className = 'invisible';
+            preSnapDefense[0].className += 'visible';
         })
     }
 }
