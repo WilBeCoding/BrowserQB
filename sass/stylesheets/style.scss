@@ -1,8 +1,11 @@
+$height: 30%;
+$width: 50%;
+
 .container{
   display: flex;
   height: 100vh;
   width: 100vw;
-  // background-color: red;
+  background-color: red;
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-around;
@@ -10,9 +13,9 @@
     .topLeft {
       display:flex;
       flex-direction:column;
-      height: 45%;
-      width: 50%;
-      // background-color: orange;
+      height: $height;
+      width: $width;
+      background-color: orange;
 
         h1 {
           align-self: center;
@@ -21,9 +24,9 @@
     .topRight {
       display:flex;
       flex-direction: column;
-      height: 45%;
-      width: 50%;
-      // background-color: blue;
+      height: $height;
+      width: $width;
+      background-color: blue;
 
         h1 {
           align-self: center;
@@ -38,40 +41,56 @@
   .field {
     display: flex;
     flex-direction: column;
-    height: 50%;
+    height: 45%;
     width: 100%;
     background-color: green;
 
       .playClock {
         align-self: flex-end;
+        position: relative;
+        bottom: 250px;
         margin-right:25px;
         font-size: large;
+        // margin-bottom: 1px;
       }
 
       .defensiveRead {
-        // background-color: gray;
+        background-color: gray;
         height: 75%;
         width: 50%;
         align-self: center;
+        position: relative;
       }
 
   }
   .buttons{
     display: flex;
     flex-direction: row;
-    // background-color: gray;
+    background-color: gray;
     justify-content: space-between;
     height:26px;
     width: 100%;
     margin-top: 25px;
+    align-items: right;
+/*     position: relative; */
 
     // #snap {
     //   margin: 0 auto;
     // }
 
     .snap {
-      visibility: hidden;
       margin: 0 auto;
+      background-color: red;
+      margin-left: 45%;
+      width: 100%;
+      position: absolute;
+      visibility: hidden;
+
+        .buttonSnap {
+          margin: 0 auto;
+          color: red;
+          // position:absolute;
+        }
     }
 
     .WRbuttons {
@@ -107,15 +126,13 @@
   .birdsEyeView {
     display: flex;
     flex-direction: column;
-    height: 50vh;
+    height: $height;
     width: 100%;
-    margin-top: 25px;
+    background-color:blue;
     visibility: hidden;
 
     .birdsEyeImg {
       align-self: center;
-      height:45vh;
-      width: 50vw;
     }
   }
 }
@@ -129,6 +146,14 @@
   visibility: hidden;
   height: 0px;
   width: 0px
+}
+
+.show_hide {
+display:none;
+}
+
+.show_hide1 {
+  display:none;
 }
 
 
