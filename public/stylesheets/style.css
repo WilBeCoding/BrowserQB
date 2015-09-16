@@ -58,6 +58,12 @@
     height: 50%;
     width: 100%;
     background-color: green; }
+    .container .field .playClock {
+      -webkit-align-self: flex-end;
+          -ms-flex-item-align: end;
+              align-self: flex-end;
+      margin-right: 25px;
+      font-size: large; }
     .container .field .defensiveRead {
       background-color: gray;
       height: 75%;
@@ -80,9 +86,7 @@
     width: 100%;
     margin-top: 25px; }
     .container .buttons .snap {
-      -webkit-align-self: center;
-          -ms-flex-item-align: center;
-              align-self: center;
+      visibility: hidden;
       margin: 0 auto; }
     .container .buttons .WRbuttons {
       display: -webkit-flex;
@@ -98,7 +102,7 @@
       height: 26px;
       width: 100%;
       margin-top: 25px;
-      display: none; }
+      visibility: hidden; }
       .container .buttons .WRbuttons .wr1 {
         background-color: orange;
         padding-left: 25%; }
@@ -126,3 +130,10 @@
               align-self: center;
       height: 45vh;
       width: 50vw; }
+
+.visible {
+  visibility: visible;
+  margin: 0 auto; }
+
+.invisible {
+  visibility: hidden; }
