@@ -49,7 +49,7 @@ GlobalDecrease = {
  ]
 
 
-    function pickRandomProperty(array) {
+    function pickRandomPostSnapString(array) {
        var result;
        var count = 0;
        var key;
@@ -66,13 +66,13 @@ GlobalDecrease = {
    }
 
 
-var randomString = pickRandomProperty(postSnapStrings);
+var randomString = pickRandomPostSnapString(postSnapStrings);
 
   function repeatString(func) {
     setInterval(func, 17);
   }
 
-  console.log(repeatString(randomString));
+  // console.log(repeatString(randomString));
 // console.log(postSnapStrings)
 
 // Options:
@@ -81,3 +81,45 @@ var randomString = pickRandomProperty(postSnapStrings);
 
 // Database:
   // -Just store the results of the game in the database. Make a high score thing
+
+
+var passOutcomeStrings = [
+
+  shortCompletion = {
+    five: "Pass completed for a 5 yard gain",
+    ten: "Pass completed for a 10 yard gain",
+  },
+  mediumCompletion = {
+    fifteen: "Pass completed for a 15 yard gain",
+    twenty: "Pass completed for a 20 yard gain",
+  },
+  longCompletion = {
+    thirty: "Pass completed for a 40 yard gain",
+    fourty: "Pass completed for a 50 yard gain",
+  },
+
+  touchdownCompletion = {
+    touchdown: "Pass completed for a touchdown!"
+  }
+]
+
+    function pickRandomPassOutcome(array) {
+       var result;
+       var count = 0;
+       var key;
+       var keyArray = [];
+       // if the text in defensiveSpan is from the zero index of postSnapStrings then increase the odds of getting a medium and long completion
+       if($('.defensiveSpan').innerText === postSnapStrings[0]) {
+          
+       }
+       for (var prop in array)
+           if (Math.random() < 1/++count) {
+              result = array[prop];
+            };
+        for (var key in result) {
+            keyArray.push(key);
+        }
+       return result[keyArray[Math.floor(Math.random() * keyArray.length)]]    
+   }
+
+   console.log(pickRandomPassOutcome(passOutcomeStrings))

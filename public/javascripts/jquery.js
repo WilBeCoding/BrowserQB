@@ -49,23 +49,13 @@ GlobalDecrease = {
  }
  ]
 
-  $('.playImages').on('click', function() {
-    $('.topRight').addClass('invisible');
-    $('.topLeft').addClass('invisible');
-    $('.placeholderButtons').addClass('buttons');
-    $('.buttons').removeClass('placeholderButtons');
-    $('.placeHolderSnap').addClass('snap');
-    $('.snap').removeClass('placeHolderSnap');
-    $('.placeholderBirdsEyeView').addClass('birdsEyeView');
-    $('.birdsEyeView').removeClass('placeholderBirdsEyeView');
-  });
 
   // $('.snap').on('click', function() {
   //   console.log("DOES THIS HIT SNAP JQUERY")
   //   $('.snap').addClass('invisible')
   // })
 
-   function pickRandomProperty(array) {
+   function pickRandomPostSnapString(array) {
        var result;
        var count = 0;
        var key;
@@ -86,7 +76,7 @@ GlobalDecrease = {
     return intervalID;
   }
 
-   var postSnapStringsFlash = pickRandomProperty(postSnapStrings)
+   var postSnapStringsFlash = pickRandomPostSnapString(postSnapStrings)
 
 
 
@@ -108,22 +98,66 @@ GlobalDecrease = {
       }, 1000);
   }
 
+  $('.playImages').on('click', function() {
+    var thirtySeconds = 30;
+    var display = $('#playClock');
+    playClock(thirtySeconds, display);
+    $('.topRight').addClass('placeHolderTopRight');
+    $('.topLeft').addClass('placeHolderTopLeft');
+    $('.placeHolderTopRight').removeClass('topRight');
+    $('.placeHolderTopLeft').removeClass('topLeft');
+    $('.placeholderButtons').addClass('buttons');
+    $('.buttons').removeClass('placeholderButtons');
+    $('.placeHolderSnap').addClass('snap');
+    $('.snap').removeClass('placeHolderSnap');
+    $('.placeholderBirdsEyeView').addClass('birdsEyeView');
+    $('.birdsEyeView').removeClass('placeholderBirdsEyeView');
+  });
+
+var timerId = 0;
 
   $('.buttonSnap').on('click', function() {
-      var thirtySeconds = 30;
-      var display = $('#playClock');
-      $('.buttonSnap').css({color: "orange"});
-      console.log(playClock);
-      playClock(thirtySeconds, display);
+    timerId = 0;
       $('.snap').addClass('placeHolderSnap');
       $('.snap').removeClass('snap');
       $('.buttonSnap').addClass('buttonSnapPlaceholder');
       $('.buttonSnap').removeClass('buttonSnap');
       $('.placeholderWRbuttons').addClass('WRbuttons');
       $('.placeholderWRbuttons').removeClass('placeholderWRbuttons');
-      window.setInterval(function(){
-        $('.defensiveSpan').text(pickRandomProperty(postSnapStrings));
+      timerId = window.setInterval(function(){
+        $('.defensiveSpan').text(pickRandomPostSnapString(postSnapStrings));
       }, 2000);
+  })
+
+  $('.wr1').on('click', function() {
+      clearInterval(timerId);
+      $('.defensiveSpan').text("Pass Completed to WR1!");
+  })
+
+
+// Need to add placeholders for top right and top left divs that I can use instead of invisible
+
+// Need to figure out why the fuck birdsEyeView image is staying
+  function returnToDefault () {
+    $('.placeHolderTopRight').addClass('topRight');
+    $('.placeHolderTopLeft').addClass('topLeft');
+    $('.buttons').addClass('placeholderButtons');
+    $('.placeholderButtons').removeClass('buttons');
+    $('.snap').addClass('placeHoldersnap');
+    $('.placeholderButtons').removeClass('snap');
+    $('.birdsEyeView').addClass('placeholderBirdsEyeView');
+    $('.placeholderBirdsEyeView').removeClass('birdsEyeView');
+    $('.WRbuttons').addClass('placeholderWRbuttons');
+    $('.placeholderWRbuttons').removeClass('WRbuttons');
+    $('.placeHolderSnap').addClass('snap');
+    $('.snap').removeClass('placeHoldersnap');
+    $('.buttonSnapPlaceholder').addClass('buttonSnap');
+    $('buttonSnap').removeClass('buttonSnapPlaceholder');
+  }
+
+
+  $('.wr1').on('click', function() {
+      setTimeout(returnToDefault, 4000);
   })
 
 });
