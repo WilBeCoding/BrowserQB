@@ -3,7 +3,7 @@ window.onload=start;
 
 function start() {
   snap();
-  selectPlay();
+  // selectPlay();
 }
 
 
@@ -39,23 +39,28 @@ var snapButton = document.getElementsByClassName('snap');
     }
 }
 
-function selectPlay() {
-    var playImg = document.getElementsByClassName('playImages');
-    var snapButton = document.getElementsByClassName('snap');
-    var topLeft = document.getElementsByClassName('topLeft');
-    var topRight = document.getElementsByClassName('topRight');
-    var preSnapDefense = document.getElementsByClassName('birdsEyeView');
 
-    console.log("SelectPlay loads");
-    for(var i = 0; i < playImg.length; i++) {
-        playImg[i].addEventListener("click", function() {
-            snapButton[0].className += 'visible';
-            topLeft[0].className = 'invisible';
-            topRight[0].className = 'invisible';
-            preSnapDefense[0].className += 'visible';
-        })
-    }
-}
+// function selectPlay() {
+//     var playImg = document.getElementsByClassName('playImages');
+//     var snapButton = document.getElementsByClassName('placeHoldersnap');
+//     var topLeft = document.getElementsByClassName('topLeft');
+//     var topRight = document.getElementsByClassName('topRight');
+//     var preSnapDefense = document.getElementsByClassName('placeholderBirdsEyeView');
+//     var buttons = document.getElementsByClassName('placeholderButtons')
+
+//     console.log("SelectPlay loads");
+//     for(var i = 0; i < playImg.length; i++) {
+//         playImg[i].addEventListener("click", function() {
+//             topLeft[0].setAttribute('invisible', 'active')
+
+//             topRight[0].setAttribute('invisible', 'active');
+//             buttons[0].setAttribute('buttons', 'active')
+//             snapButton[0].setAttribute('snap', 'active');
+//             // preSnapDefense[0].className += 'birdsEyeView';
+
+//         })
+//     }
+// }
 
 
 

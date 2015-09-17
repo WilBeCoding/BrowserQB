@@ -2,20 +2,14 @@ extends layout
 
 block content
   div.container
-    div.topLeft
-      h1 Pass Plays
-      input(type="image" src="http://i.dailymail.co.uk/i/pix/2013/02/21/article-2282473-182E101C000005DC-342_306x423.jpg" name="plays").playImages#playImages
-    div.topRight
-      h1 Run Plays
-      input(type="image" src="http://i.dailymail.co.uk/i/pix/2013/02/21/article-2282473-182E101C000005DC-342_306x423.jpg" name="plays").playImages#playImages
     div.field
+      div.defensiveRead
       div.playClock
         span#playClock
 
-      div.defensiveRead
-    div.buttons
-      div.snap#snap.invisible
-        input(type="submit" value="Hut Hut Hike!")
+    div.placeholderButtons
+      div#snap.placeHoldersnap
+        input(type="submit" value="Hut Hut Hike!").buttonSnap
       div.WRbuttons
         div.wr1
           input(type="submit" value="Wide Receiver 1")
@@ -23,6 +17,12 @@ block content
           input(type="submit" value="Wide Receiver 2")
         div.wr3
           input(type="submit" value="Wide Receiver 3")
-    div.birdsEyeView
-      img(src="http://ak-hdl.buzzfed.com/static/2014-07/28/11/enhanced/webdr09/anigif_enhanced-20528-1406561046-20.gif").birdsEyeImg
+    div.placeholderBirdsEyeView
+      img(src="http://cdn1.sbnation.com/imported_assets/475727/kfield1.gif").birdsEyeImg
 
+    div.topLeft
+      h1 Pass Plays
+      input(type="image" src="http://i.dailymail.co.uk/i/pix/2013/02/21/article-2282473-182E101C000005DC-342_306x423.jpg" name="plays").playImages#playImages
+    div.topRight
+      h1 Run Plays
+      input(type="image" src="http://i.dailymail.co.uk/i/pix/2013/02/21/article-2282473-182E101C000005DC-342_306x423.jpg" name="plays").playImages#playImages
