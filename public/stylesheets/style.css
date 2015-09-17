@@ -12,8 +12,7 @@
           flex-direction: row;
   -webkit-justify-content: space-around;
       -ms-flex-pack: distribute;
-          justify-content: space-around;
-  background-color: red; }
+          justify-content: space-around; }
   .container .topLeft {
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -47,6 +46,9 @@
         -ms-flex-item-align: center;
             align-self: center; }
   .container .field {
+    background: url(http://designmodo.com/wp-content/uploads/2011/08/American-football-field.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 105%;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
@@ -54,25 +56,29 @@
         -ms-flex-direction: column;
             flex-direction: column;
     height: 45%;
-    width: 100%;
-    background-color: green; }
+    width: 100%; }
     .container .field .playClock {
       -webkit-align-self: flex-end;
           -ms-flex-item-align: end;
               align-self: flex-end;
       position: relative;
-      margin-right: 25px;
       font-size: large;
-      height: 25px;
-      width: 25px; }
+      height: 25vh;
+      width: 25vw; }
+    .container .field #playClock {
+      color: black;
+      font-size: large;
+      height: 100px;
+      width: 100px; }
     .container .field .defensiveRead {
-      background-color: gray;
       height: 75%;
       width: 50%;
       -webkit-align-self: center;
           -ms-flex-item-align: center;
               align-self: center;
-      position: relative; }
+      position: relative;
+      background-color: gray;
+      opacity: .5; }
   .container .buttons {
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -80,7 +86,6 @@
     -webkit-flex-direction: row;
         -ms-flex-direction: row;
             flex-direction: row;
-    background-color: gray;
     -webkit-justify-content: space-between;
         -ms-flex-pack: justify;
             justify-content: space-between;
@@ -93,7 +98,6 @@
     /*     position: relative; */ }
     .container .buttons .snap {
       margin: 0 auto;
-      background-color: red;
       margin-left: 45%;
       width: 100%; }
       .container .buttons .snap .buttonSnap {
@@ -129,8 +133,7 @@
         -ms-flex-direction: column;
             flex-direction: column;
     height: 50%;
-    width: 100%;
-    background-color: blue; }
+    width: 100%; }
     .container .birdsEyeView .birdsEyeImg {
       margin-top: 30px;
       -webkit-align-self: center;
