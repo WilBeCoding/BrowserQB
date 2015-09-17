@@ -17,6 +17,16 @@
   //   $('.snap').addClass('invisible')
   // })
 
+   function pickRandomProperty(obj) {
+       var result;
+       var count = 0;
+       for (var prop in obj)
+           if (Math.random() < 1/++count)
+              result = prop;
+       return result;
+   }
+
+   // I have yet to test the pickRandomProperty function to see if it actually works
 
   function playClock(duration, display) {
       var timer = duration, minutes, seconds;
@@ -49,6 +59,7 @@
       $('.buttonSnap').removeClass('buttonSnap');
       $('.placeholderWRbuttons').addClass('WRbuttons');
       $('.placeholderWRbuttons').removeClass('placeholderWRbuttons');
+      $('.defensiveSpan').attr
 
   })
 
