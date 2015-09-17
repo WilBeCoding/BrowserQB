@@ -44,6 +44,18 @@ $width: 50%;
     flex-direction: column;
     height: 45%;
     width: 100%;
+    position:relative;
+    left: 0;
+    right: 0;
+
+    .footballIMG {
+      max-height:40px;
+      max-width: 40px;
+      position: absolute;
+      top: 82%;
+      left: 24%;
+      align-self: flex-start;
+    }
 
       // .contain{
       //   background-size: 100%;
@@ -51,22 +63,21 @@ $width: 50%;
       // }
 
       .playClock {
-        align-self: flex-end;
-        position: relative;
+        // align-self: flex-end;
+        // position: relative;
         // margin-right:25px;
         font-size: large;
         // margin-bottom: 50px;
-        height: 25vh;
-        width: 25vw;
-        // background-color: red;
+        height: 100%;
+        width: 100%;
       }
 
 
       #playClock {
         color: black;
-        font-size: large;
-        height: 100px;
-        width: 100px;
+        // font-size: large;
+        height: 100%;
+        width: 100%;
       }
 
       .defensiveRead {

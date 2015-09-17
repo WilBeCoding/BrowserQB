@@ -10,8 +10,8 @@
     $('.snap').removeClass('placeHolderSnap');
     $('.placeholderBirdsEyeView').addClass('birdsEyeView');
     $('.birdsEyeView').removeClass('placeholderBirdsEyeView');
-
   });
+
   // $('.snap').on('click', function() {
   //   console.log("DOES THIS HIT SNAP JQUERY")
   //   $('.snap').addClass('invisible')
@@ -28,10 +28,10 @@
           minutes = minutes < 10 ? "0" + minutes : minutes;
           seconds = seconds < 10 ? "0" + seconds : seconds;
 
-          display.textContent = seconds;
-          console.log(display);
+          display.text(seconds);
+          console.log(display.textContent);
           if (--timer < 0) {
-              timer = duration;
+              timer = null;
           }
       }, 1000);
   }
@@ -51,9 +51,6 @@
       $('.placeholderWRbuttons').removeClass('placeholderWRbuttons');
 
   })
-
-
-
 
 
 
