@@ -12,10 +12,10 @@
     $('.birdsEyeView').removeClass('placeholderBirdsEyeView');
 
   });
-  $('.snap').on('click', function() {
-    console.log("DOES THIS HIT SNAP JQUERY")
-    $('.snap').addClass('invisible')
-  })
+  // $('.snap').on('click', function() {
+  //   console.log("DOES THIS HIT SNAP JQUERY")
+  //   $('.snap').addClass('invisible')
+  // })
 
 
   function playClock(duration, display) {
@@ -42,7 +42,14 @@
       var display = $('#playClock');
       $('.buttonSnap').css({color: "orange"});
       console.log(playClock);
-      playClock(thirtySeconds, display)
+      playClock(thirtySeconds, display);
+      $('.snap').addClass('placeHolderSnap');
+      $('.snap').removeClass('snap');
+      $('.buttonSnap').addClass('buttonSnapPlaceholder');
+      $('.buttonSnap').removeClass('buttonSnap');
+      $('.placeholderWRbuttons').addClass('WRbuttons');
+      $('.placeholderWRbuttons').removeClass('placeholderWRbuttons');
+
   })
 
 
