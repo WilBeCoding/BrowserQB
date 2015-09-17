@@ -78,27 +78,30 @@ GlobalDecrease = {
 
    var postSnapStringsFlash = pickRandomPostSnapString(postSnapStrings)
 
-
-
+var playClockId = 0;
+var display;
   function playClock(duration, display) {
+      playClockId = 0;
       var timer = duration, minutes, seconds;
 
-      setInterval(function () {
-          minutes = parseInt(timer / 60, 10)
-          seconds = parseInt(timer % 60, 10);
+      playClockId = setInterval(function () {
+                        minutes = parseInt(timer / 60, 10)
+                        seconds = parseInt(timer % 60, 10);
 
-          minutes = minutes < 10 ? "0" + minutes : minutes;
-          seconds = seconds < 10 ? "0" + seconds : seconds;
+                        minutes = minutes < 10 ? "0" + minutes : minutes;
+                        seconds = seconds < 10 ? "0" + seconds : seconds;
 
-          display.text(seconds);
-          console.log(display.textContent);
-          if (--timer < 0) {
-              timer = null;
-          }
-      }, 1000);
+                        display.text(seconds);
+                        console.log(display.textContent);
+                        console.log(timer)
+                        if (--timer < 0) {
+                            timer = null;
+                        }
+                      }, 1000);
   }
 
   $('.playImages').on('click', function() {
+    playClockId = 0;
     var thirtySeconds = 30;
     var display = $('#playClock');
     playClock(thirtySeconds, display);
@@ -117,7 +120,8 @@ GlobalDecrease = {
 var timerId = 0;
 
   $('.buttonSnap').on('click', function() {
-    timerId = 0;
+      timerId = 0;
+      clearInterval(playClockId);      
       $('.snap').addClass('placeHolderSnap');
       $('.snap').removeClass('snap');
       $('.buttonSnap').addClass('buttonSnapPlaceholder');
@@ -152,7 +156,7 @@ var timerId = 0;
     $('.placeHolderSnap').addClass('snap');
     $('.snap').removeClass('placeHoldersnap');
     $('.buttonSnapPlaceholder').addClass('buttonSnap');
-    $('buttonSnap').removeClass('buttonSnapPlaceholder');
+    $('.buttonSnap').removeClass('buttonSnapPlaceholder');
   }
 
 
