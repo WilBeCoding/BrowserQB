@@ -63,11 +63,11 @@ $width: 50%;
       // }
 
       .playClock {
-        // align-self: flex-end;
-        // position: relative;
+        // align-self: flex-start;
+        position: relative;
         // margin-right:25px;
-        font-size: large;
-        // margin-bottom: 50px;
+        // font-size: large;
+        // margin-bottom: 250px;
         height: 100%;
         width: 100%;
       }
@@ -75,18 +75,30 @@ $width: 50%;
 
       #playClock {
         color: black;
-        // font-size: large;
+        font-size: 20px;
         height: 100%;
         width: 100%;
+        align-self: right;
       }
 
       .defensiveRead {
         height: 75%;
         width: 50%;
         align-self: center;
-        position: relative;
+        // position: relative;
         background-color: gray;
-        opacity: .5;
+        opacity: 0;
+          }
+
+        .defensiveSpan {
+          height: 35%;
+          width: 40%;
+          opacity: 1;
+          position: relative;
+          margin-left: 38%;
+          margin-top: 5%;
+          font-size: 35px;
+          font-weight: bold;
       }
 
   }

@@ -49,7 +49,7 @@ GlobalDecrease = {
  ]
 
 
-   function pickRandomProperty(array) {
+    function pickRandomProperty(array) {
        var result;
        var count = 0;
        var key;
@@ -66,7 +66,13 @@ GlobalDecrease = {
    }
 
 
-console.log(pickRandomProperty(postSnapStrings));
+var randomString = pickRandomProperty(postSnapStrings);
+
+  function repeatString(func) {
+    setInterval(func, 17);
+  }
+
+  console.log(repeatString(randomString));
 // console.log(postSnapStrings)
 
 // Options:
