@@ -23,7 +23,7 @@ $( document ).ready(function() {
     WR2oddsDecrease = {
       Pressed: "WR2 pressed!",
       MLB: "The MLB dropped back into coverage!",
-      Safety: "The Safety staying mid-field!",
+      Safety: "The Safety is staying mid-field!",
      },
 
     WR3oddsIncrease = {
@@ -97,18 +97,18 @@ $( document ).ready(function() {
     return intervalID;
   }
 
-   var postSnapStringsFlash = pickRandomPostSnapString(postSnapStrings)
+  var postSnapStringsFlash = pickRandomPostSnapString(postSnapStrings)
 
 
 
-var WR1oddsIncreaseObject = postSnapStrings[0];
-var WR1oddsDecreaseObject = postSnapStrings[1];
-var WR2oddsIncreaseObject = postSnapStrings[2];
-var WR2oddsDecreaseObject = postSnapStrings[3];
-var WR3oddsIncreaseObject = postSnapStrings[4];
-var WR3oddsDecreaseObject = postSnapStrings[5];
-var globalOddsIncreaseObject = postSnapStrings[6];
-var globalOddsDecreaseObject = postSnapStrings[7];
+  var WR1oddsIncreaseObject = postSnapStrings[0];
+  var WR1oddsDecreaseObject = postSnapStrings[1];
+  var WR2oddsIncreaseObject = postSnapStrings[2];
+  var WR2oddsDecreaseObject = postSnapStrings[3];
+  var WR3oddsIncreaseObject = postSnapStrings[4];
+  var WR3oddsDecreaseObject = postSnapStrings[5];
+  var globalOddsIncreaseObject = postSnapStrings[6];
+  var globalOddsDecreaseObject = postSnapStrings[7];
 
 
 var playClockId = 0;
@@ -187,11 +187,12 @@ var timerId = 0;
     $('.snap').removeClass('placeHoldersnap');
     $('.buttonSnapPlaceholder').addClass('buttonSnap');
     $('.buttonSnap').removeClass('buttonSnapPlaceholder');
+    $('.defensiveSpan').text(" ");
   }
 
 
   $('.wr1').on('click', function() {
-      setTimeout(returnToDefault, 4000);
+      setTimeout(returnToDefault, 4200);
   })
 
     function pickRandomPassOutcome(array) {
@@ -248,8 +249,63 @@ var WR3oddsDecreaseObjectRandomValue = randomValueOfObjectInpostSnapStrings(WR3o
 var globalOddsIncreaseObjectRandomValue = randomValueOfObjectInpostSnapStrings(globalOddsIncreaseObject);
 var globalOddsDecreaseObjectRandomValue = randomValueOfObjectInpostSnapStrings(globalOddsDecreaseObject);
 
-$('.buttonSnap').on('click', function() {
-  console.log("pickRandom function is invoked")
+  
+//   function go() {
+//     console.log("The Go Function Is Running");
+//   setInterval(go,2000);
+//      var defSpan = $('.defensiveSpan');
+//      var defSpanClassic = document.getElementsByClassName('defensiveSpan');
+//      var result;
+//      var count = 0;
+//      var key;
+//      var keyArray = [];
+
+//        if(defSpanClassic.innerHTML === WR1oddsIncreaseObjectRandomValue) {
+//           console.log("Holy Fuck This Works");
+//        }
+//        if(defSpanClassic.innerHTML === WR1oddsDecreaseObjectRandomValue) {
+//           console.log("Holy Fuck This Works");
+//        }
+//        if(defSpanClassic.innerHTML === WR2oddsIncreaseObjectRandomValue) {
+//           console.log("Holy Fuck This Works");
+//        }
+
+//        if(defSpanClassic.innerHTML === WR2oddsDecreaseObjectRandomValue) {
+//           console.log("Holy Fuck This Works");
+//        }
+
+//        if(defSpanClassic.innerHTML === WR3oddsIncreaseObjectRandomValue) {
+//           console.log("Holy Fuck This Works");
+//        }
+
+//        if(defSpanClassic.innerText === WR3oddsDecreaseObjectRandomValue) {
+//           console.log("defSpanClassic with innerText");
+//        }
+
+//        if(defSpan.innerText === globalOddsIncreaseObjectRandomValue) {
+//           console.log("defSpan with innertext");
+//        }
+
+//        if(defSpan.innerHTML === globalOddsDecreaseObjectRandomValue) {
+//           console.log("defSpan with innerHTML");
+//        }
+//     }
+
+
+// var defSpanTest1 = $('.defensiveSpan').innerHTML;
+
+// $(defensiveSpan).on('change', function() {
+//   console.log("Targeting String Function Working On Click");
+//   go();
+//  })
+
+  var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
+  var list = document.querySelector('.defensiveSpan');
+  
+  var observer = new MutationObserver(function(mutations) {  
+    mutations.forEach(function(mutation) {
+      if (mutation.type === 'childList') {
+
      var defSpan = $('.defensiveSpan');
      var defSpanClassic = document.getElementsByClassName('defensiveSpan');
      var result;
@@ -258,51 +314,124 @@ $('.buttonSnap').on('click', function() {
      var keyArray = [];
 
 
-     // if the text in defensiveSpan is from the zero index of postSnapStrings then increase the odds of getting a medium and long completion
+       if(defSpanClassic[0].innerText === "The LOLB is blitzing!") {
+          console.log("It is hitting inside the for loop");
+         }
+    
 
-
-// MASSIVE SERIES OF IF STATEMENTS?
-
-     // for(var i = 0; i < postSnapStrings.length; i++) {
-       if(defSpanClassic.innerHTML === WR1oddsIncreaseObjectRandomValue) {
+       if(defSpanClassic[0].innerHTML === "The Safety Is Cheating Right!") {
           console.log("Holy Fuck This Works");
        }
-       if(defSpanClassic.innerHTML === WR1oddsDecreaseObjectRandomValue) {
-          console.log("Holy Fuck This Works");
-       }
-       if(defSpanClassic.innerHTML === WR2oddsIncreaseObjectRandomValue) {
+       if(defSpanClassic[0].innerText === "Safety Blitz!") {
           console.log("Holy Fuck This Works");
        }
 
-       if(defSpanClassic.innerHTML === WR2oddsDecreaseObjectRandomValue) {
+       if(defSpanClassic[0].innerText === "Left Cornerback Blitz!") {
           console.log("Holy Fuck This Works");
        }
 
-       if(defSpanClassic.innerHTML === WR3oddsIncreaseObjectRandomValue) {
+       if(defSpanClassic[0].innerText === "WR1 Pressed!") {
           console.log("Holy Fuck This Works");
        }
 
-       if(defSpanClassic.innerText === WR3oddsDecreaseObjectRandomValue) {
+       if(defSpanClassic[0].innerText === "The LOLB dropped into coverage!") {
           console.log("defSpanClassic with innerText");
        }
 
-       if(defSpan.innerText === globalOddsIncreaseObjectRandomValue) {
+       if(defSpanClassic[0].innerText === "The Safety is cheating left") {
           console.log("defSpan with innertext");
        }
 
-       if(defSpan.innerHTML === globalOddsDecreaseObjectRandomValue) {
+       if(defSpanClassic[0].innerText === "The MLB is blitzing!") {
           console.log("defSpan with innerHTML");
        }
-    return runThis();
- });
 
-// $(document).load(function() {
-//   pickRandomPassOutcome();
-// })
+       if(defSpanClassic[0].innerText === "Safety Blitz!") {
+          console.log("defSpan with innerHTML");
+       }
 
+       
+       if(defSpanClassic[0].innerText === "The Safety is on the line") {
+          console.log("defSpan with innerHTML");
+       }
 
-// Can I set the flashing of the strings within the setInterval function thing?
-    // addClass-removeClass
+       
+       if(defSpanClassic[0].innerText === "WR2 pressed!") {
+          console.log("defSpan with innerHTML");
+       }
+
+       
+       if(defSpanClassic[0].innerText === "The MLB dropped back into coverage") {
+          console.log("defSpan with innerHTML");
+       }
+
+       
+       if(defSpanClassic[0].innerText === "The Safety is staying mid-field!") {
+          console.log("defSpan with innerHTML");
+       }
+
+       
+       if(defSpanClassic[0].innerText === "The safety is cheating left!") {
+          console.log("defSpan with innerHTML");
+       }
+
+       
+       if(defSpanClassic[0].innerText === "Right Cornerback Blitz!") {
+          console.log("defSpan with innerHTML");
+       }
+
+       
+       if(defSpanClassic[0].innerText === "The ROLB is blitzing!") {
+          console.log("defSpan with innerHTML");
+       }
+
+       
+       if(defSpanClassic[0].innerText === "WR3 pressed!") {
+          console.log("defSpan with innerHTML");
+       }
+
+       
+       if(defSpanClassic[0].innerText === "The ROLB dropped back into coverage") {
+          console.log("defSpan with innerHTML");
+       }
+
+       
+       if(defSpanClassic[0].innerText === "The Safety is cheating right") {
+          console.log("defSpan with innerHTML");
+       }
+
+       
+       if(defSpanClassic[0].innerText === "All Out Blitz!") {
+          console.log("defSpan with innerHTML");
+       }
+
+       
+       if(defSpanClassic[0].innerText === "The line is holding strong!") {
+          console.log("defSpan with innerHTML");
+       }
+
+       
+       if(defSpanClassic[0].innerText === "WRs stuffed at the line!") {
+          console.log("defSpan with innerHTML");
+       }
+
+       
+       if(defSpanClassic[0].innerText === "The Defensive End is barreling towards you!") {
+          console.log("defSpan with innerHTML");
+       }
+
+       
+       if(defSpanClassic[0].innerText === "Dammit Donald!") {
+          console.log("defSpan with innerHTML");
+       }       
+    }
+         });
+      })
+
+  observer.observe(list, {
+    attributes: true, 
+    childList: true, 
+    characterData: true
+  });
+
 });
-
-// Set Interval

@@ -82,6 +82,12 @@ var globalOddsDecreaseObject = postSnapStrings[7];
 
 // console.log(globalOddsDecreaseObject);
 
+function testing(){
+  for(var key in WR1oddsIncreaseObject) {
+    console.log(WR1oddsIncreaseObject[key] + " one pass");
+  }
+}
+console.log(testing());
 
 // console.log(randomString);
 
@@ -154,12 +160,14 @@ var globalOddsDecreaseObjectRandomValue = randomValueOfObjectInpostSnapStrings(g
 
 
 
-  function pickRandomPassOutcome(array) {
-     var $defSpan = $('.defensiveSpan');
-     var result;
-     var count = 0;
-     var key;
-     var keyArray = [];
+// console.log(WR3oddsDecreaseObjectRandomValue);
+
+  // function pickRandomPassOutcome(array) {
+  //    var $defSpan = $('.defensiveSpan');
+  //    var result;
+  //    var count = 0;
+  //    var key;
+  //    var keyArray = [];
 
 
      // if the text in defensiveSpan is from the zero index of postSnapStrings then increase the odds of getting a medium and long completion
@@ -168,9 +176,9 @@ var globalOddsDecreaseObjectRandomValue = randomValueOfObjectInpostSnapStrings(g
 // MASSIVE SERIES OF IF STATEMENTS?
 
      // for(var i = 0; i < postSnapStrings.length; i++) {
-       if(defSpan.innerText === WR1oddsIncreaseObjectRandomValue) {
-          console.log("Holy Fuck This Works");
-       }
+       // if(defSpan.innerText === WR1oddsIncreaseObjectRandomValue) {
+          // console.log("Holy Fuck This Works");
+       // }
      // for (var prop in array)
      //     if (Math.random() < 1/++count) {
      //        result = array[prop];
@@ -179,9 +187,10 @@ var globalOddsDecreaseObjectRandomValue = randomValueOfObjectInpostSnapStrings(g
      //      keyArray.push(key);
      //  }
      // return result[keyArray[Math.floor(Math.random() * keyArray.length)]]    
- };
+ // };
 
-console.log(pickRandomPassOutcome(passOutcomeStrings));
+// console.log(pickRandomPassOutcome(passOutcomeStrings));
+
 
 
 
