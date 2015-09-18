@@ -70,17 +70,22 @@
           -ms-flex-item-align: start;
               align-self: flex-start; }
     .container .field .playClock {
+      -webkit-align-self: flex-start;
+          -ms-flex-item-align: start;
+              align-self: flex-start;
       position: relative;
-      height: 100%;
+      margin-bottom: 200px;
+      margin-left: 1350px;
+      height: 150vh;
       width: 100%; }
     .container .field #playClock {
       color: black;
       font-size: 20px;
       height: 100%;
       width: 100%;
-      -webkit-align-self: right;
-          -ms-flex-item-align: right;
-              align-self: right; }
+      -webkit-align-self: flex-end;
+          -ms-flex-item-align: end;
+              align-self: flex-end; }
     .container .field .defensiveRead {
       height: 75%;
       width: 50%;

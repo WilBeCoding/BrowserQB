@@ -103,14 +103,19 @@ var passOutcomeStrings = [
   }
 ]
 
+// console.log(postSnapStrings[0]);
+
     function pickRandomPassOutcome(array) {
+      var $defSpan = $('.defensiveSpan');
        var result;
        var count = 0;
        var key;
        var keyArray = [];
        // if the text in defensiveSpan is from the zero index of postSnapStrings then increase the odds of getting a medium and long completion
-       if($('.defensiveSpan').innerText === postSnapStrings[0]) {
-          
+
+       for(var i = 0; i < passOutcomeStrings.length; i++)
+       if(defSpan.innerText === postSnapStrings[0][i]) {
+          console.log(postSnapStrings[0][i]);
        }
        for (var prop in array)
            if (Math.random() < 1/++count) {

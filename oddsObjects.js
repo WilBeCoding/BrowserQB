@@ -1,3 +1,5 @@
+
+
 var WR1oddsIncrease = {
   Safety: "The Safety Is Cheating Right!";
   Lolb: "The LOLB is blitzing!";

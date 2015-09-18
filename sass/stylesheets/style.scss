@@ -62,14 +62,17 @@ $width: 50%;
 
       // }
 
+// Decide where you want the fucking playclock and how you want to style it before you go mad with 1000px margins
       .playClock {
-        // align-self: flex-start;
+        align-self: flex-start;
         position: relative;
         // margin-right:25px;
         // font-size: large;
-        // margin-bottom: 250px;
-        height: 100%;
+        margin-bottom: 200px;
+        margin-left: 1350px;
+        height: 150vh;
         width: 100%;
+        // background-color: yellow;
       }
 
 
@@ -78,7 +81,7 @@ $width: 50%;
         font-size: 20px;
         height: 100%;
         width: 100%;
-        align-self: right;
+        align-self: flex-end;
       }
 
       .defensiveRead {
