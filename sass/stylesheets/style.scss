@@ -1,5 +1,7 @@
 $height: 50%;
 $width: 50%;
+$or: orange;
+$bl: blue;
 
 .container{
   display: flex;
@@ -15,6 +17,7 @@ $width: 50%;
       flex-direction:column;
       height: $height;
       width: $width;
+      background-color: $or;
 
         h1 {
           align-self: center;
@@ -25,6 +28,7 @@ $width: 50%;
       flex-direction: column;
       height: $height;
       width: $width;
+      background-color: $bl;
 
         h1 {
           align-self: center;
@@ -57,10 +61,7 @@ $width: 50%;
       align-self: flex-start;
     }
 
-      // .contain{
-      //   background-size: 100%;
 
-      // }
 
 // Decide where you want the fucking playclock and how you want to style it before you go mad with 1000px margins
       .playClock {
@@ -75,6 +76,21 @@ $width: 50%;
         // background-color: yellow;
       }
 
+      .playClockDiv {
+        align-self: flex-start;
+        position: relative;
+        // margin-right:25px;
+        // font-size: large;
+        margin-bottom: 200px;
+        // margin-left: 1350px;
+        height: 150vh;
+        width: 100%;
+        // background-color: yellow;
+      }
+
+      .hiddenPlayClock {
+        display: none;
+      }
 
       #playClock {
         color: black;
@@ -115,10 +131,6 @@ $width: 50%;
     align-items: right;
 /*     position: relative; */
 
-    // #snap {
-    //   margin: 0 auto;
-    // }
-
     .snap {
       margin: 0 auto;
       margin-left: 45%;
@@ -143,19 +155,14 @@ $width: 50%;
 
 
       .wr1 {
-        // background-color: orange;
-        // align-self: left;
         padding-left: 25%;
       }
 
       .wr2 {
-        // background-color: yellow;
         align-self: center;
       }
 
       .wr3 {
-        // background-color: blue;
-        // align-self: center;
         padding-right: 25%;
       }
     }

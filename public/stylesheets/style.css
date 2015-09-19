@@ -21,7 +21,8 @@
         -ms-flex-direction: column;
             flex-direction: column;
     height: 50%;
-    width: 50%; }
+    width: 50%;
+    background-color: orange; }
     .container .topLeft h1 {
       -webkit-align-self: center;
           -ms-flex-item-align: center;
@@ -34,7 +35,8 @@
         -ms-flex-direction: column;
             flex-direction: column;
     height: 50%;
-    width: 50%; }
+    width: 50%;
+    background-color: blue; }
     .container .topRight h1 {
       -webkit-align-self: center;
           -ms-flex-item-align: center;
@@ -78,6 +80,16 @@
       margin-left: 1350px;
       height: 150vh;
       width: 100%; }
+    .container .field .playClockDiv {
+      -webkit-align-self: flex-start;
+          -ms-flex-item-align: start;
+              align-self: flex-start;
+      position: relative;
+      margin-bottom: 200px;
+      height: 150vh;
+      width: 100%; }
+    .container .field .hiddenPlayClock {
+      display: none; }
     .container .field #playClock {
       color: black;
       font-size: 20px;

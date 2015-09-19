@@ -148,6 +148,7 @@ var display;
     $('.snap').removeClass('placeHolderSnap');
     $('.placeholderBirdsEyeView').addClass('birdsEyeView');
     $('.birdsEyeView').removeClass('placeholderBirdsEyeView');
+
   });
 
 var timerId = 0;
@@ -161,6 +162,10 @@ var timerId = 0;
       $('.buttonSnap').removeClass('buttonSnap');
       $('.placeholderWRbuttons').addClass('WRbuttons');
       $('.placeholderWRbuttons').removeClass('placeholderWRbuttons');
+      $('#playClock').removeClass('playClock');
+      $('#playClock').addClass('hiddenPlayClock');
+      $('.birdsEyeView').addClass('placeholderBirdsEyeView');
+      $('.placeholderBirdsEyeView').removeClass('birdsEyeView');
       timerId = window.setInterval(function(){
         $('.defensiveSpan').text(pickRandomPostSnapString(postSnapStrings));
       }, 2000);
@@ -188,6 +193,9 @@ var timerId = 0;
     $('.buttonSnapPlaceholder').addClass('buttonSnap');
     $('.buttonSnap').removeClass('buttonSnapPlaceholder');
     $('.defensiveSpan').text(" ");
+    $('#playClock').removeClass('hiddenPlayClock');
+    $('#playClock').addClass('playClock');
+    $('#playClock').text(" ");
   }
 
 
