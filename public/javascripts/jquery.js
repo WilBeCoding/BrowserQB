@@ -70,12 +70,6 @@ $( document ).ready(function() {
   }
 ]
 
-
-  // $('.snap').on('click', function() {
-  //   console.log("DOES THIS HIT SNAP JQUERY")
-  //   $('.snap').addClass('invisible')
-  // })
-
    function pickRandomPostSnapString(array) {
        var result;
        var count = 0;
@@ -99,8 +93,6 @@ $( document ).ready(function() {
 
   var postSnapStringsFlash = pickRandomPostSnapString(postSnapStrings)
 
-
-
   var WR1oddsIncreaseObject = postSnapStrings[0];
   var WR1oddsDecreaseObject = postSnapStrings[1];
   var WR2oddsIncreaseObject = postSnapStrings[2];
@@ -109,7 +101,6 @@ $( document ).ready(function() {
   var WR3oddsDecreaseObject = postSnapStrings[5];
   var globalOddsIncreaseObject = postSnapStrings[6];
   var globalOddsDecreaseObject = postSnapStrings[7];
-
 
 var playClockId = 0;
 var display;
@@ -176,6 +167,15 @@ var timerId = 0;
       $('.defensiveSpan').text("Pass Completed to WR1!");
   })
 
+    $('.wr2').on('click', function() {
+      clearInterval(timerId);
+      $('.defensiveSpan').text("Pass Completed to WR2!");
+  })
+
+  $('.wr3').on('click', function() {
+      clearInterval(timerId);
+      $('.defensiveSpan').text("Pass Completed to WR3!");
+  })
 
   function returnToDefault () {
     $('.placeHolderTopRight').addClass('topRight');
@@ -198,23 +198,24 @@ var timerId = 0;
     $('#playClock').text(" ");
   }
 
-
   $('.wr1').on('click', function() {
       setTimeout(returnToDefault, 4200);
   })
 
+  $('.wr2').on('click', function() {
+      setTimeout(returnToDefault, 4200);
+  })  
+
+  $('.wr3').on('click', function() {
+      setTimeout(returnToDefault, 4200);
+  })
+
     function pickRandomPassOutcome(array) {
-      // var $defSpan = $('.defensiveSpan');
        var result;
        var count = 0;
        var key;
        var keyArray = [];
-       // if the text in defensiveSpan is from the zero index of postSnapStrings then increase the odds of getting a medium and long completion
 
-       for(var i = 0; i < passOutcomeStrings.length; i++) {
-       // if(defSpan.innerText === postSnapStrings[0][i]) {
-          // console.log(postSnapStrings[0][i]);
-       }
        for (var prop in array)
            if (Math.random() < 1/++count) {
               result = array[prop];
@@ -224,8 +225,6 @@ var timerId = 0;
         }
        return result[keyArray[Math.floor(Math.random() * keyArray.length)]]    
    }
-
-   console.log(pickRandomPassOutcome(passOutcomeStrings));
 
    function randomValueOfObjectInpostSnapStrings(array) {
       var result;
@@ -256,56 +255,6 @@ var WR3oddsIncreaseObjectRandomValue = randomValueOfObjectInpostSnapStrings(WR3o
 var WR3oddsDecreaseObjectRandomValue = randomValueOfObjectInpostSnapStrings(WR3oddsDecreaseObject);
 var globalOddsIncreaseObjectRandomValue = randomValueOfObjectInpostSnapStrings(globalOddsIncreaseObject);
 var globalOddsDecreaseObjectRandomValue = randomValueOfObjectInpostSnapStrings(globalOddsDecreaseObject);
-
-  
-//   function go() {
-//     console.log("The Go Function Is Running");
-//   setInterval(go,2000);
-//      var defSpan = $('.defensiveSpan');
-//      var defSpanClassic = document.getElementsByClassName('defensiveSpan');
-//      var result;
-//      var count = 0;
-//      var key;
-//      var keyArray = [];
-
-//        if(defSpanClassic.innerHTML === WR1oddsIncreaseObjectRandomValue) {
-//           console.log("Holy Fuck This Works");
-//        }
-//        if(defSpanClassic.innerHTML === WR1oddsDecreaseObjectRandomValue) {
-//           console.log("Holy Fuck This Works");
-//        }
-//        if(defSpanClassic.innerHTML === WR2oddsIncreaseObjectRandomValue) {
-//           console.log("Holy Fuck This Works");
-//        }
-
-//        if(defSpanClassic.innerHTML === WR2oddsDecreaseObjectRandomValue) {
-//           console.log("Holy Fuck This Works");
-//        }
-
-//        if(defSpanClassic.innerHTML === WR3oddsIncreaseObjectRandomValue) {
-//           console.log("Holy Fuck This Works");
-//        }
-
-//        if(defSpanClassic.innerText === WR3oddsDecreaseObjectRandomValue) {
-//           console.log("defSpanClassic with innerText");
-//        }
-
-//        if(defSpan.innerText === globalOddsIncreaseObjectRandomValue) {
-//           console.log("defSpan with innertext");
-//        }
-
-//        if(defSpan.innerHTML === globalOddsDecreaseObjectRandomValue) {
-//           console.log("defSpan with innerHTML");
-//        }
-//     }
-
-
-// var defSpanTest1 = $('.defensiveSpan').innerHTML;
-
-// $(defensiveSpan).on('change', function() {
-//   console.log("Targeting String Function Working On Click");
-//   go();
-//  })
 
   var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
   var list = document.querySelector('.defensiveSpan');

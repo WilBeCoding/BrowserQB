@@ -34,6 +34,18 @@ $bl: blue;
           align-self: center;
         }
     }
+
+    .table {
+      position: absolute;
+      height:45vh;
+      width: 31vw;
+      background-color: red;
+      z-index: 1;
+      margin-left: 500px;
+      margin-top: -275px;
+
+    }
+
   .playImages {
     height: 200px;
     width: 200px;
