@@ -68,7 +68,21 @@ $( document ).ready(function() {
   touchdownCompletion = {
     touchdown: "Pass completed for a touchdown!"
   }
-]
+];
+
+var randomInteger = function randomInt() {
+  return Number((Math.random() * (.25 - 0)) + 0);
+};
+
+
+PlayResults = {
+  Yards: .3 + randomInteger(),
+  WR1OddsAdj: 0,
+  WR2OddsAdj: 0,
+  WR3OddsAdj: 0,
+  GlobalOddsAdj: 0,
+}
+
 
    function pickRandomPostSnapString(array) {
        var result;
@@ -200,6 +214,10 @@ var timerId = 0;
 
   $('.wr1').on('click', function() {
       setTimeout(returnToDefault, 4200);
+      console.log(WR1OddsCount);
+      console.log(WR2OddsCount);
+      console.log(WR3OddsCount);
+      console.log(GlobalOddsCount);
   })
 
   $('.wr2').on('click', function() {
@@ -243,6 +261,10 @@ var timerId = 0;
  };
 
 
+
+
+
+
 var WR1oddsIncreaseObjectRandomValue = randomValueOfObjectInpostSnapStrings(WR1oddsIncreaseObject);
 
 var WR1oddsDecreaseObjectRandomValue = randomValueOfObjectInpostSnapStrings(WR1oddsDecreaseObject);
@@ -256,6 +278,14 @@ var WR3oddsDecreaseObjectRandomValue = randomValueOfObjectInpostSnapStrings(WR3o
 var globalOddsIncreaseObjectRandomValue = randomValueOfObjectInpostSnapStrings(globalOddsIncreaseObject);
 var globalOddsDecreaseObjectRandomValue = randomValueOfObjectInpostSnapStrings(globalOddsDecreaseObject);
 
+
+
+var WR1OddsCount = 0;
+var WR2OddsCount = 0;
+var WR3OddsCount = 0;
+var GlobalOddsCount = 0;
+
+
   var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
   var list = document.querySelector('.defensiveSpan');
   
@@ -266,129 +296,136 @@ var globalOddsDecreaseObjectRandomValue = randomValueOfObjectInpostSnapStrings(g
      var defSpan = $('.defensiveSpan');
      var defSpanClassic = document.getElementsByClassName('defensiveSpan');
      var result;
-     var count = 0;
+     var WR1OddsCount = 0
+     var WR2OddsCount = 0
+     var WR3OddsCount = 0
+     var GlobalOddsCount = 0
      var key;
      var keyArray = [];
 
+         if(defSpanClassic[0].innerText === "The LOLB is blitzing!") {
+            WR1OddsCount++;
+           }
 
-       if(defSpanClassic[0].innerText === "The LOLB is blitzing!") {
-          console.log("It is hitting inside the for loop");
+         if(defSpanClassic[0].innerHTML === "The Safety Is Cheating Right!") {
+            WR1OddsCount++;
+            WR3OddsCount--;
+            WR2OddsCount++;
          }
-    
 
-       if(defSpanClassic[0].innerHTML === "The Safety Is Cheating Right!") {
-          console.log("Holy Fuck This Works");
-       }
-       if(defSpanClassic[0].innerText === "Safety Blitz!") {
-          console.log("Holy Fuck This Works");
-       }
+         if(defSpanClassic[0].innerText === "Left Cornerback Blitz!") {
+            WR1OddsCount++;
+         }
 
-       if(defSpanClassic[0].innerText === "Left Cornerback Blitz!") {
-          console.log("Holy Fuck This Works");
-       }
+         if(defSpanClassic[0].innerText === "WR1 Pressed!") {
+            WR1OddsCount--;
+         }
 
-       if(defSpanClassic[0].innerText === "WR1 Pressed!") {
-          console.log("Holy Fuck This Works");
-       }
+         if(defSpanClassic[0].innerText === "The LOLB dropped into coverage!") {
+            WR1OddsCount--;
+         }
 
-       if(defSpanClassic[0].innerText === "The LOLB dropped into coverage!") {
-          console.log("defSpanClassic with innerText");
-       }
+         if(defSpanClassic[0].innerText === "The Safety is cheating left") {
+            WR1OddsCount--;
+            WR3OddsCount++;
+            WR2OddsCount++;
+         }
 
-       if(defSpanClassic[0].innerText === "The Safety is cheating left") {
-          console.log("defSpan with innertext");
-       }
+         if(defSpanClassic[0].innerText === "The MLB is blitzing!") {
+            WR2OddsCount++;
+         }
 
-       if(defSpanClassic[0].innerText === "The MLB is blitzing!") {
-          console.log("defSpan with innerHTML");
-       }
+         if(defSpanClassic[0].innerText === "Safety Blitz!") {
+            GlobalOddsCount++;
+         }
 
-       if(defSpanClassic[0].innerText === "Safety Blitz!") {
-          console.log("defSpan with innerHTML");
-       }
+         
+         if(defSpanClassic[0].innerText === "WR2 beat his man!") {
+            WR2OddsCount++;
+            WR2OddsCount++;
+         }
 
-       
-       if(defSpanClassic[0].innerText === "The Safety is on the line") {
-          console.log("defSpan with innerHTML");
-       }
+         
+         if(defSpanClassic[0].innerText === "WR2 pressed!") {
+           WR2OddsCount--;
+         }
 
-       
-       if(defSpanClassic[0].innerText === "WR2 pressed!") {
-          console.log("defSpan with innerHTML");
-       }
+         
+         if(defSpanClassic[0].innerText === "The MLB dropped back into coverage") {
+            WR2OddsCount--;
+         }
 
-       
-       if(defSpanClassic[0].innerText === "The MLB dropped back into coverage") {
-          console.log("defSpan with innerHTML");
-       }
+         
+         if(defSpanClassic[0].innerText === "The Safety is staying mid-field!") {
+            WR2OddsCount--;
+         }
 
-       
-       if(defSpanClassic[0].innerText === "The Safety is staying mid-field!") {
-          console.log("defSpan with innerHTML");
-       }
+         
+         if(defSpanClassic[0].innerText === "Right Cornerback Blitz!") {
+            WR3OddsCount++;
+         }
 
-       
-       if(defSpanClassic[0].innerText === "The safety is cheating left!") {
-          console.log("defSpan with innerHTML");
-       }
+         
+         if(defSpanClassic[0].innerText === "The ROLB is blitzing!") {
+            WR3OddsCount++;
+         }
 
-       
-       if(defSpanClassic[0].innerText === "Right Cornerback Blitz!") {
-          console.log("defSpan with innerHTML");
-       }
+         
+         if(defSpanClassic[0].innerText === "WR3 pressed!") {
+            WR3OddsCount--;
+            WR3OddsCount--;
+         }
 
-       
-       if(defSpanClassic[0].innerText === "The ROLB is blitzing!") {
-          console.log("defSpan with innerHTML");
-       }
+         
+         if(defSpanClassic[0].innerText === "The ROLB dropped back into coverage") {
+            WR3OddsCount++;
+         }
 
-       
-       if(defSpanClassic[0].innerText === "WR3 pressed!") {
-          console.log("defSpan with innerHTML");
-       }
+         
+         if(defSpanClassic[0].innerText === "The Safety is cheating right") {
+            WR1OddsCount++;
+            WR3OddsCount--;
+         }
 
-       
-       if(defSpanClassic[0].innerText === "The ROLB dropped back into coverage") {
-          console.log("defSpan with innerHTML");
-       }
+         
+         if(defSpanClassic[0].innerText === "All Out Blitz!") {
+            GlobalOddsCount++;
+         }
 
-       
-       if(defSpanClassic[0].innerText === "The Safety is cheating right") {
-          console.log("defSpan with innerHTML");
-       }
+         
+         if(defSpanClassic[0].innerText === "The line is holding strong!") {
+            GlobalOddsCount++;
+         }
 
-       
-       if(defSpanClassic[0].innerText === "All Out Blitz!") {
-          console.log("defSpan with innerHTML");
-       }
+         
+         if(defSpanClassic[0].innerText === "WRs stuffed at the line!") {
+            GlobalOddsCount--;
+            GlobalOddsCount--;
+         }
 
-       
-       if(defSpanClassic[0].innerText === "The line is holding strong!") {
-          console.log("defSpan with innerHTML");
-       }
+         
+         if(defSpanClassic[0].innerText === "The Defensive End is barreling towards you!") {
+            GlobalOddsCount--;
+         }
 
-       
-       if(defSpanClassic[0].innerText === "WRs stuffed at the line!") {
-          console.log("defSpan with innerHTML");
-       }
-
-       
-       if(defSpanClassic[0].innerText === "The Defensive End is barreling towards you!") {
-          console.log("defSpan with innerHTML");
-       }
-
-       
-       if(defSpanClassic[0].innerText === "Dammit Donald!") {
-          console.log("defSpan with innerHTML");
-       }       
-    }
-         });
-      })
+         
+         if(defSpanClassic[0].innerText === "Dammit Donald!") {
+            GlobalOddsCount--;
+         }  
+  PlayResults.WR1OddsAdj = PlayResults.WR1OddsAdj+ WR1OddsCount;
+  PlayResults.WR2OddsAdj= PlayResults.WR2OddsAdj+ WR2OddsCount;
+  PlayResults.WR3OddsAdj= PlayResults.WR3OddsAdj+ WR3OddsCount;
+  PlayResults.GlobalOddsAdj= PlayResults.GlobalOddsAdj+ GlobalOddsCount;
+      }
+    });
+  })
 
   observer.observe(list, {
     attributes: true, 
     childList: true, 
     characterData: true
   });
+
+
 
 });
