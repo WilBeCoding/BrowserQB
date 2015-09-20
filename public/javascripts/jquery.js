@@ -95,11 +95,35 @@ PlayResults = {
 
 var blitzSackedTime = 0;
 var returnToDefaultEndSacks = 0;
+var downCount = 1;
+
+  function countDown() {
+    if(downCount === 1) {
+      $('.down').text("1st")
+    }
+    if(downCount === 2) {
+      $('.down').text("2nd")
+    }
+    if(downCount === 3) {
+      $('.down').text("3rd")
+    }
+    if(downCount === 4) {
+      $('.down').text("4th")
+    }
+    if(downCount === 5) {
+      $('.defensiveSpan').text("TURNOVER ON DOWNS!");
+      $('.footballIMG').css('margin-left', mgr='0');
+      downCount = 1;
+      $('.down').text("1st");
+    }
+  }
 
   function clearSackTimer() {
     clearInterval(timerId);
     clearTimeout(sackTimer);
-    blitzSackedTime = setTimeout(blitzSacked, 2000);
+    if(blitzSackedTime === 0) {
+      blitzSackedTime = setTimeout(blitzSacked, 2000);
+    }
     returnToSackDefaultEndSacks = setTimeout(returnToDefault, 4200);
     console.log("clearSackTimer fired");
   }
@@ -114,9 +138,9 @@ var returnToDefaultEndSacks = 0;
   }
 
   
-  function eightYdGainFootballSlider () {
-    $('.')
-  }
+  // // function eightYdGainFootballSlider () {
+  //   $('.')
+  // }
 
 
    function pickRandomPostSnapString(array) {
@@ -253,6 +277,7 @@ var sackTimer = 0;
 
       if(PlayResults.WR1OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj < .2) {
         $('.defensiveSpan').text("Pass to WR1 is intercepeted!");
+        $('.footballIMG').css('margin-left', mgr='0');
       }
       if(PlayResults.WR1OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .2 && PlayResults.WR1OddsAdj + PlayResults.Yards < .7) {
         $('.defensiveSpan').text("Pass to WR1 is complete for an 8 yard gain!")
@@ -261,6 +286,8 @@ var sackTimer = 0;
           $('.yards').text('10');
         }else{
           $('.yards').text('2')
+          downCount++
+          countDown();
         }
       }
       if(PlayResults.WR1OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .7 && PlayResults.WR1OddsAdj + PlayResults.Yards <= .8) {
@@ -303,6 +330,7 @@ var sackTimer = 0;
 
       if(PlayResults.WR2OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj < .2) {
         $('.defensiveSpan').text("Pass to WR2 is intercepeted!");
+        $('.footballIMG').css('margin-left', mgr='0');
       }
       if(PlayResults.WR2OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .2 && PlayResults.WR2OddsAdj + PlayResults.Yards < .7) {
         $('.defensiveSpan').text("Pass to WR2 is complete for an 8 yard gain!");
@@ -311,6 +339,8 @@ var sackTimer = 0;
           $('.yards').text('10');
         }else{
           $('.yards').text('2')
+          downCount++
+          countDown();
         }
       }
       if(PlayResults.WR2OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .7 && PlayResults.WR2OddsAdj + PlayResults.Yards <= .8) {
@@ -351,6 +381,7 @@ var sackTimer = 0;
 
       if(PlayResults.WR3OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj < .2) {
         $('.defensiveSpan').text("Pass to WR3 is intercepeted!");
+        $('.footballIMG').css('margin-left', mgr='0');
       }
       if(PlayResults.WR3OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .2 && PlayResults.WR3OddsAdj + PlayResults.Yards < .7) {
         $('.defensiveSpan').text("Pass to WR3 is complete for an 8 yard gain!");
@@ -359,6 +390,8 @@ var sackTimer = 0;
           $('.yards').text('10');
         }else{
           $('.yards').text('2')
+          downCount++
+          countDown();
         }
       }
       if(PlayResults.WR3OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .7 && PlayResults.WR3OddsAdj + PlayResults.Yards <= .8) {
@@ -457,7 +490,7 @@ var GlobalOddsCount = 0;
 
          if(defSpanClassic[0].innerText === "The LOLB is blitzing!") {
             WR1OddsCount++;
-            clearSackTimer;
+            clearSackTimer();
            }
 
          if(defSpanClassic[0].innerHTML === "The Safety Is Cheating Right!") {
@@ -468,7 +501,7 @@ var GlobalOddsCount = 0;
 
          if(defSpanClassic[0].innerText === "Left Cornerback Blitz!") {
             WR1OddsCount++;
-            clearSackTimer;
+            clearSackTimer();
 
          }
 
@@ -489,12 +522,12 @@ var GlobalOddsCount = 0;
 
          if(defSpanClassic[0].innerText === "The MLB is blitzing!") {
             WR2OddsCount++;
-            clearSackTimer;
+            clearSackTimer();
          }
 
          if(defSpanClassic[0].innerText === "Safety Blitz!") {
             GlobalOddsCount++;
-            clearSackTimer;
+            clearSackTimer();
          }
 
          
@@ -522,13 +555,13 @@ var GlobalOddsCount = 0;
          
          if(defSpanClassic[0].innerText === "Right Cornerback Blitz!") {
             WR3OddsCount++;
-            clearSackTimer;
+            clearSackTimer();
          }
 
          
          if(defSpanClassic[0].innerText === "The ROLB is blitzing!") {
             WR3OddsCount++;
-            clearSackTimer;
+            clearSackTimer();
          }
 
          
@@ -552,7 +585,7 @@ var GlobalOddsCount = 0;
          
          if(defSpanClassic[0].innerText === "All Out Blitz!") {
             GlobalOddsCount++;
-            clearSackTimer;
+            clearSackTimer();
          }
 
          
@@ -569,13 +602,13 @@ var GlobalOddsCount = 0;
          
          if(defSpanClassic[0].innerText === "The Defensive End is barreling towards you!") {
             GlobalOddsCount--;
-            clearSackTimer;
+            clearSackTimer();
          }
 
          
          if(defSpanClassic[0].innerText === "Dammit Donald!") {
             GlobalOddsCount--;
-            clearSackTimer;
+            clearSackTimer();
          }  
 
   PlayResults.WR1OddsAdj = PlayResults.WR1OddsAdj+ WR1OddsCount * .1;
