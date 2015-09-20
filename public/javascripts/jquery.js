@@ -176,11 +176,6 @@ var timerId = 0;
       }, 2000);
   })
 
-  $('.wr1').on('click', function() {
-      clearInterval(timerId);
-      $('.defensiveSpan').text("Pass Completed to WR1!");
-  })
-
     $('.wr2').on('click', function() {
       clearInterval(timerId);
       $('.defensiveSpan').text("Pass Completed to WR2!");
@@ -213,19 +208,78 @@ var timerId = 0;
   }
 
   $('.wr1').on('click', function() {
+      clearInterval(timerId);
       setTimeout(returnToDefault, 4200);
-      console.log(WR1OddsCount);
-      console.log(WR2OddsCount);
-      console.log(WR3OddsCount);
-      console.log(GlobalOddsCount);
+      if(PlayResults.WR1OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj < .2) {
+        $('.defensiveSpan').text("Pass to WR1 is intercepeted!");
+      }
+      if(PlayResults.WR1OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .2 && PlayResults.WR1OddsAdj + PlayResults.Yards < .7) {
+        $('.defensiveSpan').text("Pass to WR1 is complete for an 8 yard gain!");
+      }
+      if(PlayResults.WR1OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .7 && PlayResults.WR1OddsAdj + PlayResults.Yards <= .8) {
+        $('.defensiveSpan').text("Pass to WR1 is complete for a 15 yard gain!");
+      }
+      if(PlayResults.WR1OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .81 && PlayResults.WR1OddsAdj + PlayResults.Yards <= .94) {
+        $('.defensiveSpan').text("Pass to WR1 is complete for a 25 yard gain!");
+      }
+      if(PlayResults.WR1OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .95) {
+        $('.defensiveSpan').text("Pass to WR1 is complete for a TOUCHDOWN!");
+      }
+      PlayResults.Yards = .3 + randomInteger();
+      PlayResults.WR1OddsAdj = 0;
+      PlayResults.WR2OddsAdj = 0;
+      PlayResults.WR3OddsAdj = 0;
+      PlayResults.GlobalOddsAdj = 0;
   })
 
   $('.wr2').on('click', function() {
       setTimeout(returnToDefault, 4200);
+      clearInterval(timerId);
+      if(PlayResults.WR2OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj < .2) {
+        $('.defensiveSpan').text("Pass to WR2 is intercepeted!");
+      }
+      if(PlayResults.WR2OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .2 && PlayResults.WR2OddsAdj + PlayResults.Yards < .7) {
+        $('.defensiveSpan').text("Pass to WR2 is complete for an 8 yard gain!");
+      }
+      if(PlayResults.WR2OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .7 && PlayResults.WR2OddsAdj + PlayResults.Yards <= .8) {
+        $('.defensiveSpan').text("Pass to WR2 is complete for a 15 yard gain!");
+      }
+      if(PlayResults.WR2OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .81 && PlayResults.WR2OddsAdj + PlayResults.Yards <= .94) {
+        $('.defensiveSpan').text("Pass to WR2 is complete for a 25 yard gain!");
+      }
+      if(PlayResults.WR2OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .95) {
+        $('.defensiveSpan').text("Pass to WR2 is complete for a TOUCHDOWN!");
+      }
+      PlayResults.Yards = .3 + randomInteger();
+      PlayResults.WR1OddsAdj = 0;
+      PlayResults.WR2OddsAdj = 0;
+      PlayResults.WR3OddsAdj = 0;
+      PlayResults.GlobalOddsAdj = 0;
   })  
 
   $('.wr3').on('click', function() {
       setTimeout(returnToDefault, 4200);
+      clearInterval(timerId);
+      if(PlayResults.WR3OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj < .2) {
+        $('.defensiveSpan').text("Pass to WR3 is intercepeted!");
+      }
+      if(PlayResults.WR3OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .2 && PlayResults.WR3OddsAdj + PlayResults.Yards < .7) {
+        $('.defensiveSpan').text("Pass to WR3 is complete for an 8 yard gain!");
+      }
+      if(PlayResults.WR3OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .7 && PlayResults.WR3OddsAdj + PlayResults.Yards <= .8) {
+        $('.defensiveSpan').text("Pass to WR3 is complete for a 15 yard gain!");
+      }
+      if(PlayResults.WR3OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .81 && PlayResults.WR3OddsAdj + PlayResults.Yards <= .94) {
+        $('.defensiveSpan').text("Pass to WR3 is complete for a 25 yard gain!");
+      }
+      if(PlayResults.WR3OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .95) {
+        $('.defensiveSpan').text("Pass to WR3 is complete for a TOUCHDOWN!");
+      }
+      PlayResults.Yards = .3 + randomInteger();
+      PlayResults.WR1OddsAdj = 0;
+      PlayResults.WR2OddsAdj = 0;
+      PlayResults.WR3OddsAdj = 0;
+      PlayResults.GlobalOddsAdj = 0;   
   })
 
     function pickRandomPassOutcome(array) {
@@ -323,6 +377,7 @@ var GlobalOddsCount = 0;
 
          if(defSpanClassic[0].innerText === "The LOLB dropped into coverage!") {
             WR1OddsCount--;
+            WR2OddsCount--;
          }
 
          if(defSpanClassic[0].innerText === "The Safety is cheating left") {
@@ -347,6 +402,7 @@ var GlobalOddsCount = 0;
 
          
          if(defSpanClassic[0].innerText === "WR2 pressed!") {
+           WR2OddsCount--;
            WR2OddsCount--;
          }
 
@@ -379,6 +435,7 @@ var GlobalOddsCount = 0;
          
          if(defSpanClassic[0].innerText === "The ROLB dropped back into coverage") {
             WR3OddsCount++;
+            WR2OddsCount--;
          }
 
          
@@ -412,10 +469,10 @@ var GlobalOddsCount = 0;
          if(defSpanClassic[0].innerText === "Dammit Donald!") {
             GlobalOddsCount--;
          }  
-  PlayResults.WR1OddsAdj = PlayResults.WR1OddsAdj+ WR1OddsCount;
-  PlayResults.WR2OddsAdj= PlayResults.WR2OddsAdj+ WR2OddsCount;
-  PlayResults.WR3OddsAdj= PlayResults.WR3OddsAdj+ WR3OddsCount;
-  PlayResults.GlobalOddsAdj= PlayResults.GlobalOddsAdj+ GlobalOddsCount;
+  PlayResults.WR1OddsAdj = PlayResults.WR1OddsAdj+ WR1OddsCount * .1;
+  PlayResults.WR2OddsAdj= PlayResults.WR2OddsAdj+ WR2OddsCount * .1;
+  PlayResults.WR3OddsAdj= PlayResults.WR3OddsAdj+ WR3OddsCount * .1;
+  PlayResults.GlobalOddsAdj= PlayResults.GlobalOddsAdj+ GlobalOddsCount * .1;
       }
     });
   })
