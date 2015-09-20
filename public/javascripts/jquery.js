@@ -94,12 +94,13 @@ PlayResults = {
   }
 
 var blitzSackedTime = 0;
+var returnToDefaultEndSacks = 0;
 
   function clearSackTimer() {
     clearInterval(timerId);
     clearTimeout(sackTimer);
     blitzSackedTime = setTimeout(blitzSacked, 2000);
-    setTimeout(returnToDefault, 4200);
+    returnToSackDefaultEndSacks = setTimeout(returnToDefault, 4200);
     console.log("clearSackTimer fired");
   }
 
@@ -239,9 +240,13 @@ var sackTimer = 0;
   }
 
   $('.wr1').on('click', function() {
+      clearTimeout(sackTimer);
+      clearTimeout(blitzSackedTime);
+      clearTimeout(returnToDefaultEndSacks);
+      clearTimeout(blitzSackedTime);
+
     var yardsClass = document.getElementsByClassName('yards');
       clearInterval(timerId);
-      clearTimeout(sackTimer);
       setTimeout(returnToDefault, 4200);
       $('.WRbuttons').addClass('placeholderWRbuttons');
       $('.WRbuttons').removeClass('WRbuttons');
@@ -284,10 +289,14 @@ var sackTimer = 0;
   })
 
   $('.wr2').on('click', function() {
+      clearTimeout(sackTimer);
+      clearTimeout(blitzSackedTime);
+      clearTimeout(returnToDefaultEndSacks);
+      clearTimeout(blitzSackedTime);
+
       var yardsClass = document.getElementsByClassName('yards');
       setTimeout(returnToDefault, 4200);
       clearInterval(timerId);
-      clearTimeout(sackTimer);
 
       $('.WRbuttons').addClass('placeholderWRbuttons');
       $('.WRbuttons').removeClass('WRbuttons');
@@ -329,10 +338,14 @@ var sackTimer = 0;
   })  
 
   $('.wr3').on('click', function() {
+      clearTimeout(sackTimer);
+      clearTimeout(blitzSackedTime);
+      clearTimeout(blitzSackedTime);
+      clearTimeout(returnToDefaultEndSacks);
+
       var yardsClass = document.getElementsByClassName('yards');
       setTimeout(returnToDefault, 4200);
       clearInterval(timerId);
-      clearTimeout(sackTimer);
       $('.WRbuttons').addClass('placeholderWRbuttons');
       $('.WRbuttons').removeClass('WRbuttons');
 
@@ -444,7 +457,7 @@ var GlobalOddsCount = 0;
 
          if(defSpanClassic[0].innerText === "The LOLB is blitzing!") {
             WR1OddsCount++;
-            clearSackTimer();
+            clearSackTimer;
            }
 
          if(defSpanClassic[0].innerHTML === "The Safety Is Cheating Right!") {
@@ -455,7 +468,7 @@ var GlobalOddsCount = 0;
 
          if(defSpanClassic[0].innerText === "Left Cornerback Blitz!") {
             WR1OddsCount++;
-            clearSackTimer();
+            clearSackTimer;
 
          }
 
@@ -476,12 +489,12 @@ var GlobalOddsCount = 0;
 
          if(defSpanClassic[0].innerText === "The MLB is blitzing!") {
             WR2OddsCount++;
-            clearSackTimer();
+            clearSackTimer;
          }
 
          if(defSpanClassic[0].innerText === "Safety Blitz!") {
             GlobalOddsCount++;
-            clearSackTimer();
+            clearSackTimer;
          }
 
          
@@ -509,13 +522,13 @@ var GlobalOddsCount = 0;
          
          if(defSpanClassic[0].innerText === "Right Cornerback Blitz!") {
             WR3OddsCount++;
-            clearSackTimer();
+            clearSackTimer;
          }
 
          
          if(defSpanClassic[0].innerText === "The ROLB is blitzing!") {
             WR3OddsCount++;
-            clearSackTimer();
+            clearSackTimer;
          }
 
          
@@ -539,7 +552,7 @@ var GlobalOddsCount = 0;
          
          if(defSpanClassic[0].innerText === "All Out Blitz!") {
             GlobalOddsCount++;
-            clearSackTimer();
+            clearSackTimer;
          }
 
          
@@ -556,13 +569,13 @@ var GlobalOddsCount = 0;
          
          if(defSpanClassic[0].innerText === "The Defensive End is barreling towards you!") {
             GlobalOddsCount--;
-            clearSackTimer();
+            clearSackTimer;
          }
 
          
          if(defSpanClassic[0].innerText === "Dammit Donald!") {
             GlobalOddsCount--;
-            clearSackTimer();
+            clearSackTimer;
          }  
 
   PlayResults.WR1OddsAdj = PlayResults.WR1OddsAdj+ WR1OddsCount * .1;
