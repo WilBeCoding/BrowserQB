@@ -223,19 +223,19 @@ var timerId = 0;
       }
       if(PlayResults.WR1OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .2 && PlayResults.WR1OddsAdj + PlayResults.Yards < .7) {
         $('.defensiveSpan').text("Pass to WR1 is complete for an 8 yard gain!")
-        $('.footballIMG').css('margin-left', '+=4%');;
+        $('.footballIMG').css('margin-left', '+=100px');;
       }
       if(PlayResults.WR1OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .7 && PlayResults.WR1OddsAdj + PlayResults.Yards <= .8) {
         $('.defensiveSpan').text("Pass to WR1 is complete for a 15 yard gain!");
-        $('.footballIMG').css('margin-left', '+=7%');
+        $('.footballIMG').css('margin-left', '+=175px');
       }
       if(PlayResults.WR1OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .81 && PlayResults.WR1OddsAdj + PlayResults.Yards <= .94) {
         $('.defensiveSpan').text("Pass to WR1 is complete for a 25 yard gain!")
-        $('.footballIMG').css('margin-left', '+=14%');
+        $('.footballIMG').css('margin-left', '+=280px');
       }
       if(PlayResults.WR1OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .95) {
         $('.defensiveSpan').text("Pass to WR1 is complete for a TOUCHDOWN!");
-        $('.footballIMG').css('margin-left', '89%');
+        $('.footballIMG').css('margin-left', '65%');
       }
       PlayResults.Yards = .3 + randomInteger();
       PlayResults.WR1OddsAdj = 0;
@@ -252,19 +252,19 @@ var timerId = 0;
       }
       if(PlayResults.WR2OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .2 && PlayResults.WR2OddsAdj + PlayResults.Yards < .7) {
         $('.defensiveSpan').text("Pass to WR2 is complete for an 8 yard gain!");
-        $('.footballIMG').css('margin-left', '+=4%');
+        $('.footballIMG').css('margin-left', '+=100px');
       }
       if(PlayResults.WR2OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .7 && PlayResults.WR2OddsAdj + PlayResults.Yards <= .8) {
         $('.defensiveSpan').text("Pass to WR2 is complete for a 15 yard gain!");
-        $('.footballIMG').css('margin-left', '+=7%');
+        $('.footballIMG').css('margin-left', '+=175px');
       }
       if(PlayResults.WR2OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .81 && PlayResults.WR2OddsAdj + PlayResults.Yards <= .94) {
         $('.defensiveSpan').text("Pass to WR2 is complete for a 25 yard gain!");
-        $('.footballIMG').css('margin-left', '+=14%');
+        $('.footballIMG').css('margin-left', '+=280px');
       }
       if(PlayResults.WR2OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .95) {
         $('.defensiveSpan').text("Pass to WR2 is complete for a TOUCHDOWN!");
-        $('.footballIMG').css('margin-left', '89%');
+        $('.footballIMG').css('margin-left', '65%');
       }
       PlayResults.Yards = .3 + randomInteger();
       PlayResults.WR1OddsAdj = 0;
@@ -281,19 +281,19 @@ var timerId = 0;
       }
       if(PlayResults.WR3OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .2 && PlayResults.WR3OddsAdj + PlayResults.Yards < .7) {
         $('.defensiveSpan').text("Pass to WR3 is complete for an 8 yard gain!");
-        $('.footballIMG').css('margin-left', '+=4%');
+        $('.footballIMG').css('margin-left', '+=100px');
       }
       if(PlayResults.WR3OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .7 && PlayResults.WR3OddsAdj + PlayResults.Yards <= .8) {
         $('.defensiveSpan').text("Pass to WR3 is complete for a 15 yard gain!");
-        $('.footballIMG').css('margin-left', '+=7%');
+        $('.footballIMG').css('margin-left', '+=175px');
       }
       if(PlayResults.WR3OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .81 && PlayResults.WR3OddsAdj + PlayResults.Yards <= .94) {
         $('.defensiveSpan').text("Pass to WR3 is complete for a 25 yard gain!");
-        $('.footballIMG').css('margin-left', '+=14%');
+        $('.footballIMG').css('margin-left', '+=280px');
       }
       if(PlayResults.WR3OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .95) {
         $('.defensiveSpan').text("Pass to WR3 is complete for a TOUCHDOWN!");
-        $('.footballIMG').css('margin-left', '89%');
+        $('.footballIMG').css('margin-left', '65%');
       }
       PlayResults.Yards = .3 + randomInteger();
       PlayResults.WR1OddsAdj = 0;
