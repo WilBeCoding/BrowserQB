@@ -135,6 +135,7 @@ var downCount = 1;
     $('.WRbuttons').addClass('placeholderWRbuttons');
     $('.WRbuttons').removeClass('WRbuttons');
     console.log("blitzSacked fired");
+    blitzSackedTime = 0;
   }
 
   
