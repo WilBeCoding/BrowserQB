@@ -192,5 +192,10 @@ var globalOddsDecreaseObjectRandomValue = randomValueOfObjectInpostSnapStrings(g
 // console.log(pickRandomPassOutcome(passOutcomeStrings));
 
 
+// Photo
+
+// http://i69.photobucket.com/albums/i72/3133thunder/Thunder%20Touchdown%20Club/4309587_400x400.jpg
+
+
 
 
