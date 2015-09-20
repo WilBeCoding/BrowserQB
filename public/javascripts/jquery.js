@@ -96,8 +96,10 @@ PlayResults = {
 var blitzSackedTime = 0;
 var returnToDefaultEndSacks = 0;
 var downCount = 1;
+var yardLine = 20;
 
   function countDown() {
+    console.log("countDown is Hit")
     if(downCount === 1) {
       $('.down').text("1st")
     }
@@ -143,6 +145,13 @@ var downCount = 1;
   //   $('.')
   // }
 
+  function checkForTouchdown(){
+    if(yardLine >= '100') {
+      console.log("checkForTouchdown function hits");
+      $('.footballIMG').css('margin-left', mgr='0');
+      $('.defensiveSpan').text("Touchdown!")
+    }
+  }
 
    function pickRandomPostSnapString(array) {
        var result;
@@ -265,6 +274,7 @@ var sackTimer = 0;
   }
 
   $('.wr1').on('click', function() {
+    console.log(yardLine);
       clearTimeout(sackTimer);
       clearTimeout(blitzSackedTime);
       clearTimeout(returnToDefaultEndSacks);
@@ -279,34 +289,39 @@ var sackTimer = 0;
       if(PlayResults.WR1OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj < .2) {
         $('.defensiveSpan').text("Pass to WR1 is intercepeted!");
         $('.footballIMG').css('margin-left', mgr='0');
+        yardLine = 20;
       }
       if(PlayResults.WR1OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .2 && PlayResults.WR1OddsAdj + PlayResults.Yards < .7) {
         $('.defensiveSpan').text("Pass to WR1 is complete for an 8 yard gain!")
         $('.footballIMG').css('margin-left', '+=100px');;
         if(yardsClass[0].innerText === '2') {
           $('.yards').text('10');
+          downCount = 1;
         }else{
           $('.yards').text('2')
           downCount++
-          countDown();
         }
+        yardLine += 8;
       }
       if(PlayResults.WR1OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .7 && PlayResults.WR1OddsAdj + PlayResults.Yards <= .8) {
         $('.defensiveSpan').text("Pass to WR1 is complete for a 15 yard gain!");
         $('.footballIMG').css('margin-left', '+=175px');
         $('.yards').text('10');
+        yardLine += 15;
 
       }
       if(PlayResults.WR1OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .81 && PlayResults.WR1OddsAdj + PlayResults.Yards <= .94) {
         $('.defensiveSpan').text("Pass to WR1 is complete for a 25 yard gain!")
         $('.footballIMG').css('margin-left', '+=280px');
         $('.yards').text('10');
+        yardLine += 25;
 
       }
       if(PlayResults.WR1OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .95) {
         $('.defensiveSpan').text("Pass to WR1 is complete for a TOUCHDOWN!");
         $('.footballIMG').css('margin-left', '65%');
         $('.yards').text('10');
+        yardLine = 100;
 
       }
       PlayResults.Yards = .3 + randomInteger();
@@ -314,9 +329,14 @@ var sackTimer = 0;
       PlayResults.WR2OddsAdj = 0;
       PlayResults.WR3OddsAdj = 0;
       PlayResults.GlobalOddsAdj = 0;
+      checkForTouchdown();
+      countDown();
+      console.log(yardLine)
   })
 
   $('.wr2').on('click', function() {
+    console.log(yardLine);
+
       clearTimeout(sackTimer);
       clearTimeout(blitzSackedTime);
       clearTimeout(returnToDefaultEndSacks);
@@ -332,43 +352,55 @@ var sackTimer = 0;
       if(PlayResults.WR2OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj < .2) {
         $('.defensiveSpan').text("Pass to WR2 is intercepeted!");
         $('.footballIMG').css('margin-left', mgr='0');
+        yardLine = 20;
+        downCount=0;
       }
       if(PlayResults.WR2OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .2 && PlayResults.WR2OddsAdj + PlayResults.Yards < .7) {
         $('.defensiveSpan').text("Pass to WR2 is complete for an 8 yard gain!");
         $('.footballIMG').css('margin-left', '+=100px');
         if(yardsClass[0].innerText === '2') {
           $('.yards').text('10');
+          downCount = 1;
         }else{
           $('.yards').text('2')
           downCount++
-          countDown();
         }
+        yardLine+=8
       }
       if(PlayResults.WR2OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .7 && PlayResults.WR2OddsAdj + PlayResults.Yards <= .8) {
         $('.defensiveSpan').text("Pass to WR2 is complete for a 15 yard gain!");
         $('.footballIMG').css('margin-left', '+=175px');
         $('.yards').text('10');
-
+        yardLine += 15;
+        downCount = 1;
       }
       if(PlayResults.WR2OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .81 && PlayResults.WR2OddsAdj + PlayResults.Yards <= .94) {
         $('.defensiveSpan').text("Pass to WR2 is complete for a 25 yard gain!");
         $('.footballIMG').css('margin-left', '+=280px');
         $('.yards').text('10');
-
+        yardLine += 25;
+        downCount = 1;
       }
       if(PlayResults.WR2OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .95) {
         $('.defensiveSpan').text("Pass to WR2 is complete for a TOUCHDOWN!");
         $('.footballIMG').css('margin-left', '65%');
         $('.yards').text('10');
+        yardLine = 100;
+        downCount = 1;
       }
       PlayResults.Yards = .3 + randomInteger();
       PlayResults.WR1OddsAdj = 0;
       PlayResults.WR2OddsAdj = 0;
       PlayResults.WR3OddsAdj = 0;
       PlayResults.GlobalOddsAdj = 0;
+      countDown();
+      checkForTouchdown();
+      console.log(yardLine);
   })  
 
   $('.wr3').on('click', function() {
+    console.log(yardLine);
+
       clearTimeout(sackTimer);
       clearTimeout(blitzSackedTime);
       clearTimeout(blitzSackedTime);
@@ -383,35 +415,47 @@ var sackTimer = 0;
       if(PlayResults.WR3OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj < .2) {
         $('.defensiveSpan').text("Pass to WR3 is intercepeted!");
         $('.footballIMG').css('margin-left', mgr='0');
+        yardLine = 20;
+        downCount = 1;
       }
       if(PlayResults.WR3OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .2 && PlayResults.WR3OddsAdj + PlayResults.Yards < .7) {
         $('.defensiveSpan').text("Pass to WR3 is complete for an 8 yard gain!");
         $('.footballIMG').css('margin-left', '+=100px');
         if(yardsClass[0].innerText === '2') {
           $('.yards').text('10');
+          downCount = 1;
         }else{
           $('.yards').text('2')
           downCount++
-          countDown();
         }
+        yardLine+=8
       }
       if(PlayResults.WR3OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .7 && PlayResults.WR3OddsAdj + PlayResults.Yards <= .8) {
         $('.defensiveSpan').text("Pass to WR3 is complete for a 15 yard gain!");
         $('.footballIMG').css('margin-left', '+=175px');
+        yardLine += 15;
+        downCount = 1;
       }
       if(PlayResults.WR3OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .81 && PlayResults.WR3OddsAdj + PlayResults.Yards <= .94) {
         $('.defensiveSpan').text("Pass to WR3 is complete for a 25 yard gain!");
         $('.footballIMG').css('margin-left', '+=280px');
+        yardLine += 25;
+        downCount = 1;
       }
       if(PlayResults.WR3OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .95) {
         $('.defensiveSpan').text("Pass to WR3 is complete for a TOUCHDOWN!");
         $('.footballIMG').css('margin-left', '65%');
+        downCount = 1;
+        yardLine = 100;
       }
       PlayResults.Yards = .3 + randomInteger();
       PlayResults.WR1OddsAdj = 0;
       PlayResults.WR2OddsAdj = 0;
       PlayResults.WR3OddsAdj = 0;
-      PlayResults.GlobalOddsAdj = 0;   
+      PlayResults.GlobalOddsAdj = 0;
+      countDown();   
+      checkForTouchdown();
+      console.log(yardLine);
   })
 
     function pickRandomPassOutcome(array) {
