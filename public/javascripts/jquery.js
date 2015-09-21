@@ -126,6 +126,14 @@ var yardLine = 20;
 var score = 0;
 var drive = 1;
 var clicked = false;
+var playClockId = 0;
+var display;
+var timerId = 0;
+var sackTimer = 0;
+var WR1OddsCount = 0;
+var WR2OddsCount = 0;
+var WR3OddsCount = 0;
+var GlobalOddsCount = 0;
 
 
  function refresh() {
@@ -247,8 +255,6 @@ var clicked = false;
 
 
 
-var playClockId = 0;
-var display;
   function playClock(duration, display) {
       playClockId = 0;
       var timer = duration, minutes, seconds;
@@ -289,9 +295,7 @@ var display;
 
   });
 
-var timerId = 0;
 
-var sackTimer = 0;
   $('.buttonSnap').on('click', function() {
       $('.defensiveSpan').text(pickRandomPostSnapString(postSnapStrings));
       timerId = 0;
@@ -591,11 +595,6 @@ var globalOddsIncreaseObjectRandomValue = randomValueOfObjectInpostSnapStrings(g
 var globalOddsDecreaseObjectRandomValue = randomValueOfObjectInpostSnapStrings(globalOddsDecreaseObject);
 
 
-
-var WR1OddsCount = 0;
-var WR2OddsCount = 0;
-var WR3OddsCount = 0;
-var GlobalOddsCount = 0;
 
 
   var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
