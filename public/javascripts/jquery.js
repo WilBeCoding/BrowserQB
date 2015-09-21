@@ -100,10 +100,28 @@ var yardLine = 20;
 var score = 0;
 var drive = 1;
 
+
+ function refresh() {
+  location.reload();
+ }
+
+  function lost() {
+    $('.defensiveSpan').text("You Lost!");
+    setTimeout(refresh, 1500);
+  }
+
+  function won() {
+    $('.defensiveSpan').text("You Won!")
+    setTimeout(refresh, 1500);
+  }
+
   function driveFunction() {
     console.log("driveFunction is running");
     if(drive === 2) {
       $('.drive').text("2nd of 3")
+    }
+    if(drive === 3 && score !== 14) {
+      setTimeout(lost, 1000);
     }
     if(drive ===3) {
       $('.drive').text("Final Drive")
@@ -180,8 +198,7 @@ var drive = 1;
         score += 7;
       }
       else if(score === 14) {
-        $('.score').text("21");
-        score += 7;
+        setTimeout(won, 1000);     
       }
     }
     driveFunction();
