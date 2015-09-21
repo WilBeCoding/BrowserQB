@@ -97,6 +97,21 @@ var blitzSackedTime = 0;
 var returnToDefaultEndSacks = 0;
 var downCount = 1;
 var yardLine = 20;
+var score = 0;
+var drive = 1;
+
+  function driveFunction() {
+    console.log("driveFunction is running");
+    if(drive === 2) {
+      $('.drive').text("2nd of 3")
+    }
+    if(drive ===3) {
+      $('.drive').text("Final Drive")
+    }
+    if(score !== 21 && drive === 4) {
+      $('defensiveSpan').text("You Lost")
+   }
+  }
 
   function countDown() {
     console.log("countDown is Hit")
@@ -117,7 +132,9 @@ var yardLine = 20;
       $('.footballIMG').css('margin-left', mgr='0');
       downCount = 1;
       $('.down').text("1st");
+      drive++
     }
+    driveFunction();
   }
 
   function clearSackTimer() {
@@ -150,7 +167,24 @@ var yardLine = 20;
       console.log("checkForTouchdown function hits");
       $('.footballIMG').css('margin-left', mgr='0');
       $('.defensiveSpan').text("Touchdown!")
+      drive++;
+      downCount = 1;
+      $('.yards').text("10");
+
+      if(score === 0) {
+        $('.score').text("7");
+        score += 7;
+      }
+      else if(score === 7) {
+        $('.score').text("14");
+        score += 7;
+      }
+      else if(score === 14) {
+        $('.score').text("21");
+        score += 7;
+      }
     }
+    driveFunction();
   }
 
    function pickRandomPostSnapString(array) {
@@ -290,6 +324,8 @@ var sackTimer = 0;
         $('.defensiveSpan').text("Pass to WR1 is intercepeted!");
         $('.footballIMG').css('margin-left', mgr='0');
         yardLine = 20;
+        drive++;
+        console.log(drive);
       }
       if(PlayResults.WR1OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .2 && PlayResults.WR1OddsAdj + PlayResults.Yards < .7) {
         $('.defensiveSpan').text("Pass to WR1 is complete for an 8 yard gain!")
@@ -322,6 +358,9 @@ var sackTimer = 0;
         $('.footballIMG').css('margin-left', '65%');
         $('.yards').text('10');
         yardLine = 100;
+        drive++;
+        console.log(drive);
+
 
       }
       PlayResults.Yards = .3 + randomInteger();
@@ -331,7 +370,10 @@ var sackTimer = 0;
       PlayResults.GlobalOddsAdj = 0;
       checkForTouchdown();
       countDown();
-      console.log(yardLine)
+      driveFunction();
+      console.log(drive);
+
+
   })
 
   $('.wr2').on('click', function() {
@@ -354,6 +396,7 @@ var sackTimer = 0;
         $('.footballIMG').css('margin-left', mgr='0');
         yardLine = 20;
         downCount=0;
+        drive++;
       }
       if(PlayResults.WR2OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .2 && PlayResults.WR2OddsAdj + PlayResults.Yards < .7) {
         $('.defensiveSpan').text("Pass to WR2 is complete for an 8 yard gain!");
@@ -387,6 +430,7 @@ var sackTimer = 0;
         $('.yards').text('10');
         yardLine = 100;
         downCount = 1;
+        drive++;
       }
       PlayResults.Yards = .3 + randomInteger();
       PlayResults.WR1OddsAdj = 0;
@@ -395,7 +439,7 @@ var sackTimer = 0;
       PlayResults.GlobalOddsAdj = 0;
       countDown();
       checkForTouchdown();
-      console.log(yardLine);
+      driveFunction;
   })  
 
   $('.wr3').on('click', function() {
@@ -417,6 +461,7 @@ var sackTimer = 0;
         $('.footballIMG').css('margin-left', mgr='0');
         yardLine = 20;
         downCount = 1;
+        drive++;
       }
       if(PlayResults.WR3OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .2 && PlayResults.WR3OddsAdj + PlayResults.Yards < .7) {
         $('.defensiveSpan').text("Pass to WR3 is complete for an 8 yard gain!");
@@ -447,6 +492,7 @@ var sackTimer = 0;
         $('.footballIMG').css('margin-left', '65%');
         downCount = 1;
         yardLine = 100;
+        drive++;
       }
       PlayResults.Yards = .3 + randomInteger();
       PlayResults.WR1OddsAdj = 0;
@@ -455,7 +501,7 @@ var sackTimer = 0;
       PlayResults.GlobalOddsAdj = 0;
       countDown();   
       checkForTouchdown();
-      console.log(yardLine);
+      driveFunction();
   })
 
     function pickRandomPassOutcome(array) {
