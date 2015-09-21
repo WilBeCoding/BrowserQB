@@ -85,7 +85,7 @@ PlayResults = {
 
 
   function sacked(){
-    setTimeout(returnToDefault, 4200);
+    setTimeout(returnToDefault, 2850);
     clearInterval(timerId);
     $('.defensiveSpan').text("SACKED!");
     $('.footballIMG').css('margin-left', '-=100px');
@@ -94,6 +94,29 @@ PlayResults = {
     downCount++;
     yardLine-= 7;
     countDown();
+  }
+
+  function clearSackTimer() {
+    clearInterval(timerId);
+    clearTimeout(sackTimer);
+    if(blitzSackedTime === 0) {
+      blitzSackedTime = setTimeout(blitzSacked, 1250);
+    }
+    returnToSackDefaultEndSacks = setTimeout(returnToDefault, 2850);
+    console.log("clearSackTimer fired");
+  }
+
+
+  function blitzSacked(){
+    $('.defensiveSpan').text("SACKED!");
+    $('.footballIMG').css('margin-left', '-=125px');
+    $('.WRbuttons').addClass('placeholderWRbuttons');
+    $('.WRbuttons').removeClass('WRbuttons');
+    downCount++
+    blitzSackedTime = 0;
+    yardLine-= 10;
+    countDown();
+    console.log("blitzSacked function hit");
   }
 
 var blitzSackedTime = 0;
@@ -159,27 +182,6 @@ var clicked = false;
     driveFunction();
   }
 
-  function clearSackTimer() {
-    clearInterval(timerId);
-    clearTimeout(sackTimer);
-    if(blitzSackedTime === 0) {
-      blitzSackedTime = setTimeout(blitzSacked, 2000);
-    }
-    returnToSackDefaultEndSacks = setTimeout(returnToDefault, 4200);
-    console.log("clearSackTimer fired");
-  }
-
-
-  function blitzSacked(){
-    $('.defensiveSpan').text("SACKED!");
-    $('.footballIMG').css('margin-left', '-=125px');
-    $('.WRbuttons').addClass('placeholderWRbuttons');
-    $('.WRbuttons').removeClass('WRbuttons');
-    downCount++
-    blitzSackedTime = 0;
-    yardLine-= 10;
-    countDown();
-  }
 
   
   // // function eightYdGainFootballSlider () {
@@ -291,9 +293,11 @@ var timerId = 0;
 
 var sackTimer = 0;
   $('.buttonSnap').on('click', function() {
+      $('.defensiveSpan').text(pickRandomPostSnapString(postSnapStrings));
       timerId = 0;
       clearInterval(playClockId);
-      sackTimer = setTimeout(sacked,8000);
+
+      sackTimer = setTimeout(sacked,3000);
       // $('.container').css("height", "80vh"); 
       $('.buttons').css("padding-bottom", mg="600px");
       $('.snap').addClass('placeHolderSnap');
@@ -308,7 +312,7 @@ var sackTimer = 0;
       $('.placeholderBirdsEyeView').removeClass('birdsEyeView');
       timerId = window.setInterval(function(){
         $('.defensiveSpan').text(pickRandomPostSnapString(postSnapStrings));
-      }, 2000);
+      }, 1000);
   })
 
 
@@ -345,7 +349,7 @@ var sackTimer = 0;
 
     var yardsClass = document.getElementsByClassName('yards');
       clearInterval(timerId);
-      setTimeout(returnToDefault, 4200);
+      setTimeout(returnToDefault, 2850);
       $('.WRbuttons').addClass('placeholderWRbuttons');
       $('.WRbuttons').removeClass('WRbuttons');
 
@@ -415,7 +419,7 @@ var sackTimer = 0;
       clearTimeout(blitzSackedTime);
 
       var yardsClass = document.getElementsByClassName('yards');
-      setTimeout(returnToDefault, 4200);
+      setTimeout(returnToDefault, 2850);
       clearInterval(timerId);
 
       $('.WRbuttons').addClass('placeholderWRbuttons');
@@ -482,7 +486,7 @@ var sackTimer = 0;
       clearTimeout(returnToDefaultEndSacks);
 
       var yardsClass = document.getElementsByClassName('yards');
-      setTimeout(returnToDefault, 4200);
+      setTimeout(returnToDefault, 2850);
       clearInterval(timerId);
       $('.WRbuttons').addClass('placeholderWRbuttons');
       $('.WRbuttons').removeClass('WRbuttons');
