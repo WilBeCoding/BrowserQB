@@ -176,7 +176,7 @@ PlayResults = {
 
   function checkIfTurnover() {
     console.log("Check if turnover is running");
-  if(downCount === 5 && yardLine < 100) {
+  if(downCount === 5 && yardLine < 100 && yardsToFirst > 0) {
     console.log("If statement in checkIfTurnover is running")
     clearTimeout(sackedReturnToDefault);
     clearInterval(timerId);
