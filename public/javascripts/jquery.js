@@ -159,6 +159,18 @@ PlayResults = {
     setTimeout(refresh, 1500);
   }
 
+
+  function checkIfWon() {
+    if(score === 14) {
+      clearTimeout(sackedReturnToDefault);
+      clearInterval(timerId);
+      clearTimeout(sackTimer);
+      clearTimeout(wrReturnToDefault);
+      clearTimeout(returnToSackDefaultEndSacks);
+      setTimeout(won, 550);
+    }
+  }
+
   function won() {
     $('.defensiveSpan').text("You Won!")
     setTimeout(refresh, 1500);
@@ -199,6 +211,7 @@ PlayResults = {
       $('.defensiveSpan').text("Touchdown!")
       drive++;
       downCount = 1;
+      yardLine = 20;
       if(score === 0) {
         score += 7;
         $('.score').text(score);
@@ -207,9 +220,7 @@ PlayResults = {
         score += 7;
         $('.score').text(score);
       }
-      else if(score === 14) {
-        setTimeout(won, 1000);     
-      }
+      checkIfWon();
     }
     driveFunction();
   }
@@ -349,6 +360,7 @@ PlayResults = {
     }
     $('.yards').text(yardsToFirst);
     $('.down').text(downCount);
+    interception = 0;
   }
 
   $('.wr1').on('click', function() {
@@ -390,12 +402,12 @@ PlayResults = {
       $('.defensiveSpan').text("Pass to WR1 is complete for a TOUCHDOWN!");
       $('.footballIMG').css('margin-left', '65%');
       yardLine = 100;
-      yardsToFirst = 10;
     }
     downCount++;
     checkForTouchdown();
     checkIfLost();
     checkIfTurnover();
+    checkIfWon();
   })
 
   $('.wr2').on('click', function() {
@@ -437,11 +449,11 @@ PlayResults = {
       $('.defensiveSpan').text("Pass to WR2 is complete for a TOUCHDOWN!");
       $('.footballIMG').css('margin-left', '65%');
       yardLine = 100;
-      yardsToFirst = 10;
     }
     downCount++;
     checkForTouchdown();
     checkIfLost();
+    checkIfWon();
     checkIfTurnover();
   })  
 
@@ -487,6 +499,7 @@ PlayResults = {
     }
     downCount++
     checkIfLost();
+    checkIfWon();
     checkForTouchdown();
     checkIfTurnover();
   })
