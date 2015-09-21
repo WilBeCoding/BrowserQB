@@ -69,7 +69,7 @@ $( document ).ready(function() {
     touchdown: "Pass completed for a touchdown!"
   }
 ];
-
+var sackedReturnToDefault = 0;
 var blitz = 0;
 var wrReturnToDefault = 0;
 var blitzSackedTime = 0;
@@ -102,15 +102,18 @@ PlayResults = {
 }
 
   function sacked(){
+    downCount++;
+    yardLine-= 7;
+    yardsToFirst+=7;
+    checkIfLost();
+    checkIfTurnover();
     clearTimeout(wrReturnToDefault);
     clearInterval(timerId);
-    setTimeout(returnToDefault, 2850);
+    sackedReturnToDefault = setTimeout(returnToDefault, 2850);
     $('.defensiveSpan').text("SACKED!");
     $('.footballIMG').css('margin-left', '-=100px');
     $('.WRbuttons').addClass('placeholderWRbuttons');
     $('.WRbuttons').removeClass('WRbuttons');
-    yardLine-= 7;
-    yardsToFirst+=7;
   }
 
   function clearSackTimer() {
@@ -122,20 +125,34 @@ PlayResults = {
   }
 
   function blitzSacked(){
-    // clearTimeout(wrReturnToDefault);
+    console.log(downCount);
+    clearTimeout(wrReturnToDefault);
+    downCount++;
+    blitzSackedTime = 0;
+    yardLine-= 10;
+    yardsToFirst+= 10;
+    checkIfLost();
+    checkIfTurnover();
     $('.defensiveSpan').text("SACKED!");
     $('.footballIMG').css('margin-left', '-=125px');
     $('.WRbuttons').addClass('placeholderWRbuttons');
     $('.WRbuttons').removeClass('WRbuttons');
-    blitzSackedTime = 0;
-    yardLine-= 10;
-    yardsToFirst+= 10;
     returnToSackDefaultEndSacks = setTimeout(returnToDefault, 1850);
   }
 
  function refresh() {
   location.reload();
  }
+
+  function checkIfLost() {
+    if(drive === 4 && score != 14 || drive === 3 && score !=14) {
+    clearTimeout(sackedReturnToDefault);
+    clearInterval(timerId);
+    clearTimeout(sackTimer);
+    clearTimeout(wrReturnToDefault);
+    setTimeout(lost, 500);
+    }
+  }
 
   function lost() {
     $('.defensiveSpan').text("You Lost!");
@@ -148,30 +165,32 @@ PlayResults = {
   }
 
   function driveFunction() {
+
     if(drive === 2) {
       $('.drive').text("2nd of 3")
-    }
-    if(drive === 3 && score !== 14) {
-      setTimeout(lost, 1000);
     }
     if(drive ===3) {
       $('.drive').text("Final Drive")
     }
-    if(score !== 21 && drive === 4) {
-      $('defensiveSpan').text("You Lost")
-   }
   }
 
-  function countDown() {
-    if(downCount === 5) {
+  function checkIfTurnover() {
+    console.log("Check if turnover is running");
+  if(downCount === 5 && yardLine < 100) {
+    console.log("If statement in checkIfTurnover is running")
+    clearTimeout(sackedReturnToDefault);
+    clearInterval(timerId);
+    clearTimeout(sackTimer);
+    clearTimeout(wrReturnToDefault);
+    clearTimeout(returnToSackDefaultEndSacks);
       $('.defensiveSpan').text("TURNOVER ON DOWNS!");
       $('.footballIMG').css('margin-left', mgr='0');
       downCount = 1;
       $('.down').text(downCount);
       drive++;
       yardsToFirst = 10;
+      setTimeout(returnToDefault,1500);
     }
-    driveFunction();
   }
 
   function checkForTouchdown(){
@@ -296,14 +315,13 @@ PlayResults = {
 
   function returnToDefault () {
     blitz = 0;
-    downCount++;
     intercepted();
     PlayResults.Yards = .3 + randomInteger();
     PlayResults.WR1OddsAdj = 0;
     PlayResults.WR2OddsAdj = 0;
     PlayResults.WR3OddsAdj = 0;
     PlayResults.GlobalOddsAdj = 0;
-    countDown();
+    checkIfTurnover();
     driveFunction();
     $('.placeHolderTopRight').addClass('topRight');
     $('.placeHolderTopLeft').addClass('topLeft');
@@ -374,7 +392,10 @@ PlayResults = {
       yardLine = 100;
       yardsToFirst = 10;
     }
+    downCount++;
     checkForTouchdown();
+    checkIfLost();
+    checkIfTurnover();
   })
 
   $('.wr2').on('click', function() {
@@ -416,10 +437,12 @@ PlayResults = {
       $('.defensiveSpan').text("Pass to WR2 is complete for a TOUCHDOWN!");
       $('.footballIMG').css('margin-left', '65%');
       yardLine = 100;
-      downCount = 1;
       yardsToFirst = 10;
     }
+    downCount++;
     checkForTouchdown();
+    checkIfLost();
+    checkIfTurnover();
   })  
 
   $('.wr3').on('click', function() {
@@ -460,11 +483,12 @@ PlayResults = {
     if(PlayResults.WR3OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .95) {
       $('.defensiveSpan').text("Pass to WR3 is complete for a TOUCHDOWN!");
       $('.footballIMG').css('margin-left', '65%');
-      downCount = 1;
       yardLine = 100;
-      yardsToFirst = 10;
-    }  
+    }
+    downCount++
+    checkIfLost();
     checkForTouchdown();
+    checkIfTurnover();
   })
 
     function pickRandomPassOutcome(array) {
