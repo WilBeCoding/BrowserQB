@@ -91,6 +91,9 @@ PlayResults = {
     $('.footballIMG').css('margin-left', '-=100px');
     $('.WRbuttons').addClass('placeholderWRbuttons');
     $('.WRbuttons').removeClass('WRbuttons');
+    downCount++;
+    yardLine-= 7;
+    countDown();
   }
 
 var blitzSackedTime = 0;
@@ -169,12 +172,13 @@ var clicked = false;
 
   function blitzSacked(){
     $('.defensiveSpan').text("SACKED!");
-    $('.footballIMG').css('margin-left', '-=100px');
+    $('.footballIMG').css('margin-left', '-=125px');
     $('.WRbuttons').addClass('placeholderWRbuttons');
     $('.WRbuttons').removeClass('WRbuttons');
-    console.log("blitzSacked fired");
-
+    downCount++
     blitzSackedTime = 0;
+    yardLine-= 10;
+    countDown();
   }
 
   
@@ -289,7 +293,9 @@ var sackTimer = 0;
   $('.buttonSnap').on('click', function() {
       timerId = 0;
       clearInterval(playClockId);
-      sackTimer = setTimeout(sacked,8000);  
+      sackTimer = setTimeout(sacked,8000);
+      // $('.container').css("height", "80vh"); 
+      $('.buttons').css("padding-bottom", mg="600px");
       $('.snap').addClass('placeHolderSnap');
       $('.snap').removeClass('snap');
       $('.buttonSnap').addClass('buttonSnapPlaceholder');
@@ -347,8 +353,9 @@ var sackTimer = 0;
         $('.defensiveSpan').text("Pass to WR1 is intercepeted!");
         $('.footballIMG').css('margin-left', mgr='0');
         yardLine = 20;
+        downCount = 1;
         drive++;
-        console.log(drive);
+        $('.yards').text('10');
       }
       if(PlayResults.WR1OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .2 && PlayResults.WR1OddsAdj + PlayResults.Yards < .7) {
         $('.defensiveSpan').text("Pass to WR1 is complete for an 8 yard gain!")
@@ -418,7 +425,8 @@ var sackTimer = 0;
         $('.defensiveSpan').text("Pass to WR2 is intercepeted!");
         $('.footballIMG').css('margin-left', mgr='0');
         yardLine = 20;
-        downCount=0;
+        downCount=1;
+        $('.yards').text('10');
         drive++;
       }
       if(PlayResults.WR2OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .2 && PlayResults.WR2OddsAdj + PlayResults.Yards < .7) {
@@ -484,6 +492,7 @@ var sackTimer = 0;
         $('.footballIMG').css('margin-left', mgr='0');
         yardLine = 20;
         downCount = 1;
+        $('.yards').text('10');
         drive++;
       }
       if(PlayResults.WR3OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .2 && PlayResults.WR3OddsAdj + PlayResults.Yards < .7) {

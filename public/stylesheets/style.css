@@ -145,6 +145,7 @@
     -webkit-align-items: right;
         -ms-flex-align: right;
             align-items: right;
+    background-color: gray;
     /*     position: relative; */ }
     .container .buttons .snap {
       margin: 0 auto;
@@ -152,7 +153,9 @@
       width: 100%; }
       .container .buttons .snap .buttonSnap {
         margin: 0 auto;
-        color: red; }
+        color: red;
+        height: 100px;
+        width: 100px; }
     .container .buttons .WRbuttons {
       display: -webkit-flex;
       display: -ms-flexbox;
@@ -164,16 +167,19 @@
           -ms-flex-pack: justify;
               justify-content: space-between;
       height: 26px;
-      width: 100%;
-      margin-top: 25px; }
+      width: 100%; }
       .container .buttons .WRbuttons .wr1 {
-        padding-left: 25%; }
+        padding-left: 25%;
+        height: 100px;
+        width: 100px; }
       .container .buttons .WRbuttons .wr2 {
         -webkit-align-self: center;
             -ms-flex-item-align: center;
                 align-self: center; }
       .container .buttons .WRbuttons .wr3 {
-        padding-right: 25%; }
+        padding-right: 25%;
+        height: 100px;
+        width: 100px; }
   .container .birdsEyeView {
     display: -webkit-flex;
     display: -ms-flexbox;

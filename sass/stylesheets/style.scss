@@ -2,6 +2,8 @@ $height: 50%;
 $width: 33%;
 $or: orange;
 $bl: blue;
+$bht: 100px;
+$bwt: 100px;
 
 .container{
   display: flex;
@@ -146,6 +148,8 @@ $bl: blue;
     width: 100%;
     margin-top: 25px;
     align-items: right;
+    // padding-bottom: 500px;
+    background-color: gray;
 /*     position: relative; */
 
     .snap {
@@ -157,6 +161,8 @@ $bl: blue;
         .buttonSnap {
           margin: 0 auto;
           color: red;
+          height: $bht;
+          width: $bwt;
           // position:absolute;
         }
     }
@@ -168,11 +174,14 @@ $bl: blue;
       justify-content: space-between;
       height:26px;
       width: 100%;
-      margin-top: 25px;
+      // margin-top: 25px;
+      // margin-bottom: 160px;
 
 
       .wr1 {
         padding-left: 25%;
+        height: $bht;
+        width: $bwt;
       }
 
       .wr2 {
@@ -181,6 +190,8 @@ $bl: blue;
 
       .wr3 {
         padding-right: 25%;
+        height: $bht;
+        width: $bwt;
       }
     }
   }
