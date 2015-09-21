@@ -99,6 +99,7 @@ var downCount = 1;
 var yardLine = 20;
 var score = 0;
 var drive = 1;
+var clicked = false;
 
 
  function refresh() {
@@ -172,6 +173,7 @@ var drive = 1;
     $('.WRbuttons').addClass('placeholderWRbuttons');
     $('.WRbuttons').removeClass('WRbuttons');
     console.log("blitzSacked fired");
+
     blitzSackedTime = 0;
   }
 
@@ -268,6 +270,8 @@ var display;
     playClock(thirtySeconds, display);
     $('.topRight').addClass('placeHolderTopRight');
     $('.topLeft').addClass('placeHolderTopLeft');
+    $('.table').addClass('placeholderTable');
+    $('.table').removeClass('table')
     $('.placeHolderTopRight').removeClass('topRight');
     $('.placeHolderTopLeft').removeClass('topLeft');
     $('.placeholderButtons').addClass('buttons');
@@ -322,6 +326,8 @@ var sackTimer = 0;
     $('#playClock').removeClass('hiddenPlayClock');
     $('#playClock').addClass('playClock');
     $('#playClock').text(" ");
+    $('.placeholderTable').addClass('table');
+    $('.table').removeClass('placeholderTable');
   }
 
   $('.wr1').on('click', function() {

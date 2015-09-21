@@ -1,5 +1,5 @@
 $height: 50%;
-$width: 50%;
+$width: 33%;
 $or: orange;
 $bl: blue;
 
@@ -11,6 +11,14 @@ $bl: blue;
   flex-direction: row;
   justify-content: space-around;
   // background-color: red;
+
+  .playsPlacement {
+    display: flex;
+    flex-direction: column;
+    height:50%;
+    width:50%;
+    background-color: purple;
+  }
 
     .topLeft {
       display:flex;
@@ -36,13 +44,10 @@ $bl: blue;
     }
 
     .table {
-      position: absolute;
-      height:45vh;
-      width: 31vw;
+      // position: absolute;
+      height:$height;
+      width: $width;
       background-color: red;
-      z-index: 1;
-      margin-left: 500px;
-      margin-top: -275px;
 
     }
 
@@ -240,4 +245,6 @@ display:none;
   display: none;
 }
 
-
+.placeholderTable {
+  display: none;
+}

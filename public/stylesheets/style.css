@@ -13,7 +13,7 @@
   -webkit-justify-content: space-around;
       -ms-flex-pack: distribute;
           justify-content: space-around; }
-  .container .topLeft {
+  .container .playsPlacement {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
@@ -22,6 +22,16 @@
             flex-direction: column;
     height: 50%;
     width: 50%;
+    background-color: purple; }
+  .container .topLeft {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    height: 50%;
+    width: 33%;
     background-color: orange; }
     .container .topLeft h1 {
       -webkit-align-self: center;
@@ -35,20 +45,16 @@
         -ms-flex-direction: column;
             flex-direction: column;
     height: 50%;
-    width: 50%;
+    width: 33%;
     background-color: blue; }
     .container .topRight h1 {
       -webkit-align-self: center;
           -ms-flex-item-align: center;
               align-self: center; }
   .container .table {
-    position: absolute;
-    height: 45vh;
-    width: 31vw;
-    background-color: red;
-    z-index: 1;
-    margin-left: 500px;
-    margin-top: -275px; }
+    height: 50%;
+    width: 33%;
+    background-color: red; }
   .container .playImages {
     height: 200px;
     width: 200px;
@@ -217,4 +223,7 @@
   display: none; }
 
 .placeHolderTopRight {
+  display: none; }
+
+.placeholderTable {
   display: none; }
