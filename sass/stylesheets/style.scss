@@ -55,11 +55,15 @@ $bwt: 100px;
     }
 
     .tableTextAlign{
+      // font-weight: x-large;
+      background-color: red;
+      // font-size: 20pt;
 
       .table {
         height:$height;
         width: $width;
-        // background-color: red;
+        // font-size: 20pt;
+        background-color: red;
       }
     }
 
@@ -165,7 +169,7 @@ $bwt: 100px;
     margin-top: 25px;
     align-items: right;
     // padding-bottom: 500px;
-    background-color: gray;
+    // background-color: gray;
 /*     position: relative; */
 
     .snap {
@@ -287,4 +291,9 @@ display:none;
 
 .center {
   text-align: center;
+}
+
+td {
+  padding-top: 25px;
+  font-size: 45pt;
 }

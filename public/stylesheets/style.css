@@ -53,9 +53,12 @@
       -webkit-align-self: center;
           -ms-flex-item-align: center;
               align-self: center; }
-  .container .tableTextAlign .table {
-    height: 50%;
-    width: 33%; }
+  .container .tableTextAlign {
+    background-color: red; }
+    .container .tableTextAlign .table {
+      height: 50%;
+      width: 33%;
+      background-color: red; }
   .container .passImage {
     height: 200px;
     width: 200px;
@@ -151,7 +154,6 @@
     -webkit-align-items: right;
         -ms-flex-align: right;
             align-items: right;
-    background-color: gray;
     /*     position: relative; */ }
     .container .buttons .snap {
       margin: 0 auto;
@@ -249,3 +251,7 @@
 
 .center {
   text-align: center; }
+
+td {
+  padding-top: 25px;
+  font-size: 45pt; }
