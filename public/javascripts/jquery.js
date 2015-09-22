@@ -69,6 +69,7 @@ $( document ).ready(function() {
     touchdown: "Pass completed for a touchdown!"
   }
 ];
+var interceptionReturnToDefaultBreak = false;
 var sackedReturnToDefault = 0;
 var blitz = 0;
 var wrReturnToDefault = 0;
@@ -188,9 +189,7 @@ PlayResults = {
   }
 
   function checkIfTurnover() {
-    console.log("Check if turnover is running");
   if(downCount === 5 && yardLine < 100 && yardsToFirst > 0) {
-    console.log("If statement in checkIfTurnover is running")
     clearTimeout(sackedReturnToDefault);
     clearInterval(timerId);
     clearTimeout(sackTimer);
@@ -212,6 +211,7 @@ PlayResults = {
     drive++;
     downCount = 1;
     yardLine = 20;
+    yardsToFirst = 10;
       if(score === 0) {
         score += 7;
         $('.score').text(score);
@@ -340,11 +340,23 @@ PlayResults = {
       }, 1500);
   })
 
-  function intercepted() {
+  function timeoutIntercepted(){
+    console.log(interceptionReturnToDefaultBreak + "    hits above if statement in timeoutIntercepted")
     if(interception > 0) {
+      console.log(interceptionReturnToDefaultBreak + "    hits within in statement in timeoutIntercepted")
+      interceptionReturnToDefaultBreak = true;
+      setTimeout(intercepted, 400)
       downCount = 1;
       yardsToFirst = 10;
     }
+  }
+
+  function intercepted() {
+          console.log(interceptionReturnToDefaultBreak + "    hits within in intercepted function");
+    $('.container').css('background', 'url("http://cdn.fansided.com/wp-content/blogs.dir/276/files/2014/12/gruden.jpg")');
+    interceptionReturnToDefaultBreak = false;
+    setTimeout(returnToDefault, 1500);
+    console.log(interceptionReturnToDefaultBreak + "   end of intercepted function")
   }
 
   $(window).load(function() {
@@ -353,8 +365,13 @@ PlayResults = {
   })
 
   function returnToDefault () {
+    console.log(interceptionReturnToDefaultBreak + "    first returnToDefault hit");
     blitz = 0;
-    intercepted();
+    timeoutIntercepted();
+    if(interceptionReturnToDefaultBreak === true) {
+      return;
+    };
+    console.log(interceptionReturnToDefaultBreak + "    second returnToDefault hit")
     PlayResults.Yards = .3 + randomInteger();
     PlayResults.WR1OddsAdj = 0;
     PlayResults.WR2OddsAdj = 0;
