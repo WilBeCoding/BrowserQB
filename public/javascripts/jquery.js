@@ -305,6 +305,11 @@ PlayResults = {
     $('.pregame').addClass('placeholderPregame');
     $('.placeholderPregame').removeClass('pregame');
     $('.topLeft').css('margin-right', 0);
+    $('.placeholderTable').addClass('table');
+    $('.table').removeClass('placeholderTable');
+    $('.placeHolderTopRight').addClass('topRight');
+    $('.placeHolderTopLeft').addClass('topLeft');
+
     returnToDefault();
   })
 
@@ -367,7 +372,7 @@ PlayResults = {
   $(window).load(function() {
     $('.down').text("1st and " + yardsToFirst);
     $('.score').text(score);
-    $('.topLeft').css('margin-right','325px');
+    $('.topLeft').css('margin-right','475px');
   })
 
   function returnToDefault () {

@@ -22,6 +22,12 @@
             flex-direction: column;
     height: 50%;
     width: 50%; }
+  .container .pregame {
+    background-color: red;
+    height: 65%;
+    width: 100%;
+    text-align: center;
+    padding-bottom: 50px; }
   .container .topLeft {
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -31,12 +37,6 @@
             flex-direction: column;
     height: 50%;
     width: 33%; }
-    .container .topLeft .pregame {
-      background-color: purple;
-      height: 50vh;
-      width: 100%;
-      position: absolute;
-      text-align: center; }
     .container .topLeft h1 {
       -webkit-align-self: center;
           -ms-flex-item-align: center;
@@ -120,7 +120,6 @@
       -webkit-align-self: center;
           -ms-flex-item-align: center;
               align-self: center;
-      background-color: gray;
       opacity: 0; }
     .container .field .defensiveSpan {
       height: 35%;
@@ -167,17 +166,22 @@
       -webkit-justify-content: space-between;
           -ms-flex-pack: justify;
               justify-content: space-between;
-      height: 26px;
+      height: 100px;
       width: 100%; }
       .container .buttons .WRbuttons .wr1 {
+        text-align: center;
         padding-left: 25%;
         height: 100px;
         width: 100px; }
       .container .buttons .WRbuttons .wr2 {
         -webkit-align-self: center;
             -ms-flex-item-align: center;
-                align-self: center; }
+                align-self: center;
+        text-align: center;
+        height: 100px;
+        width: 100px; }
       .container .buttons .WRbuttons .wr3 {
+        text-align: center;
         padding-right: 25%;
         height: 100px;
         width: 100px; }
@@ -237,3 +241,6 @@
 
 .placeholderPregame {
   display: none; }
+
+.center {
+  text-align: center; }
