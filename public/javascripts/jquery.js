@@ -145,7 +145,7 @@ PlayResults = {
  }
 
   function checkIfLost() {
-    if(drive === 4 && score != 14 || drive === 3 && score !=14) {
+    if(drive === 4 && score != 14 || drive === 3 && score !=7) {
     clearTimeout(sackedReturnToDefault);
     clearInterval(timerId);
     clearTimeout(sackTimer);
@@ -269,6 +269,13 @@ PlayResults = {
                         }
                     }, 1000);
   }
+
+  $('.startGameBtn').on('click', function() {
+    console.log("Does this button work");
+    $('.pregame').addClass('placeholderPregame');
+    $('.placeholderPregame').removeClass('pregame');
+    returnToDefault();
+  })
 
   $('.playImages').on('click', function() {
     playClockId = 0;

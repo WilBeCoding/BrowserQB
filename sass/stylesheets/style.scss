@@ -14,6 +14,15 @@ $bwt: 100px;
   justify-content: space-around;
   // background-color: red;
 
+  .pregame { 
+    background-color: purple;
+    height: 50vh;
+    width: 100%;
+    position: absolute;
+    margin-right: 350px;
+    text-align: center;
+  }
+
   .playsPlacement {
     display: flex;
     flex-direction: column;
@@ -46,7 +55,6 @@ $bwt: 100px;
     }
 
     .table {
-      // position: absolute;
       height:$height;
       width: $width;
       background-color: red;
@@ -257,5 +265,9 @@ display:none;
 }
 
 .placeholderTable {
+  display: none;
+}
+
+.placeholderPregame {
   display: none;
 }

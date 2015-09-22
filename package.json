@@ -16,6 +16,7 @@
     "gulp-rename": "^1.2.2",
     "gulp-ruby-sass": "^2.0.3",
     "jade": "~1.11.0",
+    "monk": "^1.0.1",
     "morgan": "~1.6.1",
     "node-sass": "^3.3.2",
     "serve-favicon": "~2.3.0"

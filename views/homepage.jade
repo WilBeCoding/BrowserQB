@@ -22,6 +22,18 @@ block content
     div.placeholderBirdsEyeView
       img(src="http://cdn1.sbnation.com/imported_assets/475727/kfield1.gif").birdsEyeImg
     div.topLeft
+      div.pregame
+        h1 Welcome to BrowserQB!
+        p You have 3 drives to score 14 points. 
+        p To pass to the left side of the field throw the ball to WR1
+        p To pass to the middle of the field throw the ball to WR2
+        p To pass to the right side of the field throw the ball to WR3
+        form(action="/users", method='post')
+          label Enter your initials to start playing!
+        input(type="text" name="user_initials")
+        p
+          input(type="submit" value="Take to the field!").startGameBtn
+
       h1 Pass Plays
       input(type="image" src="http://ih1.redbubble.net/image.61056662.5747/fc,800x800,white.u1.jpg" name="plays").playImages#playImages
     div.table

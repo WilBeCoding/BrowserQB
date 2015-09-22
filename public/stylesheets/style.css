@@ -13,6 +13,13 @@
   -webkit-justify-content: space-around;
       -ms-flex-pack: distribute;
           justify-content: space-around; }
+  .container .pregame {
+    background-color: purple;
+    height: 50vh;
+    width: 100%;
+    position: absolute;
+    margin-right: 350px;
+    text-align: center; }
   .container .playsPlacement {
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -232,4 +239,7 @@
   display: none; }
 
 .placeholderTable {
+  display: none; }
+
+.placeholderPregame {
   display: none; }
