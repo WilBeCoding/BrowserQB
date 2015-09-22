@@ -35,6 +35,7 @@ $bwt: 100px;
       flex-direction:column;
       height: $height;
       width: $width;
+      position: relative;
       // background-color: $or;
 
         h1 {
@@ -48,6 +49,8 @@ $bwt: 100px;
       height: $height;
       width: $width;
       // background-color: $bl;
+      position: relative;
+
 
         h1 {
           align-self: center;
@@ -56,6 +59,8 @@ $bwt: 100px;
 
     .tableTextAlign{
       // font-weight: x-large;
+      position: relative;
+
       background-color: red;
       // font-size: 20pt;
 
@@ -169,7 +174,7 @@ $bwt: 100px;
     margin-top: 25px;
     align-items: right;
     // padding-bottom: 500px;
-    // background-color: gray;
+    background-color: gray;
 /*     position: relative; */
 
     .snap {

@@ -31,9 +31,9 @@ block content
       br
       br
       div.center
-        form(action="/", method='post')
+        form(action="/", method='post' id="mainInitials")
           label Enter your initials to start playing!
-        input(type="text" name="user_initials")
+        input(type="text" name="user_initials" id="initials")
         p
           input(type="submit" value="Take to the field!").startGameBtn
     div.placeHolderTopLeft

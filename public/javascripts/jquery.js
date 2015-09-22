@@ -69,6 +69,7 @@ $( document ).ready(function() {
     touchdown: "Pass completed for a touchdown!"
   }
 ];
+var checkIntervals;
 var touchdown = false;
 var interceptionReturnToDefaultBreak = false;
 var sackedReturnToDefault = 0;
@@ -207,7 +208,6 @@ PlayResults = {
 
 
   function touchdownFunction() {
-    console.log("Touchdown function hits")
     touchdown = false;
     setTimeout(returnToDefault, 2000)
     $('.footballIMG').animate({'left': '24.5%'}, "fast");
@@ -231,11 +231,12 @@ PlayResults = {
     function checkForTouchdown(){
       if(yardLine >= '100') {
         $('.footballIMG').animate({'left': '87%'}, "fast");
-        console.log("checkForTouchdown Hits")
         clearTimeout(wrReturnToDefault);
         touchdown = true;
         $('.defensiveSpan').text("Touchdown!")
         $('.buttons').css('background', 'url("http://netstorage.discovery.com/feeds/brightcove/asset-stills/apl/135966413090713964101001197_Puppy_Bowl_IX_BIGPLAY_4_Lift_10.jpg")');
+        // $('.buttons').css('background-repeat', 'no-repeat');
+        // $('.buttons').css('background-position', 'center');
         setTimeout(touchdownFunction, 1500);
       }
     }
@@ -302,6 +303,7 @@ PlayResults = {
   }
 
   $('.startGameBtn').on('click', function() {
+    // clearInterval(checkForInitials);
     $('.pregame').addClass('placeholderPregame');
     $('.placeholderPregame').removeClass('pregame');
     $('.topLeft').css('margin-right', 0);
@@ -389,24 +391,40 @@ PlayResults = {
     setTimeout(returnToDefault, 1500);
   }
 
+
+
+
+  // function checkForInitials() {
+  //   $('#mainInitials input').blur(function() {
+  //       if( !$(this).val() ) {
+  //         console.log("The fuck is this")
+  //             $(this).parents('p').addClass('warning');
+  //       }
+  //   });
+  // }
+
   $(window).load(function() {
     $('.down').text("1st and " + yardsToFirst);
     $('.score').text(score);
     $('.topLeft').css('margin-right','475px');
-  })
+   })
+
 
   function returnToDefault () {
     blitz = 0;
     timeoutIntercepted();
-    console.log(touchdown);
     if(touchdown === false) {
-      console.log("Touchdown false hits")
       $('.buttons').css('background', 'transparent');
     }
     if(interceptionReturnToDefaultBreak === true) {
       $('.buttons').css('background', 'url("http://cdn.fansided.com/wp-content/blogs.dir/276/files/2014/12/gruden.jpg")');
+      // $('.buttons').css('background-repeat', 'no-repeat');
+      // $('.buttons').css('background-position', 'center center');
+      // $('.buttons').css("padding-bottom", mg="600px");
+
       return;
     };
+
     PlayResults.Yards = .3 + randomInteger();
     PlayResults.WR1OddsAdj = 0;
     PlayResults.WR2OddsAdj = 0;

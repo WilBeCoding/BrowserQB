@@ -35,7 +35,8 @@
         -ms-flex-direction: column;
             flex-direction: column;
     height: 50%;
-    width: 33%; }
+    width: 33%;
+    position: relative; }
     .container .topLeft h1 {
       -webkit-align-self: center;
           -ms-flex-item-align: center;
@@ -48,12 +49,14 @@
         -ms-flex-direction: column;
             flex-direction: column;
     height: 50%;
-    width: 33%; }
+    width: 33%;
+    position: relative; }
     .container .topRight h1 {
       -webkit-align-self: center;
           -ms-flex-item-align: center;
               align-self: center; }
   .container .tableTextAlign {
+    position: relative;
     background-color: red; }
     .container .tableTextAlign .table {
       height: 50%;
@@ -154,6 +157,7 @@
     -webkit-align-items: right;
         -ms-flex-align: right;
             align-items: right;
+    background-color: gray;
     /*     position: relative; */ }
     .container .buttons .snap {
       margin: 0 auto;
