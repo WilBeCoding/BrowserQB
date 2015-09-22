@@ -201,7 +201,7 @@ PlayResults = {
       $('.down').text(downCount);
       drive++;
       yardsToFirst = 10;
-      setTimeout(returnToDefault,1500);
+      setTimeout(returnToDefault,1850);
     }
   }
 
@@ -223,6 +223,21 @@ PlayResults = {
       checkIfWon();
     }
     driveFunction();
+  }
+
+  function scoreboardUpdate() {
+    if(downCount == 1)
+      $('.down').text("1st and " + yardsToFirst);
+    }
+    if(downCount === 2) {
+      $('.down').text("2nd and " + yardsToFirst);
+    }
+    if(downCount === 3) {
+      $('.down').text("3rd and " + yardsToFirst);
+    }
+    if(downCount === 4) {
+      $('.down').text("4th and " + yardsToFirst);
+    }
   }
 
   function pickRandomPostSnapString(array) {
@@ -326,8 +341,7 @@ PlayResults = {
   }
 
   $(window).load(function() {
-    $('.yards').text(yardsToFirst);
-    $('.down').text(downCount);
+    $('.down').text("1st and " + yardsToFirst);
     $('.score').text(score);
   })
 
@@ -367,6 +381,7 @@ PlayResults = {
     }
     $('.yards').text(yardsToFirst);
     $('.down').text(downCount);
+    scoreboardUpdate();
     interception = 0;
   }
 
