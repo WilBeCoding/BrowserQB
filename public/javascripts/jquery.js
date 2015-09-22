@@ -226,7 +226,7 @@ PlayResults = {
   }
 
   function scoreboardUpdate() {
-    if(downCount == 1)
+    if(downCount == 1) {
       $('.down').text("1st and " + yardsToFirst);
     }
     if(downCount === 2) {
@@ -381,7 +381,7 @@ PlayResults = {
     }
     $('.yards').text(yardsToFirst);
     $('.down').text(downCount);
-    scoreboardUpdate();
+    scoreboardUpdate()
     interception = 0;
   }
 
