@@ -19,8 +19,7 @@
     width: 100%;
     position: absolute;
     margin-right: 350px;
-    text-align: center;
-    display: none; }
+    text-align: center; }
   .container .playsPlacement {
     display: -webkit-flex;
     display: -ms-flexbox;

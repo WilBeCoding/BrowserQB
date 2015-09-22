@@ -369,7 +369,6 @@ PlayResults = {
   })
 
   function returnToDefault () {
-
     blitz = 0;
     timeoutIntercepted();
     console.log(touchdown);
