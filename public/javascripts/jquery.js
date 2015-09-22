@@ -443,7 +443,7 @@ PlayResults = {
       $('.defensiveSpan').text("Pass to WR1 is complete for an 8 yard gain!")
       $('.footballIMG').animate({'left': '+=6%'}, 'slow');
       yardsToFirst -=8
-      yardLine += 100;
+      yardLine += 8;
     }
     if(PlayResults.WR1OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .7 && PlayResults.WR1OddsAdj + PlayResults.Yards <= .8) {
       $('.defensiveSpan').text("Pass to WR1 is complete for a 15 yard gain!");

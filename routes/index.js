@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var db = require('monk')('localhost/user-scores');
-var userScoresCollection = db.get('user-scores');
+var userScoresCollection = db.get('scores');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {

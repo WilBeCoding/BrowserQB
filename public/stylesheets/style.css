@@ -12,8 +12,7 @@
           flex-direction: row;
   -webkit-justify-content: space-around;
       -ms-flex-pack: distribute;
-          justify-content: space-around;
-  background-color: red; }
+          justify-content: space-around; }
   .container .playsPlacement {
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -31,8 +30,7 @@
         -ms-flex-direction: column;
             flex-direction: column;
     height: 50%;
-    width: 33%;
-    background-color: orange; }
+    width: 33%; }
     .container .topLeft .pregame {
       background-color: purple;
       height: 50vh;
@@ -157,7 +155,6 @@
       width: 100%; }
       .container .buttons .snap .buttonSnap {
         margin: 0 auto;
-        color: red;
         height: 100px;
         width: 100px; }
     .container .buttons .WRbuttons {

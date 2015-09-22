@@ -12,7 +12,7 @@ $bwt: 100px;
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-around;
-  background-color: red;
+  // background-color: red;
 
   .playsPlacement {
     display: flex;
@@ -27,7 +27,7 @@ $bwt: 100px;
       flex-direction:column;
       height: $height;
       width: $width;
-      background-color: $or;
+      // background-color: $or;
 
         .pregame { 
           background-color: purple;
@@ -170,7 +170,7 @@ $bwt: 100px;
 
         .buttonSnap {
           margin: 0 auto;
-          color: red;
+          // color: red;
           height: $bht;
           width: $bwt;
           // position:absolute;
