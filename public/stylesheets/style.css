@@ -12,14 +12,8 @@
           flex-direction: row;
   -webkit-justify-content: space-around;
       -ms-flex-pack: distribute;
-          justify-content: space-around; }
-  .container .pregame {
-    background-color: purple;
-    height: 50vh;
-    width: 100%;
-    position: absolute;
-    margin-right: 350px;
-    text-align: center; }
+          justify-content: space-around;
+  background-color: red; }
   .container .playsPlacement {
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -37,7 +31,14 @@
         -ms-flex-direction: column;
             flex-direction: column;
     height: 50%;
-    width: 33%; }
+    width: 33%;
+    background-color: orange; }
+    .container .topLeft .pregame {
+      background-color: purple;
+      height: 50vh;
+      width: 100%;
+      position: absolute;
+      text-align: center; }
     .container .topLeft h1 {
       -webkit-align-self: center;
           -ms-flex-item-align: center;

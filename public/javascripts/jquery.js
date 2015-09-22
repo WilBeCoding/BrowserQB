@@ -304,6 +304,7 @@ PlayResults = {
   $('.startGameBtn').on('click', function() {
     $('.pregame').addClass('placeholderPregame');
     $('.placeholderPregame').removeClass('pregame');
+    $('.topLeft').css('margin-right', 0);
     returnToDefault();
   })
 
@@ -366,6 +367,7 @@ PlayResults = {
   $(window).load(function() {
     $('.down').text("1st and " + yardsToFirst);
     $('.score').text(score);
+    $('.topLeft').css('margin-right','325px');
   })
 
   function returnToDefault () {

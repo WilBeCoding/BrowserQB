@@ -12,17 +12,7 @@ $bwt: 100px;
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-around;
-  // background-color: red;
-
-  .pregame { 
-    background-color: purple;
-    height: 50vh;
-    width: 100%;
-    position: absolute;
-    margin-right: 350px;
-    text-align: center;
-    // display: none;
-  }
+  background-color: red;
 
   .playsPlacement {
     display: flex;
@@ -37,7 +27,16 @@ $bwt: 100px;
       flex-direction:column;
       height: $height;
       width: $width;
-      // background-color: $or;
+      background-color: $or;
+
+        .pregame { 
+          background-color: purple;
+          height: 50vh;
+          width: 100%;
+          position: absolute;
+          text-align: center;
+          // display: none;
+        }
 
         h1 {
           align-self: center;
