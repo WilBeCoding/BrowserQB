@@ -380,8 +380,8 @@ PlayResults = {
     timeoutIntercepted();
     console.log(touchdown);
     if(touchdown === false) {
-      console.log("TOuchdown false hits")
-      $('.buttons').css('background', 'white');
+      console.log("Touchdown false hits")
+      $('.buttons').css('background', 'transparent');
     }
     if(interceptionReturnToDefaultBreak === true) {
       $('.buttons').css('background', 'url("http://cdn.fansided.com/wp-content/blogs.dir/276/files/2014/12/gruden.jpg")');
@@ -395,8 +395,9 @@ PlayResults = {
     checkIfTurnover();
     driveFunction();
     if(yardsToFirst < 0) {
-      $('.buttons').css('background', 'white');
+      $('.buttons').css('background', 'transparent');
     }
+    $('.buttons').css("padding-bottom", mg="0");
     $('.placeHolderTopRight').addClass('topRight');
     $('.placeHolderTopLeft').addClass('topLeft');
     $('.buttons').addClass('placeholderButtons');
