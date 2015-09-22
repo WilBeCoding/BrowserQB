@@ -56,7 +56,13 @@
   .container .tableTextAlign .table {
     height: 50%;
     width: 33%; }
-  .container .playImages {
+  .container .passImage {
+    height: 200px;
+    width: 200px;
+    -webkit-align-self: center;
+        -ms-flex-item-align: center;
+            align-self: center; }
+  .container .runImage {
     height: 200px;
     width: 200px;
     -webkit-align-self: center;

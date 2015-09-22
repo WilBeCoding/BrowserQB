@@ -313,7 +313,27 @@ PlayResults = {
     returnToDefault();
   })
 
-  $('.playImages').on('click', function() {
+  $('.passImage').on('click', function() {
+    playClockId = 0;
+    var thirtySeconds = 30;
+    var display = $('#playClock');
+    playClock(thirtySeconds, display);
+    $('.topRight').addClass('placeHolderTopRight');
+    $('.topLeft').addClass('placeHolderTopLeft');
+    $('.table').addClass('placeholderTable');
+    $('.table').removeClass('table')
+    $('.placeHolderTopRight').removeClass('topRight');
+    $('.placeHolderTopLeft').removeClass('topLeft');
+    $('.placeholderButtons').addClass('buttons');
+    $('.buttons').removeClass('placeholderButtons');
+    $('.placeHolderSnap').addClass('snap');
+    $('.snap').removeClass('placeHolderSnap');
+    $('.placeholderBirdsEyeView').addClass('birdsEyeView');
+    $('.birdsEyeView').removeClass('placeholderBirdsEyeView');
+  });
+
+  $('.runImage').on('click', function() {
+    alert("You Audible To A Pass Play!");
     playClockId = 0;
     var thirtySeconds = 30;
     var display = $('#playClock');
