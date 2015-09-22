@@ -149,6 +149,7 @@
     -webkit-align-items: right;
         -ms-flex-align: right;
             align-items: right;
+    background-color: gray;
     /*     position: relative; */ }
     .container .buttons .snap {
       margin: 0 auto;

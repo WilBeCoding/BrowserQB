@@ -69,6 +69,7 @@ $( document ).ready(function() {
     touchdown: "Pass completed for a touchdown!"
   }
 ];
+var touchdown = false;
 var interceptionReturnToDefaultBreak = false;
 var sackedReturnToDefault = 0;
 var blitz = 0;
@@ -127,7 +128,6 @@ PlayResults = {
   }
 
   function blitzSacked(){
-    console.log(downCount);
     clearTimeout(wrReturnToDefault);
     downCount++;
     blitzSackedTime = 0;
@@ -206,7 +206,10 @@ PlayResults = {
   }
 
 
-  function touchdown(){
+  function touchdownFunction() {
+    console.log("Touchdown function hits")
+    touchdown = false;
+    setTimeout(returnToDefault, 2000)
     $('.footballIMG').animate({'left': '24.5%'}, "fast");
     drive++;
     downCount = 1;
@@ -225,12 +228,18 @@ PlayResults = {
   }
 
 
-  function checkForTouchdown(){
-    if(yardLine >= '100') {
-      $('.defensiveSpan').text("Touchdown!")
-      setTimeout(touchdown,2000);
+    function checkForTouchdown(){
+      if(yardLine >= '100') {
+        $('.footballIMG').animate({'left': '87%'}, "fast");
+        console.log("checkForTouchdown Hits")
+        clearTimeout(wrReturnToDefault);
+        touchdown = true;
+        $('.defensiveSpan').text("Touchdown!")
+        $('.buttons').css('background', 'url("http://netstorage.discovery.com/feeds/brightcove/asset-stills/apl/135966413090713964101001197_Puppy_Bowl_IX_BIGPLAY_4_Lift_10.jpg")');
+        setTimeout(touchdownFunction, 1500);
+      }
     }
-  }
+
 
   function scoreboardUpdate() {
     if(downCount === 1) {
@@ -293,7 +302,6 @@ PlayResults = {
   }
 
   $('.startGameBtn').on('click', function() {
-    console.log("Does this button work");
     $('.pregame').addClass('placeholderPregame');
     $('.placeholderPregame').removeClass('pregame');
     returnToDefault();
@@ -341,22 +349,18 @@ PlayResults = {
   })
 
   function timeoutIntercepted(){
-    console.log(interceptionReturnToDefaultBreak + "    hits above if statement in timeoutIntercepted")
     if(interception > 0) {
-      console.log(interceptionReturnToDefaultBreak + "    hits within in statement in timeoutIntercepted")
       interceptionReturnToDefaultBreak = true;
-      setTimeout(intercepted, 400)
+      setTimeout(intercepted, 150)
       downCount = 1;
       yardsToFirst = 10;
     }
   }
 
   function intercepted() {
-          console.log(interceptionReturnToDefaultBreak + "    hits within in intercepted function");
-    $('.container').css('background', 'url("http://cdn.fansided.com/wp-content/blogs.dir/276/files/2014/12/gruden.jpg")');
     interceptionReturnToDefaultBreak = false;
+    interception = 0;
     setTimeout(returnToDefault, 1500);
-    console.log(interceptionReturnToDefaultBreak + "   end of intercepted function")
   }
 
   $(window).load(function() {
@@ -365,13 +369,18 @@ PlayResults = {
   })
 
   function returnToDefault () {
-    console.log(interceptionReturnToDefaultBreak + "    first returnToDefault hit");
+
     blitz = 0;
     timeoutIntercepted();
+    console.log(touchdown);
+    if(touchdown === false) {
+      console.log("TOuchdown false hits")
+      $('.buttons').css('background', 'white');
+    }
     if(interceptionReturnToDefaultBreak === true) {
+      $('.buttons').css('background', 'url("http://cdn.fansided.com/wp-content/blogs.dir/276/files/2014/12/gruden.jpg")');
       return;
     };
-    console.log(interceptionReturnToDefaultBreak + "    second returnToDefault hit")
     PlayResults.Yards = .3 + randomInteger();
     PlayResults.WR1OddsAdj = 0;
     PlayResults.WR2OddsAdj = 0;
@@ -379,6 +388,9 @@ PlayResults = {
     PlayResults.GlobalOddsAdj = 0;
     checkIfTurnover();
     driveFunction();
+    if(yardsToFirst < 0) {
+      $('.buttons').css('background', 'white');
+    }
     $('.placeHolderTopRight').addClass('topRight');
     $('.placeHolderTopLeft').addClass('topLeft');
     $('.buttons').addClass('placeholderButtons');
@@ -430,7 +442,7 @@ PlayResults = {
       $('.defensiveSpan').text("Pass to WR1 is complete for an 8 yard gain!")
       $('.footballIMG').animate({'left': '+=6%'}, 'slow');
       yardsToFirst -=8
-      yardLine += 8;
+      yardLine += 100;
     }
     if(PlayResults.WR1OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .7 && PlayResults.WR1OddsAdj + PlayResults.Yards <= .8) {
       $('.defensiveSpan').text("Pass to WR1 is complete for a 15 yard gain!");
