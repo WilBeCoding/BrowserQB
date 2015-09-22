@@ -23,7 +23,6 @@ $bwt: 100px;
   }
 
   .pregame { 
-    background-color: red;
     height: 65%;
     width: 100%;
     text-align: center;
@@ -141,13 +140,13 @@ $bwt: 100px;
 
         .defensiveSpan {
           height: 35%;
-          width: 40%;
+          width: 100vw;
           opacity: 1;
           position: relative;
-          margin-left: 38%;
-          margin-top: 5%;
+          margin-top: 10%;
           font-size: 35px;
           font-weight: bold;
+          text-align: center;
       }
 
   }
