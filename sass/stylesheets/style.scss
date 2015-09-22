@@ -21,6 +21,7 @@ $bwt: 100px;
     position: absolute;
     margin-right: 350px;
     text-align: center;
+    display: none;
   }
 
   .playsPlacement {
@@ -28,7 +29,7 @@ $bwt: 100px;
     flex-direction: column;
     height:50%;
     width:50%;
-    background-color: purple;
+    // background-color: purple;
   }
 
     .topLeft {
@@ -36,7 +37,7 @@ $bwt: 100px;
       flex-direction:column;
       height: $height;
       width: $width;
-      background-color: $or;
+      // background-color: $or;
 
         h1 {
           align-self: center;
@@ -47,18 +48,20 @@ $bwt: 100px;
       flex-direction: column;
       height: $height;
       width: $width;
-      background-color: $bl;
+      // background-color: $bl;
 
         h1 {
           align-self: center;
         }
     }
 
-    .table {
-      height:$height;
-      width: $width;
-      background-color: red;
+    .tableTextAlign{
 
+      .table {
+        height:$height;
+        width: $width;
+        // background-color: red;
+      }
     }
 
   .playImages {
@@ -82,9 +85,9 @@ $bwt: 100px;
     .footballIMG {
       max-height:40px;
       max-width: 40px;
-      position: absolute;
-      top: 82%;
-      left: 24%;
+      position: fixed;
+      top: 35%;
+      left: 25%;
       align-self: flex-start;
     }
 
@@ -157,7 +160,7 @@ $bwt: 100px;
     margin-top: 25px;
     align-items: right;
     // padding-bottom: 500px;
-    background-color: gray;
+    // background-color: gray;
 /*     position: relative; */
 
     .snap {
