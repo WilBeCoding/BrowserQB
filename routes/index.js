@@ -12,8 +12,14 @@ router.get('/', function(req, res, next) {
 //   res.render('intro', {title: "Browser QB!" });
 // });
 
+// router.get('/', function (req, res, next) {
+//   userScoresCollection.insert({initals: data} , function (err, data) {
+//     res.json(data)
+//   })
+// })
+
 router.post('/', function(req, res, next) {
-  userScoresCollection.insert({name: req.body.user_initials});
+  userScoresCollection.insert({name: req.body}).upsert();
   res.redirect('/');
 });
 

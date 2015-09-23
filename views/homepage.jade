@@ -30,11 +30,11 @@ block content
       br
       br
       div.center
-        form(action="/", method='post' id="mainInitials")
+        form(action="/", method='GET' id="mainInitials")
           label Enter your initials to start playing!
         input(type="text" name="user_initials" id="initials")
         p
-          input(type="submit" value="Take to the field!").startGameBtn
+          input(type="submit" value="Take to the field!" id="initialsButton").startGameBtn
     div.placeHolderTopLeft
       h1 Pass Plays
       input(type="image" src="http://ih1.redbubble.net/image.61056662.5747/fc,800x800,white.u1.jpg" name="plays").passImage#playImages

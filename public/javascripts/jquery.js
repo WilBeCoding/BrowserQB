@@ -70,6 +70,8 @@ $( document ).ready(function() {
     touchdown: "Pass completed for a touchdown!"
   }
 ];
+var timesPlayed = 0;
+var timesWon = 0;
 var wonGame = false;
 var checkIntervals;
 var touchdown = false;
@@ -181,8 +183,9 @@ PlayResults = {
   }
 
   function won() {
+    timesWon = 0;
     $('.defensiveSpan').text("You Won!")
-    setTimeout(refresh, 1500);
+    setTimeout(refresh, 2200);
   }
 
   function driveFunction() {
@@ -309,6 +312,9 @@ PlayResults = {
   }
 
   $('.startGameBtn').on('click', function() {
+    var timesPlayed = 0;
+    timesPlayed += 1
+    var initials = document.getElementById("initials").value;
     // clearInterval(checkForInitials);
     $('.pregame').addClass('placeholderPregame');
     $('.placeholderPregame').removeClass('pregame');
@@ -317,7 +323,21 @@ PlayResults = {
     $('.table').removeClass('placeholderTable');
     $('.placeHolderTopRight').addClass('topRight');
     $('.placeHolderTopLeft').addClass('topLeft');
-
+    $.ajax({
+        type: 'GET',
+        url: "/",
+        data: {initials: initials, timesPlayed: Number(timesPlayed)},
+        success: function(data) {
+          console.log(initials);
+        },
+     })
+    $.ajax({
+        type: 'update',
+        url: "/",
+        data: {initials: initials, timesPlayed: Number(timesPlayed)},
+        success: function(data) {
+        },
+     })
     returnToDefault();
   })
 
@@ -824,6 +844,23 @@ var globalOddsDecreaseObjectRandomValue = randomValueOfObjectInpostSnapStrings(g
     characterData: true
   });
 
+
+  // $('.startGameBtn').ajax({
+  //    url: '/',
+  //    method: 'GET',
+  //    success: function (data) {
+  //      console.log('success', data[0].)
+  //      var input = {};
+  //      var output = data[0].user_initials;
+  //      for (var i = 0; i < output.length; i++){
+  //        input.push(Number(output[i]))
+  //      }
+  //      console.log(input);
+  //    },
+  //    error: function (XMLHttpRequest, textStatus, errorThrown) {
+  //      console.log('error test', errorThrown);
+  //    }
+  //  });
 
 
 });
