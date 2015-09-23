@@ -69,11 +69,13 @@ $( document ).ready(function() {
     touchdown: "Pass completed for a touchdown!"
   }
 ];
+var wonGame = false;
 var checkIntervals;
 var touchdown = false;
 var interceptionReturnToDefaultBreak = false;
 var sackedReturnToDefault = 0;
 var blitz = 0;
+var returnToSackDefaultEndSacks = 0;
 var wrReturnToDefault = 0;
 var blitzSackedTime = 0;
 var returnToDefaultEndSacks = 0;
@@ -164,7 +166,10 @@ PlayResults = {
 
 
   function checkIfWon() {
+    console.log(score);
     if(score === 14) {
+      console.log("Hits inside check if won")
+      wonGame = true;
       clearTimeout(sackedReturnToDefault);
       clearInterval(timerId);
       clearTimeout(sackTimer);
@@ -209,21 +214,15 @@ PlayResults = {
 
   function touchdownFunction() {
     touchdown = false;
+    if(score === 14) {
+      checkIfWon();
+    }
     setTimeout(returnToDefault, 2000)
     $('.footballIMG').animate({'left': '24.5%'}, "fast");
     drive++;
     downCount = 1;
     yardLine = 20;
     yardsToFirst = 10;
-      if(score === 0) {
-        score += 7;
-        $('.score').text(score);
-      }
-      else if(score === 7) {
-        score += 7;
-        $('.score').text(score);
-      }
-    checkIfWon();
     driveFunction();
   }
 
@@ -235,10 +234,17 @@ PlayResults = {
         touchdown = true;
         $('.defensiveSpan').text("Touchdown!")
         $('.buttons').css('background', 'url("http://netstorage.discovery.com/feeds/brightcove/asset-stills/apl/135966413090713964101001197_Puppy_Bowl_IX_BIGPLAY_4_Lift_10.jpg")');
-        // $('.buttons').css('background-repeat', 'no-repeat');
-        // $('.buttons').css('background-position', 'center');
         setTimeout(touchdownFunction, 1500);
+        if(score === 0) {
+          score += 7;
+          $('.score').text(score);
+        }
+        else if(score === 7) {
+          score += 7;
+          $('.score').text(score);
+        }
       }
+      checkIfWon();
     }
 
   function scoreboardUpdate() {
@@ -329,8 +335,9 @@ PlayResults = {
     $('.buttons').removeClass('placeholderButtons');
     $('.placeHolderSnap').addClass('snap');
     $('.snap').removeClass('placeHolderSnap');
-    $('.placeholderBirdsEyeView').addClass('birdsEyeView');
-    $('.birdsEyeView').removeClass('placeholderBirdsEyeView');
+    $('.placeholderBirdsEyeView').addClass('birdsEyeImg');
+    $('.birdsEyeImg').removeClass('placeholderBirdsEyeView');
+    $('.buttons').css('background', 'white');
   });
 
   $('.runImage').on('click', function() {
@@ -349,8 +356,10 @@ PlayResults = {
     $('.buttons').removeClass('placeholderButtons');
     $('.placeHolderSnap').addClass('snap');
     $('.snap').removeClass('placeHolderSnap');
-    $('.placeholderBirdsEyeView').addClass('birdsEyeView');
     $('.birdsEyeView').removeClass('placeholderBirdsEyeView');
+    $('.placeholderBirdsEyeView').addClass('birdsEyeImg');
+    $('.birdsEyeImg').removeClass('placeholderBirdsEyeView');
+    $('.buttons').css('background', 'white');
   });
 
   $('.buttonSnap').on('click', function() {
@@ -368,8 +377,8 @@ PlayResults = {
       $('.placeholderWRbuttons').removeClass('placeholderWRbuttons');
       $('#playClock').removeClass('playClock');
       $('#playClock').addClass('hiddenPlayClock');
-      $('.birdsEyeView').addClass('placeholderBirdsEyeView');
-      $('.placeholderBirdsEyeView').removeClass('birdsEyeView');
+      $('.birdsEyeImg').addClass('placeholderBirdsEyeView');
+      $('.placeholderBirdsEyeView').removeClass('birdsEyeImg');
       timerId = window.setInterval(function(){
         $('.defensiveSpan').text(pickRandomPostSnapString(postSnapStrings));
       }, 1500);
@@ -429,9 +438,6 @@ PlayResults = {
     PlayResults.GlobalOddsAdj = 0;
     checkIfTurnover();
     driveFunction();
-    // if(yardsToFirst < 0) {
-    //   $('.buttons').css('background', 'white');
-    // }
     $('.buttons').css("margin-top", "25px");
     $('.placeHolderTopRight').addClass('topRight');
     $('.placeHolderTopLeft').addClass('topLeft');
@@ -441,8 +447,8 @@ PlayResults = {
     $('.placeholderButtons').removeClass('buttons');
     $('.snap').addClass('placeHoldersnap');
     $('.placeholderButtons').removeClass('snap');
-    $('.birdsEyeView').addClass('placeholderBirdsEyeView');
-    $('.placeholderBirdsEyeView').removeClass('birdsEyeView');
+    $('.birdsEyeImg').addClass('placeholderBirdsEyeView');
+    $('.placeholderBirdsEyeView').removeClass('birdsEyeImg');
     $('.WRbuttons').addClass('placeholderWRbuttons');
     $('.placeholderWRbuttons').removeClass('WRbuttons');
     $('.placeHolderSnap').addClass('snap');
@@ -461,8 +467,9 @@ PlayResults = {
     }
     $('.yards').text(yardsToFirst);
     $('.down').text(downCount);
-    scoreboardUpdate()
+    scoreboardUpdate();
     interception = 0;
+
   }
 
   $('.wr1').on('click', function() {
@@ -554,9 +561,9 @@ PlayResults = {
     }
     downCount++;
     checkForTouchdown();
+    checkIfTurnover();
     checkIfLost();
     checkIfWon();
-    checkIfTurnover();
   })  
 
   $('.wr3').on('click', function() {
@@ -600,10 +607,10 @@ PlayResults = {
       yardLine = 100;
     }
     downCount++
-    checkIfLost();
-    checkIfWon();
     checkForTouchdown();
     checkIfTurnover();
+    checkIfLost();
+    checkIfWon();
   })
 
     function pickRandomPassOutcome(array) {
