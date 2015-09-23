@@ -112,6 +112,7 @@
           -ms-flex-item-align: start;
               align-self: flex-start;
       position: relative;
+      margin-right: 450px;
       margin-bottom: 200px;
       height: 150vh;
       width: 100%; }
@@ -119,12 +120,10 @@
       display: none; }
     .container .field #playClock {
       color: black;
-      font-size: 20px;
+      font-size: 30pt;
+      font-weight: bold;
       height: 100%;
-      width: 100%;
-      -webkit-align-self: flex-end;
-          -ms-flex-item-align: end;
-              align-self: flex-end; }
+      width: 100%; }
     .container .field .defensiveRead {
       height: 75%;
       width: 50%;
@@ -157,7 +156,6 @@
     -webkit-align-items: right;
         -ms-flex-align: right;
             align-items: right;
-    background-color: gray;
     /*     position: relative; */ }
     .container .buttons .snap {
       margin: 0 auto;

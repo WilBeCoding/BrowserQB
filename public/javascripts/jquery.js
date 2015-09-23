@@ -182,7 +182,7 @@ PlayResults = {
   function driveFunction() {
 
     if(drive === 2) {
-      $('.drive').text("2nd of 3")
+      $('.drive').text("2 remaining drives")
     }
     if(drive ===3) {
       $('.drive').text("Final Drive")
@@ -240,7 +240,6 @@ PlayResults = {
         setTimeout(touchdownFunction, 1500);
       }
     }
-
 
   function scoreboardUpdate() {
     if(downCount === 1) {
@@ -391,9 +390,6 @@ PlayResults = {
     setTimeout(returnToDefault, 1500);
   }
 
-
-
-
   // function checkForInitials() {
   //   $('#mainInitials input').blur(function() {
   //       if( !$(this).val() ) {
@@ -421,7 +417,6 @@ PlayResults = {
       // $('.buttons').css('background-repeat', 'no-repeat');
       // $('.buttons').css('background-position', 'center center');
       // $('.buttons').css("padding-bottom", mg="600px");
-
       return;
     };
 

@@ -112,7 +112,6 @@ $bwt: 100px;
         align-self: flex-start;
         position: relative;
         // margin-right:25px;
-        // font-size: large;
         margin-bottom: 200px;
         margin-left: 1350px;
         height: 150vh;
@@ -123,8 +122,8 @@ $bwt: 100px;
       .playClockDiv {
         align-self: flex-start;
         position: relative;
-        // margin-right:25px;
-        // font-size: large;
+        // justify-content: bottom;
+        margin-right:450px;
         margin-bottom: 200px;
         // margin-left: 1350px;
         height: 150vh;
@@ -138,10 +137,11 @@ $bwt: 100px;
 
       #playClock {
         color: black;
-        font-size: 20px;
+        font-size: 30pt;
+        font-weight:bold;
         height: 100%;
         width: 100%;
-        align-self: flex-end;
+        // align-self: flex-end;
       }
 
       .defensiveRead {
@@ -174,7 +174,6 @@ $bwt: 100px;
     margin-top: 25px;
     align-items: right;
     // padding-bottom: 500px;
-    background-color: gray;
 /*     position: relative; */
 
     .snap {
