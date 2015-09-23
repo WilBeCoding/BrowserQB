@@ -19,7 +19,7 @@ router.get('/', function(req, res, next) {
 // })
 
 router.post('/', function(req, res, next) {
-  userScoresCollection.insert({name: req.body}).upsert();
+  userScoresCollection.insert({name: req.body});
   res.redirect('/');
 });
 

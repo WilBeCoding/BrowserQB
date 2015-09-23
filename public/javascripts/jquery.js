@@ -183,9 +183,17 @@ PlayResults = {
   }
 
   function won() {
-    timesWon = 0;
+    timesWon += 1;
     $('.defensiveSpan').text("You Won!")
     setTimeout(refresh, 2200);
+    $.ajax({
+        type: 'POST',
+        url: "/",
+        data: {initials: initials, timesPlayed: Number(timesPlayed), timesWon: 0},
+        success: function(data) {
+        },
+     })
+
   }
 
   function driveFunction() {
@@ -312,7 +320,6 @@ PlayResults = {
   }
 
   $('.startGameBtn').on('click', function() {
-    var timesPlayed = 0;
     timesPlayed += 1
     var initials = document.getElementById("initials").value;
     // clearInterval(checkForInitials);
@@ -324,17 +331,9 @@ PlayResults = {
     $('.placeHolderTopRight').addClass('topRight');
     $('.placeHolderTopLeft').addClass('topLeft');
     $.ajax({
-        type: 'GET',
-        url: "/",
-        data: {initials: initials, timesPlayed: Number(timesPlayed)},
-        success: function(data) {
-          console.log(initials);
-        },
-     })
-    $.ajax({
         type: 'POST',
         url: "/",
-        data: {initials: initials, timesPlayed: Number(timesPlayed)},
+        data: {initials: initials, timesPlayed: 0, timesWon: 0},
         success: function(data) {
         },
      })
