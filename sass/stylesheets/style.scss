@@ -61,7 +61,7 @@ $bwt: 100px;
       .table {
         height:$height;
         width: $width;
-        background-color: red;
+        // background-color: red;
         position: relative;
       }
     
@@ -216,11 +216,12 @@ $bwt: 100px;
   .birdsEyeView {
     display: flex;
     flex-direction: column;
-    height: $height;
+    height: 0;
     width: 100%;
-
+    color: orange;
+    
     .birdsEyeImg {
-      margin-top: 30px;
+      // margin-top: -250px;
       align-self: center;
     }
   }

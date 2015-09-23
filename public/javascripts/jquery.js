@@ -329,8 +329,8 @@ PlayResults = {
     $('.buttons').removeClass('placeholderButtons');
     $('.placeHolderSnap').addClass('snap');
     $('.snap').removeClass('placeHolderSnap');
-    $('.placeholderBirdsEyeView').addClass('birdsEyeView');
-    $('.birdsEyeView').removeClass('placeholderBirdsEyeView');
+    // $('.placeholderBirdsEyeView').addClass('birdsEyeView');
+    // $('.birdsEyeView').removeClass('placeholderBirdsEyeView');
   });
 
   $('.runImage').on('click', function() {
