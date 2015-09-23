@@ -359,7 +359,7 @@ PlayResults = {
       clearInterval(playClockId);
       sackTimer = setTimeout(sacked,5000);
       // $('.container').css("height", "80vh"); 
-      $('.buttons').css("padding-bottom", mg="600px");
+      // $('.buttons').css("margin-top", "0");
       $('.snap').addClass('placeHolderSnap');
       $('.snap').removeClass('snap');
       $('.buttonSnap').addClass('buttonSnapPlaceholder');
@@ -388,6 +388,7 @@ PlayResults = {
     interceptionReturnToDefaultBreak = false;
     interception = 0;
     setTimeout(returnToDefault, 1500);
+    // $('.buttons').css('background', 'white');
   }
 
   // function checkForInitials() {
@@ -402,7 +403,7 @@ PlayResults = {
   $(window).load(function() {
     $('.down').text("1st and " + yardsToFirst);
     $('.score').text(score);
-    $('.topLeft').css('margin-right','475px');
+    // $('.topLeft').css('margin-right','475px');
    })
 
 
@@ -410,7 +411,7 @@ PlayResults = {
     blitz = 0;
     timeoutIntercepted();
     if(touchdown === false) {
-      $('.buttons').css('background', 'transparent');
+      // $('.buttons').css('background', 'transparent');
     }
     if(interceptionReturnToDefaultBreak === true) {
       $('.buttons').css('background', 'url("http://cdn.fansided.com/wp-content/blogs.dir/276/files/2014/12/gruden.jpg")');
@@ -427,12 +428,14 @@ PlayResults = {
     PlayResults.GlobalOddsAdj = 0;
     checkIfTurnover();
     driveFunction();
-    if(yardsToFirst < 0) {
-      $('.buttons').css('background', 'transparent');
-    }
-    $('.buttons').css("padding-bottom", mg="0");
+    // if(yardsToFirst < 0) {
+    //   $('.buttons').css('background', 'white');
+    // }
+    $('.buttons').css("margin-top", "25px");
     $('.placeHolderTopRight').addClass('topRight');
     $('.placeHolderTopLeft').addClass('topLeft');
+    $('.topRight').removeClass('placeHolderTopRight');
+    $('.topLeft').removeClass('placeHolderTopLeft');
     $('.buttons').addClass('placeholderButtons');
     $('.placeholderButtons').removeClass('buttons');
     $('.snap').addClass('placeHoldersnap');

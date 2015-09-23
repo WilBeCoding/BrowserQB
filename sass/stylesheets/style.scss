@@ -23,11 +23,12 @@ $bwt: 100px;
   }
 
   .pregame { 
-    height: 65%;
+    height: 42%;
     width: 100%;
     text-align: center;
     // display: none;
-    padding-bottom: 50px;
+    // margin-bottom: -15px;
+    margin-top: -155px;
   }
 
     .topLeft {
@@ -58,16 +59,12 @@ $bwt: 100px;
     }
 
     .tableTextAlign{
-      // font-weight: x-large;
       position: relative;
-
       background-color: red;
-      // font-size: 20pt;
 
       .table {
         height:$height;
         width: $width;
-        // font-size: 20pt;
         background-color: red;
       }
     }
@@ -95,6 +92,7 @@ $bwt: 100px;
     position:relative;
     left: 0;
     right: 0;
+    margin-top: -8px;
 
     .footballIMG {
       max-height:40px;
@@ -111,7 +109,6 @@ $bwt: 100px;
       .playClock {
         align-self: flex-start;
         position: relative;
-        // margin-right:25px;
         margin-bottom: 200px;
         margin-left: 1350px;
         height: 150vh;
@@ -122,10 +119,8 @@ $bwt: 100px;
       .playClockDiv {
         align-self: flex-start;
         position: relative;
-        // justify-content: bottom;
         margin-right:450px;
         margin-bottom: 200px;
-        // margin-left: 1350px;
         height: 150vh;
         width: 100%;
         // background-color: yellow;
@@ -148,7 +143,6 @@ $bwt: 100px;
         height: 75%;
         width: 50%;
         align-self: center;
-        // position: relative;
         // background-color: gray;
         opacity: 0;
           }
@@ -169,12 +163,11 @@ $bwt: 100px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    height:26px;
+    height:50%;
     width: 100%;
     margin-top: 25px;
     align-items: right;
-    // padding-bottom: 500px;
-/*     position: relative; */
+    color: gray;
 
     .snap {
       margin: 0 auto;
@@ -194,12 +187,10 @@ $bwt: 100px;
     .WRbuttons {
       display: flex;
       flex-direction: row;
-      // background-color: gray;
       justify-content: space-between;
       height:100px;
       width: 100%;
-      // margin-top: 25px;
-      // margin-bottom: 160px;
+      // background-color: gray;
 
 
       .wr1 {
