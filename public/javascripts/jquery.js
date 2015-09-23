@@ -332,7 +332,7 @@ PlayResults = {
         },
      })
     $.ajax({
-        type: 'update',
+        type: 'POST',
         url: "/",
         data: {initials: initials, timesPlayed: Number(timesPlayed)},
         success: function(data) {
