@@ -381,6 +381,7 @@ PlayResults = {
       setTimeout(intercepted, 150)
       downCount = 1;
       yardsToFirst = 10;
+      interception = 0;
     }
   }
 
@@ -531,7 +532,7 @@ PlayResults = {
     if(PlayResults.WR2OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .2 && PlayResults.WR2OddsAdj + PlayResults.Yards < .7) {
       $('.defensiveSpan').text("Pass to WR2 is complete for an 8 yard gain!");
       $('.footballIMG').animate({'left': '+=6%'}, 'slow');
-      yardLine+=8
+      yardLine+=100
       yardsToFirst -= 8;
     }
     if(PlayResults.WR2OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .7 && PlayResults.WR2OddsAdj + PlayResults.Yards <= .8) {

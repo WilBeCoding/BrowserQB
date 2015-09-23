@@ -58,16 +58,13 @@ $bwt: 100px;
         }
     }
 
-    .tableTextAlign{
-      position: relative;
-      background-color: red;
-
       .table {
         height:$height;
         width: $width;
         background-color: red;
+        position: relative;
       }
-    }
+    
 
   .passImage {
     height: 200px;
