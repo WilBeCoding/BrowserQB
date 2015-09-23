@@ -30,6 +30,7 @@ $( document ).ready(function() {
       Safety: "The safety is cheating left!",
       Cb: "Right Cornerback Blitz!",
       Rolb: "The ROLB is blitzing!",
+      Beat: "WR3 beat his man!",
      },
 
     WR3oddsDecrease = {
@@ -722,9 +723,9 @@ var globalOddsDecreaseObjectRandomValue = randomValueOfObjectInpostSnapStrings(g
           }
 
          
-         if(defSpanClassic[0].innerText === "WR2 beat his man!") {
-            WR2OddsCount++;
-            WR2OddsCount++;
+         if(defSpanClassic[0].innerText === "WR3 beat his man!") {
+            WR3OddsCount++;
+            WR3OddsCount++;
           }
 
          
@@ -796,6 +797,7 @@ var globalOddsDecreaseObjectRandomValue = randomValueOfObjectInpostSnapStrings(g
          
          if(defSpanClassic[0].innerText === "The Defensive End is barreling towards you!") {
             GlobalOddsCount--;
+            WR3++;
             blitz++;
             clearSackTimer();
          }
@@ -803,6 +805,7 @@ var globalOddsDecreaseObjectRandomValue = randomValueOfObjectInpostSnapStrings(g
          
          if(defSpanClassic[0].innerText === "Dammit Donald!") {
             GlobalOddsCount--;
+            WR1++;
             blitz++;
             clearSackTimer();
          }  
