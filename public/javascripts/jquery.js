@@ -333,11 +333,15 @@ PlayResults = {
     $.ajax({
         type: 'POST',
         url: "/",
-        data: {initials: initials},
+        data: {initials: initials, timesWon: timesWon, timesPlayed: timesPlayed},
         success: function(data) {
         },
      })
-    returnToDefault();
+    $.get( "/" + 'data', function( data ) {
+      console.log(" this is data.timesplayed   " + data.timesPlayed);
+      $( ".record" )
+        .text( data.timesPlayed + " - " + data.timesWon );
+    }, "json" );
   })
 
   $('.passImage').on('click', function() {

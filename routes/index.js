@@ -8,25 +8,16 @@ router.get('/', function(req, res, next) {
   res.render('homepage', {title: "Browser QB!" });
 });
 
-// router.get('/', function(req, res, next) {
-//   res.render('intro', {title: "Browser QB!" });
-// });
-
-// router.get('/', function (req, res, next) {
-//   userScoresCollection.insert({initals: data} , function (err, data) {
-//     res.json(data)
-//   })
-// })
-
-// router.post('/', function(req, res, next) {
-//   console.log(req.body.initials);
-//   userScoresCollection.insert({name: req.body});
-//   res.redirect('/');
-// });
 
 router.post('/', function(req, res, next) {
   userScoresCollection.update({'user.initials': {$eq: req.body.initials}},{user: req.body},{upsert: true});
   res.redirect('/');
 });
 
+router.get('/data', function (req, res, next) {
+  userScoresCollection.find({_id: req.params.id}, {timesPlayed: 1, _id: 0} ,function (err, data) {
+  console.log(req.params.id);
+    res.json(data)
+  })
+})
 module.exports = router;
