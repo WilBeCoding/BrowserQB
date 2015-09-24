@@ -71,45 +71,45 @@ $( document ).ready(function() {
   }
 ];
 
-var timesWon = 0;
-var timesWonData = 0;
-var timesPlayedData = 0;
-var timesPlayed = 0;
-var wonGame = false;
-var checkIntervals;
-var touchdown = false;
-var interceptionReturnToDefaultBreak = false;
-var sackedReturnToDefault = 0;
-var blitz = 0;
-var returnToSackDefaultEndSacks = 0;
-var wrReturnToDefault = 0;
-var blitzSackedTime = 0;
-var returnToDefaultEndSacks = 0;
-var downCount = 1;
-var yardLine = 20;
-var score = 0;
-var drive = 1;
-var playClockId = 0;
-var display;
-var timerId = 0;
-var sackTimer = 0;
-var WR1OddsCount = 0;
-var WR2OddsCount = 0;
-var WR3OddsCount = 0;
-var GlobalOddsCount = 0;
-var yardsToFirst = 10;
-var interception = 0;
-var randomInteger = function randomInt() {
-                      return Number((Math.random() * (.25 - 0)) + 0);
-                    };
+  var timesWon = 0;
+  var timesWonData = 0;
+  var timesPlayedData = 0;
+  var timesPlayed = 0;
+  var wonGame = false;
+  var checkIntervals;
+  var touchdown = false;
+  var interceptionReturnToDefaultBreak = false;
+  var sackedReturnToDefault = 0;
+  var blitz = 0;
+  var returnToSackDefaultEndSacks = 0;
+  var wrReturnToDefault = 0;
+  var blitzSackedTime = 0;
+  var returnToDefaultEndSacks = 0;
+  var downCount = 1;
+  var yardLine = 20;
+  var score = 0;
+  var drive = 1;
+  var playClockId = 0;
+  var display;
+  var timerId = 0;
+  var sackTimer = 0;
+  var WR1OddsCount = 0;
+  var WR2OddsCount = 0;
+  var WR3OddsCount = 0;
+  var GlobalOddsCount = 0;
+  var yardsToFirst = 10;
+  var interception = 0;
+  var randomInteger = function randomInt() {
+                        return Number((Math.random() * (.25 - 0)) + 0);
+                      };
 
-PlayResults = {
-  Yards: .3 + randomInteger(),
-  WR1OddsAdj: 0,
-  WR2OddsAdj: 0,
-  WR3OddsAdj: 0,
-  GlobalOddsAdj: 0,
-}
+  PlayResults = {
+    Yards: .3 + randomInteger(),
+    WR1OddsAdj: 0,
+    WR2OddsAdj: 0,
+    WR3OddsAdj: 0,
+    GlobalOddsAdj: 0,
+  }
 
   function sacked(){
     downCount++;
@@ -150,9 +150,9 @@ PlayResults = {
     returnToSackDefaultEndSacks = setTimeout(returnToDefault, 1850);
   }
 
- function refresh() {
-  location.reload();
- }
+  function refresh() {
+    location.reload();
+  }
 
   function checkIfLost() {
     if(drive === 4 && score != 14 || drive === 3 && score !=7) {
@@ -168,7 +168,6 @@ PlayResults = {
     $('.defensiveSpan').text("You Lost!");
     setTimeout(refresh, 1500);
   }
-
 
   function checkIfWon() {
     if(score === 14) {
@@ -188,7 +187,6 @@ PlayResults = {
   }
 
   function driveFunction() {
-
     if(drive === 2) {
       $('.drive').text("2 remaining drives")
     }
@@ -230,25 +228,25 @@ PlayResults = {
   }
 
 
-    function checkForTouchdown(){
-      if(yardLine >= '100') {
-        $('.footballIMG').animate({'left': '87%'}, "fast");
-        clearTimeout(wrReturnToDefault);
-        touchdown = true;
-        $('.defensiveSpan').text("Touchdown!")
-        $('.buttons').css('background', 'url("http://netstorage.discovery.com/feeds/brightcove/asset-stills/apl/135966413090713964101001197_Puppy_Bowl_IX_BIGPLAY_4_Lift_10.jpg")');
-        setTimeout(touchdownFunction, 1500);
-        if(score === 0) {
-          score += 7;
-          $('.score').text(score);
-        }
-        else if(score === 7) {
-          score += 7;
-          $('.score').text(score);
-        }
+  function checkForTouchdown(){
+    if(yardLine >= '100') {
+      $('.footballIMG').animate({'left': '87%'}, "fast");
+      clearTimeout(wrReturnToDefault);
+      touchdown = true;
+      $('.defensiveSpan').text("Touchdown!")
+      $('.buttons').css('background', 'url("http://netstorage.discovery.com/feeds/brightcove/asset-stills/apl/135966413090713964101001197_Puppy_Bowl_IX_BIGPLAY_4_Lift_10.jpg")');
+      setTimeout(touchdownFunction, 1500);
+      if(score === 0) {
+        score += 7;
+        $('.score').text(score);
       }
-      checkIfWon();
+      else if(score === 7) {
+        score += 7;
+        $('.score').text(score);
+      }
     }
+    checkIfWon();
+  }
 
   function scoreboardUpdate() {
     if(downCount === 1) {
@@ -266,18 +264,18 @@ PlayResults = {
   }
 
   function pickRandomPostSnapString(array) {
-     var result;
-     var count = 0;
-     var key;
-     var keyArray = [];
-     for (var prop in array)
-         if (Math.random() < 1/++count) {
-            result = array[prop];
-          };
-      for (var key in result) {
-          keyArray.push(key);
-      }
-     return result[keyArray[Math.floor(Math.random() * keyArray.length)]]    
+    var result;
+    var count = 0;
+    var key;
+    var keyArray = [];
+    for (var prop in array)
+      if (Math.random() < 1/++count) {
+        result = array[prop];
+      };
+    for (var key in result) {
+      keyArray.push(key);
+    }
+    return result[keyArray[Math.floor(Math.random() * keyArray.length)]]    
   }
 
   var testingStringPostSnap =function repeatString() {
@@ -311,48 +309,48 @@ PlayResults = {
   }
 
   $('.startGameBtn').on('click', function() {
-      timesPlayed = 0;
-      timesWon = 0;
-      var initials = document.getElementById("initials").value;
-      // clearInterval(checkForInitials);
-      $('.pregame').addClass('placeholderPregame');
-      $('.placeholderPregame').removeClass('pregame');
-      $('.topLeft').css('margin-right', 0);
-      $('.placeholderTable').addClass('table');
-      $('.table').removeClass('placeholderTable');
-      $('.placeHolderTopRight').addClass('topRight');
-      $('.placeHolderTopLeft').addClass('topLeft');
-      $.get("/data/"+ $('#initials').val(), function( data ) {
-        for(var i = 0; i < data.length; i++) {
-          if(data[i]['user'].initials === $('#initials').val()) {
-            data[i]['user'].timesPlayed = data[i]['user'].timesPlayed;
-            timesPlayedData = data[i]['user'].timesPlayed;
-            timesWonData = data[i]['user'].timesWon;
-          }
-          // else(timesPlayedData = 0);
+    timesPlayed = 0;
+    timesWon = 0;
+    var initials = document.getElementById("initials").value;
+    // clearInterval(checkForInitials);
+    $('.pregame').addClass('placeholderPregame');
+    $('.placeholderPregame').removeClass('pregame');
+    $('.topLeft').css('margin-right', 0);
+    $('.placeholderTable').addClass('table');
+    $('.table').removeClass('placeholderTable');
+    $('.placeHolderTopRight').addClass('topRight');
+    $('.placeHolderTopLeft').addClass('topLeft');
+    $.get("/data/"+ $('#initials').val(), function( data ) {
+      for(var i = 0; i < data.length; i++) {
+        if(data[i]['user'].initials === $('#initials').val()) {
+          data[i]['user'].timesPlayed = data[i]['user'].timesPlayed;
+          timesPlayedData = data[i]['user'].timesPlayed;
+          timesWonData = data[i]['user'].timesWon;
         }
-        $.ajax({
-            type: 'POST',
-            url: "/",
-            data: {initials: initials, timesPlayed: Number(timesPlayedData) + Number(1),timesWon: timesWon},
-            // dataType: 'json',
-            success: function(req, res, data) {
-            }
-        })
+        // else(timesPlayedData = 0);
+      }
+      $.ajax({
+          type: 'POST',
+          url: "/",
+          data: {initials: initials, timesPlayed: Number(timesPlayedData) + Number(1),timesWon: timesWon},
+          // dataType: 'json',
+          success: function(req, res, data) {
+          }
       })
-      $.get( "/data/"+ $('#initials').val(), function( data ) {
-        for(var i = 0; i < data.length; i++) {
-          if(data[i]['user'].initials === $('#initials').val()) {
-            data[i]['user'].timesPlayed = data[i]['user'].timesPlayed;
-            timesPlayedData = data[i]['user'].timesPlayed;
-            timesWonData = data[i]['user'].timesWon;
-          }
-        }
-        timesPlayed+=1
-        $( ".record" ).text(timesWonData + " - " + timesPlayedData);
-        // debugger;
-      }, "json" );
     })
+    $.get( "/data/"+ $('#initials').val(), function( data ) {
+      for(var i = 0; i < data.length; i++) {
+        if(data[i]['user'].initials === $('#initials').val()) {
+          data[i]['user'].timesPlayed = data[i]['user'].timesPlayed;
+          timesPlayedData = data[i]['user'].timesPlayed;
+          timesWonData = data[i]['user'].timesWon;
+        }
+      }
+      timesPlayed+=1
+      $( ".record" ).text(timesWonData + " - " + timesPlayedData);
+      // debugger;
+    }, "json" );
+  })
 
   $('.passImage').on('click', function() {
     playClockId = 0;
@@ -397,25 +395,25 @@ PlayResults = {
   });
 
   $('.buttonSnap').on('click', function() {
+    $('.defensiveSpan').text(pickRandomPostSnapString(postSnapStrings));
+    timerId = 0;
+    clearInterval(playClockId);
+    sackTimer = setTimeout(sacked,5000);
+    // $('.container').css("height", "80vh"); 
+    // $('.buttons').css("margin-top", "0");
+    $('.snap').addClass('placeHolderSnap');
+    $('.snap').removeClass('snap');
+    $('.buttonSnap').addClass('buttonSnapPlaceholder');
+    $('.buttonSnap').removeClass('buttonSnap');
+    $('.placeholderWRbuttons').addClass('WRbuttons');
+    $('.placeholderWRbuttons').removeClass('placeholderWRbuttons');
+    $('#playClock').removeClass('playClock');
+    $('#playClock').addClass('hiddenPlayClock');
+    $('.birdsEyeImg').addClass('placeholderBirdsEyeView');
+    $('.placeholderBirdsEyeView').removeClass('birdsEyeImg');
+    timerId = window.setInterval(function(){
       $('.defensiveSpan').text(pickRandomPostSnapString(postSnapStrings));
-      timerId = 0;
-      clearInterval(playClockId);
-      sackTimer = setTimeout(sacked,5000);
-      // $('.container').css("height", "80vh"); 
-      // $('.buttons').css("margin-top", "0");
-      $('.snap').addClass('placeHolderSnap');
-      $('.snap').removeClass('snap');
-      $('.buttonSnap').addClass('buttonSnapPlaceholder');
-      $('.buttonSnap').removeClass('buttonSnap');
-      $('.placeholderWRbuttons').addClass('WRbuttons');
-      $('.placeholderWRbuttons').removeClass('placeholderWRbuttons');
-      $('#playClock').removeClass('playClock');
-      $('#playClock').addClass('hiddenPlayClock');
-      $('.birdsEyeImg').addClass('placeholderBirdsEyeView');
-      $('.placeholderBirdsEyeView').removeClass('birdsEyeImg');
-      timerId = window.setInterval(function(){
-        $('.defensiveSpan').text(pickRandomPostSnapString(postSnapStrings));
-      }, 1500);
+    }, 850);
   })
 
   function timeoutIntercepted(){
@@ -432,7 +430,6 @@ PlayResults = {
     interceptionReturnToDefaultBreak = false;
     interception = 0;
     setTimeout(returnToDefault, 1500);
-    // $('.buttons').css('background', 'white');
   }
 
   // function checkForInitials() {
@@ -447,7 +444,7 @@ PlayResults = {
   $(window).load(function() {
     $('.down').text("1st and " + yardsToFirst);
     $('.score').text(score);
-   })
+  })
 
 
   function returnToDefault () {
@@ -502,7 +499,6 @@ PlayResults = {
     $('.down').text(downCount);
     scoreboardUpdate();
     interception = 0;
-
   }
 
   $('.wr1').on('click', function() {
@@ -662,21 +658,20 @@ PlayResults = {
        return result[keyArray[Math.floor(Math.random() * keyArray.length)]]    
     }
 
-   function randomValueOfObjectInpostSnapStrings(array) {
-      var result;
-      var count = 0;
-      var key;
-      var keyArray = [];
-
-     for (var prop in array)
-         if (Math.random() < 1/++count) {
-            result = array[prop];
-          };
-      for (var key in result) {
-          keyArray.push(key);
-      }
-     return result   
- };
+  function randomValueOfObjectInpostSnapStrings(array) {
+    var result;
+    var count = 0;
+    var key;
+    var keyArray = [];
+    for (var prop in array)
+      if (Math.random() < 1/++count) {
+        result = array[prop];
+      };
+    for (var key in result) {
+        keyArray.push(key);
+    }
+   return result   
+  };
 
 var WR1oddsIncreaseObjectRandomValue = randomValueOfObjectInpostSnapStrings(WR1oddsIncreaseObject);
 
@@ -708,140 +703,103 @@ var globalOddsDecreaseObjectRandomValue = randomValueOfObjectInpostSnapStrings(g
          var GlobalOddsCount = 0
          var key;
          var keyArray = [];
-
-         if(defSpanClassic[0].innerText === "The LOLB is blitzing!") {
+          if(defSpanClassic[0].innerText === "The LOLB is blitzing!") {
             WR1OddsCount++;
             blitz++;
             clearSackTimer();
           }
-
-         if(defSpanClassic[0].innerHTML === "The Safety Is Cheating Right!") {
+          if(defSpanClassic[0].innerHTML === "The Safety Is Cheating Right!") {
             WR1OddsCount++;
             WR3OddsCount--;
             WR2OddsCount++;
           }
-
-         if(defSpanClassic[0].innerText === "Left Cornerback Blitz!") {
+          if(defSpanClassic[0].innerText === "Left Cornerback Blitz!") {
             WR1OddsCount++;
             blitz++;
             clearSackTimer();
           }
-
-         if(defSpanClassic[0].innerText === "WR1 Pressed!") {
+          if(defSpanClassic[0].innerText === "WR1 Pressed!") {
             WR1OddsCount--;
           }
-
-         if(defSpanClassic[0].innerText === "The LOLB dropped into coverage!") {
+          if(defSpanClassic[0].innerText === "The LOLB dropped into coverage!") {
             WR1OddsCount--;
             WR2OddsCount--;
           }
-
-         if(defSpanClassic[0].innerText === "The Safety is cheating left") {
+          if(defSpanClassic[0].innerText === "The Safety is cheating left") {
             WR1OddsCount--;
             WR3OddsCount++;
             WR2OddsCount++;
           }
-
-         if(defSpanClassic[0].innerText === "The MLB is blitzing!") {
+          if(defSpanClassic[0].innerText === "The MLB is blitzing!") {
             WR2OddsCount++;
             blitz++;
             clearSackTimer();            
           }
-
-         if(defSpanClassic[0].innerText === "Safety Blitz!") {
+          if(defSpanClassic[0].innerText === "Safety Blitz!") {
             GlobalOddsCount++;
             blitz++;
             clearSackTimer();
           }
-
-         
-         if(defSpanClassic[0].innerText === "WR3 beat his man!") {
+          if(defSpanClassic[0].innerText === "WR3 beat his man!") {
             WR3OddsCount++;
             WR3OddsCount++;
           }
-
-         
-         if(defSpanClassic[0].innerText === "WR2 pressed!") {
+          if(defSpanClassic[0].innerText === "WR2 pressed!") {
            WR2OddsCount--;
            WR2OddsCount--;
           }
-
-         
-         if(defSpanClassic[0].innerText === "The MLB dropped back into coverage") {
+          if(defSpanClassic[0].innerText === "The MLB dropped back into coverage") {
             WR2OddsCount--;
-         }
-
-         
-         if(defSpanClassic[0].innerText === "The Safety is staying mid-field!") {
+          }
+          if(defSpanClassic[0].innerText === "The Safety is staying mid-field!") {
             WR2OddsCount--;
-         }
-
-         
-         if(defSpanClassic[0].innerText === "Right Cornerback Blitz!") {
+          }
+          if(defSpanClassic[0].innerText === "Right Cornerback Blitz!") {
             WR3OddsCount++;
             blitz++;
             clearSackTimer();            
-         }
-
-         
-         if(defSpanClassic[0].innerText === "The ROLB is blitzing!") {
+          }
+          if(defSpanClassic[0].innerText === "The ROLB is blitzing!") {
             WR3OddsCount++;
             blitz++;
-            clearSackTimer();  
-         }
-
-         
-         if(defSpanClassic[0].innerText === "WR3 pressed!") {
+           clearSackTimer();  
+          }
+          if(defSpanClassic[0].innerText === "WR3 pressed!") {
             WR3OddsCount--;
             WR3OddsCount--;
-         }
-
-         
-         if(defSpanClassic[0].innerText === "The ROLB dropped back into coverage") {
+          }
+          if(defSpanClassic[0].innerText === "The ROLB dropped back into coverage") {
             WR3OddsCount++;
             WR2OddsCount--;
-         }
-
-         
-         if(defSpanClassic[0].innerText === "The Safety is cheating right") {
+          }
+          if(defSpanClassic[0].innerText === "The Safety is cheating right") {
             WR1OddsCount++;
             WR3OddsCount--;
-         }
-
-         
-         if(defSpanClassic[0].innerText === "All Out Blitz!") {
+          }
+          if(defSpanClassic[0].innerText === "All Out Blitz!") {
             GlobalOddsCount++;
             blitz++;
             clearSackTimer();       
-         }
-
-         
-         if(defSpanClassic[0].innerText === "The line is holding strong!") {
+          }
+          if(defSpanClassic[0].innerText === "The line is holding strong!") {
             GlobalOddsCount++;
-         }
-
-         
-         if(defSpanClassic[0].innerText === "WRs stuffed at the line!") {
+          } 
+          if(defSpanClassic[0].innerText === "WRs stuffed at the line!") {
             GlobalOddsCount--;
             GlobalOddsCount--;
-         }
-
-         
-         if(defSpanClassic[0].innerText === "The Defensive End is barreling towards you!") {
+          } 
+          if(defSpanClassic[0].innerText === "The Defensive End is barreling towards you!") {
             GlobalOddsCount--;
             WR3++;
             blitz++;
             clearSackTimer();
-         }
-
-         
-         if(defSpanClassic[0].innerText === "Dammit Donald!") {
+          }
+          if(defSpanClassic[0].innerText === "Dammit Donald!") {
             GlobalOddsCount--;
             WR1++;
             blitz++;
             clearSackTimer();
-         }  
-
+          }  
   PlayResults.WR1OddsAdj = PlayResults.WR1OddsAdj+ WR1OddsCount * .1;
   PlayResults.WR2OddsAdj= PlayResults.WR2OddsAdj+ WR2OddsCount * .1;
   PlayResults.WR3OddsAdj= PlayResults.WR3OddsAdj+ WR3OddsCount * .1;

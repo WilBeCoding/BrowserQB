@@ -19,11 +19,4 @@ router.get('/data/:user_initials', function (req, res, next) {
   })
 })
 
-// router.get('/view', function (req, res, next) {
-//   userScoresCollection.find({}, function(err, docs) {
-//     if(err)res.json(err);
-//     else res.render('/', {user:docs})
-//   })
-// })
-
 module.exports = router;
