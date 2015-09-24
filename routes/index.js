@@ -9,7 +9,6 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-  console.log(req.body.timesPlayed);
   userScoresCollection.update({'user.initials': {$eq: req.body.initials}},{user: req.body},{upsert: true});
   res.redirect('/');
 });
