@@ -69,6 +69,7 @@ $( document ).ready(function() {
       touchdown: "Pass completed for a touchdown!"
     }
   ];
+  var timesWonData = 0;
   var timesPlayedData = 0;
   var timesPlayed = 0;
   var timesWon = 0;
@@ -354,7 +355,6 @@ $( document ).ready(function() {
           }
       })
     })
-    timesPlayed+=1
     $.get( "/data/"+ $('#initials').val(), function( data ) {
       for(var i = 0; i < data.length; i++) {
         if(data[i]['user'].initials === $('#initials').val()) {
@@ -363,8 +363,9 @@ $( document ).ready(function() {
           timesWonData = data[i]['user'].timesWon;
         }
       }
-      $( ".record" ).text(timesPlayedData + " - " + timesWonData);
-      debugger;
+      timesPlayed+=1
+      $( ".record" ).text(timesWonData + " - " + timesPlayedData);
+      // debugger;
     }, "json" );
   })
   $('.passImage').on('click', function() {
