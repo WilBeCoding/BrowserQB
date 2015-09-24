@@ -320,7 +320,7 @@ PlayResults = {
   }
 
   $('.startGameBtn').on('click', function() {
-    timesPlayed += 1
+    timesPlayed = 0;
     var initials = document.getElementById("initials").value;
     // clearInterval(checkForInitials);
     $('.pregame').addClass('placeholderPregame');
@@ -333,7 +333,7 @@ PlayResults = {
     $.ajax({
         type: 'POST',
         url: "/",
-        data: {initials: initials, timesPlayed: 0, timesWon: 0},
+        data: {initials: initials},
         success: function(data) {
         },
      })

@@ -18,8 +18,14 @@ router.get('/', function(req, res, next) {
 //   })
 // })
 
+// router.post('/', function(req, res, next) {
+//   console.log(req.body.initials);
+//   userScoresCollection.insert({name: req.body});
+//   res.redirect('/');
+// });
+
 router.post('/', function(req, res, next) {
-  userScoresCollection.insert({name: req.body});
+  userScoresCollection.update({'user.initials': {$eq: req.body.initials}},{user: req.body},{upsert: true});
   res.redirect('/');
 });
 
