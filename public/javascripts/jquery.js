@@ -69,6 +69,7 @@ $( document ).ready(function() {
       touchdown: "Pass completed for a touchdown!"
     }
   ];
+  var timesPlayedData = 0;
   var timesPlayed = 0;
   var timesWon = 0;
   var wonGame = false;
@@ -333,19 +334,39 @@ $( document ).ready(function() {
     $('.table').removeClass('placeholderTable');
     $('.placeHolderTopRight').addClass('topRight');
     $('.placeHolderTopLeft').addClass('topLeft');
-    $.ajax({
-        type: 'POST',
-        url: "/",
-        data: {initials: initials, timesWon: timesWon, timesPlayed: timesPlayed},
-        success: function(data) {
-        },
-     })
-    $.get( "/" + 'data', function( data ) {
-      console.log(" this is data.timesplayed   " + data.timesPlayed);
-      $( ".record" ).text( data.timesPlayed + " - " + data.timesWon );
+    $.get("/data/"+ $('#initials').val(), function( data ) {
+      for(var i = 0; i < data.length; i++) {
+        if(data[i]['user'].initials === $('#initials').val()) {
+          data[i]['user'].timesPlayed = data[i]['user'].timesPlayed;
+          timesPlayedData = data[i]['user'].timesPlayed;
+          timesWonData = data[i]['user'].timesWon;
+        }
+        // else(timesPlayedData = 0);
+      }
+      debugger;
+      $.ajax({
+          type: 'POST',
+          url: "/",
+          data: {initials: initials, timesPlayed: Number(timesPlayedData) + Number(1),timesWon: timesWon},
+          // dataType: 'json',
+          success: function(req, res, data) {
+
+          }
+      })
+    })
+    timesPlayed+=1
+    $.get( "/data/"+ $('#initials').val(), function( data ) {
+      for(var i = 0; i < data.length; i++) {
+        if(data[i]['user'].initials === $('#initials').val()) {
+          // data[i]['user'].timesPlayed = data[i]['user'].timesPlayed;
+          timesPlayedData = data[i]['user'].timesPlayed;
+          timesWonData = data[i]['user'].timesWon;
+        }
+      }
+      $( ".record" ).text(timesPlayedData + " - " + timesWonData);
+      debugger;
     }, "json" );
   })
-
   $('.passImage').on('click', function() {
     var thirtySeconds = 30;
     var display = $('#playClock');
