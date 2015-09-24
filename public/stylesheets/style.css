@@ -86,6 +86,7 @@
     position: relative;
     left: 0;
     right: 0;
+    margin-left: -16px;
     margin-top: -8px; }
     .container .field .footballIMG {
       max-height: 40px;
