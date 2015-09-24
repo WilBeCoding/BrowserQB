@@ -89,7 +89,6 @@ var downCount = 1;
 var yardLine = 20;
 var score = 0;
 var drive = 1;
-// var clicked = false;
 var playClockId = 0;
 var display;
 var timerId = 0;
@@ -172,9 +171,7 @@ PlayResults = {
 
 
   function checkIfWon() {
-    console.log(score);
     if(score === 14) {
-      console.log("Hits inside check if won")
       wonGame = true;
       clearTimeout(sackedReturnToDefault);
       clearInterval(timerId);
@@ -346,7 +343,7 @@ PlayResults = {
       $.get( "/data/"+ $('#initials').val(), function( data ) {
         for(var i = 0; i < data.length; i++) {
           if(data[i]['user'].initials === $('#initials').val()) {
-            // data[i]['user'].timesPlayed = data[i]['user'].timesPlayed;
+            data[i]['user'].timesPlayed = data[i]['user'].timesPlayed;
             timesPlayedData = data[i]['user'].timesPlayed;
             timesWonData = data[i]['user'].timesWon;
           }
@@ -450,7 +447,6 @@ PlayResults = {
   $(window).load(function() {
     $('.down').text("1st and " + yardsToFirst);
     $('.score').text(score);
-    // $('.topLeft').css('margin-right','475px');
    })
 
 
