@@ -51,26 +51,26 @@ $( document ).ready(function() {
      }
   ]
 
- var passOutcomeStrings = [
+  var passOutcomeStrings = [
 
-  shortCompletion = {
-    five: "Pass completed for a 5 yard gain",
-    ten: "Pass completed for a 10 yard gain",
-  },
-  mediumCompletion = {
-    fifteen: "Pass completed for a 15 yard gain",
-    twenty: "Pass completed for a 20 yard gain",
-  },
-  longCompletion = {
-    thirty: "Pass completed for a 40 yard gain",
-    fourty: "Pass completed for a 50 yard gain",
-  },
+    shortCompletion = {
+      five: "Pass completed for a 5 yard gain",
+      ten: "Pass completed for a 10 yard gain",
+    },
+    mediumCompletion = {
+      fifteen: "Pass completed for a 15 yard gain",
+      twenty: "Pass completed for a 20 yard gain",
+    },
+    longCompletion = {
+      thirty: "Pass completed for a 40 yard gain",
+      fourty: "Pass completed for a 50 yard gain",
+    },
 
-  touchdownCompletion = {
-    touchdown: "Pass completed for a touchdown!"
-  }
-];
-
+    touchdownCompletion = {
+      touchdown: "Pass completed for a touchdown!"
+    }
+  ];
+  var oddsDemoInterval = 0;
   var timesWon = 0;
   var timesWonData = 0;
   var timesPlayedData = 0;
@@ -109,6 +109,11 @@ $( document ).ready(function() {
     WR2OddsAdj: 0,
     WR3OddsAdj: 0,
     GlobalOddsAdj: 0,
+  }
+
+
+  function oddsDemo() {
+    console.log(PlayResults);
   }
 
   function sacked(){
@@ -183,7 +188,29 @@ $( document ).ready(function() {
 
   function won() {
     $('.defensiveSpan').text("You Won!")
-    setTimeout(refresh, 1500);
+    // $.get("/data/"+ $('#initials').val(), function( data ) {
+    //   console.log("This is hitting outside of the while loop how many times?");
+    //   for(var i = 0; i < data.length; i++) {
+    //     if(data[i]['user'].initials === $('#initials').val()) {
+    //       data[i]['user'].timesWon = data[i]['user'].timesWon;
+    //       console.log("Has hit this many times");
+    //       timesPlayedData = data[i]['user'].timesPlayed;
+    //       timesWonData = data[i]['user'].timesWon;
+    //     }
+    //   }
+    //   debugger;
+    //   $.ajax({
+    //       type: 'POST',
+    //       url: "/winning",
+    //       data: {initials:initials, timesPlayed: Number(timesPlayed), timesWon: Number(timesWonData) + Number(1)},
+    //       success: function(req, res, data) {
+    //       console.log("post success post post");
+    //         // May want some code here. Not sure why. CarpeYolo
+          setTimeout(refresh, 5000);
+    //       }
+    //     })
+    //   debugger;
+    // })
   }
 
   function driveFunction() {
@@ -306,6 +333,15 @@ $( document ).ready(function() {
                     }, 1000);
   }
 
+  function validate(){
+      if ($('#initials').val().length   >   0) {
+          $("input[type=submit]").prop("disabled", false);
+      }
+      else {
+          $("input[type=submit]").prop("disabled", true);
+      }
+  }
+
   $('.startGameBtn').on('click', function() {
     timesPlayed = 0;
     timesWon = 0;
@@ -391,6 +427,7 @@ $( document ).ready(function() {
   });
 
   $('.buttonSnap').on('click', function() {
+    // console.log(PlayResults);
     $('.defensiveSpan').text(pickRandomPostSnapString(postSnapStrings));
     timerId = 0;
     clearInterval(playClockId);
@@ -405,6 +442,7 @@ $( document ).ready(function() {
     $('#playClock').addClass('hiddenPlayClock');
     $('.birdsEyeImg').addClass('placeholderBirdsEyeView');
     $('.placeholderBirdsEyeView').removeClass('birdsEyeImg');
+    // oddsDemoInterval = setInterval(oddsDemo, 851);
     timerId = window.setInterval(function(){
       $('.defensiveSpan').text(pickRandomPostSnapString(postSnapStrings));
     }, 850);
@@ -427,11 +465,14 @@ $( document ).ready(function() {
   }
 
   $(window).load(function() {
+    validate();
+    $('#initials').change(validate);
     $('.down').text("1st and " + yardsToFirst);
     $('.score').text(score);
   })
 
   function returnToDefault () {
+    // clearInterval(oddsDemoInterval);
     blitz = 0;
     timeoutIntercepted();
     if(touchdown === false) {
@@ -547,7 +588,7 @@ $( document ).ready(function() {
     if(PlayResults.WR2OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .2 && PlayResults.WR2OddsAdj + PlayResults.Yards < .7) {
       $('.defensiveSpan').text("Pass to WR2 is complete for an 8 yard gain!");
       $('.footballIMG').animate({'left': '+=6%'}, 'slow');
-      yardLine+=8
+      yardLine+=8;
       yardsToFirst -= 8;
     }
     if(PlayResults.WR2OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .7 && PlayResults.WR2OddsAdj + PlayResults.Yards <= .8) {
@@ -575,7 +616,7 @@ $( document ).ready(function() {
   })  
 
   $('.wr3').on('click', function() {
-      var yardsClass = document.getElementsByClassName('yards');
+    var yardsClass = document.getElementsByClassName('yards');
     clearTimeout(sackTimer);
     clearTimeout(blitzSackedTime);
     clearTimeout(returnToDefaultEndSacks);
@@ -768,13 +809,13 @@ $( document ).ready(function() {
         } 
         if(defSpanClassic[0].innerText === "The Defensive End is barreling towards you!") {
           GlobalOddsCount--;
-          WR3++;
+          WR3OddsCount++;
           blitz++;
           clearSackTimer();
         }
         if(defSpanClassic[0].innerText === "Dammit Donald!") {
           GlobalOddsCount--;
-          WR1++;
+          WR1OddsCount++;
           blitz++;
           clearSackTimer();
         }  

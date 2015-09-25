@@ -11,17 +11,17 @@ block content
 
     div.placeholderButtons
       div#snap.placeHolderSnap
-        input(type="submit" value="Hut Hut Hike!").buttonSnap
+        input(type="button" value="Hut Hut Hike!").buttonSnap
         img(src="http://cdn1.sbnation.com/imported_assets/475727/kfield1.gif").birdsEyeImg
       div.placeholderWRbuttons
         div.wr1
-          input(type="submit" value="Wide Receiver 1")
+          input(type="button" value="Wide Receiver 1")
           label Left
         div.wr2
-          input(type="submit" value="Wide Receiver 2")
+          input(type="button" value="Wide Receiver 2")
           label Mid
         div.wr3
-          input(type="submit" value="Wide Receiver 3")
+          input(type="button" value="Wide Receiver 3")
           label Right
     div.pregame
       h1 Welcome to BrowserQB!
@@ -30,8 +30,8 @@ block content
       br
       br
       div.center
-        form(action="/", method='GET' id="mainInitials")
-          label Enter your initials to start playing!
+        form(action="/", method='post' id="mainInitials")
+          label Enter your name to start playing!
         input(type="text" name="user_initials" id="initials")
         p
           input(type="submit" value="Take to the field!" id="initialsButton").startGameBtn
@@ -61,7 +61,6 @@ block content
             td
             td
             td.record
-
     div.placeHolderTopRight
       h1 Run Plays
       input(type="image" src="http://glb.warriorgeneral.com/images/plays/171.gif" name="plays").runImage#playImages

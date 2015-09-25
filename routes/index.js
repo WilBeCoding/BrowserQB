@@ -13,6 +13,11 @@ router.post('/', function(req, res, next) {
   res.redirect('/');
 });
 
+router.post('/winning', function(req, res, next) {
+  userScoresCollection.update({'user.initials': {$eq: req.body.initials}},{user: req.body},{upsert: true});
+  res.redirect('/');
+});
+
 router.get('/data/:user_initials', function (req, res, next) {
   userScoresCollection.find({},function (err, data) {
     res.json(data)
