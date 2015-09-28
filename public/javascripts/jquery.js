@@ -73,8 +73,8 @@ $( document ).ready(function() {
   var oddsDemoInterval = 0;
   var timesWon = 0;
   var timesWonData = 0;
-  var timesPlayedData = 0;
-  var timesPlayed = 0;
+  var timesLostData = 0;
+  var timesLost = 0;
   var wonGame = false;
   var checkIntervals;
   var touchdown = false;
@@ -170,7 +170,48 @@ $( document ).ready(function() {
   }
 
   function lost() {
+    // var initials = document.getElementById("initials").value;
     $('.defensiveSpan').text("You Lost!");
+    // $.get("/data/"+ $('#initials').val(), function( data ) {
+    //   for(var i = 0; i < data.length; i++) {
+    //     if(data[i]['user'].initials === $('#initials').val()) {
+    //       data[i]['user'].timesLost = data[i]['user'].timesLost;
+    //       timesLostData = data[i]['user'].timesLost;
+    //       timesWonData = data[i]['user'].timesWon;
+    //     }
+    //     // May need an else statement here for first time users
+    //   }
+    //   $.get("/data/"+ $('#initials').val(), function( data ) {
+    //     for(var i = 0; i < data.length; i++) {
+    //       if(data[i]['user'].initials === $('#initials').val()) {
+    //         data[i]['user'].timesLost = data[i]['user'].timesLost;
+    //         timesLostData = data[i]['user'].timesLost;
+    //         timesWonData = data[i]['user'].timesWon;
+    //       }
+    //       // May need an else statement here for first time users
+    //     }
+    //     debugger;
+    //     $.ajax({
+    //         type: 'POST',
+    //         url: "/",
+    //         data: {initials: initials, timesLost: timesLost,timesWon: timesWon},
+    //         success: function(req, res, data) {
+    //           // May want some code here. Not sure why. CarpeYolo
+    //         }
+    //     })
+    //   })
+    //   $.get( "/data/"+ $('#initials').val(), function( data ) {
+    //     for(var i = 0; i < data.length; i++) {
+    //       if(data[i]['user'].initials === $('#initials').val()) {
+    //         data[i]['user'].timesLost = data[i]['user'].timesLost;
+    //         timesLostData = data[i]['user'].timesLost;
+    //         timesWonData = data[i]['user'].timesWon;
+    //       }
+    //     }
+    //     timesLost+=1
+    //     $( ".record" ).text(timesWonData + " - " + timesLostData);
+    //   }, "json" );
+    // })
     setTimeout(refresh, 1500);
   }
 
@@ -187,30 +228,33 @@ $( document ).ready(function() {
   }
 
   function won() {
+    var initials = document.getElementById("initials").value;
+    clearInterval(wrReturnToDefault);
+    clearInterval(touchdownTimeout);
+    // var data = {initials:initials, timesLost: Number(timesLost), timesWon: Number(timesWonData) + Number(1)};
     $('.defensiveSpan').text("You Won!")
     // $.get("/data/"+ $('#initials').val(), function( data ) {
-    //   console.log("This is hitting outside of the while loop how many times?");
     //   for(var i = 0; i < data.length; i++) {
     //     if(data[i]['user'].initials === $('#initials').val()) {
     //       data[i]['user'].timesWon = data[i]['user'].timesWon;
-    //       console.log("Has hit this many times");
-    //       timesPlayedData = data[i]['user'].timesPlayed;
-    //       timesWonData = data[i]['user'].timesWon;
+    //       // console.log(data[i]['user'].initials);
+    //       // timesLostData = data[i]['user'].timesLost;
+    //       // timesWonData = Number(data[i]['user'].timesWon);
     //     }
     //   }
-    //   debugger;
+    //   // debugger;
     //   $.ajax({
     //       type: 'POST',
-    //       url: "/winning",
-    //       data: {initials:initials, timesPlayed: Number(timesPlayed), timesWon: Number(timesWonData) + Number(1)},
+    //       url: "/",
+    //       data: {initials:initials, timesLost: timesLostData, timesWon:Number(timesWon) + Number(1)},
     //       success: function(req, res, data) {
-    //       console.log("post success post post");
+    //         // console.log(data);
     //         // May want some code here. Not sure why. CarpeYolo
-          setTimeout(refresh, 5000);
+          setTimeout(refresh, 2200);
     //       }
     //     })
-    //   debugger;
     // })
+    // debugger;
   }
 
   function driveFunction() {
@@ -244,7 +288,7 @@ $( document ).ready(function() {
     if(score === 14) {
       checkIfWon();
     }
-    setTimeout(returnToDefault, 2000)
+    touchdownTimeout = setTimeout(returnToDefault, 2000)
     $('.footballIMG').animate({'left': '24.5%'}, "fast");
     drive++;
     downCount = 1;
@@ -303,10 +347,10 @@ $( document ).ready(function() {
     return result[keyArray[Math.floor(Math.random() * keyArray.length)]]    
   }
 
-  var testingStringPostSnap =function repeatString() {
-                var intervalID = window.setInterval(postSnapStringsFlash, 17);
-                                 return intervalID;
-                             }
+  // var testingStringPostSnap =function repeatString() {
+  //               var intervalID = window.setInterval(postSnapStringsFlash, 17);
+  //                                return intervalID;
+  //                            }
 
   var postSnapStringsFlash = pickRandomPostSnapString(postSnapStrings)
   var WR1oddsIncreaseObject = postSnapStrings[0];
@@ -343,8 +387,6 @@ $( document ).ready(function() {
   }
 
   $('.startGameBtn').on('click', function() {
-    timesPlayed = 0;
-    timesWon = 0;
     var initials = document.getElementById("initials").value;
     $('.pregame').addClass('placeholderPregame');
     $('.placeholderPregame').removeClass('pregame');
@@ -356,16 +398,15 @@ $( document ).ready(function() {
     $.get("/data/"+ $('#initials').val(), function( data ) {
       for(var i = 0; i < data.length; i++) {
         if(data[i]['user'].initials === $('#initials').val()) {
-          data[i]['user'].timesPlayed = data[i]['user'].timesPlayed;
-          timesPlayedData = data[i]['user'].timesPlayed;
-          timesWonData = data[i]['user'].timesWon;
+          data[i]['user'].timesLost = data[i]['user'].timesLost;
+          timesLostData = data[i]['user'].timesLost;
         }
         // May need an else statement here for first time users
       }
       $.ajax({
           type: 'POST',
           url: "/",
-          data: {initials: initials, timesPlayed: Number(timesPlayedData) + Number(1),timesWon: timesWon},
+          data: {initials: initials},
           success: function(req, res, data) {
             // May want some code here. Not sure why. CarpeYolo
           }
@@ -374,13 +415,9 @@ $( document ).ready(function() {
     $.get( "/data/"+ $('#initials').val(), function( data ) {
       for(var i = 0; i < data.length; i++) {
         if(data[i]['user'].initials === $('#initials').val()) {
-          data[i]['user'].timesPlayed = data[i]['user'].timesPlayed;
-          timesPlayedData = data[i]['user'].timesPlayed;
-          timesWonData = data[i]['user'].timesWon;
         }
       }
-      timesPlayed+=1
-      $( ".record" ).text(timesWonData + " - " + timesPlayedData);
+      $( ".record" ).text(timesWon + " - " + timesLost);
     }, "json" );
   })
 
@@ -427,7 +464,6 @@ $( document ).ready(function() {
   });
 
   $('.buttonSnap').on('click', function() {
-    // console.log(PlayResults);
     $('.defensiveSpan').text(pickRandomPostSnapString(postSnapStrings));
     timerId = 0;
     clearInterval(playClockId);
@@ -442,7 +478,6 @@ $( document ).ready(function() {
     $('#playClock').addClass('hiddenPlayClock');
     $('.birdsEyeImg').addClass('placeholderBirdsEyeView');
     $('.placeholderBirdsEyeView').removeClass('birdsEyeImg');
-    // oddsDemoInterval = setInterval(oddsDemo, 851);
     timerId = window.setInterval(function(){
       $('.defensiveSpan').text(pickRandomPostSnapString(postSnapStrings));
     }, 850);
@@ -472,7 +507,7 @@ $( document ).ready(function() {
   })
 
   function returnToDefault () {
-    // clearInterval(oddsDemoInterval);
+    clearInterval(oddsDemoInterval);
     blitz = 0;
     timeoutIntercepted();
     if(touchdown === false) {
@@ -663,6 +698,7 @@ $( document ).ready(function() {
   })
 
   function pickRandomPassOutcome(array) {
+    // oddsDemoInterval = setTimeout(oddsDemo,849);
     var result;
     var count = 0;
     var key;
@@ -704,9 +740,6 @@ $( document ).ready(function() {
   var WR3oddsDecreaseObjectRandomValue = randomValueOfObjectInpostSnapStrings(WR3oddsDecreaseObject);
   var globalOddsIncreaseObjectRandomValue = randomValueOfObjectInpostSnapStrings(globalOddsIncreaseObject);
   var globalOddsDecreaseObjectRandomValue = randomValueOfObjectInpostSnapStrings(globalOddsDecreaseObject);
-
-
-
 
   var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
   var list = document.querySelector('.defensiveSpan');
@@ -822,17 +855,13 @@ $( document ).ready(function() {
   PlayResults.WR1OddsAdj = PlayResults.WR1OddsAdj+ WR1OddsCount * .1;
   PlayResults.WR2OddsAdj= PlayResults.WR2OddsAdj+ WR2OddsCount * .1;
   PlayResults.WR3OddsAdj= PlayResults.WR3OddsAdj+ WR3OddsCount * .1;
-  PlayResults.GlobalOddsAdj= PlayResults.GlobalOddsAdj+ GlobalOddsCount * .1;
+  PlayResults.GlobalOddsAdj= PlayResults.GlobalOddsAdj+ GlobalOddsCount * .07;
       }
     });
   })
-
   observer.observe(list, {
     attributes: true, 
     childList: true, 
     characterData: true
   });
-
-
-
 });
