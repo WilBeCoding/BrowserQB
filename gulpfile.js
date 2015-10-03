@@ -32,9 +32,6 @@ gulp.task('watch', function() {
 });
 
 gulp.task('watch1', function() {
-  gulp.watch('./public/stylesheets/*.scss', ['process-scripts'])
+  gulp.watch('./public/javascripts/*.js', ['process-scripts'])
 });
 
-gulp.task('default', function() {
-  console.log("I have configured a gulpfile");
-});

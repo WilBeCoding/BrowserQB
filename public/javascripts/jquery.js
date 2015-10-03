@@ -728,26 +728,13 @@ $( document ).ready(function() {
    return result   
   };
 
-  var WR1oddsIncreaseObjectRandomValue = randomValueOfObjectInpostSnapStrings(WR1oddsIncreaseObject);
-
-  var WR1oddsDecreaseObjectRandomValue = randomValueOfObjectInpostSnapStrings(WR1oddsDecreaseObject);
-
-  var WR2oddsIncreaseObjectRandomValue = randomValueOfObjectInpostSnapStrings(WR2oddsIncreaseObject);;
-
-  var WR2oddsDecreaseObjectRandomValue = randomValueOfObjectInpostSnapStrings(WR2oddsDecreaseObject);
-  var WR3oddsIncreaseObjectRandomValue = randomValueOfObjectInpostSnapStrings(WR3oddsIncreaseObject);
-
-  var WR3oddsDecreaseObjectRandomValue = randomValueOfObjectInpostSnapStrings(WR3oddsDecreaseObject);
-  var globalOddsIncreaseObjectRandomValue = randomValueOfObjectInpostSnapStrings(globalOddsIncreaseObject);
-  var globalOddsDecreaseObjectRandomValue = randomValueOfObjectInpostSnapStrings(globalOddsDecreaseObject);
-
   var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
   var list = document.querySelector('.defensiveSpan');
   var observer = new MutationObserver(function(mutations) {  
     mutations.forEach(function(mutation) {
       if (mutation.type === 'childList') {
-        var defSpan = $('.defensiveSpan');
         var defSpanClassic = document.getElementsByClassName('defensiveSpan');
+        var defensiveSpanText = defSpanClassic[0].innerText
         var result;
         var WR1OddsCount = 0
         var WR2OddsCount = 0
@@ -755,107 +742,47 @@ $( document ).ready(function() {
         var GlobalOddsCount = 0
         var key;
         var keyArray = [];
-        if(defSpanClassic[0].innerText === "The LOLB is blitzing!") {
-          WR1OddsCount++;
-          blitz++;
-          clearSackTimer();
+        for(var i = 0; i < postSnapStrings.length; i++) {
+          for(var key in postSnapStrings[i]) {
+            if(defensiveSpanText === postSnapStrings[0][key]) {
+              WR1OddsCount++;
+              blitz++;
+              clearSackTimer();
+            }
+            if(defensiveSpanText === postSnapStrings[1][key]) {
+              WR1OddsCount--;
+              WR1OddsCount--;
+              // WR3OddsCount++;
+              // WR2OddsCount++;
+            }
+            if(defensiveSpanText === postSnapStrings[2][key]) {
+              WR2OddsCount++;
+              // blitz++;
+              // clearSackTimer();            
+            }
+            if(defensiveSpanText === postSnapStrings[3][key]) {
+              WR2OddsCount++;
+              WR2OddsCount++;
+            }
+            if(defensiveSpanText === postSnapStrings[4][key]) {
+              WR3OddsCount++
+            }
+            if(defensiveSpanText === postSnapStrings[5][key]) {
+              WR3OddsCount--
+            }
+            if(defensiveSpanText === postSnapStrings[6][key]) {
+              GlobaloddsCount++
+            }
+            if(defensiveSpanText === postSnapStrings[7][key]) {
+              GlobaloddsCount--
+            }
+          }
         }
-        if(defSpanClassic[0].innerHTML === "The Safety Is Cheating Right!") {
-          WR1OddsCount++;
-          WR3OddsCount--;
-          WR2OddsCount++;
-        }
-        if(defSpanClassic[0].innerText === "Left Cornerback Blitz!") {
-          WR1OddsCount++;
-          blitz++;
-          clearSackTimer();
-        }
-        if(defSpanClassic[0].innerText === "WR1 Pressed!") {
-          WR1OddsCount--;
-        }
-        if(defSpanClassic[0].innerText === "The LOLB dropped into coverage!") {
-          WR1OddsCount--;
-          WR2OddsCount--;
-        }
-        if(defSpanClassic[0].innerText === "The Safety is cheating left") {
-          WR1OddsCount--;
-          WR3OddsCount++;
-          WR2OddsCount++;
-        }
-        if(defSpanClassic[0].innerText === "The MLB is blitzing!") {
-          WR2OddsCount++;
-          blitz++;
-          clearSackTimer();            
-        }
-        if(defSpanClassic[0].innerText === "Safety Blitz!") {
-          GlobalOddsCount++;
-          blitz++;
-          clearSackTimer();
-        }
-        if(defSpanClassic[0].innerText === "WR3 beat his man!") {
-          WR3OddsCount++;
-          WR3OddsCount++;
-        }
-        if(defSpanClassic[0].innerText === "WR2 pressed!") {
-         WR2OddsCount--;
-         WR2OddsCount--;
-        }
-        if(defSpanClassic[0].innerText === "The MLB dropped back into coverage") {
-          WR2OddsCount--;
-        }
-        if(defSpanClassic[0].innerText === "The Safety is staying mid-field!") {
-          WR2OddsCount--;
-        }
-        if(defSpanClassic[0].innerText === "Right Cornerback Blitz!") {
-          WR3OddsCount++;
-          blitz++;
-          clearSackTimer();            
-        }
-        if(defSpanClassic[0].innerText === "The ROLB is blitzing!") {
-          WR3OddsCount++;
-          blitz++;
-         clearSackTimer();  
-        }
-        if(defSpanClassic[0].innerText === "WR3 pressed!") {
-          WR3OddsCount--;
-          WR3OddsCount--;
-        }
-        if(defSpanClassic[0].innerText === "The ROLB dropped back into coverage") {
-          WR3OddsCount++;
-          WR2OddsCount--;
-        }
-        if(defSpanClassic[0].innerText === "The Safety is cheating right") {
-          WR1OddsCount++;
-          WR3OddsCount--;
-        }
-        if(defSpanClassic[0].innerText === "All Out Blitz!") {
-          GlobalOddsCount++;
-          blitz++;
-          clearSackTimer();       
-        }
-        if(defSpanClassic[0].innerText === "The line is holding strong!") {
-          GlobalOddsCount++;
-        } 
-        if(defSpanClassic[0].innerText === "WRs stuffed at the line!") {
-          GlobalOddsCount--;
-          GlobalOddsCount--;
-        } 
-        if(defSpanClassic[0].innerText === "The Defensive End is barreling towards you!") {
-          GlobalOddsCount--;
-          WR3OddsCount++;
-          blitz++;
-          clearSackTimer();
-        }
-        if(defSpanClassic[0].innerText === "Dammit Donald!") {
-          GlobalOddsCount--;
-          WR1OddsCount++;
-          blitz++;
-          clearSackTimer();
-        }  
+
   PlayResults.WR1OddsAdj = PlayResults.WR1OddsAdj+ WR1OddsCount * .1;
   PlayResults.WR2OddsAdj= PlayResults.WR2OddsAdj+ WR2OddsCount * .1;
-  PlayResults.WR3OddsAdj= PlayResults.WR3OddsAdj+ WR3OddsCount * .1;
-  PlayResults.GlobalOddsAdj= PlayResults.GlobalOddsAdj+ GlobalOddsCount * .07;
+  PlayResults.WR3OddsAdj= PlayResults.WR3OddsAdj+ WR3OddsCount * .11
+  PlayResults.GlobalOddsAdj= PlayResults.GlobalOddsAdj+ GlobalOddsCount * .3
       }
     });
   })
