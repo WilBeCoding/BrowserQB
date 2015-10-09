@@ -161,7 +161,7 @@
       .container .buttons .snap .buttonSnap {
         margin: 0 auto;
         height: 100px;
-        width: 100px;
+        width: 30px;
         position: absolute; }
     .container .buttons .WRbuttons {
       display: -webkit-flex;
@@ -179,19 +179,19 @@
         text-align: center;
         padding-left: 25%;
         height: 100px;
-        width: 100px; }
+        width: 30px; }
       .container .buttons .WRbuttons .wr2 {
         -webkit-align-self: center;
             -ms-flex-item-align: center;
                 align-self: center;
         text-align: center;
         height: 100px;
-        width: 100px; }
+        width: 30px; }
       .container .buttons .WRbuttons .wr3 {
         text-align: center;
         padding-right: 25%;
         height: 100px;
-        width: 100px; }
+        width: 30px; }
   .container .birdsEyeImg {
     height: 30%;
     margin-left: -65px;
@@ -246,3 +246,65 @@
 td {
   padding-top: 20px;
   font-size: 30pt; }
+
+@media (max-width: 480px) {
+  .container .field {
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px); }
+
+  .container .field
+  .footballIMG {
+    max-height: 25px;
+    max-width: 25px;
+    position: fixed;
+    top: 35%;
+    left: 20.2%;
+    -webkit-align-self: flex-start;
+        -ms-flex-item-align: start;
+            align-self: flex-start; }
+
+  .container .pregame {
+    height: 100%;
+    margin-top: -85%;
+    position: relative; }
+
+  .container .passImage {
+    height: 25%;
+    width: 100%;
+    -webkit-align-self: center;
+        -ms-flex-item-align: center;
+            align-self: center; }
+
+  .container .runImage {
+    height: 25%;
+    width: 100%;
+    -webkit-align-self: center;
+        -ms-flex-item-align: center;
+            align-self: center;
+    margin-right: 15%;
+    margin-top: -10%; }
+
+  h1 {
+    font-size: 25px; }
+
+  td {
+    font-size: 12px; }
+
+  .container .table {
+    position: relative; }
+
+  .container .runPlaysText {
+    margin-right: 15%; }
+
+  table {
+    top: 0; }
+
+  .container .field #playClock {
+    margin-left: 80%; }
+
+  .container .birdsEyeImg {
+    margin-top: 20%;
+    margin-left: -21%; } }

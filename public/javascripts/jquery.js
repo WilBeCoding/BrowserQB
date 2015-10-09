@@ -48,6 +48,18 @@ $( document ).ready(function() {
       Stuffed: "WRs stuffed at the line!",
       DefensiveEnd: "The Defensive End is barreling towards you!",
       Donald: "Dammit Donald!",
+     },
+
+     Blitz = {
+      DefensiveEnd: "The Defensive End is barreling towards you!",
+      Donald: "Dammit Donald!",
+      Blitz: "All Out Blitz!",
+      Cb: "Right Cornerback Blitz!",
+      Rolb: "The ROLB is blitzing!",
+      Lolb: "The LOLB is blitzing!",
+      Cb: "Left Cornerback Blitz!",
+      MLB: "The MLB is blitzing!",
+      Safety: "Safety Blitz!",
      }
   ]
 
@@ -70,6 +82,7 @@ $( document ).ready(function() {
       touchdown: "Pass completed for a touchdown!"
     }
   ];
+  var clearSackTimerBooleanTrigger = false;
   var oddsDemoInterval = 0;
   var timesWon = 0;
   var timesWonData = 0;
@@ -133,12 +146,16 @@ $( document ).ready(function() {
   }
 
   function clearSackTimer() {
+    if(clearSackTimerBooleanTrigger === false) {
     clearInterval(timerId);
     clearTimeout(sackTimer);
-    if(blitz <= 1) {
+    console.log("How many times does clearSackTimer hit?")
+    console.log(blitz);
       blitzSackedTime = setTimeout(blitzSacked, 1250);
+      clearSackTimerBooleanTrigger = true;
     }
   }
+
 
   function blitzSacked(){
     clearTimeout(wrReturnToDefault);
@@ -350,17 +367,7 @@ $( document ).ready(function() {
   // var testingStringPostSnap =function repeatString() {
   //               var intervalID = window.setInterval(postSnapStringsFlash, 17);
   //                                return intervalID;
-  //                            }
-
-  var postSnapStringsFlash = pickRandomPostSnapString(postSnapStrings)
-  var WR1oddsIncreaseObject = postSnapStrings[0];
-  var WR1oddsDecreaseObject = postSnapStrings[1];
-  var WR2oddsIncreaseObject = postSnapStrings[2];
-  var WR2oddsDecreaseObject = postSnapStrings[3];
-  var WR3oddsIncreaseObject = postSnapStrings[4];
-  var WR3oddsDecreaseObject = postSnapStrings[5];
-  var globalOddsIncreaseObject = postSnapStrings[6];
-  var globalOddsDecreaseObject = postSnapStrings[7];
+  //                            } 
 
   function playClock(duration, display) {
       playClockId = 0;
@@ -509,6 +516,7 @@ $( document ).ready(function() {
   function returnToDefault () {
     clearInterval(oddsDemoInterval);
     blitz = 0;
+    clearSackTimerBooleanTrigger = 0;
     timeoutIntercepted();
     if(touchdown === false) {
     }
@@ -741,13 +749,18 @@ $( document ).ready(function() {
         var WR3OddsCount = 0
         var GlobalOddsCount = 0
         var key;
+        var blitz = 0;
         var keyArray = [];
         for(var i = 0; i < postSnapStrings.length; i++) {
+            if(defensiveSpanText.indexOf('Blitz') > -1 || defensiveSpanText.indexOf('blitzing') > -1) {
+              blitz++
+              clearSackTimer()
+            }
           for(var key in postSnapStrings[i]) {
             if(defensiveSpanText === postSnapStrings[0][key]) {
               WR1OddsCount++;
-              blitz++;
-              clearSackTimer();
+              // blitz++;
+              // clearSackTimer();
             }
             if(defensiveSpanText === postSnapStrings[1][key]) {
               WR1OddsCount--;
@@ -771,10 +784,10 @@ $( document ).ready(function() {
               WR3OddsCount--
             }
             if(defensiveSpanText === postSnapStrings[6][key]) {
-              GlobaloddsCount++
+              GlobalOddsCount++
             }
             if(defensiveSpanText === postSnapStrings[7][key]) {
-              GlobaloddsCount--
+              GlobalOddsCount--
             }
           }
         }
