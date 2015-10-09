@@ -123,11 +123,6 @@ $( document ).ready(function() {
     GlobalOddsAdj: 0,
   }
 
-
-  function oddsDemo() {
-    console.log(PlayResults);
-  }
-
   function sacked(){
     downCount++;
     yardLine-= 7;
@@ -277,7 +272,7 @@ $( document ).ready(function() {
       $('.drive').text("2nd")
     }
     if(drive ===3) {
-      $('.drive').text("Final Drive")
+      $('.drive').text("Final")
     }
   }
 
@@ -758,44 +753,56 @@ $( document ).ready(function() {
             }
           for(var key in postSnapStrings[i]) {
             if(defensiveSpanText === postSnapStrings[0][key]) {
+              console.log
               WR1OddsCount++;
-              // blitz++;
-              // clearSackTimer();
+              console.log("                              WR1+   "+   (WR1OddsCount)) 
             }
             if(defensiveSpanText === postSnapStrings[1][key]) {
               WR1OddsCount--;
-              WR1OddsCount--;
-              // WR3OddsCount++;
-              // WR2OddsCount++;
+              console.log("                              WR1-   "+   (WR1OddsCount) )
             }
             if(defensiveSpanText === postSnapStrings[2][key]) {
               WR2OddsCount++;
-              // blitz++;
-              // clearSackTimer();            
+              console.log("                              WR2+   "+   (WR2OddsCount) )
             }
             if(defensiveSpanText === postSnapStrings[3][key]) {
-              WR2OddsCount++;
-              WR2OddsCount++;
+              WR2OddsCount--;
+              console.log("                              WR2-   "+   (WR2OddsCount) )
             }
             if(defensiveSpanText === postSnapStrings[4][key]) {
               WR3OddsCount++
+              console.log("                              WR3+   "+   (WR3OddsCount) )
             }
             if(defensiveSpanText === postSnapStrings[5][key]) {
               WR3OddsCount--
+              console.log("                              WR3-   "+   (WR3OddsCount) )
             }
             if(defensiveSpanText === postSnapStrings[6][key]) {
               GlobalOddsCount++
+              console.log("                              Global+   "+   (GlobalOddsCount) )
             }
             if(defensiveSpanText === postSnapStrings[7][key]) {
               GlobalOddsCount--
+              console.log("                              Global-   "+   (GlobalOddsCount) )
             }
           }
         }
-
-  PlayResults.WR1OddsAdj = PlayResults.WR1OddsAdj+ WR1OddsCount * .1;
-  PlayResults.WR2OddsAdj= PlayResults.WR2OddsAdj+ WR2OddsCount * .1;
-  PlayResults.WR3OddsAdj= PlayResults.WR3OddsAdj+ WR3OddsCount * .11
-  PlayResults.GlobalOddsAdj= PlayResults.GlobalOddsAdj+ GlobalOddsCount * .3
+  PlayResults.WR1OddsAdj =+ PlayResults.WR1OddsAdj+ WR1OddsCount * .025;
+  PlayResults.WR2OddsAdj =+ PlayResults.WR2OddsAdj+ WR2OddsCount * .025;
+  PlayResults.WR3OddsAdj =+ PlayResults.WR3OddsAdj+ WR3OddsCount * .025;
+  PlayResults.GlobalOddsAdj=+ PlayResults.GlobalOddsAdj+ GlobalOddsCount * .05
+          console.log(" ----------------------")
+          console.log("     ")
+          console.log(defensiveSpanText);
+          console.log("      ")
+          console.log(PlayResults.WR1OddsAdj + "  WR1 Play Results"); 
+          console.log(WR1OddsCount + "   WR1 Odds Count");
+          console.log(PlayResults.WR2OddsAdj + "   WR2Play Results"); 
+          console.log(WR2OddsCount + "   W2 Odds Count");
+          console.log(PlayResults.WR3OddsAdj + "    WR3 Play Results"); 
+          console.log(WR3OddsCount + "    WR3 Odds Count");
+          console.log(PlayResults.GlobalOddsAdj + "     PlayResults Global Odds Adj");
+          console.log(GlobalOddsCount + "   Global Odds Count");
       }
     });
   })
