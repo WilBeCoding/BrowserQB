@@ -570,13 +570,16 @@ $( document ).ready(function() {
     wrReturnToDefault = setTimeout(returnToDefault, 2850);
     $('.WRbuttons').addClass('placeholderWRbuttons');
     $('.WRbuttons').removeClass('WRbuttons');
-    if(PlayResults.WR1OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj < .2) {
+    if(PlayResults.WR1OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj < .1) {
       $('.defensiveSpan').text("Pass to WR1 is intercepted!");
       $('.footballIMG').animate({'left': '24.5%'}, "fast");
       interception++
       yardLine = 20;
       drive++;
       yardsToFirst = 10;
+    }
+    if(PlayResults.WR1OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj < .2 && PlayResults.WR1OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj > .1) {
+      $('.defensiveSpan').text("Incomplete Pass");
     }
     if(PlayResults.WR1OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .2 && PlayResults.WR1OddsAdj + PlayResults.Yards < .7) {
       $('.defensiveSpan').text("Pass to WR1 is complete for an 8 yard gain!")
@@ -596,7 +599,7 @@ $( document ).ready(function() {
       yardLine += 25;
       yardsToFirst -= 25;
     }
-    if(PlayResults.WR1OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .95) {
+    if(PlayResults.WR1OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .99) {
       $('.defensiveSpan').text("Pass to WR1 is complete for a TOUCHDOWN!");
       $('.footballIMG').animate({'left': '86.5%'}, 'slow');
       yardLine = 100;
@@ -625,6 +628,9 @@ $( document ).ready(function() {
       drive++;
       yardsToFirst = 10;
     }
+    if(PlayResults.WR2OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj < .2 && PlayResults.WR2OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj > .1) {
+      $('.defensiveSpan').text("Incomplete Pass");
+    }
     if(PlayResults.WR2OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .2 && PlayResults.WR2OddsAdj + PlayResults.Yards < .7) {
       $('.defensiveSpan').text("Pass to WR2 is complete for an 8 yard gain!");
       $('.footballIMG').animate({'left': '+=6%'}, 'slow');
@@ -643,7 +649,7 @@ $( document ).ready(function() {
       yardLine += 25;
       yardsToFirst -= 25;
     }
-    if(PlayResults.WR2OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .95) {
+    if(PlayResults.WR2OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .99) {
       $('.defensiveSpan').text("Pass to WR2 is complete for a TOUCHDOWN!");
       $('.footballIMG').animate({'left': '86.5%'}, 'slow');
       yardLine = 100;
@@ -672,6 +678,9 @@ $( document ).ready(function() {
       drive++;
       yardsToFirst = 10;
     }
+    if(PlayResults.WR3OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj < .2 && PlayResults.WR3OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj > .1) {
+      $('.defensiveSpan').text("Incomplete Pass");
+    }
     if(PlayResults.WR3OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .2 && PlayResults.WR3OddsAdj + PlayResults.Yards < .7) {
       $('.defensiveSpan').text("Pass to WR3 is complete for an 8 yard gain!");
       $('.footballIMG').animate({'left': '+=6%'}, 'slow');
@@ -690,7 +699,7 @@ $( document ).ready(function() {
       yardLine += 25;
       yardsToFirst -= 25;
     }
-    if(PlayResults.WR3OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .95) {
+    if(PlayResults.WR3OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj >= .99) {
       $('.defensiveSpan').text("Pass to WR3 is complete for a TOUCHDOWN!");
       $('.footballIMG').animate({'left': '86.5%'}, 'slow');
       yardLine = 100;
@@ -740,7 +749,6 @@ $( document ).ready(function() {
       if (mutation.type === 'childList') {
         var defSpanClassic = document.getElementsByClassName('defensiveSpan');
         var defensiveSpanText = defSpanClassic[0].innerText
-        var result;
         var WR1OddsCount = 0
         var WR2OddsCount = 0
         var WR3OddsCount = 0
@@ -748,61 +756,74 @@ $( document ).ready(function() {
         var key;
         var keyArray = [];
         for(var i = 0; i < postSnapStrings.length; i++) {
-            if(defensiveSpanText.indexOf('Blitz') > -1 || defensiveSpanText.indexOf('blitzing') > -1) {
-              clearSackTimer()
-            }
           for(var key in postSnapStrings[i]) {
             if(defensiveSpanText === postSnapStrings[0][key]) {
               console.log
               WR1OddsCount++;
+              break;
               console.log("                              WR1+   "+   (WR1OddsCount)) 
             }
             if(defensiveSpanText === postSnapStrings[1][key]) {
               WR1OddsCount--;
+              break;
               console.log("                              WR1-   "+   (WR1OddsCount) )
             }
             if(defensiveSpanText === postSnapStrings[2][key]) {
               WR2OddsCount++;
+              break;
               console.log("                              WR2+   "+   (WR2OddsCount) )
             }
             if(defensiveSpanText === postSnapStrings[3][key]) {
               WR2OddsCount--;
+              break;
               console.log("                              WR2-   "+   (WR2OddsCount) )
             }
             if(defensiveSpanText === postSnapStrings[4][key]) {
               WR3OddsCount++
+              break;
               console.log("                              WR3+   "+   (WR3OddsCount) )
             }
             if(defensiveSpanText === postSnapStrings[5][key]) {
               WR3OddsCount--
+              break;
               console.log("                              WR3-   "+   (WR3OddsCount) )
             }
             if(defensiveSpanText === postSnapStrings[6][key]) {
               GlobalOddsCount++
+              break;
               console.log("                              Global+   "+   (GlobalOddsCount) )
             }
             if(defensiveSpanText === postSnapStrings[7][key]) {
               GlobalOddsCount--
+              break;
               console.log("                              Global-   "+   (GlobalOddsCount) )
             }
           }
+
         }
-  PlayResults.WR1OddsAdj =+ PlayResults.WR1OddsAdj+ WR1OddsCount * .025;
-  PlayResults.WR2OddsAdj =+ PlayResults.WR2OddsAdj+ WR2OddsCount * .025;
-  PlayResults.WR3OddsAdj =+ PlayResults.WR3OddsAdj+ WR3OddsCount * .025;
-  PlayResults.GlobalOddsAdj=+ PlayResults.GlobalOddsAdj+ GlobalOddsCount * .05
-          console.log(" ----------------------")
-          console.log("     ")
+        if(defensiveSpanText.indexOf('Blitz') > -1 || defensiveSpanText.indexOf('blitzing') > -1) { 
+          console.log("*$*$*$*$*$*$*$*$*$*$    Blitz if statement hits    (^(^(^(^(^^((^((^(^(^(^")
+          clearSackTimer()
+        }
+
+  PlayResults.WR1OddsAdj =+ PlayResults.WR1OddsAdj+ (WR1OddsCount/2) * .025;
+  PlayResults.WR2OddsAdj =+ PlayResults.WR2OddsAdj+ (WR2OddsCount/2) * .025;
+  PlayResults.WR3OddsAdj =+ PlayResults.WR3OddsAdj+ (WR3OddsCount/2) * .025;
+  PlayResults.GlobalOddsAdj=+ PlayResults.GlobalOddsAdj+ (GlobalOddsCount/2) * .05
+          // console.log(" ----------------------")
+          // console.log("     ")
+          // console.log(defensiveSpanText);
+          // console.log("      ")
+          // console.log(PlayResults.WR1OddsAdj + "  WR1 Play Results"); 
+          // console.log(WR1OddsCount + "   WR1 Odds Count");
+          // console.log(PlayResults.WR2OddsAdj + "   WR2Play Results"); 
+          // console.log(WR2OddsCount + "   W2 Odds Count");
+          // console.log(PlayResults.WR3OddsAdj + "    WR3 Play Results"); 
+          // console.log(WR3OddsCount + "    WR3 Odds Count");
+          // console.log(PlayResults.GlobalOddsAdj + "     PlayResults Global Odds Adj");
+          // console.log(GlobalOddsCount + "   Global Odds Count");
           console.log(defensiveSpanText);
-          console.log("      ")
-          console.log(PlayResults.WR1OddsAdj + "  WR1 Play Results"); 
-          console.log(WR1OddsCount + "   WR1 Odds Count");
-          console.log(PlayResults.WR2OddsAdj + "   WR2Play Results"); 
-          console.log(WR2OddsCount + "   W2 Odds Count");
-          console.log(PlayResults.WR3OddsAdj + "    WR3 Play Results"); 
-          console.log(WR3OddsCount + "    WR3 Odds Count");
-          console.log(PlayResults.GlobalOddsAdj + "     PlayResults Global Odds Adj");
-          console.log(GlobalOddsCount + "   Global Odds Count");
+          console.log(PlayResults);
       }
     });
   })
