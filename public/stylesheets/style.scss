@@ -322,6 +322,7 @@ td {
     height: 25%;
     width: 100%;
     align-self: center;
+    border: 1px solid black;
   }
   .container .runImage {
     height: 25%;
@@ -351,5 +352,17 @@ td {
   .container .birdsEyeImg {
     margin-top: 20%;
     margin-left: -21%;
+  }
+  .container .buttons .WRbuttons .wr1{
+    padding: 0;
+  }
+
+  .container .buttons .WRbuttons .wr2{
+    text-align: center;
+
+  }
+
+  .container .buttons .WRbuttons .wr3{
+    text-align: center;
   }
 }

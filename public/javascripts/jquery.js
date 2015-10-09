@@ -93,7 +93,6 @@ $( document ).ready(function() {
   var touchdown = false;
   var interceptionReturnToDefaultBreak = false;
   var sackedReturnToDefault = 0;
-  var blitz = 0;
   var returnToSackDefaultEndSacks = 0;
   var wrReturnToDefault = 0;
   var blitzSackedTime = 0;
@@ -150,7 +149,6 @@ $( document ).ready(function() {
     clearInterval(timerId);
     clearTimeout(sackTimer);
     console.log("How many times does clearSackTimer hit?")
-    console.log(blitz);
       blitzSackedTime = setTimeout(blitzSacked, 1250);
       clearSackTimerBooleanTrigger = true;
     }
@@ -276,7 +274,7 @@ $( document ).ready(function() {
 
   function driveFunction() {
     if(drive === 2) {
-      $('.drive').text("2 remaining drives")
+      $('.drive').text("2nd")
     }
     if(drive ===3) {
       $('.drive').text("Final Drive")
@@ -394,6 +392,10 @@ $( document ).ready(function() {
   }
 
   $('.startGameBtn').on('click', function() {
+    if ($('header').width() < 481){
+      $("label").css('margin-left', '70%');
+      $('.field').css('-webkit-filter','none'); 
+    }
     var initials = document.getElementById("initials").value;
     $('.pregame').addClass('placeholderPregame');
     $('.placeholderPregame').removeClass('pregame');
@@ -749,11 +751,9 @@ $( document ).ready(function() {
         var WR3OddsCount = 0
         var GlobalOddsCount = 0
         var key;
-        var blitz = 0;
         var keyArray = [];
         for(var i = 0; i < postSnapStrings.length; i++) {
             if(defensiveSpanText.indexOf('Blitz') > -1 || defensiveSpanText.indexOf('blitzing') > -1) {
-              blitz++
               clearSackTimer()
             }
           for(var key in postSnapStrings[i]) {
