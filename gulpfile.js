@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var sass = require('gulp-ruby-sass');
+var sourcemaps = require('gulp-sourcemaps');
 var autoprefixer = require('gulp-autoprefixer');
 var minifycss = require('gulp-minify-css');
 var rename = require('gulp-rename');
@@ -18,14 +19,16 @@ gulp.task('process-scripts', function() {
 });
 
 gulp.task('sass', function() {
-  return sass('./public/stylesheets/style.scss')
+  return sass('./public/stylesheets/style.scss', {sourcemap: true, style: 'compact'})
     .on('error', sass.logError)
     .pipe(autoprefixer('last 2 version'))
     .pipe(gulp.dest('./public/stylesheets/'))
     .pipe(rename({suffix: '.min'}))
     .pipe(minifycss())
+    .pipe(sourcemaps.write('maps'))
     .pipe(gulp.dest('./public/stylesheets/'))
 });
+
 
 gulp.task('watch', function() {
   gulp.watch('./public/stylesheets/*.scss', ['sass'])

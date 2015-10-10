@@ -4,6 +4,8 @@ $or: orange;
 $bl: blue;
 $bht: 100px;
 $bwt: 30px;
+$snakes: 10px;
+
 
 .container{
   display: flex;
@@ -12,7 +14,7 @@ $bwt: 30px;
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-around;
-  // background-color: red;
+  background-color: red;
 
   .playsPlacement {
     display: flex;
@@ -97,7 +99,7 @@ $bwt: 30px;
       max-width: 40px;
       position: fixed;
       top: 35%;
-      left: 24.35%;
+      left: 24.2%;
       align-self: flex-start;
     }
 
@@ -287,6 +289,7 @@ display:none;
 td {
   padding-top: 20px;
   font-size: 30pt;
+  margin-left:10%;
 }
 
 @media (max-width: 480px) {
