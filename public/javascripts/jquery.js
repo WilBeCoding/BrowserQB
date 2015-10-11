@@ -111,7 +111,7 @@ $( document ).ready(function() {
   var GlobalOddsCount = 0;
   var yardsToFirst = 10;
   var interception = 0;
-  var pageSize = 3;
+  var pageSize = 1;
   var showPage = function(page) {
     $('.howToPlayPage').hide();
     $('howToPlayPage').each(function(n) {
@@ -122,7 +122,7 @@ $( document ).ready(function() {
   var randomInteger = function randomInt() {
                         return Number((Math.random() * (.25 - 0)) + 0);
                       };
-
+  showPage(1)
 
   PlayResults = {
     Yards: .3 + randomInteger(),
@@ -381,26 +381,33 @@ $( document ).ready(function() {
                     }, 1000);
   }
 
+ 
+
+
+  $(".howToContainer").hide();
+  $(".mask").hide();
   $(".hider").hide();
   $(".howToPlayDiv").hide();
    //on click show the hider div and the message
   $(".howToPlayButton").click(function () {
+    $(".howToContainer").fadeIn("slow");
+    $('.mask').fadeIn("slow");
     $(".hider").fadeIn("slow");
     $('.howToPlayDiv').fadeIn("slow");
   });
    //on click hide the message and the
   $(".closeHowToButton").click(function () {
+    $(".howToContainer").fadeOut("slow");
+    $('.mask').fadeOut("slow");
     $(".hider").fadeOut("slow");
     $('.howToPlayDiv').fadeOut("slow");
   });
 
-  $('.closeHowToButton').click(function() {
-    $('.closeHowToButton').removeClass('current');
-    $(this).addClass('current');
-    showPage(parseInt($(this).text()))
-  })
-
-
+  $("#pagin li a").click(function() {
+      $("#pagin li a").removeClass("current");
+      $(this).addClass("current");
+      showPage(parseInt($(this).text())) 
+  });
 
   function validate(){
       if ($('#initials').val().length   >   0) {
