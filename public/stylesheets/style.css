@@ -1,101 +1,368 @@
-.container { display: -webkit-flex; display: -ms-flexbox; display: flex; height: 100vh; width: 100vw; -webkit-flex-wrap: wrap; -ms-flex-wrap: wrap; flex-wrap: wrap; -webkit-flex-direction: row; -ms-flex-direction: row; flex-direction: row; -webkit-justify-content: space-around; -ms-flex-pack: distribute; justify-content: space-around; /* background-color: orange; */ }
+.container {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  /* background-color: orange; */ }
 
-.container .playsPlacement { display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-flex-direction: column; -ms-flex-direction: column; flex-direction: column; height: 50%; width: 50%; }
+.container .playsPlacement {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 50%;
+  width: 50%; }
 
-.container .pregame { height: 42%; width: 100%; text-align: center; margin-top: -155px; }
+.container .pregame {
+  height: 42%;
+  width: 100%;
+  text-align: center;
+  margin-top: -155px; }
 
-.container .topLeft { display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-flex-direction: column; -ms-flex-direction: column; flex-direction: column; height: 50%; width: 33%; position: relative; }
+.container .topLeft {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 50%;
+  width: 33%;
+  position: relative; }
 
-.container .topLeft h1 { -ms-flex-item-align: center; -webkit-align-self: center; align-self: center; }
+.container .topLeft h1 {
+  -ms-flex-item-align: center;
+  -webkit-align-self: center;
+          align-self: center; }
 
-.container .topRight { display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-flex-direction: column; -ms-flex-direction: column; flex-direction: column; height: 50%; width: 33%; position: relative; }
+.container .topRight {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 50%;
+  width: 33%;
+  position: relative; }
 
-.container .topRight h1 { -ms-flex-item-align: center; -webkit-align-self: center; align-self: center; }
+.container .topRight h1 {
+  -ms-flex-item-align: center;
+  -webkit-align-self: center;
+          align-self: center; }
 
-.container .table { height: 50%; width: 33%; /* position: relative; */ }
+.container .table {
+  height: 50%;
+  width: 33%;
+  position: relative; }
 
-.container .passImage { height: 200px; width: 200px; -ms-flex-item-align: center; -webkit-align-self: center; align-self: center; }
+.container .passImage {
+  height: 200px;
+  width: 200px;
+  -ms-flex-item-align: center;
+  -webkit-align-self: center;
+          align-self: center; }
 
-.container .runImage { height: 200px; width: 200px; -ms-flex-item-align: center; -webkit-align-self: center; align-self: center; }
+.container .runImage {
+  height: 200px;
+  width: 200px;
+  -ms-flex-item-align: center;
+  -webkit-align-self: center;
+          align-self: center; }
 
-.container .field { background: url(http://designmodo.com/wp-content/uploads/2011/08/American-football-field.jpg); background-repeat: no-repeat; background-size: 100% 105%; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-flex-direction: column; -ms-flex-direction: column; flex-direction: column; height: 45%; width: 100%; position: relative; left: 0; right: 0; margin-left: -16px; margin-top: -8px; }
+.container .field {
+  background: url(http://designmodo.com/wp-content/uploads/2011/08/American-football-field.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 105%;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 45%;
+  width: 100%;
+  position: relative;
+  left: 0;
+  right: 0;
+  margin-left: -16px;
+  margin-top: -8px; }
 
-.container .field .footballIMG { max-height: 40px; max-width: 40px; position: fixed; top: 35%; left: 24.2%; -ms-flex-item-align: start; -webkit-align-self: flex-start; align-self: flex-start; }
+.container .field .footballIMG {
+  max-height: 40px;
+  max-width: 40px;
+  position: fixed;
+  top: 35%;
+  left: 24.2%;
+  -ms-flex-item-align: start;
+  -webkit-align-self: flex-start;
+          align-self: flex-start; }
 
-.container .field .playClock { -ms-flex-item-align: start; -webkit-align-self: flex-start; align-self: flex-start; position: relative; margin-bottom: 200px; margin-left: 1350px; height: 150vh; width: 100%; }
+.container .field .playClock {
+  -ms-flex-item-align: start;
+  -webkit-align-self: flex-start;
+          align-self: flex-start;
+  position: relative;
+  margin-bottom: 200px;
+  margin-left: 1350px;
+  height: 150vh;
+  width: 100%; }
 
-.container .field .playClockDiv { -ms-flex-item-align: start; -webkit-align-self: flex-start; align-self: flex-start; position: relative; margin-right: 450px; margin-bottom: 200px; height: 150vh; width: 100%; }
+.container .field .playClockDiv {
+  -ms-flex-item-align: start;
+  -webkit-align-self: flex-start;
+          align-self: flex-start;
+  position: relative;
+  margin-right: 450px;
+  margin-bottom: 200px;
+  height: 150vh;
+  width: 100%; }
 
-.container .field .hiddenPlayClock { display: none; }
+.container .field .hiddenPlayClock {
+  display: none; }
 
-.container .field #playClock { color: black; font-size: 30pt; font-weight: bold; height: 100%; width: 100%; margin-left: 675px; }
+.container .field #playClock {
+  color: black;
+  font-size: 30pt;
+  font-weight: bold;
+  height: 100%;
+  width: 100%;
+  margin-left: 675px; }
 
-.container .field .defensiveRead { height: 75%; width: 50%; -ms-flex-item-align: center; -webkit-align-self: center; align-self: center; opacity: 0; }
+.container .field .defensiveRead {
+  height: 75%;
+  width: 50%;
+  -ms-flex-item-align: center;
+  -webkit-align-self: center;
+          align-self: center;
+  opacity: 0; }
 
-.container .field .defensiveSpan { height: 35%; width: 100vw; opacity: 1; position: relative; margin-top: 10%; font-size: 35px; font-weight: bold; text-align: center; }
+.container .field .defensiveSpan {
+  height: 35%;
+  width: 100vw;
+  opacity: 1;
+  position: relative;
+  margin-top: 10%;
+  font-size: 35px;
+  font-weight: bold;
+  text-align: center; }
 
-.container .buttons { display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-flex-direction: row; -ms-flex-direction: row; flex-direction: row; -webkit-justify-content: space-between; -ms-flex-pack: justify; justify-content: space-between; height: 50%; width: 100%; margin-top: 25px; color: gray; }
+.container .buttons {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  height: 50%;
+  width: 100%;
+  margin-top: 25px;
+  color: gray; }
 
-.container .buttons .snap { margin: 0 auto; margin-left: 45%; width: 100%; }
+.container .buttons .snap {
+  margin: 0 auto;
+  margin-left: 45%;
+  width: 100%; }
 
-.container .buttons .snap .buttonSnap { margin: 0 auto; /* height: 20vh; */ /* height: 50px; */ position: absolute; }
+.container .buttons .snap .buttonSnap {
+  margin: 0 auto;
+  height: 100px;
+  width: 30px;
+  position: absolute; }
 
-.container .buttons .WRbuttons { display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-flex-direction: row; -ms-flex-direction: row; flex-direction: row; -webkit-justify-content: space-between; -ms-flex-pack: justify; justify-content: space-between; height: 100px; width: 100%; }
+.container .buttons .WRbuttons {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  height: 100px;
+  width: 100%; }
 
-.container .buttons .WRbuttons .wr1 { text-align: center; padding-left: 25%; height: 100px; width: 30px; }
+.container .buttons .WRbuttons .wr1 {
+  text-align: center;
+  padding-left: 25%;
+  height: 100px;
+  width: 30px; }
 
-.container .buttons .WRbuttons .wr2 { -ms-flex-item-align: center; -webkit-align-self: center; align-self: center; text-align: center; height: 100px; width: 30px; }
+.container .buttons .WRbuttons .wr2 {
+  -ms-flex-item-align: center;
+  -webkit-align-self: center;
+          align-self: center;
+  text-align: center;
+  height: 100px;
+  width: 30px; }
 
-.container .buttons .WRbuttons .wr3 { text-align: center; padding-right: 25%; height: 100px; width: 30px; }
+.container .buttons .WRbuttons .wr3 {
+  text-align: center;
+  padding-right: 25%;
+  height: 100px;
+  width: 30px; }
 
-.container .birdsEyeImg { height: 30%; margin-left: -5.3%; margin-top: 100px; position: absolute; /* margin: 0 auto; */ }
+.container .birdsEyeImg {
+  height: 30%;
+  margin-left: -65px;
+  margin-top: 100px;
+  position: absolute; }
 
-table { margin-left: 30%; }
+.visible {
+  visibility: visible;
+  margin: 0 auto; }
 
-.visible { visibility: visible; margin: 0 auto; }
+.invisible {
+  visibility: hidden;
+  height: 0px;
+  width: 0px; }
 
-.invisible { visibility: hidden; height: 0px; width: 0px; }
+.show_hide {
+  display: none; }
 
-.show_hide { display: none; }
+.show_hide1 {
+  display: none; }
 
-.show_hide1 { display: none; }
+.placeholderButtons {
+  display: none; }
 
-.placeholderButtons { display: none; }
+.placeHoldersnap {
+  display: none; }
 
-.placeHoldersnap { display: none; }
+.placeholderBirdsEyeView {
+  display: none; }
 
-.placeholderBirdsEyeView { display: none; }
+.placeholderWRbuttons {
+  display: none; }
 
-.placeholderWRbuttons { display: none; }
+.buttonSnapPlaceholder {
+  display: none; }
 
-.buttonSnapPlaceholder { display: none; }
+.placeHolderTopLeft {
+  display: none; }
 
-.placeHolderTopLeft { display: none; }
+.placeHolderTopRight {
+  display: none; }
 
-.placeHolderTopRight { display: none; }
+.placeholderTable {
+  display: none; }
 
-.placeholderTable { display: none; }
+.placeholderPregame {
+  display: none; }
 
-.placeholderPregame { display: none; }
+.center {
+  text-align: center; }
 
-.center { text-align: center; }
+td {
+  padding-top: 20px;
+  font-size: 30pt;
+  margin-left: 10%; }
 
-td { padding-top: 20px; font-size: 30pt; margin-left: 10%; }
+table {
+  margin-left: 30%; }
 
-@media (max-width: 480px) { .container .field { -webkit-filter: blur(5px); -moz-filter: blur(5px); -o-filter: blur(5px); -ms-filter: blur(5px); filter: blur(5px); }
-  .container .field .footballIMG { max-height: 25px; max-width: 25px; position: fixed; top: 35%; left: 20.2%; -ms-flex-item-align: start; -webkit-align-self: flex-start; align-self: flex-start; }
-  .container .pregame { height: 100%; margin-top: -85%; position: relative; }
-  .container .passImage { height: 25%; width: 100%; -ms-flex-item-align: center; -webkit-align-self: center; align-self: center; border: 1px solid black; }
-  .container .runImage { height: 25%; width: 100%; -ms-flex-item-align: center; -webkit-align-self: center; align-self: center; margin-right: 15%; margin-top: -10%; }
-  h1 { font-size: 25px; }
-  td { font-size: 12px; }
-  .container .table { position: relative; }
-  .container .runPlaysText { margin-right: 15%; }
-  table { top: 0; }
-  .container .field #playClock { margin-left: 80%; }
-  .container .birdsEyeImg { margin-top: 20%; margin-left: -21%; }
-  .container .buttons .WRbuttons .wr1 { padding: 0; }
-  .container .buttons .WRbuttons .wr2 { text-align: center; }
-  .container .buttons .WRbuttons .wr3 { text-align: center; } }
+.placeholderHowToPlayDiv {
+  display: none; }
+
+.howToPlayDiv {
+  background-color: #FFFFFF;
+  border: 1px solid #999999;
+  cursor: default;
+  display: none;
+  margin-top: 15px;
+  position: absolute;
+  text-align: left;
+  height: 85%;
+  width: 85%;
+  z-index: 50;
+  padding: 25px 25px 20px; }
+
+@media (max-width: 480px) {
+  .container .field {
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px); }
+
+  .container .field
+  .footballIMG {
+    max-height: 25px;
+    max-width: 25px;
+    position: fixed;
+    top: 35%;
+    left: 20.2%;
+    -ms-flex-item-align: start;
+    -webkit-align-self: flex-start;
+            align-self: flex-start; }
+
+  .container .pregame {
+    height: 100%;
+    margin-top: -85%;
+    position: relative; }
+
+  .container .passImage {
+    height: 25%;
+    width: 100%;
+    -ms-flex-item-align: center;
+    -webkit-align-self: center;
+            align-self: center;
+    border: 1px solid black; }
+
+  .container .runImage {
+    height: 25%;
+    width: 100%;
+    -ms-flex-item-align: center;
+    -webkit-align-self: center;
+            align-self: center;
+    margin-right: 15%;
+    margin-top: -10%; }
+
+  h1 {
+    font-size: 25px; }
+
+  td {
+    font-size: 12px; }
+
+  .container .table {
+    position: relative; }
+
+  .container .runPlaysText {
+    margin-right: 15%; }
+
+  table {
+    top: 0; }
+
+  .container .field #playClock {
+    margin-left: 80%; }
+
+  .container .birdsEyeImg {
+    margin-top: 20%;
+    margin-left: -21%; }
+
+  .container .buttons .WRbuttons .wr1 {
+    padding: 0; }
+
+  .container .buttons .WRbuttons .wr2 {
+    text-align: center; }
+
+  .container .buttons .WRbuttons .wr3 {
+    text-align: center; } }
 
 

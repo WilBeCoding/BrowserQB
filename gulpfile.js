@@ -19,7 +19,7 @@ gulp.task('process-scripts', function() {
 });
 
 gulp.task('sass', function() {
-  return sass('./public/stylesheets/style.scss', {sourcemap: true, style: 'compact'})
+  return sass('./public/stylesheets/style.scss', {sourcemap: true, style: 'nested'})
     .on('error', sass.logError)
     .pipe(autoprefixer('last 2 version'))
     .pipe(gulp.dest('./public/stylesheets/'))
@@ -37,4 +37,3 @@ gulp.task('watch', function() {
 gulp.task('watch1', function() {
   gulp.watch('./public/javascripts/*.js', ['process-scripts'])
 });
-
