@@ -281,7 +281,7 @@ table {
   display: none; }
 
 .howToPlayDiv {
-  background-color: #FFFFFF;
+  background-color: #593B3B;
   border: 1px solid #999999;
   cursor: default;
   display: none;
@@ -292,6 +292,23 @@ table {
   width: 85%;
   z-index: 50;
   padding: 25px 25px 20px; }
+
+.hider {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 1600px;
+  height: 2000px;
+  margin-top: -auto;
+  /*set to a negative number 1/2 of your height*/
+  margin-left: auto;
+  /*set to a negative number 1/2 of your width*/
+                                                                  /*
+ z- index must be lower than pop up box
+*/
+  z-index: 99;
+  background-color: black;
+  opacity: 0.6; }
 
 @media (max-width: 480px) {
   .container .field {

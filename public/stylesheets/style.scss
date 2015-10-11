@@ -1,12 +1,6 @@
 .container {
-  display: 
-  
-  
-  -webkit-flex;
-  display: 
-  
-  
-  -ms-flexbox;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
   height: 100vh;
   width: 100vw;
@@ -19,8 +13,7 @@
   -webkit-justify-content: space-around;
   -ms-flex-pack: distribute;
   justify-content: space-around;
-  /* background-color: orange; */
-  }
+  /* background-color: orange; */ }
 
 .container .playsPlacement {
   display: -webkit-flex;
@@ -285,26 +278,36 @@ table {
   margin-left: 30%; }
 
 .placeholderHowToPlayDiv {
-  display: none;
-}
-
-// .placeholderHowToPlayPage {
-//   display: none;
-// }
+  display: none; }
 
 .howToPlayDiv {
-  background-color:#FFFFFF;
-  border:1px solid #999999;
-  cursor:default;
-  display:none;
+  background-color: #574141;
+  border: 1px solid #999999;
+  cursor: default;
+  display: none;
   margin-top: 15px;
-  position:absolute;
-  text-align:left;
+  position: absolute;
+  text-align: left;
   height: 85%;
-  width:85%;
-  z-index:50;
+  width: 85%;
+  z-index: 50;
   padding: 25px 25px 20px;
-}
+  }
+
+.hider {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 1600px;
+  height: 2000px;
+  margin-top: -auto;/*set to a negative number 1/2 of your height*/
+  margin-left: auto;/*set to a negative number 1/2 of your width*//*
+ z- index must be lower than pop up box
+*/
+  z-index: 99;
+  background-color: black;
+  opacity: 0.6;
+  }
 
 @media (max-width: 480px) {
   .container .field {

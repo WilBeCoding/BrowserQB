@@ -111,9 +111,18 @@ $( document ).ready(function() {
   var GlobalOddsCount = 0;
   var yardsToFirst = 10;
   var interception = 0;
+  var pageSize = 3;
+  var showPage = function(page) {
+    $('.howToPlayPage').hide();
+    $('howToPlayPage').each(function(n) {
+        if(n >= pageSize * (page - 1) && n < pageSize * page)
+          $(this).show();
+    })
+  }
   var randomInteger = function randomInt() {
                         return Number((Math.random() * (.25 - 0)) + 0);
                       };
+
 
   PlayResults = {
     Yards: .3 + randomInteger(),
@@ -357,11 +366,6 @@ $( document ).ready(function() {
     return result[keyArray[Math.floor(Math.random() * keyArray.length)]]    
   }
 
-  // var testingStringPostSnap =function repeatString() {
-  //               var intervalID = window.setInterval(postSnapStringsFlash, 17);
-  //                                return intervalID;
-  //                            } 
-
   function playClock(duration, display) {
       playClockId = 0;
       var timer = duration, minutes, seconds;
@@ -376,6 +380,27 @@ $( document ).ready(function() {
                         }
                     }, 1000);
   }
+
+  $(".hider").hide();
+  $(".howToPlayDiv").hide();
+   //on click show the hider div and the message
+  $(".howToPlayButton").click(function () {
+    $(".hider").fadeIn("slow");
+    $('.howToPlayDiv').fadeIn("slow");
+  });
+   //on click hide the message and the
+  $(".closeHowToButton").click(function () {
+    $(".hider").fadeOut("slow");
+    $('.howToPlayDiv').fadeOut("slow");
+  });
+
+  $('.closeHowToButton').click(function() {
+    $('.closeHowToButton').removeClass('current');
+    $(this).addClass('current');
+    showPage(parseInt($(this).text()))
+  })
+
+
 
   function validate(){
       if ($('#initials').val().length   >   0) {
