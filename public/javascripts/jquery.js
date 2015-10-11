@@ -394,19 +394,40 @@ $( document ).ready(function() {
     $('.mask').fadeIn("slow");
     $(".hider").fadeIn("slow");
     $('.howToPlayDiv').fadeIn("slow");
+    $('.pages').eq(0).show()
   });
+
+  $('.nextPage').eq(0).click(function(){
+    $('.pages').eq(0).hide();
+    $('.pages').eq(1).show();
+  })
+
+  $('.nextPage').eq(1).click(function(){
+    $('.pages').eq(1).hide();
+    $('.pages').eq(2).show();
+  })
+
+  $('.nextPage').eq(2).click(function(){
+    $('.pages').eq(2).hide();
+    $('.pages').eq(3).show();
+  })
+
+  $('.nextPage').eq(3).click(function(){
+    $('.pages').eq(3).hide();
+    $('.pages').eq(4).show();
+  })
+
+  $('.nextPage').eq(4).click(function(){
+    $('.pages').eq(4).hide();
+    $('.pages').eq(5).show();
+  })
+
    //on click hide the message and the
   $(".closeHowToButton").click(function () {
     $(".howToContainer").fadeOut("slow");
     $('.mask').fadeOut("slow");
     $(".hider").fadeOut("slow");
     $('.howToPlayDiv').fadeOut("slow");
-  });
-
-  $("#pagin li a").click(function() {
-      $("#pagin li a").removeClass("current");
-      $(this).addClass("current");
-      showPage(parseInt($(this).text())) 
   });
 
   function validate(){

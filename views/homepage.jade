@@ -42,73 +42,70 @@ block content
       div.mask
     div.hider      
       div.howToPlayDiv
-        p.howToPlayPage.current 
-        | Right now only pass plays are available
-        | Select your play by clicking on one of the play images
-        | Then you'll be put under-center and are ready to make your pre-snap read!
-        input(type='button' value='Back To The Field!').closeHowToButton
-        input(type='button' value='What to do when under center').nextPage
-        p.howToPlayPage 
-        | When under-center you can make a quick read of what the defense might be doing before the snap
-        | If a linebacker is on the line he might be blitzing. If your wide-recievers are pressed they won't be open for a while
-        input(type='button' value='Hike The Ball!')
-        input(type='button' value='Back To The Field!').closeHowToButton
-        input(type='button' value= 'Getting To Know Your Wide-Recievers').nextPage
-        p.howToPlayPage 
-        | After hiking the ball you'll be provided three buttons that each correspond to a WR
-        | WR1 represents the wide-reciever on the left side of the field
-        | WR2 represents the wide-reciever in the middle of the field
-        | WR3 represents the wide-reciever on the right side of the field
-        input(type='button' value='How To Know Which WR To Throw To').nextPage
-        input(type='button' value='Back To The Field!').closeHowToButton
-        p.howToPlayPage 
-        | After hiking the ball you'll see text flash on the field.
-        | Each sentence represents a Quarterback's post snap read
-        | Each read changes the odds of the WRs making a play
-        input(type='button' value='What Read Does What?').nextPage
-        input(type='button' value='Back To The Field!').closeHowToButton
-        p.howToPlayPage Reads that increase the odds of WR1 making a play
-        | "The Safety Is Cheating Right!"
-        | "The LOLB is blitzing!"
-        | "Left Cornerback Blitz!"
-        p Reads that decrease the odds of WR1 making a play
-        | "WR1 Pressed!"
-        | "The LOLB dropped into coverage!"
-        | "The Safety is cheating left!"
-        p Reads that increase the odds of WR2 making a play
-        | "The MLB is blitzking!"
-        | " Safety Blitz!"
-        | "The Safety is on the line!"
-        p Reads that decrease the odds of WR2 making a play
-        | "WR2 Pressed!"
-        | "The MLB dropped back into coverage!"
-        | "The Safety is staying mid-field!"
-        p Reads that increase the odds of WR3 making a play
-        | "The Safety is cheating left!"
-        | "Right Cornerback Blitz"
-        | "The ROLB is blitzing!"
-        | "WR3 beat his man!"
-        p Reads that decrease the odds of WR3 making a play
-        | "WR3 Pressed!"
-        | "The ROLB dropped back into coverage!"
-        | "The Safety is cheating right!"
-        p Reads that increase the odds of all WRs making a play
-        | "All Out Blitz!"
-        | "The line is holding strong"
-        p Reads that decrease the odds of all WRs making a play
-        | "WRs stuffed at the line!"
-        | "The Defensive End is barreling towards you!"
-        | "Dammit Donald!"
-        input(type='button' value='Back To The Field!').closeHowToButton
-        ol#pagin
-             li
-               a.current(href='#') 1
-             li
-               a(href='#') 2
-             li
-               a(href='#') 3
-             li
-               a(href='#') 4
+        div.pages
+          p.howToPlayPage.current
+          | Right now only pass plays are available
+          | Select your play by clicking on one of the play images
+          | Then you'll be put under-center and are ready to make your pre-snap read!
+          input(type='button' value='Back To The Field!').closeHowToButton
+          input(type='button' value='What to do when under center').nextPage
+        div.pages
+          p.howToPlayPage
+          | When under-center you can make a quick read of what the defense might be doing before the snap
+          | If a linebacker is on the line he might be blitzing. If your wide-recievers are pressed they won't be open for a while
+          input(type='button' value='Hike The Ball!')
+          input(type='button' value='Back To The Field!').closeHowToButton
+          input(type='button' value= 'Getting To Know Your Wide-Recievers').nextPage
+        div.pages
+          p.howToPlayPage
+          | After hiking the ball you'll be provided three buttons that each correspond to a WR
+          | WR1 represents the wide-reciever on the left side of the field
+          | WR2 represents the wide-reciever in the middle of the field
+          | WR3 represents the wide-reciever on the right side of the field
+          input(type='button' value='How To Know Which WR To Throw To').nextPage
+          input(type='button' value='Back To The Field!').closeHowToButton
+        div.pages
+          p.howToPlayPage
+          | After hiking the ball you'll see text flash on the field.
+          | Each sentence represents a Quarterback's post snap read
+          | Each read changes the odds of the WRs making a play
+          input(type='button' value='What Read Does What?').nextPage
+          input(type='button' value='Back To The Field!').closeHowToButton
+        div.pages
+          p.howToPlayPage
+          | Reads that increase the odds of WR1 making a play
+          | "The Safety Is Cheating Right!"
+          | "The LOLB is blitzing!"
+          | "Left Cornerback Blitz!"
+          p Reads that decrease the odds of WR1 making a play
+          | "WR1 Pressed!"
+          | "The LOLB dropped into coverage!"
+          | "The Safety is cheating left!"
+          p Reads that increase the odds of WR2 making a play
+          | "The MLB is blitzking!"
+          | " Safety Blitz!"
+          | "The Safety is on the line!"
+          p Reads that decrease the odds of WR2 making a play
+          | "WR2 Pressed!"
+          | "The MLB dropped back into coverage!"
+          | "The Safety is staying mid-field!"
+          p Reads that increase the odds of WR3 making a play
+          | "The Safety is cheating left!"
+          | "Right Cornerback Blitz"
+          | "The ROLB is blitzing!"
+          | "WR3 beat his man!"
+          p Reads that decrease the odds of WR3 making a play
+          | "WR3 Pressed!"
+          | "The ROLB dropped back into coverage!"
+          | "The Safety is cheating right!"
+          p Reads that increase the odds of all WRs making a play
+          | "All Out Blitz!"
+          | "The line is holding strong"
+          p Reads that decrease the odds of all WRs making a play
+          | "WRs stuffed at the line!"
+          | "The Defensive End is barreling towards you!"
+          | "Dammit Donald!"
+          input(type='button' value='Back To The Field!').closeHowToButton
     div.placeHolderTopLeft
       h1 Pass Play
       input(type="image" src="http://ih1.redbubble.net/image.61056662.5747/fc,800x800,white.u1.Ppg" name="plays").passImage#playImages
