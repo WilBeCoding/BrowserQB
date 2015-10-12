@@ -63,25 +63,33 @@ $( document ).ready(function() {
      }
   ]
 
-  var passOutcomeStrings = [
+  var passOutcomeStrings = {
 
-    shortCompletion = {
+    shortCompletion: {
       five: "Pass completed for a 5 yard gain",
-      ten: "Pass completed for a 10 yard gain",
-    },
-    mediumCompletion = {
-      fifteen: "Pass completed for a 15 yard gain",
-      twenty: "Pass completed for a 20 yard gain",
-    },
-    longCompletion = {
-      thirty: "Pass completed for a 40 yard gain",
-      fourty: "Pass completed for a 50 yard gain",
+      ten: "Pass completed for a 10 yard gain"
     },
 
-    touchdownCompletion = {
+    mediumCompletion: {
+      fifteen: "Pass completed for a 15 yard gain",
+      twenty: "Pass completed for a 20 yard gain"
+    },
+
+    longCompletion: {
+      thirty: "Pass completed for a 40 yard gain",
+      fourty: "Pass completed for a 50 yard gain"
+    },
+
+    touchdownCompletion: {
       touchdown: "Pass completed for a touchdown!"
+    },
+
+    incomplete: {
+      tipped: "Incomplete Pass. Tipped by the defender",
+      batted: 'Incomplete Pass. Batted down by the defender',
+      dropped: 'Incomplete Pass. The WR dropped the ball'
     }
-  ];
+  }
   var clearSackTimerBooleanTrigger = false;
   var oddsDemoInterval = 0;
   var timesWon = 0;
@@ -595,7 +603,6 @@ $( document ).ready(function() {
     timerId = window.setInterval(function(){
       $('.defensiveSpan').text(pickRandomPostSnapString(postSnapStrings));
     }, 850);
-    debugger;
   })
 
   function timeoutIntercepted(){
