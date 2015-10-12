@@ -113,6 +113,7 @@ $( document ).ready(function() {
   var interception = 0;
   var pageSize = 1;
   var audio = document.getElementsByTagName("audio")[0];
+  console.log(audio);
   var showPage = function(page) {
     $('.howToPlayPage').hide();
     $('.howToPlayPage').each(function(n) {
@@ -158,7 +159,6 @@ $( document ).ready(function() {
       clearSackTimerBooleanTrigger = true;
     }
   }
-
 
   function blitzSacked(){
     clearTimeout(wrReturnToDefault);
@@ -410,22 +410,18 @@ $( document ).ready(function() {
   })
 
   $('.nextPage').eq(3).click(function(){
-    console.log("3 hits")
     $('.pages').eq(3).hide();
     $('.pages').eq(4).show();
   })
   $('.nextPage').eq(4).click(function(){
-    console.log("4 hits")
     $('.pages').eq(4).hide();
     $('.pages').eq(5).show();
   })
   $('.nextPage').eq(5).click(function(){
-    console.log("5 hits")
     $('.pages').eq(5).hide();
     $('.pages').eq(6).show();
   })
   $('.nextPage').eq(6).click(function(){
-    console.log("6 hits")
     $('.pages').eq(6).hide();
     $('.pages').eq(7).show();
   })
@@ -433,6 +429,45 @@ $( document ).ready(function() {
     $('.pages').eq(7).hide();
     $('.pages').eq(8).show();
   })
+
+  // BREAK
+  $('.lastPage').eq(0).click(function(){
+    $('.pages').eq(1).hide();
+    $('.pages').eq(0).show();
+  })
+
+  $('.lastPage').eq(1).click(function(){
+    $('.pages').eq(2).hide();
+    $('.pages').eq(1).show();
+  })
+
+  $('.lastPage').eq(2).click(function(){
+    $('.pages').eq(3).hide();
+    $('.pages').eq(2).show();
+  })
+
+  $('.lastPage').eq(3).click(function(){
+    $('.pages').eq(4).hide();
+    $('.pages').eq(3).show();
+  })
+  $('.lastPage').eq(4).click(function(){
+    $('.pages').eq(5).hide();
+    $('.pages').eq(4).show();
+  })
+  $('.lastPage').eq(5).click(function(){
+    $('.pages').eq(6).hide();
+    $('.pages').eq(5).show();
+  })
+  $('.lastPage').eq(6).click(function(){
+    $('.pages').eq(5).hide();
+    $('.pages').eq(6).show();
+  })
+  $('.lastPage').eq(7).click(function(){
+    $('.pages').eq(8).hide();
+    $('.pages').eq(7).show();
+  })
+
+
 
    //on click hide the message and the
   $(".closeHowToButton").click(function () {
@@ -560,6 +595,7 @@ $( document ).ready(function() {
     timerId = window.setInterval(function(){
       $('.defensiveSpan').text(pickRandomPostSnapString(postSnapStrings));
     }, 850);
+    debugger;
   })
 
   function timeoutIntercepted(){

@@ -182,7 +182,6 @@
 .container .buttons .snap .buttonSnap {
   margin: 0 auto;
   height: 100px;
-  width: 30px;
   position: absolute; }
 
 .container .buttons .WRbuttons {
@@ -196,13 +195,16 @@
   -ms-flex-pack: justify;
   justify-content: space-between;
   height: 100px;
-  width: 100%; }
+  width: 100%;
+  margin-left: 15%;
+  margin-left: 13; }
 
 .container .buttons .WRbuttons .wr1 {
   text-align: center;
-  padding-left: 25%;
+  /* padding-left: 25%; */
   height: 100px;
-  width: 30px; }
+  width: 30px;
+  /* margin-right: 25%; */ }
 
 .container .buttons .WRbuttons .wr2 {
   -ms-flex-item-align: center;
@@ -298,9 +300,11 @@ table {
   left: 0;
   opacity: 0.5;
   -webkit-filter: blur(2px);
+  background-position: right 260px top;
   -moz-filter: blur(2px);
   -ms-filter: blur(2px);
   -o-filter: blur(2px);
+  -webkit-filter: blur(2px);
   filter: blur(2px); }
 
 .mask {
