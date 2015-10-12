@@ -332,11 +332,20 @@ table {
   -webkit-justify-content: top;
   position: top;
   -ms-flex-pack: top;
+  -webkit-justify-content: top;
   justify-content: top;
   margin-top: 0;
-  align-content: left;
+  -ms-flex-line-pack: left;
+  -webkit-align-content: left;
+          align-content: left;
   width: 75%;
-  margin-left: 2%;
+  margin-left: 2%; }
+
+.table .howToPlayButton {
+  margin-left: 40%; }
+
+.pregame .center .howToPlayButton {
+  margin-top: -30%;
   }
 
 @media (max-width: 480px) {

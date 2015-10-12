@@ -112,6 +112,7 @@ $( document ).ready(function() {
   var yardsToFirst = 10;
   var interception = 0;
   var pageSize = 1;
+  var audio = document.getElementsByTagName("audio")[0];
   var showPage = function(page) {
     $('.howToPlayPage').hide();
     $('.howToPlayPage').each(function(n) {
@@ -451,6 +452,13 @@ $( document ).ready(function() {
       }
   }
 
+  $( "#initials" ).on('keyup', function() {
+    var initials = document.getElementById("initials").value;
+    if(initials.length > 3) {
+      $('.startGameBtn').prop('disabled', false);
+    }
+  });
+
   $('.startGameBtn').on('click', function() {
     if ($('header').width() < 481){
       $("label").css('margin-left', '70%');
@@ -510,6 +518,7 @@ $( document ).ready(function() {
     $('.buttons').css('background', 'white');
   });
 
+
   $('.runImage').on('click', function() {
     alert("You Audible To A Pass Play!");
     playClockId = 0;
@@ -530,6 +539,7 @@ $( document ).ready(function() {
     $('.placeholderBirdsEyeView').addClass('birdsEyeImg');
     $('.birdsEyeImg').removeClass('placeholderBirdsEyeView');
     $('.buttons').css('background', 'white');
+    audio.play();
   });
 
   $('.buttonSnap').on('click', function() {

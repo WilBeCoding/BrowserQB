@@ -34,8 +34,6 @@ block content
         input(type="text" name="user_initials" id="initials")
         p
           input(type="submit" value="Take to the field!" id="initialsButton").startGameBtn
-        br
-        br
         p
           input(type="button" value="How To Play").howToPlayButton
     div.howToContainer
@@ -175,6 +173,8 @@ block content
             td
             td
             td.record
+      input(type="button" value="How To Play").howToPlayButton
     div.placeHolderTopRight
+      audio(src='/views/Omaha.mp3' type='audio/mp3')
       h1.runPlaysText Run Play
       input(type="image" src="http://glb.warriorgeneral.com/images/plays/171.gif" name="plays").runImage#playImages
