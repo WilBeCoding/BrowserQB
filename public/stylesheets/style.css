@@ -310,7 +310,8 @@ table {
 
 .howToPlayDiv {
   margin: auto;
-  color: white; }
+  color: white;
+  text-shadow: 3px 2px 5px #000; }
 
 .hider {
   position: absolute;
@@ -326,6 +327,19 @@ table {
 
 .pages {
   display: none; }
+
+.howToPlayDiv:first-child {
+  -webkit-justify-content: top;
+  position: top;
+  -ms-flex-pack: top;
+  -webkit-justify-content: top;
+          justify-content: top;
+  margin-top: 0;
+  -webkit-align-content: left;
+      -ms-flex-line-pack: left;
+          align-content: left;
+  width: 75%;
+  margin-left: 2%; }
 
 @media (max-width: 480px) {
   .container .field {

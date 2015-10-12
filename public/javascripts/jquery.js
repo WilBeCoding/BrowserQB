@@ -114,7 +114,7 @@ $( document ).ready(function() {
   var pageSize = 1;
   var showPage = function(page) {
     $('.howToPlayPage').hide();
-    $('howToPlayPage').each(function(n) {
+    $('.howToPlayPage').each(function(n) {
         if(n >= pageSize * (page - 1) && n < pageSize * page)
           $(this).show();
     })
@@ -381,14 +381,10 @@ $( document ).ready(function() {
                     }, 1000);
   }
 
- 
-
-
   $(".howToContainer").hide();
   $(".mask").hide();
   $(".hider").hide();
   $(".howToPlayDiv").hide();
-   //on click show the hider div and the message
   $(".howToPlayButton").click(function () {
     $(".howToContainer").fadeIn("slow");
     $('.mask').fadeIn("slow");
@@ -413,13 +409,28 @@ $( document ).ready(function() {
   })
 
   $('.nextPage').eq(3).click(function(){
+    console.log("3 hits")
     $('.pages').eq(3).hide();
     $('.pages').eq(4).show();
   })
-
   $('.nextPage').eq(4).click(function(){
+    console.log("4 hits")
     $('.pages').eq(4).hide();
     $('.pages').eq(5).show();
+  })
+  $('.nextPage').eq(5).click(function(){
+    console.log("5 hits")
+    $('.pages').eq(5).hide();
+    $('.pages').eq(6).show();
+  })
+  $('.nextPage').eq(6).click(function(){
+    console.log("6 hits")
+    $('.pages').eq(6).hide();
+    $('.pages').eq(7).show();
+  })
+  $('.nextPage').eq(7).click(function(){
+    $('.pages').eq(7).hide();
+    $('.pages').eq(8).show();
   })
 
    //on click hide the message and the
@@ -428,6 +439,7 @@ $( document ).ready(function() {
     $('.mask').fadeOut("slow");
     $(".hider").fadeOut("slow");
     $('.howToPlayDiv').fadeOut("slow");
+    $('.pages').hide();
   });
 
   function validate(){
