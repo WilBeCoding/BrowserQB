@@ -1,8 +1,3 @@
-var postsnapRunStrings = {
-
-}
-
-
 var postSnapStrings = {
 
     WR1oddsIncrease: {
