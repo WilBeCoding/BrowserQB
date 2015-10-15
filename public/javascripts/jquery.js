@@ -507,8 +507,13 @@ $( document ).ready(function() {
     var initials = document.getElementById("initials").value;
     if(initials.length > 3) {
       $('.startGameBtn').prop('disabled', false);
+      if(event.keyCode == 13){
+          $(".startGameBtn").click();
+      }
     }
+      $(document).unbind('keypress');
   });
+
 
   $('.startGameBtn').on('click', function() {
     if ($('header').width() < 481){
