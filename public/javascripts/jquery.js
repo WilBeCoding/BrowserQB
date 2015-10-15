@@ -50,17 +50,17 @@ $( document ).ready(function() {
       Donald: "Dammit Donald!",
      },
 
-     Blitz = {
-      DefensiveEnd: "The Defensive End is barreling towards you!",
-      Donald: "Dammit Donald!",
-      Blitz: "All Out Blitz!",
-      Cb: "Right Cornerback Blitz!",
-      Rolb: "The ROLB is blitzing!",
-      Lolb: "The LOLB is blitzing!",
-      Cb: "Left Cornerback Blitz!",
-      MLB: "The MLB is blitzing!",
-      Safety: "Safety Blitz!",
-     }
+     // Blitz = {
+     //  DefensiveEnd: "The Defensive End is barreling towards you!",
+     //  Donald: "Dammit Donald!",
+     //  Blitz: "All Out Blitz!",
+     //  Cb: "Right Cornerback Blitz!",
+     //  Rolb: "The ROLB is blitzing!",
+     //  Lolb: "The LOLB is blitzing!",
+     //  Cb: "Left Cornerback Blitz!",
+     //  MLB: "The MLB is blitzing!",
+     //  Safety: "Safety Blitz!",
+     // }
   ]
 
   var passOutcomeStrings = {
@@ -325,6 +325,24 @@ $( document ).ready(function() {
     driveFunction();
   }
 
+
+  var intervalPassStrings = function pickRandomSubObject() {
+                              var result;
+                              var output;
+                              var count = 0;
+                              for (var prop in postSnapStrings)
+                                  if (Math.random() < 1/++count) {
+                                     result = prop;
+                                  }
+                                  var count = 0;
+                                  for (var prop in postSnapStrings[result])
+                                      if (Math.random() < 1/++count) {
+                                         output = postSnapStrings[result][prop];
+                                      }
+                                      // console.log(PlayResults);
+                                  return output
+                              }
+
   function checkForTouchdown(){
     if(yardLine >= '100') {
       $('.footballIMG').animate({'left': '87%'}, "fast");
@@ -358,21 +376,6 @@ $( document ).ready(function() {
     if(downCount === 4) {
       $('.down').text("4th and " + yardsToFirst);
     }
-  }
-
-  function pickRandomPostSnapString(array) {
-    var result;
-    var count = 0;
-    var key;
-    var keyArray = [];
-    for (var prop in array)
-      if (Math.random() < 1/++count) {
-        result = array[prop];
-      };
-    for (var key in result) {
-      keyArray.push(key);
-    }
-    return result[keyArray[Math.floor(Math.random() * keyArray.length)]]    
   }
 
   function playClock(duration, display) {
@@ -586,7 +589,7 @@ $( document ).ready(function() {
   });
 
   $('.buttonSnap').on('click', function() {
-    $('.defensiveSpan').text(pickRandomPostSnapString(postSnapStrings));
+    $('.defensiveSpan').text(intervalPassStrings());
     timerId = 0;
     clearInterval(playClockId);
     sackTimer = setTimeout(sacked,5000);
@@ -601,8 +604,8 @@ $( document ).ready(function() {
     $('.birdsEyeImg').addClass('placeholderBirdsEyeView');
     $('.placeholderBirdsEyeView').removeClass('birdsEyeImg');
     timerId = window.setInterval(function(){
-      $('.defensiveSpan').text(pickRandomPostSnapString(postSnapStrings));
-    }, 850);
+      $('.defensiveSpan').text(intervalPassStrings());
+    }, 600);
   })
 
   function timeoutIntercepted(){
@@ -829,37 +832,6 @@ $( document ).ready(function() {
     checkIfWon();
   })
 
-  function pickRandomPassOutcome(array) {
-    // oddsDemoInterval = setTimeout(oddsDemo,849);
-    var result;
-    var count = 0;
-    var key;
-    var keyArray = [];
-    for(var prop in array)
-      if (Math.random() < 1/++count) {
-        result = array[prop];
-      };
-    for(var key in result) {
-      keyArray.push(key);
-    }
-    return result[keyArray[Math.floor(Math.random() * keyArray.length)]]    
-  }
-
-  function randomValueOfObjectInpostSnapStrings(array) {
-    var result;
-    var count = 0;
-    var key;
-    var keyArray = [];
-    for (var prop in array)
-      if (Math.random() < 1/++count) {
-        result = array[prop];
-      };
-    for (var key in result) {
-        keyArray.push(key);
-    }
-   return result   
-  };
-
   var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
   var list = document.querySelector('.defensiveSpan');
   var observer = new MutationObserver(function(mutations) {  
@@ -873,73 +845,81 @@ $( document ).ready(function() {
         var GlobalOddsCount = 0
         var key;
         var keyArray = [];
-        for(var i = 0; i < postSnapStrings.length; i++) {
-          for(var key in postSnapStrings[i]) {
-            if(defensiveSpanText === postSnapStrings[0][key]) {
-              console.log
+        var key1;
+        console.log(postSnapStrings + "    post snap strings");
+        for(var key in postSnapStrings) {
+          for(var key1 in postSnapStrings[key]) {
+            console.log(key + "       this is key ");
+            console.log(key1 +  "        This is key 1");
+            console.log(postSnapStrings[key] + "      post snap strings key");
+            // console.log(defensiveSpanText)
+            // console.log(postSnapStrings.WR1oddsIncrease[key])
+            if(defensiveSpanText === postSnapStrings.WR1oddsIncrease[key1]) {
               WR1OddsCount++;
-              break;
+              // break;
               console.log("                              WR1+   "+   (WR1OddsCount)) 
             }
-            if(defensiveSpanText === postSnapStrings[1][key]) {
+            if(defensiveSpanText === postSnapStrings.WR1oddsDecrease[key1]) {
               WR1OddsCount--;
-              break;
+              // break;
               console.log("                              WR1-   "+   (WR1OddsCount) )
             }
-            if(defensiveSpanText === postSnapStrings[2][key]) {
+            if(defensiveSpanText === postSnapStrings.WR2oddsIncrease[key1]) {
               WR2OddsCount++;
-              break;
+              // break;
               console.log("                              WR2+   "+   (WR2OddsCount) )
             }
-            if(defensiveSpanText === postSnapStrings[3][key]) {
+            if(defensiveSpanText === postSnapStrings.WR3oddsDecrease[key1]) {
               WR2OddsCount--;
-              break;
+              // break;
               console.log("                              WR2-   "+   (WR2OddsCount) )
             }
-            if(defensiveSpanText === postSnapStrings[4][key]) {
+            if(defensiveSpanText === postSnapStrings.WR3oddsIncrease[key1]) {
               WR3OddsCount++
-              break;
+              // break;
               console.log("                              WR3+   "+   (WR3OddsCount) )
             }
-            if(defensiveSpanText === postSnapStrings[5][key]) {
+            if(defensiveSpanText === postSnapStrings.WR3oddsDecrease[key1]) {
               WR3OddsCount--
-              break;
+              // break;
               console.log("                              WR3-   "+   (WR3OddsCount) )
             }
-            if(defensiveSpanText === postSnapStrings[6][key]) {
+            if(defensiveSpanText === postSnapStrings.GlobalIncrease[key1]) {
               GlobalOddsCount++
-              break;
+              // break;
               console.log("                              Global+   "+   (GlobalOddsCount) )
             }
-            if(defensiveSpanText === postSnapStrings[7][key]) {
+            if(defensiveSpanText === postSnapStrings.GlobalDecrease[key1]) {
               GlobalOddsCount--
-              break;
-              console.log("                              Global-   "+   (GlobalOddsCount) )
+              // break;
+              // console.log("snakes");
+              // console.log("                              Global-   "+   (GlobalOddsCount) )
             }
+            console.log("hit within second loop?");
           }
 
-        }
+        console.log("Does this even hit here above blitz?");
         if(defensiveSpanText.indexOf('Blitz') > -1 || defensiveSpanText.indexOf('blitzing') > -1) { 
           console.log("*$*$*$*$*$*$*$*$*$*$    Blitz if statement hits    (^(^(^(^(^^((^((^(^(^(^")
           clearSackTimer()
         }
-
-  PlayResults.WR1OddsAdj =+ PlayResults.WR1OddsAdj+ (WR1OddsCount/2) * .025;
-  PlayResults.WR2OddsAdj =+ PlayResults.WR2OddsAdj+ (WR2OddsCount/2) * .025;
-  PlayResults.WR3OddsAdj =+ PlayResults.WR3OddsAdj+ (WR3OddsCount/2) * .025;
-  PlayResults.GlobalOddsAdj=+ PlayResults.GlobalOddsAdj+ (GlobalOddsCount/2) * .05
-          // console.log(" ----------------------")
-          // console.log("     ")
-          // console.log(defensiveSpanText);
-          // console.log("      ")
-          // console.log(PlayResults.WR1OddsAdj + "  WR1 Play Results"); 
-          // console.log(WR1OddsCount + "   WR1 Odds Count");
-          // console.log(PlayResults.WR2OddsAdj + "   WR2Play Results"); 
-          // console.log(WR2OddsCount + "   W2 Odds Count");
-          // console.log(PlayResults.WR3OddsAdj + "    WR3 Play Results"); 
-          // console.log(WR3OddsCount + "    WR3 Odds Count");
-          // console.log(PlayResults.GlobalOddsAdj + "     PlayResults Global Odds Adj");
-          // console.log(GlobalOddsCount + "   Global Odds Count");
+        }
+  PlayResults.WR1OddsAdj = PlayResults.WR1OddsAdj + (WR1OddsCount/2) * .025;
+  PlayResults.WR2OddsAdj = PlayResults.WR2OddsAdj + (WR2OddsCount/2) * .025;
+  PlayResults.WR3OddsAdj = PlayResults.WR3OddsAdj + (WR3OddsCount/2) * .025;
+  PlayResults.GlobalOddsAdj += PlayResults.GlobalOddsAdj + (GlobalOddsCount/2) * .05
+          console.log(" ----------------------")
+          console.log("     ")
+          console.log(defensiveSpanText);
+          console.log("      ")
+          console.log(PlayResults.WR1OddsAdj + "  WR1 Play Results"); 
+          console.log(WR1OddsCount + "   WR1 Odds Count");
+          console.log(PlayResults.WR2OddsAdj + "   WR2Play Results"); 
+          console.log(WR2OddsCount + "   W2 Odds Count");
+          console.log(PlayResults.WR3OddsAdj + "    WR3 Play Results"); 
+          console.log(WR3OddsCount + "    WR3 Odds Count");
+          console.log(PlayResults.GlobalOddsAdj + "     PlayResults Global Odds Adj");
+          console.log(GlobalOddsCount + "   Global Odds Count");
           console.log(defensiveSpanText);
           console.log(PlayResults);
       }
