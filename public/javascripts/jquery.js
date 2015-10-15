@@ -190,16 +190,18 @@ $( document ).ready(function() {
   }
 
     function checkGameState() {
+      console.log(drive + "Drive Top of game state function");
+      console.log(score  +  " this is the score at top of gamestate function");
+      down++
       if(drive === 4 && score !== 14 || drive === 3 && score !==7) {
-       console.log("Lost Condition Hits")
-      clearTimeout(sackedReturnToDefault);
-      clearInterval(timerId);
-      clearTimeout(sackTimer);
-      clearTimeout(wrReturnToDefault);
-      clearTimeout(returnToSackDefaultEndSacks);
-      clearTimeout(checkIfTurnoverTimeout)
-      setTimeout(lost, 500);
-      return
+         console.log("Lost Condition Hits")
+        clearTimeout(sackedReturnToDefault);
+        clearInterval(timerId);
+        clearTimeout(sackTimer);
+        clearTimeout(wrReturnToDefault);
+        clearTimeout(returnToSackDefaultEndSacks);
+        setTimeout(lost, 500);
+        return
       }
       else if(score === 14) {
         console.log("won condition hit");
@@ -212,7 +214,15 @@ $( document ).ready(function() {
         setTimeout(won, 550);
         return
       }
-      else if(downCount === 5 && yardLine < 100 && yardsToFirst > 0) {
+      else if(downCount === 5 && yardLine < 100 && yardsToFirst > 0 || interceptionReturnToDefaultBreak = true) {
+        downCount = 1;
+        drive++;
+        yardsToFirst = 10;
+        if(interceptionReturnToDefaultBreak = true){
+          interceptionReturnToDefaultBreak = false;
+          setTimeout(returnToDefault,2000)
+          return
+        }
         console.log("turnover condition hit");
         clearTimeout(sackedReturnToDefault);
         clearInterval(timerId);
@@ -221,12 +231,6 @@ $( document ).ready(function() {
         clearTimeout(returnToSackDefaultEndSacks);
         $('.defensiveSpan').text("TURNOVER ON DOWNS!");
         $('.footballIMG').animate({'left': '24.5%'}, "fast");
-        downCount = 1;
-        $('.down').text(downCount);
-        drive++;
-        yardsToFirst = 10;
-        // checkIfTurnoverTimeout = setTimeout(returnToDefault,1850);
-        console.log("This hits in checking for turnover")
       }
       if(drive === 2) {
         $('.drive').text("2nd")
@@ -236,6 +240,7 @@ $( document ).ready(function() {
       }
       console.log("Game State Function Hits")
       setTimeout(returnToDefault, 2500);
+      console.log(drive + "Drive at Bottom of game state function");
     }
   
 
@@ -317,15 +322,8 @@ $( document ).ready(function() {
 
   function touchdownFunction() {
     touchdown = false;
-    if(score === 14) {
-      setTimeout(won, 1500);
-    }
-    // touchdownTimeout = setTimeout(returnToDefault, 2000)
     $('.footballIMG').animate({'left': '24.5%'}, "fast");
-    drive++;
-    downCount = 1;
-    yardLine = 20;
-    yardsToFirst = 10;
+    setTimeout(checkGameState, 1800);
   }
 
 
@@ -353,7 +351,6 @@ $( document ).ready(function() {
   function checkForTouchdown(){
     if(yardLine >= '100') {
       $('.footballIMG').animate({'left': '87%'}, "fast");
-      // clearTimeout(wrReturnToDefault);
       touchdown = true;
       $('.defensiveSpan').text("Touchdown!")
       $('.buttons').css('background', 'url("http://netstorage.discovery.com/feeds/brightcove/asset-stills/apl/135966413090713964101001197_Puppy_Bowl_IX_BIGPLAY_4_Lift_10.jpg")');
@@ -625,18 +622,10 @@ $( document ).ready(function() {
   function timeoutIntercepted(){
     if(interception > 0) {
       interceptionReturnToDefaultBreak = true;
-      setTimeout(intercepted, 150)
-      downCount = 1;
-      yardsToFirst = 10;
       interception = 0;
+      setTimeout(checkGameState, 150)
+      console.log("timeoutIntercepted Hits");
     }
-  }
-
-  function intercepted() {
-    interceptionReturnToDefaultBreak = false;
-    interception = 0;
-    checkState = setTimeout(checkGameState, 1500);
-    console.log("checkState hits in intercepted function");
   }
 
   $(window).load(function() {
@@ -651,8 +640,6 @@ $( document ).ready(function() {
     blitz = 0;
     clearSackTimerBooleanTrigger = 0;
     timeoutIntercepted();
-    if(touchdown === false) {
-    }
     if(interceptionReturnToDefaultBreak === true) {
       $('.buttons').css('background', 'url("http://cdn.fansided.com/wp-content/blogs.dir/276/files/2014/12/gruden.jpg")');
       return;
@@ -710,7 +697,6 @@ $( document ).ready(function() {
       $('.footballIMG').animate({'left': '24.5%'}, "fast");
       interception++
       yardLine = 20;
-      drive++;
       yardsToFirst = 10;
     }
     if(PlayResults.WR1OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj < .2 && PlayResults.WR1OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj > .1) {
@@ -741,6 +727,7 @@ $( document ).ready(function() {
     }
     downCount++;
     checkForTouchdown();
+    checkGameState();
   })
 
   $('.wr2').on('click', function() {
@@ -758,7 +745,6 @@ $( document ).ready(function() {
       $('.footballIMG').animate({'left': '24.5%'}, "fast");
       interception++;
       yardLine = 20;
-      drive++;
       yardsToFirst = 10;
     }
     if(PlayResults.WR2OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj < .2 && PlayResults.WR2OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj > .1) {
@@ -789,6 +775,7 @@ $( document ).ready(function() {
     }
     downCount++;
     checkForTouchdown();
+    checkGameState();
   })  
 
   $('.wr3').on('click', function() {
@@ -806,7 +793,6 @@ $( document ).ready(function() {
       $('.footballIMG').animate({'left': '24.5%'}, "fast");
       interception++;
       yardLine = 20;
-      drive++;
       yardsToFirst = 10;
     }
     if(PlayResults.WR3OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj < .2 && PlayResults.WR3OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj > .1) {
@@ -837,6 +823,7 @@ $( document ).ready(function() {
     }
     downCount++
     checkForTouchdown();
+    checkGameState();
   })
 
   var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
