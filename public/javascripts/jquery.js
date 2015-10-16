@@ -122,6 +122,9 @@ $( document ).ready(function() {
   var yardsToFirst = 10;
   var interception = 0;
   var pageSize = 1;
+  var WR1oddsVar;
+  var WR2oddsVar;
+  var WR3oddsVar;
   var list = document.querySelector('.defensiveSpan');
   var audio = document.getElementsByTagName("audio")[0];
   var initialWRodds =  function randomInt() {
@@ -159,11 +162,9 @@ $( document ).ready(function() {
     CurrentWR3odds: WR3oddsVar
   }
 
-  var WR1oddsVar = PlayResults.WR1initialOdds + PlayResults.WR1timeIncreaseOdds + PlayResults.GlobalOddsAdjustment + PlayResults.WR1oddsAdjustment;
-  var WR2oddsVar = PlayResults.WR2initialOdds + PlayResults.WR2timeIncreaseOdds + PlayResults.GlobalOddsAdjustment + PlayResults.WR2oddsAdjustment;
-  var WR3oddsVar = PlayResults.WR3initialOdds + PlayResults.WR3timeIncreaseOdds + PlayResults.GlobalOddsAdjustment + PlayResults.WR3oddsAdjustment;
-
   function currentOdds(WRodds) {
+    console.log(PlayResults.CurrentWR2Odds + "                PlayResults.CurrentWR2Odds");
+    console.log(WR2oddsVar + "                 WR2oddsVar");
     var yardsClass = document.getElementsByClassName('yards');
     clearTimeout(sackTimer);
     clearTimeout(checkState);
@@ -637,7 +638,6 @@ $( document ).ready(function() {
 
 
   $('.runImage').on('click', function() {
-    audio.play();
     alert("You Audible To A Pass Play!");
     playClockId = 0;
     var thirtySeconds = 30;
@@ -657,6 +657,7 @@ $( document ).ready(function() {
     $('.placeholderBirdsEyeView').addClass('birdsEyeImg');
     $('.birdsEyeImg').removeClass('placeholderBirdsEyeView');
     $('.buttons').css('background', 'white');
+    audio.play();
   });
 
   $('.buttonSnap').on('click', function() {
@@ -769,7 +770,7 @@ $( document ).ready(function() {
     clearInterval(timerId);
     $('.WRbuttons').addClass('placeholderWRbuttons');
     $('.WRbuttons').removeClass('WRbuttons');
-    currentOdds(PlayResults.CurrentWR2Odds)
+    currentOdds(PlayResults.CurrentWR3Odds)
   })
 
   var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
@@ -851,6 +852,9 @@ $( document ).ready(function() {
   PlayResults.WR2OddsAdjustment = PlayResults.WR2OddsAdjustment + (WR2OddsCount/2);
   PlayResults.WR3OddsAdjustment = PlayResults.WR3OddsAdjustment + (WR3OddsCount/2);
   PlayResults.GlobalOddsAdjustment = PlayResults.GlobalOddsAdjustment + (GlobalOddsCount/2);
+  WR1oddsVar = PlayResults.WR1initialOdds + PlayResults.WR1timeIncreaseOdds + PlayResults.GlobalOddsAdjustment + PlayResults.WR1oddsAdjustment;
+  WR2oddsVar = PlayResults.WR2initialOdds + PlayResults.WR2timeIncreaseOdds + PlayResults.GlobalOddsAdjustment + PlayResults.WR2oddsAdjustment;
+  WR3oddsVar = PlayResults.WR3initialOdds + PlayResults.WR3timeIncreaseOdds + PlayResults.GlobalOddsAdjustment + PlayResults.WR3oddsAdjustment;
   console.log(JSON.stringify(PlayResults,null, 4));
     });
   })
