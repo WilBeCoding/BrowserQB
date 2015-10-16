@@ -146,7 +146,6 @@ $( document ).ready(function() {
   }
 
   function sacked(){
-    downCount++;
     yardLine-= 7;
     yardsToFirst+=7;
     // clearTimeout(wrReturnToDefault);
@@ -156,8 +155,7 @@ $( document ).ready(function() {
     $('.footballIMG').animate({'left': '-=4.5%'}, "slow");
     $('.WRbuttons').addClass('placeholderWRbuttons');
     $('.WRbuttons').removeClass('WRbuttons');
-    scoreboardUpdate();
-    checkState = setTimeout(checkGameState, 2500);
+    checkState = setTimeout(checkGameState, 1250);
     console.log("checkstate hits in sacked function");
   }
 
@@ -173,7 +171,6 @@ $( document ).ready(function() {
 
   function blitzSacked(){
     // clearTimeout(wrReturnToDefault);
-    downCount++;
     blitzSackedTime = 0;
     yardLine-= 10;
     yardsToFirst+= 10;
@@ -188,22 +185,15 @@ $( document ).ready(function() {
   function refresh() {
     location.reload();
   }
+var howManyTimesGameStateHits = 0;
 
     function checkGameState() {
-      console.log(drive + "Drive Top of game state function");
-      console.log(score  +  " this is the score at top of gamestate function");
-      down++
-      if(drive === 4 && score !== 14 || drive === 3 && score !==7) {
-         console.log("Lost Condition Hits")
-        clearTimeout(sackedReturnToDefault);
-        clearInterval(timerId);
-        clearTimeout(sackTimer);
-        clearTimeout(wrReturnToDefault);
-        clearTimeout(returnToSackDefaultEndSacks);
-        setTimeout(lost, 500);
-        return
-      }
-      else if(score === 14) {
+      console.log(drive + "     This is the drive number before the fucking loss condition");
+      console.log(score + "     this is the score before the fucking loss conidtion");
+      howManyTimesGameStateHits++;
+      downCount++
+        console.log("if statement in gamestate is increasing drive count")
+      if(score === 14) {
         console.log("won condition hit");
         wonGame = true;
         clearTimeout(sackedReturnToDefault);
@@ -214,15 +204,8 @@ $( document ).ready(function() {
         setTimeout(won, 550);
         return
       }
-      else if(downCount === 5 && yardLine < 100 && yardsToFirst > 0 || interceptionReturnToDefaultBreak = true) {
-        downCount = 1;
+      else if(downCount === 5 && yardLine < 100 && yardsToFirst > 0) {
         drive++;
-        yardsToFirst = 10;
-        if(interceptionReturnToDefaultBreak = true){
-          interceptionReturnToDefaultBreak = false;
-          setTimeout(returnToDefault,2000)
-          return
-        }
         console.log("turnover condition hit");
         clearTimeout(sackedReturnToDefault);
         clearInterval(timerId);
@@ -231,20 +214,32 @@ $( document ).ready(function() {
         clearTimeout(returnToSackDefaultEndSacks);
         $('.defensiveSpan').text("TURNOVER ON DOWNS!");
         $('.footballIMG').animate({'left': '24.5%'}, "fast");
+        $('.down').text(downCount);
+        stopBecauseOfLoss = setTimeout(returnToDefault, 2500);
+        // checkIfTurnoverTimeout = setTimeout(returnToDefault,1850);
+        console.log("This hits in checking for turnover")
+        yardsToFirst = 10;
       }
-      if(drive === 2) {
-        $('.drive').text("2nd")
-      }
-      if(drive ===3) {
-        $('.drive').text("Final")
-      }
-      console.log("Game State Function Hits")
+      if(drive === 4 && score !== 14 || downCount === 5 && drive === 3 && score !==7) {
+         console.log("Lost Condition Hits")
+          clearTimeout(stopBecauseOfLoss);
+          clearTimeout(sackedReturnToDefault);
+          clearInterval(timerId);
+          clearTimeout(sackTimer);
+          clearTimeout(wrReturnToDefault);
+          clearTimeout(returnToSackDefaultEndSacks);
+          $('.defensiveSpan').text("You Lost!");
+          setTimeout(refresh, 1500);
+          return
+        }
+      console.log(drive + "      before drive if statements");
+      console.log(howManyTimesGameStateHits + "    Game State Function Hits");
       setTimeout(returnToDefault, 2500);
-      console.log(drive + "Drive at Bottom of game state function");
     }
   
 
   function lost() {
+    console.log("Lost function hits")
     // var initials = document.getElementById("initials").value;
     $('.defensiveSpan').text("You Lost!");
     // $.get("/data/"+ $('#initials').val(), function( data ) {
@@ -322,10 +317,32 @@ $( document ).ready(function() {
 
   function touchdownFunction() {
     touchdown = false;
-    $('.footballIMG').animate({'left': '24.5%'}, "fast");
-    setTimeout(checkGameState, 1800);
+    // touchdownTimeout = setTimeout(returnToDefault, 2000)
+    $('.footballIMG').animate({'left': '24.5%'}, "slow");
+    drive++;
+    downCount = 1;
+    yardLine = 20;
+    yardsToFirst = 10;
   }
 
+  function checkForTouchdown(){
+    if(yardLine >= '100') {
+      $('.footballIMG').animate({'left': '87%'}, "fast");
+      // clearTimeout(wrReturnToDefault);
+      touchdown = true;
+      $('.defensiveSpan').text("Touchdown!")
+      $('.buttons').css('background', 'url("http://netstorage.discovery.com/feeds/brightcove/asset-stills/apl/135966413090713964101001197_Puppy_Bowl_IX_BIGPLAY_4_Lift_10.jpg")');
+      setTimeout(touchdownFunction, 1500);
+      if(score === 0) {
+        score += 7;
+        $('.score').text(score);
+      }
+      else if(score === 7) {
+        score += 7;
+        $('.score').text(score);
+      }
+    }
+  }
 
   var intervalPassStrings = function pickRandomSubObject() {
     var defSpanClassic = document.getElementsByClassName('defensiveSpan');
@@ -348,23 +365,6 @@ $( document ).ready(function() {
                                   return output
                               }
 
-  function checkForTouchdown(){
-    if(yardLine >= '100') {
-      $('.footballIMG').animate({'left': '87%'}, "fast");
-      touchdown = true;
-      $('.defensiveSpan').text("Touchdown!")
-      $('.buttons').css('background', 'url("http://netstorage.discovery.com/feeds/brightcove/asset-stills/apl/135966413090713964101001197_Puppy_Bowl_IX_BIGPLAY_4_Lift_10.jpg")');
-      setTimeout(touchdownFunction, 1500);
-      if(score === 0) {
-        score += 7;
-        $('.score').text(score);
-      }
-      else if(score === 7) {
-        score += 7;
-        $('.score').text(score);
-      }
-    }
-  }
 
   function scoreboardUpdate() {
     if(downCount === 1) {
@@ -378,6 +378,15 @@ $( document ).ready(function() {
     }
     if(downCount === 4) {
       $('.down').text("4th and " + yardsToFirst);
+    }
+    if(downCount === 5) {
+      downCount = 1;
+    }
+    if(drive === 2) {
+      $('.drive').text("2nd")
+    }
+    if(drive ===3) {
+      $('.drive').text("Final")
     }
   }
 
@@ -622,10 +631,18 @@ $( document ).ready(function() {
   function timeoutIntercepted(){
     if(interception > 0) {
       interceptionReturnToDefaultBreak = true;
+      setTimeout(intercepted, 150)
+      downCount = 1;
+      yardsToFirst = 10;
       interception = 0;
-      setTimeout(checkGameState, 150)
-      console.log("timeoutIntercepted Hits");
     }
+  }
+
+  function intercepted() {
+    interceptionReturnToDefaultBreak = false;
+    interception = 0;
+    checkState = setTimeout(checkGameState, 1500);
+    console.log("checkState hits in intercepted function")
   }
 
   $(window).load(function() {
@@ -686,7 +703,7 @@ $( document ).ready(function() {
    var yardsClass = document.getElementsByClassName('yards');
     clearTimeout(sackTimer);
     clearTimeout(checkState);
-    // clearTimeout(blitzSackedTime);
+    clearTimeout(blitzSackedTime);
     // clearTimeout(returnToDefaultEndSacks);
     clearInterval(timerId);
     // wrReturnToDefault = setTimeout(returnToDefault, 2850);
@@ -697,6 +714,7 @@ $( document ).ready(function() {
       $('.footballIMG').animate({'left': '24.5%'}, "fast");
       interception++
       yardLine = 20;
+      drive++;
       yardsToFirst = 10;
     }
     if(PlayResults.WR1OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj < .2 && PlayResults.WR1OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj > .1) {
@@ -725,7 +743,6 @@ $( document ).ready(function() {
       $('.footballIMG').animate({'left': '86.5%'}, 'slow');
       yardLine = 100;
     }
-    downCount++;
     checkForTouchdown();
     checkGameState();
   })
@@ -733,7 +750,7 @@ $( document ).ready(function() {
   $('.wr2').on('click', function() {
     var yardsClass = document.getElementsByClassName('yards');
     clearTimeout(sackTimer);
-    // clearTimeout(blitzSackedTime);
+    clearTimeout(blitzSackedTime);
     clearTimeout(checkState);
     // clearTimeout(returnToDefaultEndSacks);
     // wrReturnToDefault= setTimeout(returnToDefault, 2850);
@@ -745,6 +762,7 @@ $( document ).ready(function() {
       $('.footballIMG').animate({'left': '24.5%'}, "fast");
       interception++;
       yardLine = 20;
+      drive++;
       yardsToFirst = 10;
     }
     if(PlayResults.WR2OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj < .2 && PlayResults.WR2OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj > .1) {
@@ -773,7 +791,6 @@ $( document ).ready(function() {
       $('.footballIMG').animate({'left': '86.5%'}, 'slow');
       yardLine = 100;
     }
-    downCount++;
     checkForTouchdown();
     checkGameState();
   })  
@@ -782,7 +799,7 @@ $( document ).ready(function() {
     var yardsClass = document.getElementsByClassName('yards');
     clearTimeout(sackTimer);
     clearTimeout(checkState);
-    // clearTimeout(blitzSackedTime);
+    clearTimeout(blitzSackedTime);
     // clearTimeout(returnToDefaultEndSacks);
     // wrReturnToDefault= setTimeout(returnToDefault, 2850);
     clearInterval(timerId);
@@ -793,6 +810,7 @@ $( document ).ready(function() {
       $('.footballIMG').animate({'left': '24.5%'}, "fast");
       interception++;
       yardLine = 20;
+      drive++;
       yardsToFirst = 10;
     }
     if(PlayResults.WR3OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj < .2 && PlayResults.WR3OddsAdj + PlayResults.Yards + PlayResults.GlobalOddsAdj > .1) {
@@ -821,7 +839,6 @@ $( document ).ready(function() {
       $('.footballIMG').animate({'left': '86.5%'}, 'slow');
       yardLine = 100;
     }
-    downCount++
     checkForTouchdown();
     checkGameState();
   })
