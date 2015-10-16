@@ -149,7 +149,7 @@ $( document ).ready(function() {
   PlayResults = {
     WR1initialOdds: initialWRodds(),
     WR2initialOdds: initialWRodds(),
-    WR3initialsOdds: initialWRodds(),
+    WR3initialOdds: initialWRodds(),
     WR1timeIncreaseOdds: wrTimeIncreaseOdds(),
     WR2timeIncreaseOdds: wrTimeIncreaseOdds(),
     WR3timeIncreaseOdds: wrTimeIncreaseOdds(),
@@ -159,14 +159,15 @@ $( document ).ready(function() {
     GlobalOddsAdjustment: 0,
     CurrentWR1Odds: WR1oddsVar,
     CurrentWR2Odds: WR2oddsVar,
-    CurrentWR3odds: WR3oddsVar
+    CurrentWR3Odds: WR3oddsVar
   }
 
   function currentOdds(WRodds) {
-    console.log(PlayResults.CurrentWR2Odds + "                PlayResults.CurrentWR2Odds");
-    console.log(WR2oddsVar + "                 WR2oddsVar");
+    // console.log(PlayResults.CurrentWR2Odds + "                PlayResults.CurrentWR2Odds");
+    // console.log(WR2oddsVar + "                 WR2oddsVar");
     var yardsClass = document.getElementsByClassName('yards');
     clearTimeout(sackTimer);
+    clearTimeout(blitzSackedTime)
     clearTimeout(checkState);
     clearInterval(timerId);
     $('.WRbuttons').addClass('placeholderWRbuttons');
@@ -182,19 +183,19 @@ $( document ).ready(function() {
       $('.defensiveSpan').text("Incomplete Pass");
     }
     if(WRodds >= 25 && WRodds < 50) {
-      $('.defensiveSpan').text("Pass to WR3 is complete for an 8 yard gain!");
+      $('.defensiveSpan').text("Pass complete for an 8 yard gain!");
       $('.footballIMG').animate({'left': '+=6%'}, 'slow');
       yardLine+=8
       yardsToFirst-=8
     }
     if(WRodds >= 50 && WRodds < 70) {
-      $('.defensiveSpan').text("Pass to WR3 is complete for a 15 yard gain!");
+      $('.defensiveSpan').text("Pass complete for a 15 yard gain!");
       $('.footballIMG').animate({'left': '+=9.5%'},'slow');
       yardLine += 15;
       yardsToFirst -=15
     }
     if(WRodds >= 70 && WRodds < 90) {
-      $('.defensiveSpan').text("Pass to WR3 is complete for a 25 yard gain!");
+      $('.defensiveSpan').text("Pass complete for a 25 yard gain!");
       $('.footballIMG').animate({'left': '+=19.8%'}, 'slow');;
       yardLine += 25;
       yardsToFirst -= 25;        
@@ -221,7 +222,7 @@ $( document ).ready(function() {
     $('.WRbuttons').removeClass('WRbuttons');
     scoreboardUpdate();
     checkState = setTimeout(checkGameState, 2500);
-    console.log("checkstate hits in sacked function");
+    // console.log("checkstate hits in sacked function");
   }
 
   function clearSackTimer() {
@@ -243,8 +244,8 @@ $( document ).ready(function() {
     $('.footballIMG').animate({'left': '-=4.5%'}, "slow");
     $('.WRbuttons').addClass('placeholderWRbuttons');
     $('.WRbuttons').removeClass('WRbuttons');
-    checkState = setTimeout(checkGameState, 1850);
-    console.log("checkState hits in blitzSacked function");
+    checkState = setTimeout(checkGameState, 850);
+    // console.log("checkState hits in blitzSacked function");
   }
 
   function refresh() {
@@ -257,10 +258,10 @@ $( document ).ready(function() {
         touchdown = false;
         downcount = 1;
       }
-      console.log(drive + "Drive Top of game state function");
-      console.log(score  +  " this is the score at top of gamestate function");
+      // console.log(drive + "Drive Top of game state function");
+      // console.log(score  +  " this is the score at top of gamestate function");
       if(drive === 4 && score !== 14 || drive === 3 && score !==7) {
-         console.log("Lost Condition Hits")
+         // console.log("Lost Condition Hits")
         clearTimeout(sackedReturnToDefault);
         clearInterval(timerId);
         clearTimeout(sackTimer);
@@ -270,7 +271,7 @@ $( document ).ready(function() {
         return
       }
       else if(score === 14) {
-        console.log("won condition hit");
+        // console.log("won condition hit");
         wonGame = true;
         clearTimeout(sackedReturnToDefault);
         clearInterval(timerId);
@@ -289,7 +290,7 @@ $( document ).ready(function() {
           setTimeout(returnToDefault,2000)
           return
         }
-        console.log("turnover condition hit");
+        // console.log("turnover condition hit");
         clearTimeout(sackedReturnToDefault);
         clearInterval(timerId);
         clearTimeout(sackTimer);
@@ -304,9 +305,9 @@ $( document ).ready(function() {
       if(drive ===3) {
         $('.drive').text("Final")
       }
-      console.log("Game State Function Hits")
+      // console.log("Game State Function Hits")
       setTimeout(returnToDefault, 2500);
-      console.log(drive + "Drive at Bottom of game state function");
+      // console.log(drive + "Drive at Bottom of game state function");
     }
   
 
@@ -389,7 +390,7 @@ $( document ).ready(function() {
   function touchdownFunction() {
     $('.footballIMG').animate({'left': '24.5%'}, "slow");
     setTimeout(checkGameState, 1800);
-    console.log("touchdownFunction fires");
+    // console.log("touchdownFunction fires");
   }
 
 
@@ -411,6 +412,12 @@ $( document ).ready(function() {
                                       }
                                       // console.log(defensiveSpanText);
                                       // console.log(JSON.stringify(PlayResults,null, 4));
+                                      console.log(PlayResults.CurrentWR1odds + "    Current wr1 odds");
+                                      console.log(WR1oddsVar); 
+                                      console.log(PlayResults.CurrentWR2odds + "     current wr2 odds"); 
+                                      console.log(WR2oddsVar);
+                                      console.log(PlayResults.CurrentWR3odds + "     current wr3odds"); 
+                                      console.log(WR3oddsVar);
                                   return output
                               }
 
@@ -423,7 +430,7 @@ $( document ).ready(function() {
       setTimeout(touchdownFunction, 1500);
       score += 7;
       drive++;
-      console.log("checkForTouchdown fires");
+      // console.log("checkForTouchdown fires");
     }
   }
 
@@ -685,7 +692,7 @@ $( document ).ready(function() {
       interceptionReturnToDefaultBreak = true;
       interception = 0;
       setTimeout(checkGameState, 150)
-      console.log("timeoutIntercepted Hits");
+      // console.log("timeoutIntercepted Hits");
     }
   }
 
@@ -697,7 +704,7 @@ $( document ).ready(function() {
   })
 
   function returnToDefault () {
-    console.log("return to default function hits");
+    // console.log("return to default function hits");
     blitz = 0;
     clearSackTimerBooleanTrigger = 0;
     timeoutIntercepted();
@@ -744,15 +751,6 @@ $( document ).ready(function() {
   }
 
   $('.wr1').on('click', function() {
-   var yardsClass = document.getElementsByClassName('yards');
-    clearTimeout(sackTimer);
-    clearTimeout(checkState);
-    // clearTimeout(blitzSackedTime);
-    // clearTimeout(returnToDefaultEndSacks);
-    clearInterval(timerId);
-    // wrReturnToDefault = setTimeout(returnToDefault, 2850);
-    $('.WRbuttons').addClass('placeholderWRbuttons');
-    $('.WRbuttons').removeClass('WRbuttons');
     currentOdds(PlayResults.CurrentWR1Odds);
   })
 
@@ -761,15 +759,6 @@ $( document ).ready(function() {
   })  
 
   $('.wr3').on('click', function() {
-    var yardsClass = document.getElementsByClassName('yards');
-    clearTimeout(sackTimer);
-    clearTimeout(checkState);
-    // clearTimeout(blitzSackedTime);
-    // clearTimeout(returnToDefaultEndSacks);
-    // wrReturnToDefault= setTimeout(returnToDefault, 2850);
-    clearInterval(timerId);
-    $('.WRbuttons').addClass('placeholderWRbuttons');
-    $('.WRbuttons').removeClass('WRbuttons');
     currentOdds(PlayResults.CurrentWR3Odds)
   })
 
@@ -785,7 +774,7 @@ $( document ).ready(function() {
         var key;
         var keyArray = [];
         var key1;
-        console.log(" =========================   " + defensiveSpanText + "   ==================");
+        // console.log(" =========================   " + defensiveSpanText + "   ==================");
         for(var key in postSnapStrings) {
           for(var key1 in postSnapStrings[key]) {
             // console.log(key1 +  "      This is key1")
@@ -843,18 +832,18 @@ $( document ).ready(function() {
             clearSackTimer()
           }
         }
-  console.log(WR1OddsCount +  "    WR1 odds count");
-  console.log(WR2OddsCount +  "    WR2 odds count");
-  console.log(WR3OddsCount +  "    WR3 odds count");
-  console.log(GlobalOddsCount +"   Global odds count");
+  // console.log(WR1OddsCount +  "    WR1 odds count");
+  // console.log(WR2OddsCount +  "    WR2 odds count");
+  // console.log(WR3OddsCount +  "    WR3 odds count");
+  // console.log(GlobalOddsCount +"   Global odds count");
 
   PlayResults.WR1OddsAdjustment = PlayResults.WR1OddsAdjustment + (WR1OddsCount/2);
   PlayResults.WR2OddsAdjustment = PlayResults.WR2OddsAdjustment + (WR2OddsCount/2);
   PlayResults.WR3OddsAdjustment = PlayResults.WR3OddsAdjustment + (WR3OddsCount/2);
   PlayResults.GlobalOddsAdjustment = PlayResults.GlobalOddsAdjustment + (GlobalOddsCount/2);
-  WR1oddsVar = PlayResults.WR1initialOdds + PlayResults.WR1timeIncreaseOdds + PlayResults.GlobalOddsAdjustment + PlayResults.WR1oddsAdjustment;
-  WR2oddsVar = PlayResults.WR2initialOdds + PlayResults.WR2timeIncreaseOdds + PlayResults.GlobalOddsAdjustment + PlayResults.WR2oddsAdjustment;
-  WR3oddsVar = PlayResults.WR3initialOdds + PlayResults.WR3timeIncreaseOdds + PlayResults.GlobalOddsAdjustment + PlayResults.WR3oddsAdjustment;
+  PlayResults.CurrentWR1Odds = PlayResults.WR1initialOdds + PlayResults.WR1timeIncreaseOdds + PlayResults.GlobalOddsAdjustment + PlayResults.WR1oddsAdjustment;
+  PlayResults.CurrentWR2Odds = PlayResults.WR2initialOdds + PlayResults.WR2timeIncreaseOdds + PlayResults.GlobalOddsAdjustment + PlayResults.WR2oddsAdjustment;
+  PlayResults.CurrentWR3Odds = PlayResults.WR3initialOdds + PlayResults.WR3timeIncreaseOdds + PlayResults.GlobalOddsAdjustment + PlayResults.WR3oddsAdjustment;
   console.log(JSON.stringify(PlayResults,null, 4));
     });
   })
