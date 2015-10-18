@@ -50,17 +50,80 @@ $( document ).ready(function() {
       DonaldGlobalDec: "Dammit Donald!",
      },
 
-     // Blitz = {
-     //  DefensiveEnd: "The Defensive End is barreling towards you!",
-     //  Donald: "Dammit Donald!",
-     //  Blitz: "All Out Blitz!",
-     //  Cb: "Right Cornerback Blitz!",
-     //  Rolb: "The ROLB is blitzing!",
-     //  Lolb: "The LOLB is blitzing!",
-     //  Cb: "Left Cornerback Blitz!",
-     //  MLB: "The MLB is blitzing!",
-     //  Safety: "Safety Blitz!",
-     // }
+     Blitz: {
+      DefensiveEnd: "The Defensive End is barreling towards you!",
+      Donald: "Dammit Donald!",
+      Blitz: "All Out Blitz!",
+      Cb: "Right Cornerback Blitz!",
+      Rolb: "The ROLB is blitzing!",
+      Lolb: "The LOLB is blitzing!",
+      Cb: "Left Cornerback Blitz!",
+      MLB: "The MLB is blitzing!",
+      Safety: "Safety Blitz!",
+     }
+  }
+
+  var firstSnapStrings = {
+
+    WR1oddsIncrease: {
+      SafetyWR1Inc: "The Safety Is Cheating Right!",
+      LolbWR1inc: "The LOLB is blitzing!",
+      CbWR1inc: "Left Cornerback Blitz!",
+     },
+
+    WR1oddsDecrease: {
+      PressedWR1Dec: "WR1 Pressed!",
+      LolbWR1Dec: "The LOLB dropped into coverage!",
+      SafetyWR1Dec: "The Safety is cheating left!",
+     },
+
+    WR2oddsIncrease: {
+      MLBWR2inc: "The MLB is blitzing!",
+      SafetyWR2Inc: "Safety Blitz!",
+      SafetyOnLineWR2inc: "The Safety is on the line",
+     },
+
+    WR2oddsDecrease: {
+      PressedWR2Dec: "WR2 pressed!",
+      MLBWR2Dec: "The MLB dropped back into coverage!",
+      SafetyWR2Dec: "The Safety is staying mid-field!",
+     },
+
+    WR3oddsIncrease: {
+      SafetyWR3Inc: "The safety is cheating left!",
+      CbWR3Inc: "Right Cornerback Blitz!",
+      RolbWR3inc: "The ROLB is blitzing!",
+      BeatWR3inc: "WR3 beat his man!",
+     },
+
+    WR3oddsDecrease: {
+      PressedWR3Dec: "WR3 pressed!",
+      RolbWR3Dec: "The ROLB dropped back into coverage",
+      SafetyWR3Dec: "The Safety is cheating right",
+     },
+
+    GlobalIncrease: {
+      BlitzGlobalInc: "All Out Blitz!",
+      OlineGlobalInc: "The line is holding strong!",
+     },
+
+    GlobalDecrease: {
+      StuffedGlobalDec: "WRs stuffed at the line!",
+      DefensiveEndGlobalDec: "The Defensive End is barreling towards you!",
+      DonaldGlobalDec: "Dammit Donald!",
+     },
+
+     Blitz: {
+      DefensiveEnd: "The Defensive End is barreling towards you!",
+      Donald: "Dammit Donald!",
+      Blitz: "All Out Blitz!",
+      Cb: "Right Cornerback Blitz!",
+      Rolb: "The ROLB is blitzing!",
+      Lolb: "The LOLB is blitzing!",
+      Cb: "Left Cornerback Blitz!",
+      MLB: "The MLB is blitzing!",
+      Safety: "Safety Blitz!",
+     }
   }
 
   var passOutcomeStrings = {
@@ -122,9 +185,6 @@ $( document ).ready(function() {
   var yardsToFirst = 10;
   var interception = 0;
   var pageSize = 1;
-  var WR1oddsVar;
-  var WR2oddsVar;
-  var WR3oddsVar;
   var list = document.querySelector('.defensiveSpan');
   var audio = document.getElementsByTagName("audio")[0];
   var initialWRodds =  function randomInt() {
@@ -157,9 +217,9 @@ $( document ).ready(function() {
     WR2oddsAdjustment: 0,
     WR3oddsAdjustment: 0,
     GlobalOddsAdjustment: 0,
-    CurrentWR1Odds: WR1oddsVar,
-    CurrentWR2Odds: WR2oddsVar,
-    CurrentWR3Odds: WR3oddsVar
+    CurrentWR1Odds: 0,
+    CurrentWR2Odds: 0,
+    CurrentWR3Odds: 0
   }
 
   function currentOdds(WRodds) {
@@ -173,7 +233,7 @@ $( document ).ready(function() {
     $('.WRbuttons').addClass('placeholderWRbuttons');
     $('.WRbuttons').removeClass('WRbuttons');
     if(WRodds < 5) {
-      $('.defensiveSpan').text("Pass to WR3 is intercepeted!");
+      $('.defensiveSpan').text("Pass is intercepeted!");
       $('.footballIMG').animate({'left': '24.5%'}, "fast");
       interception++;
       yardLine = 20;
@@ -204,8 +264,8 @@ $( document ).ready(function() {
       $('.footballIMG').animate({'left': '86.5%'}, 'slow');
       yardLine = 100;
     }
-    checkForTouchdown();
     var checkState = setTimeout(checkGameState,1);
+    // console.log(JSON.stringify(PlayResults,null, 4));
   }
 
 
@@ -254,8 +314,13 @@ $( document ).ready(function() {
 
     function checkGameState() {
       downCount++
-      if(touchdown === true) {
-        touchdown = false;
+      if(yardLine >= '100') {
+        $('.defensiveSpan').text("Touchdown!")
+        touchdown = true;
+        $('.buttons').css('background', 'url("http://netstorage.discovery.com/feeds/brightcove/asset-stills/apl/135966413090713964101001197_Puppy_Bowl_IX_BIGPLAY_4_Lift_10.jpg")');
+        setTimeout(touchdownFunction, 1500);
+        score += 7;
+        drive++;
         downcount = 1;
       }
       // console.log(drive + "Drive Top of game state function");
@@ -389,7 +454,6 @@ $( document ).ready(function() {
 
   function touchdownFunction() {
     $('.footballIMG').animate({'left': '24.5%'}, "slow");
-    setTimeout(checkGameState, 1800);
     // console.log("touchdownFunction fires");
   }
 
@@ -412,27 +476,88 @@ $( document ).ready(function() {
                                       }
                                       // console.log(defensiveSpanText);
                                       // console.log(JSON.stringify(PlayResults,null, 4));
-                                      console.log(PlayResults.CurrentWR1odds + "    Current wr1 odds");
-                                      console.log(WR1oddsVar); 
-                                      console.log(PlayResults.CurrentWR2odds + "     current wr2 odds"); 
-                                      console.log(WR2oddsVar);
-                                      console.log(PlayResults.CurrentWR3odds + "     current wr3odds"); 
-                                      console.log(WR3oddsVar);
                                   return output
                               }
 
-  function checkForTouchdown(){
-    if(yardLine >= '100') {
-      clearTimeout(checkGameState)
-      $('.defensiveSpan').text("Touchdown!")
-      touchdown = true;
-      $('.buttons').css('background', 'url("http://netstorage.discovery.com/feeds/brightcove/asset-stills/apl/135966413090713964101001197_Puppy_Bowl_IX_BIGPLAY_4_Lift_10.jpg")');
-      setTimeout(touchdownFunction, 1500);
-      score += 7;
-      drive++;
-      // console.log("checkForTouchdown fires");
+
+  var firstSnap = function pickRandomSubObject() {
+    var defSpanClassic = document.getElementsByClassName('defensiveSpan');
+    var defensiveSpanText = defSpanClassic[0].innerText
+                              var result;
+                              var output;
+                              var count = 0;
+                              for (var prop in firstSnapStrings)
+                                  if (Math.random() < 1/++count) {
+                                     result = prop;
+                                  }
+                                  var count = 0;
+                                  for (var prop in firstSnapStrings[result])
+                                      if (Math.random() < 1/++count) {
+                                         output = firstSnapStrings[result][prop];
+                                      }
+                                  return output
+                              }
+
+  function FirstSnapOdds() {
+    for(var key in firstSnapStrings) {
+      for(var key1 in firstSnapStrings[key]) {
+        // console.log(key1 +  "      This is key1")
+        if(defensiveSpanText.indexOf('Blitz') > -1 || defensiveSpanText.indexOf('blitzing') > -1) { 
+          clearSackTimer()
+        }
+        // if(firstSnapStrings.blitz.length )
+        if(defensiveSpanText === firstSnapStrings.WR1oddsIncrease[key1]) {
+          WR1OddsCount+= postSnapReadOddsAdjustment();
+          // console.log(firstSnapStrings.WR1oddsIncrease[key1])
+          // console.log(WR1OddsCount + "====== WR1");
+          // console.log(WR1OddsCount + " WR1 odds count just hit positive");
+        }
+        if(defensiveSpanText === firstSnapStrings.WR1oddsDecrease[key1]) {
+          WR1OddsCount-= postSnapReadOddsAdjustment();
+          // console.log(firstSnapStrings.WR1oddsDecrease[key1])
+          // console.log(WR1OddsCount + "====== WR1")
+          // console.log(WR1OddsCount + " WR1 odds count just hit negative");
+        }
+        if(defensiveSpanText === firstSnapStrings.WR2oddsIncrease[key1]) {
+          WR2OddsCount+= postSnapReadOddsAdjustment();
+          // console.log(WR2OddsCount + "====== WR2")
+          // console.log(WR2OddsCount + " WR2 odds count just hit positive");
+          // break;
+          // console.log(firstSnapStrings.WR2oddsIncrease[key1])
+        }
+        if(defensiveSpanText === firstSnapStrings.WR2oddsDecrease[key1]) {
+          WR2OddsCount-= postSnapReadOddsAdjustment();
+          // console.log(firstSnapStrings.WR3oddsDecrease[key1])
+          // console.log(WR2OddsCount + "====== WR2");
+          // console.log(WR2OddsCount + " WR2 odds count just hit negative");
+        }
+        if(defensiveSpanText === firstSnapStrings.WR3oddsIncrease[key1]) {
+          WR3OddsCount+= postSnapReadOddsAdjustment();
+          // console.log(firstSnapStrings.WR3oddsIncrease[key1])
+          // console.log(WR3OddsCount + "====== WR3");
+          // console.log(WR3OddsCount + " WR3 odds count just hit positive");
+        }
+        if(defensiveSpanText === firstSnapStrings.WR3oddsDecrease[key1]) {
+          WR3OddsCount-= postSnapReadOddsAdjustment();
+          // console.log(firstSnapStrings.WR3oddsDecrease[key1]);
+          // console.log(WR3OddsCount + "====== WR3");
+          // console.log(WR3OddsCount + " WR3 odds count just hit negative");
+        }
+        if(defensiveSpanText === firstSnapStrings.GlobalIncrease[key1]) {
+          GlobalOddsCount+=postSnapReadOddsAdjustment();
+          // console.log(firstSnapStrings.GlobalIncrease[key1])
+          // console.log(GlobalOddsCount + "====== Global");
+          // console.log(GlobalOddsCount + " Global odds count just hit positive");
+        }
+        if(defensiveSpanText === firstSnapStrings.GlobalDecrease[key1]) {
+          GlobalOddsCount-=postSnapReadOddsAdjustment();
+          // console.log(firstSnapStrings.GlobalDecrease[key1])
+          // console.log(GlobalOddsCount + "====== Global")
+          // console.log(GlobalOddsCount + " Global odds count just hit negative");
+        }
+      }
     }
-  }
+  }                      
 
   function scoreboardUpdate() {
     if(downCount === 1) {
@@ -668,7 +793,8 @@ $( document ).ready(function() {
   });
 
   $('.buttonSnap').on('click', function() {
-    $('.defensiveSpan').text(intervalPassStrings());
+    $('.defensiveSpan').text(firstSnapStrings());
+    
     timerId = 0;
     clearInterval(playClockId);
     sackTimer = setTimeout(sacked,5000);
@@ -748,6 +874,38 @@ $( document ).ready(function() {
     $('#playClock').text(" ");
     $('.placeholderTable').addClass('table');
     $('.table').removeClass('placeholderTable');
+    postSnapStrings.WR1oddsIncrease.SafetyWR1Inc = "The Safety Is Cheating RIght!";
+    postSnapStrings.WR1oddsIncrease.LolbWR1inc = "The LOLB is blitzing!";
+    postSnapStrings.WR1oddsIncrease.CbWR1inc = "Left Cornerback Blitz!";
+    postSnapStrings.WR1oddsDecrease.PressedWR1Dec = "WR1 Pressed!";
+    postSnapStrings.WR1oddsDecrease.LolbWR1Dec = "The LOLB dropped into coverage!";
+    postSnapStrings.WR1oddsDecrease.SafetyWR1Dec = " The Safety is cheaitng left!";
+    postSnapStrings.WR2oddsIncrease.MLBWR2inc = "The MLB is blitzking!";
+    postSnapStrings.WR2oddsIncrease.SafetyWR2Inc = "The Safety is on the line!";
+    postSnapStrings.WR2oddsDecrease.PressedWR2Dec = "WR2 is pressed!";
+    postSnapStrings.WR2oddsDecrease.MLBWR2Dec = "The MLB dropped back into coverage!";
+    postSnapStrings.WR2oddsDecrease.SafetyWR2Dec = "The Safety is staying mid-field!";
+    postSnapStrings.WR3oddsIncrease.SafetyWR3Inc = " The Safety is cheating left!";
+    postSnapStrings.WR3oddsIncrease.CbWR3Inc = "Right Cornerback Blitz!";
+    postSnapStrings.WR3oddsIncrease.RolbWR3inc = "The ROLB is blitzing!";
+    postSnapStrings.WR3oddsIncrease.BeatWR3inc = "WR3 beat his man!";
+    postSnapStrings.WR3oddsDecrease.PressedWR3Dec = "WR3 pressed!";
+    postSnapStrings.WR3oddsDecrease.RolbWR3Dec = "The ROLB dropped into cover!";
+    postSnapStrings.WR3oddsDecrease.SafetyWR3Dec = "The Safety is cheating right!";
+    postSnapStrings.GlobalIncrease.BlitzGlobalInc = "All out blitz!";
+    postSnapStrings.GlobalIncrease.OlineGlobalInc = "The line is holding strong!";
+    postSnapStrings.GlobalDecrease.StuffedGlobalDec = "WRs stuffed at the line!";
+    postSnapStrings.GlobalDecrease.DefensiveEndGlobalDec = "The Defensive End is barreling towards you!";
+    postSnapStrings.GlobalDecrease.DonaldGlobalDec = "Dammit Donald!";
+    postSnapStrings.Blitz.DefensiveEnd = "The Defensive End is barreling towards you!";
+    postSnapStrings.Blitz.Donald = "Dammit Donald!";
+    postSnapStrings.Blitz.Blitz = "All Out Blitz!";
+    postSnapStrings.Blitz.Cb = "Right Cornerback Blitz!";
+    postSnapStrings.Blitz.Robl = "The ROLB is blitzing!";
+    postSnapStrings.Blitz.Lolb = "The LOLB is blitzing!";
+    postSnapStrings.Blitz.Cb = "Left Cornerback Blitz!;";
+    postSnapStrings.Blitz.MLB = "The MLB is blitzing!";
+    postSnapStrings.Blitz.Safety = "Safety Blitz!";
   }
 
   $('.wr1').on('click', function() {
@@ -778,20 +936,27 @@ $( document ).ready(function() {
         for(var key in postSnapStrings) {
           for(var key1 in postSnapStrings[key]) {
             // console.log(key1 +  "      This is key1")
+            if(defensiveSpanText.indexOf('Blitz') > -1 || defensiveSpanText.indexOf('blitzing') > -1) { 
+              clearSackTimer()
+            }
+            // if(postSnapStrings.blitz.length )
             if(defensiveSpanText === postSnapStrings.WR1oddsIncrease[key1]) {
               WR1OddsCount+= postSnapReadOddsAdjustment();
+              delete postSnapStrings.WR1oddsIncrease[key1];
               // console.log(postSnapStrings.WR1oddsIncrease[key1])
               // console.log(WR1OddsCount + "====== WR1");
               // console.log(WR1OddsCount + " WR1 odds count just hit positive");
             }
             if(defensiveSpanText === postSnapStrings.WR1oddsDecrease[key1]) {
               WR1OddsCount-= postSnapReadOddsAdjustment();
+              delete postSnapStrings.WR1oddsIncrease[key1];
               // console.log(postSnapStrings.WR1oddsDecrease[key1])
               // console.log(WR1OddsCount + "====== WR1")
               // console.log(WR1OddsCount + " WR1 odds count just hit negative");
             }
             if(defensiveSpanText === postSnapStrings.WR2oddsIncrease[key1]) {
               WR2OddsCount+= postSnapReadOddsAdjustment();
+              delete postSnapStrings.WR1oddsIncrease[key1];
               // console.log(WR2OddsCount + "====== WR2")
               // console.log(WR2OddsCount + " WR2 odds count just hit positive");
               // break;
@@ -799,37 +964,39 @@ $( document ).ready(function() {
             }
             if(defensiveSpanText === postSnapStrings.WR2oddsDecrease[key1]) {
               WR2OddsCount-= postSnapReadOddsAdjustment();
+              delete postSnapStrings.WR1oddsIncrease[key1];
               // console.log(postSnapStrings.WR3oddsDecrease[key1])
               // console.log(WR2OddsCount + "====== WR2");
               // console.log(WR2OddsCount + " WR2 odds count just hit negative");
             }
             if(defensiveSpanText === postSnapStrings.WR3oddsIncrease[key1]) {
               WR3OddsCount+= postSnapReadOddsAdjustment();
+              delete postSnapStrings.WR1oddsIncrease[key1];
               // console.log(postSnapStrings.WR3oddsIncrease[key1])
               // console.log(WR3OddsCount + "====== WR3");
               // console.log(WR3OddsCount + " WR3 odds count just hit positive");
             }
             if(defensiveSpanText === postSnapStrings.WR3oddsDecrease[key1]) {
               WR3OddsCount-= postSnapReadOddsAdjustment();
+              delete postSnapStrings.WR1oddsIncrease[key1];
               // console.log(postSnapStrings.WR3oddsDecrease[key1]);
               // console.log(WR3OddsCount + "====== WR3");
               // console.log(WR3OddsCount + " WR3 odds count just hit negative");
             }
             if(defensiveSpanText === postSnapStrings.GlobalIncrease[key1]) {
               GlobalOddsCount+=postSnapReadOddsAdjustment();
+              delete postSnapStrings.WR1oddsIncrease[key1];
               // console.log(postSnapStrings.GlobalIncrease[key1])
               // console.log(GlobalOddsCount + "====== Global");
               // console.log(GlobalOddsCount + " Global odds count just hit positive");
             }
             if(defensiveSpanText === postSnapStrings.GlobalDecrease[key1]) {
               GlobalOddsCount-=postSnapReadOddsAdjustment();
+              delete postSnapStrings.WR1oddsIncrease[key1];
               // console.log(postSnapStrings.GlobalDecrease[key1])
               // console.log(GlobalOddsCount + "====== Global")
               // console.log(GlobalOddsCount + " Global odds count just hit negative");
             }
-          }
-          if(defensiveSpanText.indexOf('Blitz') > -1 || defensiveSpanText.indexOf('blitzing') > -1) { 
-            clearSackTimer()
           }
         }
   // console.log(WR1OddsCount +  "    WR1 odds count");
@@ -844,7 +1011,7 @@ $( document ).ready(function() {
   PlayResults.CurrentWR1Odds = PlayResults.WR1initialOdds + PlayResults.WR1timeIncreaseOdds + PlayResults.GlobalOddsAdjustment + PlayResults.WR1oddsAdjustment;
   PlayResults.CurrentWR2Odds = PlayResults.WR2initialOdds + PlayResults.WR2timeIncreaseOdds + PlayResults.GlobalOddsAdjustment + PlayResults.WR2oddsAdjustment;
   PlayResults.CurrentWR3Odds = PlayResults.WR3initialOdds + PlayResults.WR3timeIncreaseOdds + PlayResults.GlobalOddsAdjustment + PlayResults.WR3oddsAdjustment;
-  console.log(JSON.stringify(PlayResults,null, 4));
+  // console.log(JSON.stringify(PlayResults,null, 4));
     });
   })
   observer.observe(list, {
