@@ -4,66 +4,43 @@ $( document ).ready(function() {
 
     WR1oddsIncrease: {
       SafetyWR1Inc: "The Safety Is Cheating Right!",
-      LolbWR1inc: "The LOLB is blitzing!",
-      CbWR1inc: "Left Cornerback Blitz!",
      },
 
     WR1oddsDecrease: {
-      PressedWR1Dec: "WR1 Pressed!",
       LolbWR1Dec: "The LOLB dropped into coverage!",
       SafetyWR1Dec: "The Safety is cheating left!",
      },
 
     WR2oddsIncrease: {
-      MLBWR2inc: "The MLB is blitzing!",
-      SafetyWR2Inc: "Safety Blitz!",
       SafetyOnLineWR2inc: "The Safety is on the line",
      },
 
     WR2oddsDecrease: {
-      PressedWR2Dec: "WR2 pressed!",
       MLBWR2Dec: "The MLB dropped back into coverage!",
       SafetyWR2Dec: "The Safety is staying mid-field!",
      },
 
     WR3oddsIncrease: {
       SafetyWR3Inc: "The safety is cheating left!",
-      CbWR3Inc: "Right Cornerback Blitz!",
-      RolbWR3inc: "The ROLB is blitzing!",
       BeatWR3inc: "WR3 beat his man!",
      },
 
     WR3oddsDecrease: {
-      PressedWR3Dec: "WR3 pressed!",
       RolbWR3Dec: "The ROLB dropped back into coverage",
       SafetyWR3Dec: "The Safety is cheating right",
      },
 
     GlobalIncrease: {
-      BlitzGlobalInc: "All Out Blitz!",
       OlineGlobalInc: "The line is holding strong!",
      },
 
     GlobalDecrease: {
-      StuffedGlobalDec: "WRs stuffed at the line!",
       DefensiveEndGlobalDec: "The Defensive End is barreling towards you!",
       DonaldGlobalDec: "Dammit Donald!",
-     },
-
-     Blitz: {
-      DefensiveEnd: "The Defensive End is barreling towards you!",
-      Donald: "Dammit Donald!",
-      Blitz: "All Out Blitz!",
-      Cb: "Right Cornerback Blitz!",
-      Rolb: "The ROLB is blitzing!",
-      Lolb: "The LOLB is blitzing!",
-      Cb: "Left Cornerback Blitz!",
-      MLB: "The MLB is blitzing!",
-      Safety: "Safety Blitz!",
      }
   }
 
-  var firstSnapStrings = {
+  var firstReadStrings = {
 
     WR1oddsIncrease: {
       SafetyWR1Inc: "The Safety Is Cheating Right!",
@@ -287,15 +264,14 @@ $( document ).ready(function() {
 
   function clearSackTimer() {
     if(clearSackTimerBooleanTrigger === false) {
-    clearInterval(timerId);
     clearTimeout(sackTimer);
     // console.log("How many times does clearSackTimer hit?")
       blitzSackedTime = setTimeout(blitzSacked, 1250);
-      clearSackTimerBooleanTrigger = true;
     }
   }
 
   function blitzSacked(){
+    clearInterval(timerId);
     // clearTimeout(wrReturnToDefault);
     blitzSackedTime = 0;
     yardLine-= 10;
@@ -305,6 +281,7 @@ $( document ).ready(function() {
     $('.WRbuttons').addClass('placeholderWRbuttons');
     $('.WRbuttons').removeClass('WRbuttons');
     checkState = setTimeout(checkGameState, 850);
+    clearSackTimerBooleanTrigger = true;
     // console.log("checkState hits in blitzSacked function");
   }
 
@@ -469,7 +446,7 @@ $( document ).ready(function() {
                                   if (Math.random() < 1/++count) {
                                      result = prop;
                                   }
-                                  var count = 0;
+                                  var count2 = 0;
                                   for (var prop in postSnapStrings[result])
                                       if (Math.random() < 1/++count) {
                                          output = postSnapStrings[result][prop];
@@ -480,84 +457,88 @@ $( document ).ready(function() {
                               }
 
 
-  var firstSnap = function pickRandomSubObject() {
-    var defSpanClassic = document.getElementsByClassName('defensiveSpan');
-    var defensiveSpanText = defSpanClassic[0].innerText
+  var firstRead = function pickRandomSubObject() {
                               var result;
                               var output;
                               var count = 0;
-                              for (var prop in firstSnapStrings)
+                              for (var prop in firstReadStrings)
                                   if (Math.random() < 1/++count) {
                                      result = prop;
                                   }
                                   var count = 0;
-                                  for (var prop in firstSnapStrings[result])
+                                  for (var prop in firstReadStrings[result])
                                       if (Math.random() < 1/++count) {
-                                         output = firstSnapStrings[result][prop];
+                                         output = firstReadStrings[result][prop];
                                       }
+                                      console.log(JSON.stringify(PlayResults,null, 4));
+
                                   return output
                               }
 
-  function FirstSnapOdds() {
-    for(var key in firstSnapStrings) {
-      for(var key1 in firstSnapStrings[key]) {
-        // console.log(key1 +  "      This is key1")
-        if(defensiveSpanText.indexOf('Blitz') > -1 || defensiveSpanText.indexOf('blitzing') > -1) { 
-          clearSackTimer()
-        }
-        // if(firstSnapStrings.blitz.length )
-        if(defensiveSpanText === firstSnapStrings.WR1oddsIncrease[key1]) {
-          WR1OddsCount+= postSnapReadOddsAdjustment();
-          // console.log(firstSnapStrings.WR1oddsIncrease[key1])
-          // console.log(WR1OddsCount + "====== WR1");
-          // console.log(WR1OddsCount + " WR1 odds count just hit positive");
-        }
-        if(defensiveSpanText === firstSnapStrings.WR1oddsDecrease[key1]) {
-          WR1OddsCount-= postSnapReadOddsAdjustment();
-          // console.log(firstSnapStrings.WR1oddsDecrease[key1])
-          // console.log(WR1OddsCount + "====== WR1")
-          // console.log(WR1OddsCount + " WR1 odds count just hit negative");
-        }
-        if(defensiveSpanText === firstSnapStrings.WR2oddsIncrease[key1]) {
-          WR2OddsCount+= postSnapReadOddsAdjustment();
-          // console.log(WR2OddsCount + "====== WR2")
-          // console.log(WR2OddsCount + " WR2 odds count just hit positive");
-          // break;
-          // console.log(firstSnapStrings.WR2oddsIncrease[key1])
-        }
-        if(defensiveSpanText === firstSnapStrings.WR2oddsDecrease[key1]) {
-          WR2OddsCount-= postSnapReadOddsAdjustment();
-          // console.log(firstSnapStrings.WR3oddsDecrease[key1])
-          // console.log(WR2OddsCount + "====== WR2");
-          // console.log(WR2OddsCount + " WR2 odds count just hit negative");
-        }
-        if(defensiveSpanText === firstSnapStrings.WR3oddsIncrease[key1]) {
-          WR3OddsCount+= postSnapReadOddsAdjustment();
-          // console.log(firstSnapStrings.WR3oddsIncrease[key1])
-          // console.log(WR3OddsCount + "====== WR3");
-          // console.log(WR3OddsCount + " WR3 odds count just hit positive");
-        }
-        if(defensiveSpanText === firstSnapStrings.WR3oddsDecrease[key1]) {
-          WR3OddsCount-= postSnapReadOddsAdjustment();
-          // console.log(firstSnapStrings.WR3oddsDecrease[key1]);
-          // console.log(WR3OddsCount + "====== WR3");
-          // console.log(WR3OddsCount + " WR3 odds count just hit negative");
-        }
-        if(defensiveSpanText === firstSnapStrings.GlobalIncrease[key1]) {
-          GlobalOddsCount+=postSnapReadOddsAdjustment();
-          // console.log(firstSnapStrings.GlobalIncrease[key1])
-          // console.log(GlobalOddsCount + "====== Global");
-          // console.log(GlobalOddsCount + " Global odds count just hit positive");
-        }
-        if(defensiveSpanText === firstSnapStrings.GlobalDecrease[key1]) {
-          GlobalOddsCount-=postSnapReadOddsAdjustment();
-          // console.log(firstSnapStrings.GlobalDecrease[key1])
-          // console.log(GlobalOddsCount + "====== Global")
-          // console.log(GlobalOddsCount + " Global odds count just hit negative");
-        }
-      }
-    }
-  }                      
+  // function firstReadOdds() {
+  //   var defSpanClassic = document.getElementsByClassName('defensiveSpan');
+  //   var defensiveSpanText = defSpanClassic[0].innerText
+
+  //   for(var key in firstReadStrings) {
+  //     for(var key1 in firstReadStrings[key]) {
+  //       // console.log(key1 +  "      This is key1")
+  //       if(defensiveSpanText.indexOf('Blitz') > -1 || defensiveSpanText.indexOf('blitzing') > -1) { 
+  //         clearSackTimer()
+  //       }
+  //       // if(firstReadStrings.blitz.length )
+  //       if(defensiveSpanText === firstReadStrings.WR1oddsIncrease[key1]) {
+  //         WR1OddsCount+= postSnapReadOddsAdjustment();
+  //         // console.log(firstReadStrings.WR1oddsIncrease[key1])
+  //         // console.log(WR1OddsCount + "====== WR1");
+  //         // console.log(WR1OddsCount + " WR1 odds count just hit positive");
+  //       }
+  //       if(defensiveSpanText === firstReadStrings.WR1oddsDecrease[key1]) {
+  //         WR1OddsCount-= postSnapReadOddsAdjustment();
+  //         // console.log(firstReadStrings.WR1oddsDecrease[key1])
+  //         // console.log(WR1OddsCount + "====== WR1")
+  //         // console.log(WR1OddsCount + " WR1 odds count just hit negative");
+  //       }
+  //       if(defensiveSpanText === firstReadStrings.WR2oddsIncrease[key1]) {
+  //         WR2OddsCount+= postSnapReadOddsAdjustment();
+  //         // console.log(WR2OddsCount + "====== WR2")
+  //         // console.log(WR2OddsCount + " WR2 odds count just hit positive");
+  //         // break;
+  //         // console.log(firstReadStrings.WR2oddsIncrease[key1])
+  //       }
+  //       if(defensiveSpanText === firstReadStrings.WR2oddsDecrease[key1]) {
+  //         WR2OddsCount-= postSnapReadOddsAdjustment();
+  //         // console.log(firstReadStrings.WR3oddsDecrease[key1])
+  //         // console.log(WR2OddsCount + "====== WR2");
+  //         // console.log(WR2OddsCount + " WR2 odds count just hit negative");
+  //       }
+  //       if(defensiveSpanText === firstReadStrings.WR3oddsIncrease[key1]) {
+  //         WR3OddsCount+= postSnapReadOddsAdjustment();
+  //         // console.log(firstReadStrings.WR3oddsIncrease[key1])
+  //         // console.log(WR3OddsCount + "====== WR3");
+  //         // console.log(WR3OddsCount + " WR3 odds count just hit positive");
+  //       }
+  //       if(defensiveSpanText === firstReadStrings.WR3oddsDecrease[key1]) {
+  //         WR3OddsCount-= postSnapReadOddsAdjustment();
+  //         // console.log(firstReadStrings.WR3oddsDecrease[key1]);
+  //         // console.log(WR3OddsCount + "====== WR3");
+  //         // console.log(WR3OddsCount + " WR3 odds count just hit negative");
+  //       }
+  //       if(defensiveSpanText === firstReadStrings.GlobalIncrease[key1]) {
+  //         GlobalOddsCount+=postSnapReadOddsAdjustment();
+  //         // console.log(firstReadStrings.GlobalIncrease[key1])
+  //         // console.log(GlobalOddsCount + "====== Global");
+  //         // console.log(GlobalOddsCount + " Global odds count just hit positive");
+  //       }
+  //       if(defensiveSpanText === firstReadStrings.GlobalDecrease[key1]) {
+  //         GlobalOddsCount-=postSnapReadOddsAdjustment();
+  //         // console.log(firstReadStrings.GlobalDecrease[key1])
+  //         // console.log(GlobalOddsCount + "====== Global")
+  //         // console.log(GlobalOddsCount + " Global odds count just hit negative");
+  //       }
+  //     }
+  //   }
+  //   // console.log(JSON.stringify(PlayResults,null, 4) +     "        first odds");
+  // }                      
 
   function scoreboardUpdate() {
     if(downCount === 1) {
@@ -678,7 +659,6 @@ $( document ).ready(function() {
 
 
 
-   //on click hide the message and the
   $(".closeHowToButton").click(function () {
     $(".howToContainer").fadeOut("slow");
     $('.mask').fadeOut("slow");
@@ -793,8 +773,7 @@ $( document ).ready(function() {
   });
 
   $('.buttonSnap').on('click', function() {
-    $('.defensiveSpan').text(firstSnapStrings());
-    
+    $('.defensiveSpan').text(firstRead());
     timerId = 0;
     clearInterval(playClockId);
     sackTimer = setTimeout(sacked,5000);
@@ -935,26 +914,28 @@ $( document ).ready(function() {
         // console.log(" =========================   " + defensiveSpanText + "   ==================");
         for(var key in postSnapStrings) {
           for(var key1 in postSnapStrings[key]) {
+            for(var key3 in firstReadStrings) {
+              for(var key4 in firstReadStrings[key3]) {
             // console.log(key1 +  "      This is key1")
             if(defensiveSpanText.indexOf('Blitz') > -1 || defensiveSpanText.indexOf('blitzing') > -1) { 
               clearSackTimer()
             }
             // if(postSnapStrings.blitz.length )
-            if(defensiveSpanText === postSnapStrings.WR1oddsIncrease[key1]) {
+            if(defensiveSpanText === postSnapStrings.WR1oddsIncrease[key1] || defensiveSpanText === firstReadStrings.WR1oddsIncrease[key4]) {
               WR1OddsCount+= postSnapReadOddsAdjustment();
               delete postSnapStrings.WR1oddsIncrease[key1];
               // console.log(postSnapStrings.WR1oddsIncrease[key1])
               // console.log(WR1OddsCount + "====== WR1");
               // console.log(WR1OddsCount + " WR1 odds count just hit positive");
             }
-            if(defensiveSpanText === postSnapStrings.WR1oddsDecrease[key1]) {
+            if(defensiveSpanText === postSnapStrings.WR1oddsDecrease[key1] || defensiveSpanText === firstReadStrings.WR1oddsDecrease[key4]) {
               WR1OddsCount-= postSnapReadOddsAdjustment();
               delete postSnapStrings.WR1oddsIncrease[key1];
               // console.log(postSnapStrings.WR1oddsDecrease[key1])
               // console.log(WR1OddsCount + "====== WR1")
               // console.log(WR1OddsCount + " WR1 odds count just hit negative");
             }
-            if(defensiveSpanText === postSnapStrings.WR2oddsIncrease[key1]) {
+            if(defensiveSpanText === postSnapStrings.WR2oddsIncrease[key1] || defensiveSpanText === firstReadStrings.WR2oddsIncrease[key4]) {
               WR2OddsCount+= postSnapReadOddsAdjustment();
               delete postSnapStrings.WR1oddsIncrease[key1];
               // console.log(WR2OddsCount + "====== WR2")
@@ -962,35 +943,35 @@ $( document ).ready(function() {
               // break;
               // console.log(postSnapStrings.WR2oddsIncrease[key1])
             }
-            if(defensiveSpanText === postSnapStrings.WR2oddsDecrease[key1]) {
+            if(defensiveSpanText === postSnapStrings.WR2oddsDecrease[key1] || defensiveSpanText === firstReadStrings.WR2oddsDecrease[key4]) {
               WR2OddsCount-= postSnapReadOddsAdjustment();
               delete postSnapStrings.WR1oddsIncrease[key1];
               // console.log(postSnapStrings.WR3oddsDecrease[key1])
               // console.log(WR2OddsCount + "====== WR2");
               // console.log(WR2OddsCount + " WR2 odds count just hit negative");
             }
-            if(defensiveSpanText === postSnapStrings.WR3oddsIncrease[key1]) {
+            if(defensiveSpanText === postSnapStrings.WR3oddsIncrease[key1] || defensiveSpanText === firstReadStrings.WR3oddsIncrease[key4]) {
               WR3OddsCount+= postSnapReadOddsAdjustment();
               delete postSnapStrings.WR1oddsIncrease[key1];
               // console.log(postSnapStrings.WR3oddsIncrease[key1])
               // console.log(WR3OddsCount + "====== WR3");
               // console.log(WR3OddsCount + " WR3 odds count just hit positive");
             }
-            if(defensiveSpanText === postSnapStrings.WR3oddsDecrease[key1]) {
+            if(defensiveSpanText === postSnapStrings.WR3oddsDecrease[key1] || defensiveSpanText === firstReadStrings.WR3oddsDecrease[key4]) {
               WR3OddsCount-= postSnapReadOddsAdjustment();
               delete postSnapStrings.WR1oddsIncrease[key1];
               // console.log(postSnapStrings.WR3oddsDecrease[key1]);
               // console.log(WR3OddsCount + "====== WR3");
               // console.log(WR3OddsCount + " WR3 odds count just hit negative");
             }
-            if(defensiveSpanText === postSnapStrings.GlobalIncrease[key1]) {
+            if(defensiveSpanText === postSnapStrings.GlobalIncrease[key1] || defensiveSpanText === firstReadStrings.GlobalIncrease[key4]) {
               GlobalOddsCount+=postSnapReadOddsAdjustment();
               delete postSnapStrings.WR1oddsIncrease[key1];
               // console.log(postSnapStrings.GlobalIncrease[key1])
               // console.log(GlobalOddsCount + "====== Global");
               // console.log(GlobalOddsCount + " Global odds count just hit positive");
             }
-            if(defensiveSpanText === postSnapStrings.GlobalDecrease[key1]) {
+            if(defensiveSpanText === postSnapStrings.GlobalDecrease[key1] || defensiveSpanText === firstReadStrings.GlobalDecrease[key4]) {
               GlobalOddsCount-=postSnapReadOddsAdjustment();
               delete postSnapStrings.WR1oddsIncrease[key1];
               // console.log(postSnapStrings.GlobalDecrease[key1])
@@ -999,6 +980,8 @@ $( document ).ready(function() {
             }
           }
         }
+      }
+    }  
   // console.log(WR1OddsCount +  "    WR1 odds count");
   // console.log(WR2OddsCount +  "    WR2 odds count");
   // console.log(WR3OddsCount +  "    WR3 odds count");
