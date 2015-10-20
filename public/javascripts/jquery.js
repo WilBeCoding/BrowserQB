@@ -130,6 +130,16 @@ $( document ).ready(function() {
       dropped: 'Incomplete Pass. The WR dropped the ball'
     }
   }
+
+  var defensiveCoverageImgs = [
+        {src:"../images/cover2.jpg"},
+        {src:"../images/cover3.png"},
+        {src:"../images/manCoverage.png"}
+      ];
+  var randomImage = function randomInt(){
+      return Math.floor((Math.random() * (3 - 0)) + 0);
+  };
+
   var lost = false;
   var clearSackTimerBooleanTrigger = false;
   var oddsDemoInterval = 0;
@@ -140,7 +150,6 @@ $( document ).ready(function() {
   var wonGame = false;
   var checkIntervals;
   var checkState;
-  var touchdown = false;
   var interceptionReturnToDefaultBreak = false;
   var sackedReturnToDefault = 0;
   var returnToSackDefaultEndSacks = 0;
@@ -166,7 +175,7 @@ $( document ).ready(function() {
   var audio = document.getElementsByTagName("audio")[0];
   var initialWRodds =  function randomInt() {
                         return Number((Math.random() * (50 - 0)) + 0);
-                      };
+                      };  
   var wrTimeIncreaseOdds= function randomInt(){
                             return Number((Math.random() * (5 - 1)) + 1);
                           };
@@ -200,6 +209,7 @@ $( document ).ready(function() {
   }
 
   function currentOdds(WRodds) {
+    console.log("current odds hits");
     // console.log(PlayResults.CurrentWR2Odds + "                PlayResults.CurrentWR2Odds");
     // console.log(WR2oddsVar + "                 WR2oddsVar");
     var yardsClass = document.getElementsByClassName('yards');
@@ -212,9 +222,10 @@ $( document ).ready(function() {
     if(WRodds < 5) {
       $('.defensiveSpan').text("Pass is intercepeted!");
       $('.footballIMG').animate({'left': '24.5%'}, "fast");
-      interception++;
       yardLine = 20;
       yardsToFirst = 10;
+      drive++
+      interceptionReturnToDefaultBreak = true;
     }
     if(WRodds >= 5 && WRodds < 25) {
       $('.defensiveSpan').text("Incomplete Pass");
@@ -241,12 +252,13 @@ $( document ).ready(function() {
       $('.footballIMG').animate({'left': '86.5%'}, 'slow');
       yardLine = 100;
     }
-    var checkState = setTimeout(checkGameState,1);
+    var checkState = setTimeout(checkGameState,325);
     // console.log(JSON.stringify(PlayResults,null, 4));
   }
 
 
   function sacked(){
+    console.log("sacked function hits");
     downCount++;
     yardLine-= 7;
     yardsToFirst+=7;
@@ -263,14 +275,15 @@ $( document ).ready(function() {
   }
 
   function clearSackTimer() {
-    if(clearSackTimerBooleanTrigger === false) {
+    console.log("clearSackTimer Hits");
+    clearSackTimerBooleanTrigger = true;
     clearTimeout(sackTimer);
     // console.log("How many times does clearSackTimer hit?")
-      blitzSackedTime = setTimeout(blitzSacked, 1250);
-    }
+      blitzSackedTime = setTimeout(blitzSacked, 3000);
   }
 
   function blitzSacked(){
+    console.log("blitzSacked hits")
     clearInterval(timerId);
     // clearTimeout(wrReturnToDefault);
     blitzSackedTime = 0;
@@ -281,7 +294,6 @@ $( document ).ready(function() {
     $('.WRbuttons').addClass('placeholderWRbuttons');
     $('.WRbuttons').removeClass('WRbuttons');
     checkState = setTimeout(checkGameState, 850);
-    clearSackTimerBooleanTrigger = true;
     // console.log("checkState hits in blitzSacked function");
   }
 
@@ -293,12 +305,11 @@ $( document ).ready(function() {
       downCount++
       if(yardLine >= '100') {
         $('.defensiveSpan').text("Touchdown!")
-        touchdown = true;
         $('.buttons').css('background', 'url("http://netstorage.discovery.com/feeds/brightcove/asset-stills/apl/135966413090713964101001197_Puppy_Bowl_IX_BIGPLAY_4_Lift_10.jpg")');
-        setTimeout(touchdownFunction, 1500);
         score += 7;
         drive++;
-        downcount = 1;
+        downCount = 1;
+        setTimeout(touchdownFunction, 1500);
       }
       // console.log(drive + "Drive Top of game state function");
       // console.log(score  +  " this is the score at top of gamestate function");
@@ -323,15 +334,11 @@ $( document ).ready(function() {
         setTimeout(won, 550);
         return
       }
-      else if(downCount === 5 && yardLine < 100 && yardsToFirst > 0 || interceptionReturnToDefaultBreak === true) {
-        downCount = 1;
+      else if(downCount === 5 && yardLine < 100 && yardsToFirst) {
         drive++;
+        downCount = 1;
         yardsToFirst = 10;
-        if(interceptionReturnToDefaultBreak = true){
-          interceptionReturnToDefaultBreak = false;
           setTimeout(returnToDefault,2000)
-          return
-        }
         // console.log("turnover condition hit");
         clearTimeout(sackedReturnToDefault);
         clearInterval(timerId);
@@ -434,28 +441,26 @@ $( document ).ready(function() {
     // console.log("touchdownFunction fires");
   }
 
-
-  var intervalPassStrings = function pickRandomSubObject() {
-    var defSpanClassic = document.getElementsByClassName('defensiveSpan');
-
-    var defensiveSpanText = defSpanClassic[0].innerText
+  function pickRandomSubObject() {
+    // console.log("interval pass strings is hitting")
                               var result;
                               var output;
                               var count = 0;
-                              for (var prop in postSnapStrings)
+                              for(var prop in postSnapStrings)
                                   if (Math.random() < 1/++count) {
                                      result = prop;
                                   }
                                   var count2 = 0;
                                   for (var prop in postSnapStrings[result])
-                                      if (Math.random() < 1/++count) {
+                                    // console.log(prop);
+                                    // console.log(postSnapStrings[result]);
+                                      if (Math.random() < 1/++count2) {
                                          output = postSnapStrings[result][prop];
                                       }
                                       // console.log(defensiveSpanText);
                                       // console.log(JSON.stringify(PlayResults,null, 4));
                                   return output
                               }
-
 
   var firstRead = function pickRandomSubObject() {
                               var result;
@@ -553,6 +558,7 @@ $( document ).ready(function() {
     if(downCount === 4) {
       $('.down').text("4th and " + yardsToFirst);
     }
+    $('.score').text(score);
   }
 
   function playClock(duration, display) {
@@ -774,7 +780,6 @@ $( document ).ready(function() {
 
   $('.buttonSnap').on('click', function() {
     $('.defensiveSpan').text(firstRead());
-    timerId = 0;
     clearInterval(playClockId);
     sackTimer = setTimeout(sacked,5000);
     $('.snap').addClass('placeHolderSnap');
@@ -788,17 +793,13 @@ $( document ).ready(function() {
     $('.birdsEyeImg').addClass('placeholderBirdsEyeView');
     $('.placeholderBirdsEyeView').removeClass('birdsEyeImg');
     timerId = window.setInterval(function(){
-      $('.defensiveSpan').text(intervalPassStrings());
-    }, 600);
+      $('.defensiveSpan').text(pickRandomSubObject());
+    }, 850);
   })
 
-  function timeoutIntercepted(){
-    if(interception > 0) {
-      interceptionReturnToDefaultBreak = true;
-      interception = 0;
-      setTimeout(checkGameState, 150)
-      // console.log("timeoutIntercepted Hits");
-    }
+  function getRndmImgSrc(){
+    var imageSrc = defensiveCoverageImgs[randomImage()].src
+    return imageSrc
   }
 
   $(window).load(function() {
@@ -806,17 +807,18 @@ $( document ).ready(function() {
     $('#initials').change(validate);
     $('.down').text("1st and " + yardsToFirst);
     $('.score').text(score);
+    $('.birdsEyeImg').attr('src', getRndmImgSrc)
   })
 
   function returnToDefault () {
     // console.log("return to default function hits");
     blitz = 0;
-    clearSackTimerBooleanTrigger = 0;
-    timeoutIntercepted();
+    clearSackTimerBooleanTrigger = false;
     if(interceptionReturnToDefaultBreak === true) {
+      downCount =1;
       $('.buttons').css('background', 'url("http://cdn.fansided.com/wp-content/blogs.dir/276/files/2014/12/gruden.jpg")');
-      return;
     };
+    interceptionReturnToDefaultBreak = false;
     if(yardsToFirst <= 0) {
       downCount = 1;
       yardsToFirst = 10;
@@ -825,11 +827,25 @@ $( document ).ready(function() {
     $('.down').text(downCount);
     scoreboardUpdate();
     interception = 0;
-    PlayResults.initialWRodds;
+    PlayResults.WR1initialOdds = initialWRodds();
+    PlayResults.WR2initialOdds = initialWRodds();
+    PlayResults.WR3initialOdds = initialWRodds();
     PlayResults.WR1OddsAdj = 0;
     PlayResults.WR2OddsAdj = 0;
     PlayResults.WR3OddsAdj = 0;
     PlayResults.GlobalOddsAdj = 0;
+    PlayResults.CurrentWR1Odds = 0; 
+    PlayResults.CurrentWR2Odds = 0; 
+    PlayResults.CurrentWR3Odds = 0;
+    PlayResults.WR1timeIncreaseOdds = wrTimeIncreaseOdds(); 
+    PlayResults.WR2timeIncreaseOdds = wrTimeIncreaseOdds(); 
+    PlayResults.WR3timeIncreaseOdds = wrTimeIncreaseOdds(); 
+    PlayResults.GlobalOddsAdjustment = 0;
+    WR1OddsCount = 0;
+    WR2OddsCount = 0;
+    WR3OddsCount = 0;
+    GlobalOddsCount = 0;
+    $('.birdsEyeImg').attr("src", getRndmImgSrc);
     $('.buttons').css("margin-top", "25px");
     $('.placeHolderTopRight').addClass('topRight');
     $('.placeHolderTopLeft').addClass('topLeft');
@@ -876,15 +892,15 @@ $( document ).ready(function() {
     postSnapStrings.GlobalDecrease.StuffedGlobalDec = "WRs stuffed at the line!";
     postSnapStrings.GlobalDecrease.DefensiveEndGlobalDec = "The Defensive End is barreling towards you!";
     postSnapStrings.GlobalDecrease.DonaldGlobalDec = "Dammit Donald!";
-    postSnapStrings.Blitz.DefensiveEnd = "The Defensive End is barreling towards you!";
-    postSnapStrings.Blitz.Donald = "Dammit Donald!";
-    postSnapStrings.Blitz.Blitz = "All Out Blitz!";
-    postSnapStrings.Blitz.Cb = "Right Cornerback Blitz!";
-    postSnapStrings.Blitz.Robl = "The ROLB is blitzing!";
-    postSnapStrings.Blitz.Lolb = "The LOLB is blitzing!";
-    postSnapStrings.Blitz.Cb = "Left Cornerback Blitz!;";
-    postSnapStrings.Blitz.MLB = "The MLB is blitzing!";
-    postSnapStrings.Blitz.Safety = "Safety Blitz!";
+    // postSnapStrings.Blitz.DefensiveEnd = "The Defensive End is barreling towards you!";
+    // postSnapStrings.Blitz.Donald = "Dammit Donald!";
+    // postSnapStrings.Blitz.Blitz = "All Out Blitz!";
+    // postSnapStrings.Blitz.Cb = "Right Cornerback Blitz!";
+    // postSnapStrings.Blitz.Robl = "The ROLB is blitzing!";
+    // postSnapStrings.Blitz.Lolb = "The LOLB is blitzing!";
+    // postSnapStrings.Blitz.Cb = "Left Cornerback Blitz!;";
+    // postSnapStrings.Blitz.MLB = "The MLB is blitzing!";
+    // postSnapStrings.Blitz.Safety = "Safety Blitz!";
   }
 
   $('.wr1').on('click', function() {
@@ -918,7 +934,9 @@ $( document ).ready(function() {
               for(var key4 in firstReadStrings[key3]) {
             // console.log(key1 +  "      This is key1")
             if(defensiveSpanText.indexOf('Blitz') > -1 || defensiveSpanText.indexOf('blitzing') > -1) { 
-              clearSackTimer()
+              if(clearSackTimerBooleanTrigger === false) {
+                clearSackTimer();
+              }
             }
             // if(postSnapStrings.blitz.length )
             if(defensiveSpanText === postSnapStrings.WR1oddsIncrease[key1] || defensiveSpanText === firstReadStrings.WR1oddsIncrease[key4]) {
