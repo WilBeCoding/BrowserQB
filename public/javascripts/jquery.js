@@ -357,12 +357,6 @@ $( document ).ready(function() {
         $('.defensiveSpan').text("TURNOVER ON DOWNS!");
         $('.footballIMG').animate({'left': '24.5%'}, "fast");
       }
-      if(drive === 2) {
-        $('.drive').text("2nd")
-      }
-      if(drive ===3) {
-        $('.drive').text("Final")
-      }
       // console.log("Game State Function Hits")
       setTimeout(returnToDefault, 2500);
       // console.log(drive + "Drive at Bottom of game state function");
@@ -510,6 +504,15 @@ $( document ).ready(function() {
     }
     if(score === 14){
       $('.score').text("Score " + score)
+    }
+    if(drive === 1) {
+      $('.drive').text("1st Drive")
+    }
+    if(drive === 2) {
+      $('.drive').text("2nd Drive")
+    }
+    if(drive ===3) {
+      $('.drive').text("Final Drive")
     }
   }
 
@@ -731,7 +734,9 @@ $( document ).ready(function() {
   $('.buttonSnap').on('click', function() {
     $('.defensiveSpan').text(firstRead());
     clearInterval(playClockId);
-    sackTimer = setTimeout(sacked,5000);
+    // sackTimer = setTimeout(sacked,5000);
+    $('.progressionChoice').addClass('placeholderProgressionChoice'); 
+    $('.placholderProgressionChoice').removeClass('progressionChoice'); 
     $('.snap').addClass('placeHolderSnap');
     $('.snap').removeClass('snap');
     $('.buttonSnap').addClass('buttonSnapPlaceholder');
@@ -743,6 +748,7 @@ $( document ).ready(function() {
     $('.birdsEyeImg').addClass('placeholderBirdsEyeView');
     $('.placeholderBirdsEyeView').removeClass('birdsEyeImg');
     timerId = window.setInterval(function(){
+      // debugger
       $('.defensiveSpan').text(pickRandomSubObject());
     }, 850);
   })
@@ -755,9 +761,10 @@ $( document ).ready(function() {
   $(window).load(function() {
     validate();
     $('#initials').change(validate);
-    $('.down').text("1st and " + yardsToFirst);
-    $('.score').text(score);
+    // $('.down').text("1st and " + yardsToFirst);
+    // $('.score').text(score);
     $('.birdsEyeImg').attr('src', getRndmImgSrc)
+    scoreboardUpdate()
   })
 
   function returnToDefault () {
