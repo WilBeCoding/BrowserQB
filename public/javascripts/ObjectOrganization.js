@@ -884,8 +884,6 @@ var    ninthReadWR2 = 0;
 var    ninthReadWR3 = 0; 
    var ninthReadGlobal = 0; 
 
-  $('.buttonSnap').on('click', function() {
-    $('.defensiveSpan').text(Initial Read);
     firstReadWR1 = 0; 
     firstReadWR2 = 0; 
     firstReadWR3 = 0; 
@@ -922,6 +920,8 @@ var    ninthReadWR3 = 0;
     ninthReadWR2 = 0; 
     ninthReadWR3 = 0; 
     ninthReadGlobal = 0; 
+  $('.buttonSnap').on('click', function() {
+    $('.defensiveSpan').text(Initial Read);
     clearInterval(playClockId);
     sackTimer = setTimeout(sacked,5000);
     $('.snap').addClass('placeHolderSnap');

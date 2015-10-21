@@ -181,7 +181,7 @@ $( document ).ready(function() {
                           };
 
   var postSnapReadOddsAdjustment =  function randomInt(){
-                                      return Number((Math.random() * (25 - 10)) + 10);
+                                      return Number((Math.random() * (18 - 10)) + 10);
                                     };
   var showPage = function(page) {
     $('.howToPlayPage').hide();
@@ -209,7 +209,15 @@ $( document ).ready(function() {
   }
 
   function currentOdds(WRodds) {
-    console.log("current odds hits");
+    // console.log(PlayResults)
+    PlayResults.CurrentWR1Odds = PlayResults.WR1initialOdds + PlayResults.WR1timeIncreaseOdds + PlayResults.GlobalOddsAdjustment + PlayResults.WR1oddsAdjustment;
+    PlayResults.CurrentWR2Odds = PlayResults.WR2initialOdds + PlayResults.WR2timeIncreaseOdds + PlayResults.GlobalOddsAdjustment + PlayResults.WR2oddsAdjustment;
+    PlayResults.CurrentWR3Odds = PlayResults.WR3initialOdds + PlayResults.WR3timeIncreaseOdds + PlayResults.GlobalOddsAdjustment + PlayResults.WR3oddsAdjustment;
+    // console.log(PlayResults.CurrentWR1Odds +   "     WR1 odds");
+    // console.log(PlayResults.CurrentWR2Odds +   "     WR2 odds");
+    // console.log(PlayResults.CurrentWR3Odds +   "     WR3 odds");
+
+
     // console.log(PlayResults.CurrentWR2Odds + "                PlayResults.CurrentWR2Odds");
     // console.log(WR2oddsVar + "                 WR2oddsVar");
     var yardsClass = document.getElementsByClassName('yards');
@@ -302,6 +310,7 @@ $( document ).ready(function() {
   }
 
     function checkGameState() {
+      debugger
       downCount++
       if(yardLine >= '100') {
         $('.defensiveSpan').text("Touchdown!")
@@ -475,75 +484,10 @@ $( document ).ready(function() {
                                       if (Math.random() < 1/++count) {
                                          output = firstReadStrings[result][prop];
                                       }
-                                      console.log(JSON.stringify(PlayResults,null, 4));
+                                      // console.log(JSON.stringify(PlayResults,null, 4));
 
                                   return output
                               }
-
-  // function firstReadOdds() {
-  //   var defSpanClassic = document.getElementsByClassName('defensiveSpan');
-  //   var defensiveSpanText = defSpanClassic[0].innerText
-
-  //   for(var key in firstReadStrings) {
-  //     for(var key1 in firstReadStrings[key]) {
-  //       // console.log(key1 +  "      This is key1")
-  //       if(defensiveSpanText.indexOf('Blitz') > -1 || defensiveSpanText.indexOf('blitzing') > -1) { 
-  //         clearSackTimer()
-  //       }
-  //       // if(firstReadStrings.blitz.length )
-  //       if(defensiveSpanText === firstReadStrings.WR1oddsIncrease[key1]) {
-  //         WR1OddsCount+= postSnapReadOddsAdjustment();
-  //         // console.log(firstReadStrings.WR1oddsIncrease[key1])
-  //         // console.log(WR1OddsCount + "====== WR1");
-  //         // console.log(WR1OddsCount + " WR1 odds count just hit positive");
-  //       }
-  //       if(defensiveSpanText === firstReadStrings.WR1oddsDecrease[key1]) {
-  //         WR1OddsCount-= postSnapReadOddsAdjustment();
-  //         // console.log(firstReadStrings.WR1oddsDecrease[key1])
-  //         // console.log(WR1OddsCount + "====== WR1")
-  //         // console.log(WR1OddsCount + " WR1 odds count just hit negative");
-  //       }
-  //       if(defensiveSpanText === firstReadStrings.WR2oddsIncrease[key1]) {
-  //         WR2OddsCount+= postSnapReadOddsAdjustment();
-  //         // console.log(WR2OddsCount + "====== WR2")
-  //         // console.log(WR2OddsCount + " WR2 odds count just hit positive");
-  //         // break;
-  //         // console.log(firstReadStrings.WR2oddsIncrease[key1])
-  //       }
-  //       if(defensiveSpanText === firstReadStrings.WR2oddsDecrease[key1]) {
-  //         WR2OddsCount-= postSnapReadOddsAdjustment();
-  //         // console.log(firstReadStrings.WR3oddsDecrease[key1])
-  //         // console.log(WR2OddsCount + "====== WR2");
-  //         // console.log(WR2OddsCount + " WR2 odds count just hit negative");
-  //       }
-  //       if(defensiveSpanText === firstReadStrings.WR3oddsIncrease[key1]) {
-  //         WR3OddsCount+= postSnapReadOddsAdjustment();
-  //         // console.log(firstReadStrings.WR3oddsIncrease[key1])
-  //         // console.log(WR3OddsCount + "====== WR3");
-  //         // console.log(WR3OddsCount + " WR3 odds count just hit positive");
-  //       }
-  //       if(defensiveSpanText === firstReadStrings.WR3oddsDecrease[key1]) {
-  //         WR3OddsCount-= postSnapReadOddsAdjustment();
-  //         // console.log(firstReadStrings.WR3oddsDecrease[key1]);
-  //         // console.log(WR3OddsCount + "====== WR3");
-  //         // console.log(WR3OddsCount + " WR3 odds count just hit negative");
-  //       }
-  //       if(defensiveSpanText === firstReadStrings.GlobalIncrease[key1]) {
-  //         GlobalOddsCount+=postSnapReadOddsAdjustment();
-  //         // console.log(firstReadStrings.GlobalIncrease[key1])
-  //         // console.log(GlobalOddsCount + "====== Global");
-  //         // console.log(GlobalOddsCount + " Global odds count just hit positive");
-  //       }
-  //       if(defensiveSpanText === firstReadStrings.GlobalDecrease[key1]) {
-  //         GlobalOddsCount-=postSnapReadOddsAdjustment();
-  //         // console.log(firstReadStrings.GlobalDecrease[key1])
-  //         // console.log(GlobalOddsCount + "====== Global")
-  //         // console.log(GlobalOddsCount + " Global odds count just hit negative");
-  //       }
-  //     }
-  //   }
-  //   // console.log(JSON.stringify(PlayResults,null, 4) +     "        first odds");
-  // }                      
 
   function scoreboardUpdate() {
     if(downCount === 1) {
@@ -990,7 +934,7 @@ $( document ).ready(function() {
               // console.log(GlobalOddsCount + " Global odds count just hit positive");
             }
             if(defensiveSpanText === postSnapStrings.GlobalDecrease[key1] || defensiveSpanText === firstReadStrings.GlobalDecrease[key4]) {
-              GlobalOddsCount-=postSnapReadOddsAdjustment();
+              GlobalOddsCount-= postSnapReadOddsAdjustment();
               delete postSnapStrings.WR1oddsIncrease[key1];
               // console.log(postSnapStrings.GlobalDecrease[key1])
               // console.log(GlobalOddsCount + "====== Global")
@@ -1000,14 +944,17 @@ $( document ).ready(function() {
         }
       }
     }  
-  // console.log(WR1OddsCount +  "    WR1 odds count");
-  // console.log(WR2OddsCount +  "    WR2 odds count");
-  // console.log(WR3OddsCount +  "    WR3 odds count");
+  console.log(WR1OddsCount +  "    WR1 odds count");
+  console.log(WR2OddsCount +  "    WR2 odds count");
+  console.log(WR3OddsCount +  "    WR3 odds count");
   // console.log(GlobalOddsCount +"   Global odds count");
+      console.log(PlayResults.CurrentWR1Odds +   "     WR1 odds");
+    console.log(PlayResults.CurrentWR2Odds +   "     WR2 odds");
+    console.log(PlayResults.CurrentWR3Odds +   "     WR3 odds");
 
-  PlayResults.WR1OddsAdjustment = PlayResults.WR1OddsAdjustment + (WR1OddsCount/2);
-  PlayResults.WR2OddsAdjustment = PlayResults.WR2OddsAdjustment + (WR2OddsCount/2);
-  PlayResults.WR3OddsAdjustment = PlayResults.WR3OddsAdjustment + (WR3OddsCount/2);
+  PlayResults.WR1OddsAdjustment = PlayResults.WR1OddsAdjustment + Number(WR1OddsCount/2);
+  PlayResults.WR2OddsAdjustment = PlayResults.WR2OddsAdjustment + Number(WR2OddsCount/2);
+  PlayResults.WR3OddsAdjustment = PlayResults.WR3OddsAdjustment + Number(WR3OddsCount/2);
   PlayResults.GlobalOddsAdjustment = PlayResults.GlobalOddsAdjustment + (GlobalOddsCount/2);
   PlayResults.CurrentWR1Odds = PlayResults.WR1initialOdds + PlayResults.WR1timeIncreaseOdds + PlayResults.GlobalOddsAdjustment + PlayResults.WR1oddsAdjustment;
   PlayResults.CurrentWR2Odds = PlayResults.WR2initialOdds + PlayResults.WR2timeIncreaseOdds + PlayResults.GlobalOddsAdjustment + PlayResults.WR2oddsAdjustment;
