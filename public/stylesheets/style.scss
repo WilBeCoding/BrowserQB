@@ -32,38 +32,8 @@
   display: none; }
 
 .container .passPlays {
-  display: 
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  -webkit-flex;
-  display: 
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  -ms-flexbox;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
@@ -74,20 +44,11 @@
   -webkit-justify-content: space-around;
   -ms-flex-pack: distribute;
   justify-content: space-around;
-  margin-top: -2%;
-  }
+  margin-top: -2%; }
 
 .container .passPlays .smash {
-  display: 
-  
-  
-  
-  -webkit-flex;
-  display: 
-  
-  
-  
-  -ms-flexbox;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
@@ -96,8 +57,7 @@
   background-color: purple;
   width: 33.25%;
   text-align: center;
-  position: relative;
-  }
+  position: relative; }
 
 .container .passPlays .bobsyouruncle {
   display: -webkit-flex;
@@ -111,6 +71,11 @@
   width: 33.25%;
   position: relative;
   text-align: center; }
+
+.container .buttons .snap input {
+  /* margin: 0 auto; */
+  margin-right: -1%;
+  }
 
 .container .passPlays .fourverticals {
   display: -webkit-flex;
@@ -157,7 +122,14 @@
 .container .topLeft h1 {
   -ms-flex-item-align: center;
   -webkit-align-self: center;
-  margin-top: 0%;
+  margin-top: 0%; }
+
+.progressionChoice {
+  height: 100%;
+  width: 100%;
+  background-color: blue;
+  color: black;
+  font-weight: bold;
   }
 
 .container .topRight {
@@ -281,7 +253,7 @@
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  height: 50%;
+  height: 42%;
   width: 100%;
   margin-top: 25px;
   color: gray; }
@@ -292,9 +264,10 @@
   width: 100%; }
 
 .container .buttons .snap .buttonSnap {
-  margin: 0 auto;
-  height: 100px;
-  position: absolute; }
+  margin-top: -7%;
+  /* position: absolute; */
+  margin-left: 5%;
+  }
 
 .container .buttons .WRbuttons {
   display: -webkit-flex;
@@ -333,10 +306,12 @@
   width: 30px; }
 
 .container .birdsEyeImg {
-  height: 30%;
-  margin-left: -65px;
-  margin-top: 100px;
-  position: absolute; }
+  height: 40%;
+  width: 50%;
+  margin-left: -753px;
+  margin-top: 22px;
+  position: absolute;
+  }
 
 .visible {
   visibility: visible;

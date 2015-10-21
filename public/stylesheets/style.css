@@ -72,6 +72,10 @@
   position: relative;
   text-align: center; }
 
+.container .buttons .snap input {
+  /* margin: 0 auto; */
+  margin-right: -1%; }
+
 .container .passPlays .fourverticals {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -118,6 +122,13 @@
   -ms-flex-item-align: center;
   -webkit-align-self: center;
   margin-top: 0%; }
+
+.progressionChoice {
+  height: 100%;
+  width: 100%;
+  background-color: blue;
+  color: black;
+  font-weight: bold; }
 
 .container .topRight {
   display: -webkit-flex;
@@ -240,7 +251,7 @@
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  height: 50%;
+  height: 42%;
   width: 100%;
   margin-top: 25px;
   color: gray; }
@@ -251,9 +262,9 @@
   width: 100%; }
 
 .container .buttons .snap .buttonSnap {
-  margin: 0 auto;
-  height: 100px;
-  position: absolute; }
+  margin-top: -7%;
+  /* position: absolute; */
+  margin-left: 6%; }
 
 .container .buttons .WRbuttons {
   display: -webkit-flex;
@@ -292,9 +303,10 @@
   width: 30px; }
 
 .container .birdsEyeImg {
-  height: 30%;
-  margin-left: -65px;
-  margin-top: 100px;
+  height: 40%;
+  width: 50%;
+  margin-left: -753px;
+  margin-top: 22px;
   position: absolute; }
 
 .visible {
