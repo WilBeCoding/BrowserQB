@@ -16,45 +16,48 @@ block content
       div.playClockDiv
         span#playClock
     div.placeholderButtons
-      div.progressionChoice
-        p Progression
-        label 1
-          select(name="progression1")
-            option WR1
-            option WR2
-            option WR3
-            option WR4
-        div
-          label 2
-            select(name="progression2")
-              option WR1 
-              option WR2 
+      div.bottomButtonContainer
+        div.progressionChoice
+          p Progression
+          label 1
+            select(name="progression1")
+              option WR1
+              option WR2
               option WR3
               option WR4
-        div
-          label 3
-            select(name='progression3')
-              option WR1 
-              option WR2
-              option WR3 
-              option WR4
-        div
-          label 4
-            select(name='progression4')
-              option WR1  
-              option WR2  
-              option WR3  
-              option WR4
-        div
-          label 5
+          div
+            label 2
+              select(name="progression2")
+                option WR1 
+                option WR2 
+                option WR3
+                option WR4
+          div
+            label 3
+              select(name='progression3')
+                option WR1 
+                option WR2
+                option WR3 
+                option WR4
+          div
+            label 4
+              select(name='progression4')
+                option WR1  
+                option WR2  
+                option WR3  
+                option WR4
+          div
+            label 5
             select(name='progression5')
               option WR1 
               option WR2
               option WR3
               option WR4
-      div#snap.placeHolderSnap
-        input(type="button" value="Hut Hut Hike!").buttonSnap.button.button-3d
-        img(src=).birdsEyeImg
+        div.hikeButtonContainer
+          div.huthutHIKEbttn
+            input(type="button" value="Hut Hut Hike!").buttonSnap.button.button-3d
+            div.preSnapReadContainer
+              img(src=).birdsEyeImg
       div.placeholderWRbuttons
         div.wr1
           input(type="button" value="Wide Receiver 1")

@@ -502,7 +502,15 @@ $( document ).ready(function() {
     if(downCount === 4) {
       $('.down').text("4th and " + yardsToFirst);
     }
-    $('.score').text(score);
+    if(score === 0){
+      $('.score').text("Score " + score);
+    }
+    if(score === 7) {
+      $('.score').text("Score " + score);
+    }
+    if(score === 14){
+      $('.score').text("Score " + score)
+    }
   }
 
   function playClock(duration, display) {
@@ -524,6 +532,7 @@ $( document ).ready(function() {
   $(".mask").hide();
   $(".hider").hide();
   $(".howToPlayDiv").hide();
+
   $(".howToPlayButton").click(function () {
     $(".howToContainer").fadeIn("slow");
     $('.mask').fadeIn("slow");
@@ -606,8 +615,6 @@ $( document ).ready(function() {
     $('.pages').eq(8).hide();
     $('.pages').eq(7).show();
   })
-
-
 
   $(".closeHowToButton").click(function () {
     $(".howToContainer").fadeOut("slow");
@@ -697,7 +704,6 @@ $( document ).ready(function() {
     $('.birdsEyeImg').removeClass('placeholderBirdsEyeView');
     $('.buttons').css('background', 'white');
   });
-
 
   $('.runImage').on('click', function() {
     alert("You Audible To A Pass Play!");
