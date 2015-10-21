@@ -12,8 +12,7 @@
   flex-direction: row;
   -webkit-justify-content: space-around;
   -ms-flex-pack: distribute;
-  justify-content: space-around;
-  /* background-color: orange; */ }
+  justify-content: space-around; }
 
 .container .playsPlacement {
   display: -webkit-flex;
@@ -29,7 +28,62 @@
   height: 42%;
   width: 100%;
   text-align: center;
-  margin-top: -155px; }
+  margin-top: -155px;
+  display: none; }
+
+.container .passPlays {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  height: 60%;
+  background-color: green;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  margin-top: -2%; }
+
+.container .passPlays .smash {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 98%;
+  background-color: purple;
+  width: 33.25%;
+  text-align: center;
+  position: relative; }
+
+.container .passPlays .bobsyouruncle {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 98%;
+  background-color: red;
+  width: 33.25%;
+  position: relative;
+  text-align: center; }
+
+.container .passPlays .fourverticals {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 98%;
+  position: relative;
+  width: 33.25%;
+  background-color: orange;
+  text-align: center; }
 
 .container .topLeft {
   display: -webkit-flex;
@@ -38,9 +92,27 @@
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  height: 50%;
-  width: 33%;
-  position: relative; }
+  height: 48%;
+  width: 100%; }
+
+.container .scoreBoard {
+  height: 10%;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  background-color: red;
+  width: 98%; }
+
+.container .topLeft img {
+  height: 200px;
+  width: 200px;
+  border: 1px solid black; }
 
 .container .topLeft h1 {
   -ms-flex-item-align: center;
@@ -97,8 +169,7 @@
   position: relative;
   left: 0;
   right: 0;
-  margin-left: -16px;
-  margin-top: -8px; }
+  margin-left: -16px; }
 
 .container .field .footballIMG {
   max-height: 40px;

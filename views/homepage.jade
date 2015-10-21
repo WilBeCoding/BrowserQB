@@ -2,6 +2,13 @@ extends layout
 
 block content
   div.container
+    div.scoreBoard
+      div
+        p drive
+      div
+        p.down
+      div
+        p Score
     div.field
       img(src="http://findicons.com/files/icons/924/sportset/128/american_football_128x128.png").footballIMG
       div.defensiveRead
@@ -160,34 +167,16 @@ block content
           input(type='button' value= 'Back').lastPage
           p
           input(type='button' value='Back To The Field!').closeHowToButton
-    div.placeHolderTopLeft
-      h1 Pass Play
-      input(type="image" src="http://glb.warriorgeneral.com/images/plays/174.gif" name="plays").passImage#playImages
-    div.placeholderTable
-      table
-        thead
-          tr
-            td.down
-            td
-            td
-            td
-          tr
-            td Drive
-            td
-            td
-            td.drive 1st
-          tr 
-            td Score
-            td
-            td
-            td.score
-          tr
-            td
-            td
-            td
-            td.record
-      input(type="button" value="How To Play").howToPlayButton
-    div.placeHolderTopRight
-      audio(src='../sounds/Omaha.mp3' type='audio/mp3' id='omaha')
-      h1.runPlaysText Run Play
-      input(type="image" src="http://glb.warriorgeneral.com/images/plays/171.gif" name="plays").runImage#playImages
+    div.topLeft
+      h1 Pass Plays
+      div.passPlays
+        div.smash
+          span Smash
+          img(src='../images/smash.png' name='smash').passImage#playImages
+        div.fourverticals
+          span Four Verticals
+          img(src="../images/fourverticals.png" name="fourverticals").passImage#playImages
+        div.bobsyouruncle
+          span Bob's Your Uncle
+          img(src='../images/bobsyouruncle.png' name='bobsyouruncle').passImage#playImages
+     
