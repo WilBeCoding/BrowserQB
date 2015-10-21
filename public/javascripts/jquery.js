@@ -140,6 +140,9 @@ $( document ).ready(function() {
       return Math.floor((Math.random() * (3 - 0)) + 0);
   };
 
+  var smashSelected = false;
+  var fourVerticalsSelected = false;
+  var bobsYourUncleSelected = false;
   var lost = false;
   var clearSackTimerBooleanTrigger = false;
   var oddsDemoInterval = 0;
@@ -688,7 +691,50 @@ $( document ).ready(function() {
     }, "json" );
   })
 
-  $('.passImage').on('click', function() {
+  $('.smashImg').on('click', function() {
+    smashSelected = true;
+    playClockId = 0;
+    var thirtySeconds = 30;
+    var display = $('#playClock');
+    playClock(thirtySeconds, display);
+    $('.topRight').addClass('placeHolderTopRight');
+    $('.topLeft').addClass('placeHolderTopLeft');
+    $('.table').addClass('placeholderTable');
+    $('.table').removeClass('table')
+    $('.placeHolderTopRight').removeClass('topRight');
+    $('.placeHolderTopLeft').removeClass('topLeft');
+    $('.placeholderButtons').addClass('buttons');
+    $('.buttons').removeClass('placeholderButtons');
+    $('.placeHolderSnap').addClass('snap');
+    $('.snap').removeClass('placeHolderSnap');
+    $('.placeholderBirdsEyeView').addClass('birdsEyeImg');
+    $('.birdsEyeImg').removeClass('placeholderBirdsEyeView');
+    $('.buttons').css('background', 'white');
+  });
+
+  $('.fourVerticals').on('click', function() {
+    fourVerticalsSelected = true;
+    playClockId = 0;
+    var thirtySeconds = 30;
+    var display = $('#playClock');
+    playClock(thirtySeconds, display);
+    $('.topRight').addClass('placeHolderTopRight');
+    $('.topLeft').addClass('placeHolderTopLeft');
+    $('.table').addClass('placeholderTable');
+    $('.table').removeClass('table')
+    $('.placeHolderTopRight').removeClass('topRight');
+    $('.placeHolderTopLeft').removeClass('topLeft');
+    $('.placeholderButtons').addClass('buttons');
+    $('.buttons').removeClass('placeholderButtons');
+    $('.placeHolderSnap').addClass('snap');
+    $('.snap').removeClass('placeHolderSnap');
+    $('.placeholderBirdsEyeView').addClass('birdsEyeImg');
+    $('.birdsEyeImg').removeClass('placeholderBirdsEyeView');
+    $('.buttons').css('background', 'white');
+  });
+
+  $('.bobsYourUncle').on('click', function() {
+    bobsYourUncleSelected = true;
     playClockId = 0;
     var thirtySeconds = 30;
     var display = $('#playClock');
@@ -802,6 +848,9 @@ $( document ).ready(function() {
     WR2OddsCount = 0;
     WR3OddsCount = 0;
     GlobalOddsCount = 0;
+    smashSelected = false;
+    fourVerticalsSelected = false;
+    bobsYourUncle = false;
     $('.placeholderProgressionChoice').addClass('progressionChoice'); 
     $('.progressionChoice').removeClass('placeholderProgressionChoice'); 
     $('.birdsEyeImg').attr("src", getRndmImgSrc);

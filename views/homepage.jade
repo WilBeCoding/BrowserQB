@@ -21,38 +21,38 @@ block content
           p Progression
           label 1
             select(name="progression1")
-              option WR1
-              option WR2
-              option WR3
-              option WR4
+              option(value='p1WR1') WR1
+              option(value='p1WR2') WR2
+              option(value='p1WR3') WR3
+              option(value='p1WR4') WR4
           div
             label 2
               select(name="progression2")
-                option WR1 
-                option WR2 
-                option WR3
-                option WR4
+                option(value='p2WR1') WR1 
+                option(value='p2WR2') WR2 
+                option(value='p2WR3') WR3
+                option(value='p2WR4') WR4
           div
             label 3
               select(name='progression3')
-                option WR1 
-                option WR2
-                option WR3 
-                option WR4
+                option(value='p3WR1') WR1 
+                option(value='p3WR2') WR2
+                option(value='p3WR3') WR3 
+                option(value='p3WR4') WR4
           div
             label 4
               select(name='progression4')
-                option WR1  
-                option WR2  
-                option WR3  
-                option WR4
+                option(value='p4WR1') WR1  
+                option(value='p4WR2') WR2  
+                option(value='p4WR3') WR3  
+                option(value='p4WR4') WR4
           div
             label 5
             select(name='progression5')
-              option WR1 
-              option WR2
-              option WR3
-              option WR4
+              option(value='p5WR1') WR1 
+              option(value='p5WR2') WR2
+              option(value='p5WR3') WR3
+              option(value='p5WR4') WR4
         div.hikeButtonContainer
           div.huthutHIKEbttn
             input(type="button" value="Hut Hut Hike!").buttonSnap.button.button-3d
@@ -211,11 +211,11 @@ block content
       div.passPlays
         div.smash
           span Smash
-          img(src='../images/smash.png' name='smash').passImage#playImages
+          img(src='../images/smash.png' name='smash').passImage#playImages.smashImg
         div.fourverticals
           span Four Verticals
-          img(src="../images/fourverticals.png" name="fourverticals").passImage#playImages
+          img(src="../images/fourverticals.png" name="fourverticals").passImage#playImages.fourVerticals
         div.bobsyouruncle
           span Bob's Your Uncle
-          img(src='../images/bobsyouruncle.png' name='bobsyouruncle').passImage#playImages
+          img(src='../images/bobsyouruncle.png' name='bobsyouruncle').passImage#playImages.BobsYourUncle
      
