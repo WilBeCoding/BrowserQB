@@ -314,8 +314,12 @@
   flex-direction: row; }
 
 .container .buttons .WRbuttons {
-  display: -webkit-flex;
-  display: -ms-flexbox;
+  display: 
+  
+  -webkit-flex;
+  display: 
+  
+  -ms-flexbox;
   display: flex;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
@@ -328,7 +332,8 @@
   margin-left: 9%;
   /* margin: 0 auto; */
   text-align: center;
-  margin-left: 13; }
+  margin-left: 13;
+  }
 
 .container .buttons .WRbuttons .wr1 {
   text-align: center;

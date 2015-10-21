@@ -802,6 +802,8 @@ $( document ).ready(function() {
     WR2OddsCount = 0;
     WR3OddsCount = 0;
     GlobalOddsCount = 0;
+    $('.placeholderProgressionChoice').addClass('progressionChoice'); 
+    $('.progressionChoice').removeClass('placeholderProgressionChoice'); 
     $('.birdsEyeImg').attr("src", getRndmImgSrc);
     $('.buttons').css("margin-top", "25px");
     $('.placeHolderTopRight').addClass('topRight');
@@ -892,7 +894,7 @@ $( document ).ready(function() {
             // console.log(key1 +  "      This is key1")
             if(defensiveSpanText.indexOf('Blitz') > -1 || defensiveSpanText.indexOf('blitzing') > -1) { 
               if(clearSackTimerBooleanTrigger === false) {
-                clearSackTimer();
+                // clearSackTimer();
               }
             }
             // if(postSnapStrings.blitz.length )
