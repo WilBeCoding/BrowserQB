@@ -61,38 +61,45 @@ var passingPlays = {
   }
 }
 
-var defensiveCoverageImgs = [
-      {src:"../images/cover2.jpg"},
-      {src:"../images/cover3.png"},
-      {src:"../images/manCoverage.png"}
-    ];
-
-var randomImage = function randomInt(){
-    return Math.floor((Math.random() * (3 - 0)) + 0);
-};
-
-// Put this jQuery on load as well as in the returnToDefault function
-// $('.placeHolderSnap .img').attr('src', defensiveCoverageImgs[randomImage].src)
-
-// console.log(randomImage())
-
-  function getRndmImgSrc(){
-    var imageSrc = defensiveCoverageImgs[randomImage()].src
-    return imageSrc
+var defensiveCoverageImgs = {
+      Cover2: {src:"../images/cover2.jpg"},
+      Cover3: {src:"../images/cover3.png"},
+      ManCoverage: {src:"../images/manCoverage.png"}
   }
 
-console.log(getRndmImgSrc());
+  function getRndmDefensivePlay() {
+    // console.log("interval pass strings is hitting")
+                              var result;
+                              var output;
+                              var count = 0;
+                              for(var prop in defensiveCoverageImgs)
+                                  if (Math.random() < 1/++count) {
+                                     result = prop;
+                                  }
+                          return result
+            }
+
+
+         function getRndmDefensivePlayImg() {
+             var imageSrc = defensiveCoverageImgs[getRndmDefensivePlay()].src
+             return imageSrc
+         }
+
+           
+
+console.log(getRndmDefensivePlayImg())
+
 
 // So then when calculating what strings to show and whatnot it starts with something like
-if($('.birdsEyeImg')).attr(('src')) === defensiveCoverageImgs[0].src) {
+if($('.birdsEyeImg')).attr(('src')) === defensiveCoverageImgs.Cover2.src) {
   // run the cover2 string information for the given play
 }
 
-if($('.birdsEyeImg')).attr(('src')) === defensiveCoverageImgs[1].src) {
+if($('.birdsEyeImg')).attr(('src')) === defensiveCoverageImgs.Cover3.src) {
   // run the cover3 string information for the given play
 }
 
-if($('.birdsEyeImg')).attr(('src')) === defensiveCoverageImgs[2].src) {
+if($('.birdsEyeImg')).attr(('src')) === defensiveCoverageImgs.ManCoverage.src) {
   // run the manCoverage string information for the given play
 }
 

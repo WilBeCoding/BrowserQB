@@ -39,73 +39,87 @@ label 1
     option(value='p1WR3') WR3
     option(value='p1WR4') WR4
 
+
+  function getRndmQBRead(route) {
+    // console.log("interval pass strings is hitting")
+                              var result;
+                              var output;
+                              var count = 0;
+                              for(var prop in route)
+                                  if (Math.random() < 1/++count) {
+                                     result = prop;
+                                  }
+                          return result
+            }       
+
 // ------------------------------------------------------
 // Need to dim out options in the dropdown menu if 3 reads are selected for one WR
 // -------- Have this function within the selection of the drop down thing. So in the jQuery file its all like 
   // --- Every time a drop down value is selected check the values and if a WR is selected 3 times do not 
   // let them be selected again
 
+function displayReads(){
+  if($('.birdsEyeImg').attr('src', getRndmImgSrc) === defensiveCoverageImgs[0].src && smashSelected === true) {
+    if(progression1.value === p1WR1) {
+      $('.defensiveSpan').text(defensiveRndmQBRead(Smash.Cover2.hitchRouteReads))
+    }
+    if(progression1.value === p1WR2) {
+      $('.defensiveSpan').text(defensiveRndmQBRead(Smash.Cover2.outsidePostRouteReads))
+    }
+    if(progression1.value === p1WR3) {
+      $('.defensiveSpan').text(defensiveRndmQBRead(Smash.Cover2.crossRouteReads))
+    }
+    if(progression1.value === p1WR4) {
+      $('.defensiveSpan').text(defensiveRndmQBRead(Smash.Cover2.insidePostRouteReads))
+    }
 
-if($('.birdsEyeImg').attr('src', getRndmImgSrc) === defensiveCoverageImgs[0].src && smashSelected === true) {
-  if(progression1.value === p1WR1) {
-    Get random property value from passingPlays.Smash.Cover2.hitchRouteReads
-  }
-  if(progression1.value === p1WR2) {
-    Get random property value from passingPlays.Smash.Cover2.outsidePostRouteReads
-  }
-  if(progression1.value === p1WR3) {
-    Get random property value from passingPlays.Smash.Cover2.crossRouteReads
-  }
-  if(progression1.value === p1WR4) {
-    Get random property value from passingPlays.Smash.Cover2.insidePostRouteReads
-  }
-
-  if(progression2.value === p2WR1) {
-        Get random property value from passingPlays.Smash.Cover2.hitchRouteReads
-  }
-  if(progression2.value === p2WR2) {
-        Get random property value from passingPlays.Smash.Cover2.outsidePostRouteReads
-  }
-  if(progression2.value === p2WR3) {
-        Get random property value from passingPlays.Smash.Cover2.crossRouteReads
-  }
-  if(progression2.value === p2WR4) {
-        Get random property value from passingPlays.Smash.Cover2.insidePostRouteReads
-  }
-  if(progression3.value === p3WR1) {
-        Get random property value from passingPlays.Smash.Cover2.hitchRouteReads
-  }
-  if(progression3.value === p3WR2) {
-        Get random property value from passingPlays.Smash.Cover2.outsidePostRouteReads
-  }
-  if(progression3.value === p3WR3) {
-        Get random property value from passingPlays.Smash.Cover2.crossRouteReads
-  }
-  if(progression3.value === p3WR4) {
-        Get random property value from passingPlays.Smash.Cover2.insidePostRouteReads
-  }
-  if(progression4.value === p4WR1) {
-        Get random property value from passingPlays.Smash.Cover2.hitchRouteReads
-  }
-  if(progression4.value === p4WR2) {
-        Get random property value from passingPlays.Smash.Cover2.outsidePostRouteReads
-  }
-  if(progression4.value === p4WR3) {
-        Get random property value from passingPlays.Smash.Cover2.crossRouteReads
-  }
-  if(progression4.value === p4WR4) {
-        Get random property value from passingPlays.Smash.Cover2.insidePostRouteReads
-  }
-  if(progression5.value === p5WR1) {
-        Get random property value from passingPlays.Smash.Cover2.hitchRouteReads
-  }
-  if(progression5.value === p5WR2) {
-        Get random property value from passingPlays.Smash.Cover2.outsidePostRouteReads
-  }
-  if(progression5.value === p5WR3) {
-        Get random property value from passingPlays.Smash.Cover2.crossRouteReads
-  }
-  if(progression5.value === p5WR4) {
-        Get random property value from passingPlays.Smash.Cover2.insidePostRouteReads
+    if(progression2.value === p2WR1) {
+          $('.defensiveSpan').text(defensiveRndmQBRead(Smash.Cover2.hitchRouteReads))
+    }
+    if(progression2.value === p2WR2) {
+      $('.defensiveSpan').text(defensiveRndmQBRead(Smash.Cover2.outsidePostRouteReads))
+    }
+    if(progression2.value === p2WR3) {
+      $('.defensiveSpan').text(defensiveRndmQBRead(Smash.Cover2.crossRouteReads))
+    }
+    if(progression2.value === p2WR4) {
+      $('.defensiveSpan').text(defensiveRndmQBRead(Smash.Cover2.insidePostRouteReads))
+    }
+    if(progression3.value === p3WR1) {
+          $('.defensiveSpan').text(defensiveRndmQBRead(Smash.Cover2.hitchRouteReads))
+    }
+    if(progression3.value === p3WR2) {
+      $('.defensiveSpan').text(defensiveRndmQBRead(Smash.Cover2.outsidePostRouteReads))
+    }
+    if(progression3.value === p3WR3) {
+      $('.defensiveSpan').text(defensiveRndmQBRead(Smash.Cover2.crossRouteReads))
+    }
+    if(progression3.value === p3WR4) {
+      $('.defensiveSpan').text(defensiveRndmQBRead(Smash.Cover2.insidePostRouteReads))
+    }
+    if(progression4.value === p4WR1) {
+          $('.defensiveSpan').text(defensiveRndmQBRead(Smash.Cover2.hitchRouteReads))
+    }
+    if(progression4.value === p4WR2) {
+      $('.defensiveSpan').text(defensiveRndmQBRead(Smash.Cover2.outsidePostRouteReads))
+    }
+    if(progression4.value === p4WR3) {
+      $('.defensiveSpan').text(defensiveRndmQBRead(Smash.Cover2.crossRouteReads))
+    }
+    if(progression4.value === p4WR4) {
+      $('.defensiveSpan').text(defensiveRndmQBRead(Smash.Cover2.insidePostRouteReads))
+    }
+    if(progression5.value === p5WR1) {
+      $('.defensiveSpan').text(defensiveRndmQBRead(Smash.Cover2.hitchRouteReads))
+    }
+    if(progression5.value === p5WR2) {
+      $('.defensiveSpan').text(defensiveRndmQBRead(Smash.Cover2.outsidePostRouteReads))
+    }
+    if(progression5.value === p5WR3) {
+      $('.defensiveSpan').text(defensiveRndmQBRead(Smash.Cover2.crossRouteReads))
+    }
+    if(progression5.value === p5WR4) {
+      $('.defensiveSpan').text(defensiveRndmQBRead(Smash.Cover2.insidePostRouteReads))
+    }
   }
 }
