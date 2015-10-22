@@ -60,66 +60,57 @@ label 1
 
 function displayReads(){
   if($('.birdsEyeImg').attr('src', getRndmImgSrc) === defensiveCoverageImgs[0].src && smashSelected === true) {
-    if(progression1.value === p1WR1) {
-      $('.defensiveSpan').text(defensiveRndmQBRead(Smash.Cover2.hitchRouteReads))
+    if($('#progression1').val() === 'p1WR1') {
+      $('.defensiveSpan').text(getRndmQBRead(passingPlays.Smash.Cover2.hitchRouteReads))
     }
-    if(progression1.value === p1WR2) {
-      $('.defensiveSpan').text(defensiveRndmQBRead(Smash.Cover2.outsidePostRouteReads))
+    if($('#progression1').val() === 'p1WR2') {
+      $('.defensiveSpan').text(getRndmQBRead(passingPlays.Smash.Cover2.outsidePostRouteReads))
     }
-    if(progression1.value === p1WR3) {
-      $('.defensiveSpan').text(defensiveRndmQBRead(Smash.Cover2.crossRouteReads))
+    if($('#progression1').val() === 'p1WR3') {
+      $('.defensiveSpan').text(getRndmQBRead(passingPlays.Smash.Cover2.crossRouteReads))
     }
-    if(progression1.value === p1WR4) {
-      $('.defensiveSpan').text(defensiveRndmQBRead(Smash.Cover2.insidePostRouteReads))
+    if($('#progression1').val() === 'p1WR4') {
+      $('.defensiveSpan').text(getRndmQBRead(passingPlays.Smash.Cover2.insidePostRouteReads))
     }
-
-    if(progression2.value === p2WR1) {
-          $('.defensiveSpan').text(defensiveRndmQBRead(Smash.Cover2.hitchRouteReads))
+    if($('#progression2').val() === 'p1WR1') {
+      $('.defensiveSpan').text(getRndmQBRead(passingPlays.Smash.Cover2.hitchRouteReads))
     }
-    if(progression2.value === p2WR2) {
-      $('.defensiveSpan').text(defensiveRndmQBRead(Smash.Cover2.outsidePostRouteReads))
+    if($('#progression2').val() === 'p1WR2') {
+      $('.defensiveSpan').text(getRndmQBRead(passingPlays.Smash.Cover2.outsidePostRouteReads))
     }
-    if(progression2.value === p2WR3) {
-      $('.defensiveSpan').text(defensiveRndmQBRead(Smash.Cover2.crossRouteReads))
+    if($('#progression2').val() === 'p1WR3') {
+      $('.defensiveSpan').text(getRndmQBRead(passingPlays.Smash.Cover2.crossRouteReads))
     }
-    if(progression2.value === p2WR4) {
-      $('.defensiveSpan').text(defensiveRndmQBRead(Smash.Cover2.insidePostRouteReads))
+    if($('#progression2').val() === 'p1WR4') {
+      $('.defensiveSpan').text(getRndmQBRead(passingPlays.Smash.Cover2.insidePostRouteReads))
     }
-    if(progression3.value === p3WR1) {
-          $('.defensiveSpan').text(defensiveRndmQBRead(Smash.Cover2.hitchRouteReads))
+    if($('#progression3').val() === 'p1WR1') {
+      $('.defensiveSpan').text(getRndmQBRead(passingPlays.Smash.Cover2.hitchRouteReads))
     }
-    if(progression3.value === p3WR2) {
-      $('.defensiveSpan').text(defensiveRndmQBRead(Smash.Cover2.outsidePostRouteReads))
+    if($('#progression3').val() === 'p1WR2') {
+      $('.defensiveSpan').text(getRndmQBRead(passingPlays.Smash.Cover2.outsidePostRouteReads))
     }
-    if(progression3.value === p3WR3) {
-      $('.defensiveSpan').text(defensiveRndmQBRead(Smash.Cover2.crossRouteReads))
+    if($('#progression3').val() === 'p1WR3') {
+      $('.defensiveSpan').text(getRndmQBRead(passingPlays.Smash.Cover2.crossRouteReads))
     }
-    if(progression3.value === p3WR4) {
-      $('.defensiveSpan').text(defensiveRndmQBRead(Smash.Cover2.insidePostRouteReads))
+    if($('#progression3').val() === 'p1WR4') {
+      $('.defensiveSpan').text(getRndmQBRead(passingPlays.Smash.Cover2.insidePostRouteReads))
     }
-    if(progression4.value === p4WR1) {
-          $('.defensiveSpan').text(defensiveRndmQBRead(Smash.Cover2.hitchRouteReads))
+    if($('#progression4').val() === 'p1WR1') {
+      $('.defensiveSpan').text(getRndmQBRead(passingPlays.Smash.Cover2.hitchRouteReads))
     }
-    if(progression4.value === p4WR2) {
-      $('.defensiveSpan').text(defensiveRndmQBRead(Smash.Cover2.outsidePostRouteReads))
+    if($('#progression4').val() === 'p1WR2') {
+      $('.defensiveSpan').text(getRndmQBRead(passingPlays.Smash.Cover2.outsidePostRouteReads))
     }
-    if(progression4.value === p4WR3) {
-      $('.defensiveSpan').text(defensiveRndmQBRead(Smash.Cover2.crossRouteReads))
+    if($('#progression4').val() === 'p1WR3') {
+      $('.defensiveSpan').text(getRndmQBRead(passingPlays.Smash.Cover2.crossRouteReads))
     }
-    if(progression4.value === p4WR4) {
-      $('.defensiveSpan').text(defensiveRndmQBRead(Smash.Cover2.insidePostRouteReads))
-    }
-    if(progression5.value === p5WR1) {
-      $('.defensiveSpan').text(defensiveRndmQBRead(Smash.Cover2.hitchRouteReads))
-    }
-    if(progression5.value === p5WR2) {
-      $('.defensiveSpan').text(defensiveRndmQBRead(Smash.Cover2.outsidePostRouteReads))
-    }
-    if(progression5.value === p5WR3) {
-      $('.defensiveSpan').text(defensiveRndmQBRead(Smash.Cover2.crossRouteReads))
-    }
-    if(progression5.value === p5WR4) {
-      $('.defensiveSpan').text(defensiveRndmQBRead(Smash.Cover2.insidePostRouteReads))
+    if($('#progression4').val() === 'p1WR4') {
+      $('.defensiveSpan').text(getRndmQBRead(passingPlays.Smash.Cover2.insidePostRouteReads))
     }
   }
+}
+
+function readOne(){
+  
 }
