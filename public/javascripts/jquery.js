@@ -171,7 +171,8 @@ $( document ).ready(function() {
         Cover3: {src:"../images/cover3.png"},
         ManCoverage: {src:"../images/manCoverage.png"}
       }
-
+  var defensivePlay;
+  var offensivePlay;
   var smashSelected = false;
   var fourVerticalsSelected = false;
   var bobsYourUncleSelected = false;
@@ -744,6 +745,11 @@ $( document ).ready(function() {
   })
 
   $('.smashImg').on('click', function() {
+    offensivePlay = 'Smash';
+    WR1 = 'hitchRouteReads';
+    WR2 = 'outsidePostRouteReads';
+    WR3 = 'crossRouteReads';
+    WR4 = 'insidePostRouteReads';
     smashSelected = true;
     playClockId = 0;
     var thirtySeconds = 30;
@@ -865,6 +871,7 @@ $( document ).ready(function() {
 
   function getRndmDefensivePlayImg() {
       var imageSrc = defensiveCoverageImgs[getRndmDefensivePlay()].src
+      defensivePlay = 'Cover2'
       return imageSrc
   }
 
@@ -989,29 +996,37 @@ $( document ).ready(function() {
 
   function displayReads(){
   if(smashSelected === true) {
+    defensivePlay = 'Cover2';
     if($('#progression1').val() === 'p1WR1') {
-      $('.defensiveSpan').text(getRndmQBRead(passingPlays.Smash.Cover2.hitchRouteReads))
+      console.log(offensivePlay);
+      console.log(defensivePlay);
+      console.log(WR1);
+      // This all words just fine. I need to figure out where to define defensivePlay 
+      // (Could do with a setTimeout that defines it then? Ha thats too cute)
+      // Also need to include the defensive play in the if statement. I can use the defensivePlay variable!
+
+      $('.defensiveSpan').text(getRndmQBRead(passingPlays[offensivePlay][defensivePlay][WR1]))
     }
     if($('#progression1').val() === 'p1WR2') {
-      $('.defensiveSpan').text(getRndmQBRead(passingPlays.Smash.Cover2.outsidePostRouteReads))
+      $('.defensiveSpan').text(getRndmQBRead(passingPlays[offensivePlay][defensivePlay][WR2]))
     }
     if($('#progression1').val() === 'p1WR3') {
-      $('.defensiveSpan').text(getRndmQBRead(passingPlays.Smash.Cover2.crossRouteReads))
+      $('.defensiveSpan').text(getRndmQBRead(passingPlays[offensivePlay][defensivePlay][WR3]))
     }
     if($('#progression1').val() === 'p1WR4') {
-      $('.defensiveSpan').text(getRndmQBRead(passingPlays.Smash.Cover2.insidePostRouteReads))
+      $('.defensiveSpan').text(getRndmQBRead(passingPlays[offensivePlay][defensivePlay][WR4]))
     }
     if($('#progression2').val() === 'p1WR1') {
-      $('.defensiveSpan').text(getRndmQBRead(passingPlays.Smash.Cover2.hitchRouteReads))
+      $('.defensiveSpan').text(getRndmQBRead(passingPlays[offensivePlay][defensivePlay][WR1]))
     }
     if($('#progression2').val() === 'p1WR2') {
-      $('.defensiveSpan').text(getRndmQBRead(passingPlays.Smash.Cover2.outsidePostRouteReads))
+      $('.defensiveSpan').text(getRndmQBRead(passingPlays[offensivePlay][defensivePlay][WR2]))
     }
     if($('#progression2').val() === 'p1WR3') {
-      $('.defensiveSpan').text(getRndmQBRead(passingPlays.Smash.Cover2.crossRouteReads))
+      $('.defensiveSpan').text(getRndmQBRead(passingPlays[offensivePlay][defensivePlay][WR3]))
     }
     if($('#progression2').val() === 'p1WR4') {
-      $('.defensiveSpan').text(getRndmQBRead(passingPlays.Smash.Cover2.insidePostRouteReads))
+      $('.defensiveSpan').text(getRndmQBRead(passingPlays[offensivePlay][defensivePlay][WR4]))
     }
     if($('#progression3').val() === 'p1WR1') {
       $('.defensiveSpan').text(getRndmQBRead(passingPlays.Smash.Cover2.hitchRouteReads))

@@ -58,6 +58,40 @@ label 1
   // --- Every time a drop down value is selected check the values and if a WR is selected 3 times do not 
   // let them be selected again
 
+
+// I need to determine how I'm going to organize this. Variables to represent the offensiveplay, defensivePlay, and routes would be much easier to handle
+ // Can set the defensive play variable upon window load and the return to default function
+// The Variables for the defensivePlay selected can be in the play selection click. 
+
+var offensivePlay;
+var defensivePlay;
+
+SmashPlayOnClick(){
+  offensivePlay = smash
+}
+
+window.onload
+  defensivePlay = getRndmImgSrc 
+
+function returnToDefault() {
+  defensivePlay = getRndmImgSrc
+}
+
+if(Progression Blah Blah) {
+  $('.defensiveSpan').text(getRndmQBRead(passingPlays[offenseVariable][DefenseVariable][WR1]))
+}
+
+var passPlaySelected;
+var defensivePlaySelected;
+var WR1
+var WR2
+var WR3
+
+if(Progression Blah Blah) {
+  $('.defensiveSpan').text(getRndmQBRead(passingPlays[offenseVariable][DefenseVariable][WR1]))
+}
+
+
 function displayReads(){
   if($('.birdsEyeImg').attr('src', getRndmImgSrc) === defensiveCoverageImgs[0].src && smashSelected === true) {
     if($('#progression1').val() === 'p1WR1') {
