@@ -300,7 +300,6 @@ $( document ).ready(function() {
     // console.log(JSON.stringify(PlayResults,null, 4));
   }
 
-
   function sacked(){
     console.log("sacked function hits");
     downCount++;
@@ -534,10 +533,6 @@ $( document ).ready(function() {
                                   }                    
                           return output
             }           
-
-
-
-
 
   function scoreboardUpdate() {
     if(downCount === 1) {
@@ -994,6 +989,11 @@ $( document ).ready(function() {
     currentOdds(PlayResults.CurrentWR3Odds)
   })
 
+var prog1 = false;
+var prog2 = false;
+var prog3 = false;
+var prog4 = false;
+
   function displayReads(){
   if(smashSelected === true) {
     defensivePlay = 'Cover2';
@@ -1001,56 +1001,71 @@ $( document ).ready(function() {
       console.log(offensivePlay);
       console.log(defensivePlay);
       console.log(WR1);
-      // This all words just fine. I need to figure out where to define defensivePlay 
+      // This all works just fine. I need to figure out where to define defensivePlay 
       // (Could do with a setTimeout that defines it then? Ha thats too cute)
       // Also need to include the defensive play in the if statement. I can use the defensivePlay variable!
 
       $('.defensiveSpan').text(getRndmQBRead(passingPlays[offensivePlay][defensivePlay][WR1]))
     }
-    if($('#progression1').val() === 'p1WR2') {
+    if($('#progression1').val() === 'p1WR2' && prog1 = false) {
       $('.defensiveSpan').text(getRndmQBRead(passingPlays[offensivePlay][defensivePlay][WR2]))
+      prog1 = true;
     }
-    if($('#progression1').val() === 'p1WR3') {
+    if($('#progression1').val() === 'p1WR3' && prog1 = false) {
       $('.defensiveSpan').text(getRndmQBRead(passingPlays[offensivePlay][defensivePlay][WR3]))
+      prog1 = true;
     }
-    if($('#progression1').val() === 'p1WR4') {
+    if($('#progression1').val() === 'p1WR4'&& prog1 = false) {
       $('.defensiveSpan').text(getRndmQBRead(passingPlays[offensivePlay][defensivePlay][WR4]))
+      prog1 = true;
     }
-    if($('#progression2').val() === 'p1WR1') {
+    if($('#progression2').val() === 'p1WR1' && prog2 = false) {
       $('.defensiveSpan').text(getRndmQBRead(passingPlays[offensivePlay][defensivePlay][WR1]))
+      prog2 = true;
     }
-    if($('#progression2').val() === 'p1WR2') {
+    if($('#progression2').val() === 'p1WR2' && prog2 = false) {
       $('.defensiveSpan').text(getRndmQBRead(passingPlays[offensivePlay][defensivePlay][WR2]))
+      prog2 = true;
     }
-    if($('#progression2').val() === 'p1WR3') {
+    if($('#progression2').val() === 'p1WR3' && prog2 = false) {
       $('.defensiveSpan').text(getRndmQBRead(passingPlays[offensivePlay][defensivePlay][WR3]))
+      prog2 = true;
     }
-    if($('#progression2').val() === 'p1WR4') {
+    if($('#progression2').val() === 'p1WR4' && prog2 = false) {
       $('.defensiveSpan').text(getRndmQBRead(passingPlays[offensivePlay][defensivePlay][WR4]))
+      prog2 = true;
     }
-    if($('#progression3').val() === 'p1WR1') {
+    if($('#progression3').val() === 'p1WR1' && prog3 = false) {
       $('.defensiveSpan').text(getRndmQBRead(passingPlays.Smash.Cover2.hitchRouteReads))
+      prog3 = true;
     }
-    if($('#progression3').val() === 'p1WR2') {
+    if($('#progression3').val() === 'p1WR2' && prog3 = false) {
       $('.defensiveSpan').text(getRndmQBRead(passingPlays.Smash.Cover2.outsidePostRouteReads))
+      prog3 = true;
     }
-    if($('#progression3').val() === 'p1WR3') {
+    if($('#progression3').val() === 'p1WR3' && prog3 = false) {
       $('.defensiveSpan').text(getRndmQBRead(passingPlays.Smash.Cover2.crossRouteReads))
+      prog3 = true;
     }
-    if($('#progression3').val() === 'p1WR4') {
+    if($('#progression3').val() === 'p1WR4' && prog3 = false) {
       $('.defensiveSpan').text(getRndmQBRead(passingPlays.Smash.Cover2.insidePostRouteReads))
+      prog3 = true;
     }
-    if($('#progression4').val() === 'p1WR1') {
+    if($('#progression4').val() === 'p1WR1' && prog4 = false) {
       $('.defensiveSpan').text(getRndmQBRead(passingPlays.Smash.Cover2.hitchRouteReads))
+      prog4 = true;
     }
-    if($('#progression4').val() === 'p1WR2') {
+    if($('#progression4').val() === 'p1WR2' && prog4 = false) {
       $('.defensiveSpan').text(getRndmQBRead(passingPlays.Smash.Cover2.outsidePostRouteReads))
+      prog4 = true;
     }
-    if($('#progression4').val() === 'p1WR3') {
+    if($('#progression4').val() === 'p1WR3' && prog4 = false) {
       $('.defensiveSpan').text(getRndmQBRead(passingPlays.Smash.Cover2.crossRouteReads))
+      prog4 = true;
     }
-    if($('#progression4').val() === 'p1WR4') {
+    if($('#progression4').val() === 'p1WR4' && prog4 = false) {
       $('.defensiveSpan').text(getRndmQBRead(passingPlays.Smash.Cover2.insidePostRouteReads))
+      prog4 = true;
     }
   }
 }
