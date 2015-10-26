@@ -1,6 +1,42 @@
 var passingPlays = {
   Smash: {
     Cover2: {
+      safetyReads: {
+        safetyRead1: 'Two safeties high',
+        safetyRead2: 'Strong Safety is cheating forward'
+      },
+      oLineReads: {
+        oLineStatus1: 'The line is holding their blocks',
+        oLineStatus2: 'O-Line placeholder'
+      },
+      WR1: {
+        hitchRoute1: "The CB drops back into coverage",
+        hitchRoute2: "The FS is 15yds deep",
+        hitchRoute3: "Mismatch with the LOLB"
+      },
+      WR2: {
+        outsidePostRoute1: "The FS is deep",
+        outsidePostRoute2: "CB is backpedaling",
+        outsidePostRoute3: "WR is double covered"
+      },
+      WR3: {
+        crossRoute1: "Nobody is following WR3",
+        crossRoute2: "The MLB steps in front of the route",
+        crossRoute3: 'The LOLB is in coverage',
+      },
+      WR4: {
+        insidePostRoute1: 'The SS is deep',
+        insidePostRoute2: 'The CB is backpedaling',
+        insidePostRoute3: 'WR is double covered'
+      }
+    }
+  }
+}
+
+var passingPlays = {
+  Smash: {
+    Cover2: {
+
       safetyRead1: 'Two safeties high',
       safetyRead2: 'Strong Safety is cheating forward',
       oLineStatus1: 'The line is holding their blocks',
@@ -21,42 +57,66 @@ var passingPlays = {
   },
   FourVerticals: {
     Cover2: {
-      safetyRead1: 'Placeholder',
-      safetyRead2: 'Placeholder',
-      oLineStatus1: 'Placeholder',
-      oLineStatus2: 'Placeholder',
-      hitchRoute1: "Placeholder String",
-      hitchRoute2: "Placeholder",
-      hitchRoute3: "Placeholder",
-      outsidePostRoute1: "Placeholder",
-      outsidePostRoute2: "Placeholder",
-      outsidePostRoute3: "Placeholder",
-      crossRoute1: "Placeholder",
-      crossRoute2: "Placeholder",
-      crossRoute3: 'placeholder',
-      InsidePostRoute1: 'placeholder',
-      InsidePostRoute2: 'placeholder',
-      InsidePostRoute3: 'placeholder'
+      SafetyReads: {
+        safetyRead1: 'Placeholder',
+        safetyRead2: 'Placeholder',
+      }
+      oLineStatus: {
+        oLineStatus1: 'Placeholder',
+        oLineStatus2: 'Placeholder',
+      }
+      WR1: {
+        hitchRoute1: "Placeholder String",
+        hitchRoute2: "Placeholder",
+        hitchRoute3: "Placeholder",
+      }
+      WR2: {
+        outsidePostRoute1: "Placeholder",
+        outsidePostRoute2: "Placeholder",
+        outsidePostRoute3: "Placeholder",
+      }
+      WR3: {
+        crossRoute1: "Placeholder",
+        crossRoute2: "Placeholder",
+        crossRoute3: 'placeholder',
+      }
+      WR3: {
+        InsidePostRoute1: 'placeholder',
+        InsidePostRoute2: 'placeholder',
+        InsidePostRoute3: 'placeholder'
+      }
     }
   },
   BobsYourUncle: {
     Cover2: {
-      safetyRead1: 'Placeholder',
-      safetyRead2: 'Placeholder',
-      oLineStatus1: 'Placeholder',
-      oLineStatus2: 'Placeholder',
-      hitchRoute1: "Placeholder String",
-      hitchRoute2: "Placeholder",
-      hitchRoute3: "Placeholder",
-      outsidePostRoute1: "Placeholder",
-      outsidePostRoute2: "Placeholder",
-      outsidePostRoute3: "Placeholder",
-      crossRoute1: "Placeholder",
-      crossRoute2: "Placeholder",
-      crossRoute3: 'placeholder',
-      InsidePostRoute1: 'placeholder',
-      InsidePostRoute2: 'placeholder',
-      InsidePostRoute3: 'placeholder'
+      safetyReads: {
+        safetyRead1: 'Placeholder',
+        safetyRead2: 'Placeholder',
+      }
+      oLineStatus: {
+        oLineStatus1: 'Placeholder',
+        oLineStatus2: 'Placeholder',
+      }
+      WR1: {
+        hitchRoute1: "Placeholder String",
+        hitchRoute2: "Placeholder",
+        hitchRoute3: "Placeholder",
+      },
+      WR2: {
+        outsidePostRoute1: "Placeholder",
+        outsidePostRoute2: "Placeholder",
+        outsidePostRoute3: "Placeholder",
+      }
+      WR3: {
+        crossRoute1: "Placeholder",
+        crossRoute2: "Placeholder",
+        crossRoute3: 'placeholder',
+      }
+      WR4: {
+        InsidePostRoute1: 'placeholder',
+        InsidePostRoute2: 'placeholder',
+        InsidePostRoute3: 'placeholder'
+      }
     }
   }
 }

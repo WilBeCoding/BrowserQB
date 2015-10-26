@@ -91,6 +91,7 @@ if(Progression Blah Blah) {
   $('.defensiveSpan').text(getRndmQBRead(passingPlays[offenseVariable][DefenseVariable][WR1]))
 }
 
+
 function displayReads(){
   if($('.birdsEyeImg').attr('src', getRndmImgSrc) === defensiveCoverageImgs[0].src && smashSelected === true) {
     if($('#progression1').val() === 'p1WR1') {

@@ -1,108 +1,5 @@
 $( document ).ready(function() {
 
-  var postSnapStrings = {
-
-    WR1oddsIncrease: {
-      SafetyWR1Inc: "The Safety Is Cheating Right!",
-     },
-
-    WR1oddsDecrease: {
-      LolbWR1Dec: "The LOLB dropped into coverage!",
-      SafetyWR1Dec: "The Safety is cheating left!",
-     },
-
-    WR2oddsIncrease: {
-      SafetyOnLineWR2inc: "The Safety is on the line",
-     },
-
-    WR2oddsDecrease: {
-      MLBWR2Dec: "The MLB dropped back into coverage!",
-      SafetyWR2Dec: "The Safety is staying mid-field!",
-     },
-
-    WR3oddsIncrease: {
-      SafetyWR3Inc: "The safety is cheating left!",
-      BeatWR3inc: "WR3 beat his man!",
-     },
-
-    WR3oddsDecrease: {
-      RolbWR3Dec: "The ROLB dropped back into coverage",
-      SafetyWR3Dec: "The Safety is cheating right",
-     },
-
-    GlobalIncrease: {
-      OlineGlobalInc: "The line is holding strong!",
-     },
-
-    GlobalDecrease: {
-      DefensiveEndGlobalDec: "The Defensive End is barreling towards you!",
-      DonaldGlobalDec: "Dammit Donald!",
-     }
-  }
-
-  var firstReadStrings = {
-
-    WR1oddsIncrease: {
-      SafetyWR1Inc: "The Safety Is Cheating Right!",
-      LolbWR1inc: "The LOLB is blitzing!",
-      CbWR1inc: "Left Cornerback Blitz!",
-     },
-
-    WR1oddsDecrease: {
-      PressedWR1Dec: "WR1 Pressed!",
-      LolbWR1Dec: "The LOLB dropped into coverage!",
-      SafetyWR1Dec: "The Safety is cheating left!",
-     },
-
-    WR2oddsIncrease: {
-      MLBWR2inc: "The MLB is blitzing!",
-      SafetyWR2Inc: "Safety Blitz!",
-      SafetyOnLineWR2inc: "The Safety is on the line",
-     },
-
-    WR2oddsDecrease: {
-      PressedWR2Dec: "WR2 pressed!",
-      MLBWR2Dec: "The MLB dropped back into coverage!",
-      SafetyWR2Dec: "The Safety is staying mid-field!",
-     },
-
-    WR3oddsIncrease: {
-      SafetyWR3Inc: "The safety is cheating left!",
-      CbWR3Inc: "Right Cornerback Blitz!",
-      RolbWR3inc: "The ROLB is blitzing!",
-      BeatWR3inc: "WR3 beat his man!",
-     },
-
-    WR3oddsDecrease: {
-      PressedWR3Dec: "WR3 pressed!",
-      RolbWR3Dec: "The ROLB dropped back into coverage",
-      SafetyWR3Dec: "The Safety is cheating right",
-     },
-
-    GlobalIncrease: {
-      BlitzGlobalInc: "All Out Blitz!",
-      OlineGlobalInc: "The line is holding strong!",
-     },
-
-    GlobalDecrease: {
-      StuffedGlobalDec: "WRs stuffed at the line!",
-      DefensiveEndGlobalDec: "The Defensive End is barreling towards you!",
-      DonaldGlobalDec: "Dammit Donald!",
-     },
-
-     Blitz: {
-      DefensiveEnd: "The Defensive End is barreling towards you!",
-      Donald: "Dammit Donald!",
-      Blitz: "All Out Blitz!",
-      Cb: "Right Cornerback Blitz!",
-      Rolb: "The ROLB is blitzing!",
-      Lolb: "The LOLB is blitzing!",
-      Cb: "Left Cornerback Blitz!",
-      MLB: "The MLB is blitzing!",
-      Safety: "Safety Blitz!",
-     }
-  }
-
   var passingPlays = {
     Smash: {
       Cover2: {
@@ -114,25 +11,89 @@ $( document ).ready(function() {
           oLineStatus1: 'The line is holding their blocks',
           oLineStatus2: 'O-Line placeholder'
         },
-        hitchRouteReads: {
+        WR1: {
           hitchRoute1: "The CB drops back into coverage",
           hitchRoute2: "The FS is 15yds deep",
           hitchRoute3: "Mismatch with the LOLB"
         },
-        outsidePostRouteReads: {
+        WR2: {
           outsidePostRoute1: "The FS is deep",
           outsidePostRoute2: "CB is backpedaling",
           outsidePostRoute3: "WR is double covered"
         },
-        crossRouteReads: {
+        WR3: {
           crossRoute1: "Nobody is following WR3",
           crossRoute2: "The MLB steps in front of the route",
           crossRoute3: 'The LOLB is in coverage',
         },
-        insidePostRouteReads: {
+        WR4: {
           insidePostRoute1: 'The SS is deep',
           insidePostRoute2: 'The CB is backpedaling',
           insidePostRoute3: 'WR is double covered'
+        }
+      }
+    },
+    FourVerticals: {
+      Cover2: {
+        SafetyReads: {
+          safetyRead1: 'Placeholder',
+          safetyRead2: 'Placeholder',
+        },
+        oLineStatus: {
+          oLineStatus1: 'Placeholder',
+          oLineStatus2: 'Placeholder',
+        },
+        WR1: {
+          hitchRoute1: "Placeholder String",
+          hitchRoute2: "Placeholder",
+          hitchRoute3: "Placeholder",
+        },
+        WR2: {
+          outsidePostRoute1: "Placeholder",
+          outsidePostRoute2: "Placeholder",
+          outsidePostRoute3: "Placeholder",
+        },
+        WR3: {
+          crossRoute1: "Placeholder",
+          crossRoute2: "Placeholder",
+          crossRoute3: 'placeholder',
+        },
+        WR3: {
+          InsidePostRoute1: 'placeholder',
+          InsidePostRoute2: 'placeholder',
+          InsidePostRoute3: 'placeholder'
+        }
+      }
+    },
+    BobsYourUncle: {
+      Cover2: {
+        safetyReads: {
+          safetyRead1: 'Placeholder',
+          safetyRead2: 'Placeholder',
+        },
+        oLineStatus: {
+          oLineStatus1: 'Placeholder',
+          oLineStatus2: 'Placeholder',
+        },
+        WR1: {
+          hitchRoute1: "Placeholder String",
+          hitchRoute2: "Placeholder",
+          hitchRoute3: "Placeholder",
+        },
+        WR2: {
+          outsidePostRoute1: "Placeholder",
+          outsidePostRoute2: "Placeholder",
+          outsidePostRoute3: "Placeholder",
+        },
+        WR3: {
+          crossRoute1: "Placeholder",
+          crossRoute2: "Placeholder",
+          crossRoute3: 'placeholder',
+        },
+        WR4: {
+          InsidePostRoute1: 'placeholder',
+          InsidePostRoute2: 'placeholder',
+          InsidePostRoute3: 'placeholder'
         }
       }
     }
@@ -171,6 +132,11 @@ $( document ).ready(function() {
         Cover3: {src:"../images/cover3.png"},
         ManCoverage: {src:"../images/manCoverage.png"}
       }
+
+  var prog1 = false;
+  var prog2 = false;
+  var prog3 = false;
+  var prog4 = false;
   var defensivePlay;
   var offensivePlay;
   var smashSelected = false;
@@ -741,10 +707,6 @@ $( document ).ready(function() {
 
   $('.smashImg').on('click', function() {
     offensivePlay = 'Smash';
-    WR1 = 'hitchRouteReads';
-    WR2 = 'outsidePostRouteReads';
-    WR3 = 'crossRouteReads';
-    WR4 = 'insidePostRouteReads';
     smashSelected = true;
     playClockId = 0;
     var thirtySeconds = 30;
@@ -766,6 +728,7 @@ $( document ).ready(function() {
   });
 
   $('.fourVerticals').on('click', function() {
+    offensivePlay = 'FourVerticals';
     fourVerticalsSelected = true;
     playClockId = 0;
     var thirtySeconds = 30;
@@ -943,34 +906,34 @@ $( document ).ready(function() {
     $('#playClock').text(" ");
     $('.placeholderTable').addClass('table');
     $('.table').removeClass('placeholderTable');
-    postSnapStrings.WR1oddsIncrease.SafetyWR1Inc = "The Safety Is Cheating RIght!";
-    postSnapStrings.WR1oddsIncrease.LolbWR1inc = "The LOLB is blitzing!";
-    postSnapStrings.WR1oddsIncrease.CbWR1inc = "Left Cornerback Blitz!";
-    postSnapStrings.WR1oddsDecrease.PressedWR1Dec = "WR1 Pressed!";
-    postSnapStrings.WR1oddsDecrease.LolbWR1Dec = "The LOLB dropped into coverage!";
-    postSnapStrings.WR1oddsDecrease.SafetyWR1Dec = " The Safety is cheaitng left!";
-    postSnapStrings.WR2oddsIncrease.MLBWR2inc = "The MLB is blitzking!";
-    postSnapStrings.WR2oddsIncrease.SafetyWR2Inc = "The Safety is on the line!";
-    postSnapStrings.WR2oddsDecrease.PressedWR2Dec = "WR2 is pressed!";
-    postSnapStrings.WR2oddsDecrease.MLBWR2Dec = "The MLB dropped back into coverage!";
-    postSnapStrings.WR2oddsDecrease.SafetyWR2Dec = "The Safety is staying mid-field!";
-    postSnapStrings.WR3oddsIncrease.SafetyWR3Inc = " The Safety is cheating left!";
-    postSnapStrings.WR3oddsIncrease.CbWR3Inc = "Right Cornerback Blitz!";
-    postSnapStrings.WR3oddsIncrease.RolbWR3inc = "The ROLB is blitzing!";
-    postSnapStrings.WR3oddsIncrease.BeatWR3inc = "WR3 beat his man!";
-    postSnapStrings.WR3oddsDecrease.PressedWR3Dec = "WR3 pressed!";
-    postSnapStrings.WR3oddsDecrease.RolbWR3Dec = "The ROLB dropped into cover!";
-    postSnapStrings.WR3oddsDecrease.SafetyWR3Dec = "The Safety is cheating right!";
-    postSnapStrings.GlobalIncrease.BlitzGlobalInc = "All out blitz!";
-    postSnapStrings.GlobalIncrease.OlineGlobalInc = "The line is holding strong!";
-    postSnapStrings.GlobalDecrease.StuffedGlobalDec = "WRs stuffed at the line!";
-    postSnapStrings.GlobalDecrease.DefensiveEndGlobalDec = "The Defensive End is barreling towards you!";
-    postSnapStrings.GlobalDecrease.DonaldGlobalDec = "Dammit Donald!";
-    // postSnapStrings.Blitz.DefensiveEnd = "The Defensive End is barreling towards you!";
-    // postSnapStrings.Blitz.Donald = "Dammit Donald!";
-    // postSnapStrings.Blitz.Blitz = "All Out Blitz!";
-    // postSnapStrings.Blitz.Cb = "Right Cornerback Blitz!";
-    // postSnapStrings.Blitz.Robl = "The ROLB is blitzing!";
+    // postSnapStrings.WR1oddsIncrease.SafetyWR1Inc = "The Safety Is Cheating RIght!";
+    // postSnapStrings.WR1oddsIncrease.LolbWR1inc = "The LOLB is blitzing!";
+    // postSnapStrings.WR1oddsIncrease.CbWR1inc = "Left Cornerback Blitz!";
+    // postSnapStrings.WR1oddsDecrease.PressedWR1Dec = "WR1 Pressed!";
+    // postSnapStrings.WR1oddsDecrease.LolbWR1Dec = "The LOLB dropped into coverage!";
+    // postSnapStrings.WR1oddsDecrease.SafetyWR1Dec = " The Safety is cheaitng left!";
+    // postSnapStrings.WR2oddsIncrease.MLBWR2inc = "The MLB is blitzking!";
+    // postSnapStrings.WR2oddsIncrease.SafetyWR2Inc = "The Safety is on the line!";
+    // postSnapStrings.WR2oddsDecrease.PressedWR2Dec = "WR2 is pressed!";
+    // postSnapStrings.WR2oddsDecrease.MLBWR2Dec = "The MLB dropped back into coverage!";
+    // postSnapStrings.WR2oddsDecrease.SafetyWR2Dec = "The Safety is staying mid-field!";
+    // postSnapStrings.WR3oddsIncrease.SafetyWR3Inc = " The Safety is cheating left!";
+    // postSnapStrings.WR3oddsIncrease.CbWR3Inc = "Right Cornerback Blitz!";
+    // postSnapStrings.WR3oddsIncrease.RolbWR3inc = "The ROLB is blitzing!";
+    // postSnapStrings.WR3oddsIncrease.BeatWR3inc = "WR3 beat his man!";
+    // postSnapStrings.WR3oddsDecrease.PressedWR3Dec = "WR3 pressed!";
+    // postSnapStrings.WR3oddsDecrease.RolbWR3Dec = "The ROLB dropped into cover!";
+    // postSnapStrings.WR3oddsDecrease.SafetyWR3Dec = "The Safety is cheating right!";
+    // postSnapStrings.GlobalIncrease.BlitzGlobalInc = "All out blitz!";
+    // postSnapStrings.GlobalIncrease.OlineGlobalInc = "The line is holding strong!";
+    // postSnapStrings.GlobalDecrease.StuffedGlobalDec = "WRs stuffed at the line!";
+    // postSnapStrings.GlobalDecrease.DefensiveEndGlobalDec = "The Defensive End is barreling towards you!";
+    // postSnapStrings.GlobalDecrease.DonaldGlobalDec = "Dammit Donald!";
+    // // postSnapStrings.Blitz.DefensiveEnd = "The Defensive End is barreling towards you!";
+    // // postSnapStrings.Blitz.Donald = "Dammit Donald!";
+    // // postSnapStrings.Blitz.Blitz = "All Out Blitz!";
+    // // postSnapStrings.Blitz.Cb = "Right Cornerback Blitz!";
+    // // postSnapStrings.Blitz.Robl = "The ROLB is blitzing!";
     // postSnapStrings.Blitz.Lolb = "The LOLB is blitzing!";
     // postSnapStrings.Blitz.Cb = "Left Cornerback Blitz!;";
     // postSnapStrings.Blitz.MLB = "The MLB is blitzing!";
@@ -989,194 +952,217 @@ $( document ).ready(function() {
     currentOdds(PlayResults.CurrentWR3Odds)
   })
 
-var prog1 = false;
-var prog2 = false;
-var prog3 = false;
-var prog4 = false;
-
   function displayReads(){
-  if(smashSelected === true) {
     defensivePlay = 'Cover2';
-    if($('#progression1').val() === 'p1WR1') {
-      console.log(offensivePlay);
-      console.log(defensivePlay);
-      console.log(WR1);
+    if($('#progression1').val() === 'p1WR1' && prog1 === false) {
+      // console.log(offensivePlay);
+      // console.log(defensivePlay);
+      // console.log(WR1);
+      console.log("WR1 === prog1");
+      prog1 = true;
       // This all works just fine. I need to figure out where to define defensivePlay 
       // (Could do with a setTimeout that defines it then? Ha thats too cute)
       // Also need to include the defensive play in the if statement. I can use the defensivePlay variable!
-
       $('.defensiveSpan').text(getRndmQBRead(passingPlays[offensivePlay][defensivePlay][WR1]))
     }
     if($('#progression1').val() === 'p1WR2' && prog1 === false) {
       $('.defensiveSpan').text(getRndmQBRead(passingPlays[offensivePlay][defensivePlay][WR2]))
       prog1 = true;
-      console.log("WR1 === prog1");
+      console.log("WR2 === prog1");
+      return
     }
     if($('#progression1').val() === 'p1WR3' && prog1 === false) {
       $('.defensiveSpan').text(getRndmQBRead(passingPlays[offensivePlay][defensivePlay][WR3]))
       prog1 = true;
+      console.log("WR3 === prog1");
+      return
     }
     if($('#progression1').val() === 'p1WR4'&& prog1 === false) {
       $('.defensiveSpan').text(getRndmQBRead(passingPlays[offensivePlay][defensivePlay][WR4]))
       prog1 = true;
+      console.log("WR4 === prog1");
+      return
     }
-    if($('#progression2').val() === 'p1WR1' && prog2 === false) {
+    if($('#progression2').val() === 'p2WR1' && prog2 === false) {
       $('.defensiveSpan').text(getRndmQBRead(passingPlays[offensivePlay][defensivePlay][WR1]))
       prog2 = true;
+      console.log("WR1 === prog2");
+      return
     }
-    if($('#progression2').val() === 'p1WR2' && prog2 === false) {
+    if($('#progression2').val() === 'p2WR2' && prog2 === false) {
       $('.defensiveSpan').text(getRndmQBRead(passingPlays[offensivePlay][defensivePlay][WR2]))
       prog2 = true;
+      console.log("WR2 === prog2");
+      return
     }
-    if($('#progression2').val() === 'p1WR3' && prog2 === false) {
+    if($('#progression2').val() === 'p2WR3' && prog2 === false) {
       $('.defensiveSpan').text(getRndmQBRead(passingPlays[offensivePlay][defensivePlay][WR3]))
       prog2 = true;
+      console.log("WR3 === prog2");
+      return
     }
-    if($('#progression2').val() === 'p1WR4' && prog2 === false) {
+    if($('#progression2').val() === 'p2WR4' && prog2 === false) {
       $('.defensiveSpan').text(getRndmQBRead(passingPlays[offensivePlay][defensivePlay][WR4]))
       prog2 = true;
+      console.log("WR4 === prog2");
+      return
     }
-    if($('#progression3').val() === 'p1WR1' && prog3 === false) {
-      $('.defensiveSpan').text(getRndmQBRead(passingPlays.Smash.Cover2.hitchRouteReads))
+    if($('#progression3').val() === 'p3WR1' && prog3 === false) {
+      $('.defensiveSpan').text(getRndmQBRead(passingPlays[offensivePlay][defensivePlay][WR4]))
       prog3 = true;
+      console.log("WR1 === prog3");
+      return
     }
-    if($('#progression3').val() === 'p1WR2' && prog3 === false) {
-      $('.defensiveSpan').text(getRndmQBRead(passingPlays.Smash.Cover2.outsidePostRouteReads))
+    if($('#progression3').val() === 'p3WR2' && prog3 === false) {
+      $('.defensiveSpan').text(getRndmQBRead(passingPlays[offensivePlay][defensivePlay][WR2]))
       prog3 = true;
+      console.log("WR2 === prog3");
+      return
     }
-    if($('#progression3').val() === 'p1WR3' && prog3 === false) {
-      $('.defensiveSpan').text(getRndmQBRead(passingPlays.Smash.Cover2.crossRouteReads))
+    if($('#progression3').val() === 'p3WR3' && prog3 === false) {
+      $('.defensiveSpan').text(getRndmQBRead(passingPlays[offensivePlay][defensivePlay][WR3]))
       prog3 = true;
+      console.log("WR3 === prog3");
+      return
     }
-    if($('#progression3').val() === 'p1WR4' && prog3 === false) {
-      $('.defensiveSpan').text(getRndmQBRead(passingPlays.Smash.Cover2.insidePostRouteReads))
+    if($('#progression3').val() === 'p3WR4' && prog3 === false) {
+      $('.defensiveSpan').text(getRndmQBRead(passingPlays[offensivePlay][defensivePlay][WR3]))
       prog3 = true;
+      console.log("WR4 === prog3");
+      return
     }
-    if($('#progression4').val() === 'p1WR1' && prog4 === false) {
-      $('.defensiveSpan').text(getRndmQBRead(passingPlays.Smash.Cover2.hitchRouteReads))
+    if($('#progression4').val() === 'p4WR1' && prog4 === false) {
+      $('.defensiveSpan').text(getRndmQBRead(passingPlays[offensivePlay][defensivePlay][WR1]))
       prog4 = true;
+      console.log("WR1 === prog4");
+      return
     }
-    if($('#progression4').val() === 'p1WR2' && prog4 === false) {
-      $('.defensiveSpan').text(getRndmQBRead(passingPlays.Smash.Cover2.outsidePostRouteReads))
+    if($('#progression4').val() === 'p4WR2' && prog4 === false) {
+      $('.defensiveSpan').text(getRndmQBRead(passingPlays[offensivePlay][defensivePlay][WR2]))
       prog4 = true;
+      console.log("WR2 === prog4");
+      return
     }
-    if($('#progression4').val() === 'p1WR3' && prog4 === false) {
-      $('.defensiveSpan').text(getRndmQBRead(passingPlays.Smash.Cover2.crossRouteReads))
+    if($('#progression4').val() === 'p4WR3' && prog4 === false) {
+      $('.defensiveSpan').text(getRndmQBRead(passingPlays[offensivePlay][defensivePlay][WR3]))
       prog4 = true;
+      console.log("WR3 === prog4");
+      return
     }
-    if($('#progression4').val() === 'p1WR4' && prog4 === false) {
-      $('.defensiveSpan').text(getRndmQBRead(passingPlays.Smash.Cover2.insidePostRouteReads))
+    if($('#progression4').val() === 'p4WR4' && prog4 === false) {
+      $('.defensiveSpan').text(getRndmQBRead(passingPlays.Smash[offensivePlay][defensivePlay][WR4]))
       prog4 = true;
+      console.log("WR4 === prog4");
+      return
     }
   }
-}
 
-  var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
-  var observer = new MutationObserver(function(mutations) {  
-    mutations.forEach(function(mutation) {
-        var defSpanClassic = document.getElementsByClassName('defensiveSpan');
-        var defensiveSpanText = defSpanClassic[0].innerText
-        var WR1OddsCount = 0
-        var WR2OddsCount = 0
-        var WR3OddsCount = 0
-        var GlobalOddsCount =0
-        var key;
-        var keyArray = [];
-        var key1;
-        // console.log(" =========================   " + defensiveSpanText + "   ==================");
-        for(var key in postSnapStrings) {
-          for(var key1 in postSnapStrings[key]) {
-            for(var key3 in firstReadStrings) {
-              for(var key4 in firstReadStrings[key3]) {
-            // console.log(key1 +  "      This is key1")
-            if(defensiveSpanText.indexOf('Blitz') > -1 || defensiveSpanText.indexOf('blitzing') > -1) { 
-              if(clearSackTimerBooleanTrigger === false) {
-                // clearSackTimer();
-              }
-            }
-            // if(postSnapStrings.blitz.length )
-            if(defensiveSpanText === postSnapStrings.WR1oddsIncrease[key1] || defensiveSpanText === firstReadStrings.WR1oddsIncrease[key4]) {
-              WR1OddsCount+= postSnapReadOddsAdjustment();
-              delete postSnapStrings.WR1oddsIncrease[key1];
-              // console.log(postSnapStrings.WR1oddsIncrease[key1])
-              // console.log(WR1OddsCount + "====== WR1");
-              // console.log(WR1OddsCount + " WR1 odds count just hit positive");
-            }
-            if(defensiveSpanText === postSnapStrings.WR1oddsDecrease[key1] || defensiveSpanText === firstReadStrings.WR1oddsDecrease[key4]) {
-              WR1OddsCount-= postSnapReadOddsAdjustment();
-              delete postSnapStrings.WR1oddsIncrease[key1];
-              // console.log(postSnapStrings.WR1oddsDecrease[key1])
-              // console.log(WR1OddsCount + "====== WR1")
-              // console.log(WR1OddsCount + " WR1 odds count just hit negative");
-            }
-            if(defensiveSpanText === postSnapStrings.WR2oddsIncrease[key1] || defensiveSpanText === firstReadStrings.WR2oddsIncrease[key4]) {
-              WR2OddsCount+= postSnapReadOddsAdjustment();
-              delete postSnapStrings.WR1oddsIncrease[key1];
-              // console.log(WR2OddsCount + "====== WR2")
-              // console.log(WR2OddsCount + " WR2 odds count just hit positive");
-              // break;
-              // console.log(postSnapStrings.WR2oddsIncrease[key1])
-            }
-            if(defensiveSpanText === postSnapStrings.WR2oddsDecrease[key1] || defensiveSpanText === firstReadStrings.WR2oddsDecrease[key4]) {
-              WR2OddsCount-= postSnapReadOddsAdjustment();
-              delete postSnapStrings.WR1oddsIncrease[key1];
-              // console.log(postSnapStrings.WR3oddsDecrease[key1])
-              // console.log(WR2OddsCount + "====== WR2");
-              // console.log(WR2OddsCount + " WR2 odds count just hit negative");
-            }
-            if(defensiveSpanText === postSnapStrings.WR3oddsIncrease[key1] || defensiveSpanText === firstReadStrings.WR3oddsIncrease[key4]) {
-              WR3OddsCount+= postSnapReadOddsAdjustment();
-              delete postSnapStrings.WR1oddsIncrease[key1];
-              // console.log(postSnapStrings.WR3oddsIncrease[key1])
-              // console.log(WR3OddsCount + "====== WR3");
-              // console.log(WR3OddsCount + " WR3 odds count just hit positive");
-            }
-            if(defensiveSpanText === postSnapStrings.WR3oddsDecrease[key1] || defensiveSpanText === firstReadStrings.WR3oddsDecrease[key4]) {
-              WR3OddsCount-= postSnapReadOddsAdjustment();
-              delete postSnapStrings.WR1oddsIncrease[key1];
-              // console.log(postSnapStrings.WR3oddsDecrease[key1]);
-              // console.log(WR3OddsCount + "====== WR3");
-              // console.log(WR3OddsCount + " WR3 odds count just hit negative");
-            }
-            if(defensiveSpanText === postSnapStrings.GlobalIncrease[key1] || defensiveSpanText === firstReadStrings.GlobalIncrease[key4]) {
-              GlobalOddsCount+=postSnapReadOddsAdjustment();
-              delete postSnapStrings.WR1oddsIncrease[key1];
-              // console.log(postSnapStrings.GlobalIncrease[key1])
-              // console.log(GlobalOddsCount + "====== Global");
-              // console.log(GlobalOddsCount + " Global odds count just hit positive");
-            }
-            if(defensiveSpanText === postSnapStrings.GlobalDecrease[key1] || defensiveSpanText === firstReadStrings.GlobalDecrease[key4]) {
-              GlobalOddsCount-= postSnapReadOddsAdjustment();
-              delete postSnapStrings.WR1oddsIncrease[key1];
-              // console.log(postSnapStrings.GlobalDecrease[key1])
-              // console.log(GlobalOddsCount + "====== Global")
-              // console.log(GlobalOddsCount + " Global odds count just hit negative");
-            }
-          }
-        }
-      }
-    }  
-  console.log(WR1OddsCount +  "    WR1 odds count");
-  console.log(WR2OddsCount +  "    WR2 odds count");
-  console.log(WR3OddsCount +  "    WR3 odds count");
-  // console.log(GlobalOddsCount +"   Global odds count");
-      console.log(PlayResults.CurrentWR1Odds +   "     WR1 odds");
-    console.log(PlayResults.CurrentWR2Odds +   "     WR2 odds");
-    console.log(PlayResults.CurrentWR3Odds +   "     WR3 odds");
+  // var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
+  // var observer = new MutationObserver(function(mutations) {  
+  //   mutations.forEach(function(mutation) {
+  //       var defSpanClassic = document.getElementsByClassName('defensiveSpan');
+  //       var defensiveSpanText = defSpanClassic[0].innerText
+  //       var WR1OddsCount = 0
+  //       var WR2OddsCount = 0
+  //       var WR3OddsCount = 0
+  //       var GlobalOddsCount =0
+  //       var key;
+  //       var keyArray = [];
+  //       var key1;
+  //       // console.log(" =========================   " + defensiveSpanText + "   ==================");
+  //       for(var key in postSnapStrings) {
+  //         for(var key1 in postSnapStrings[key]) {
+  //           for(var key3 in firstReadStrings) {
+  //             for(var key4 in firstReadStrings[key3]) {
+  //           // console.log(key1 +  "      This is key1")
+  //           if(defensiveSpanText.indexOf('Blitz') > -1 || defensiveSpanText.indexOf('blitzing') > -1) { 
+  //             if(clearSackTimerBooleanTrigger === false) {
+  //               // clearSackTimer();
+  //             }
+  //           }
+  //           // if(postSnapStrings.blitz.length )
+  //           if(defensiveSpanText === postSnapStrings.WR1oddsIncrease[key1] || defensiveSpanText === firstReadStrings.WR1oddsIncrease[key4]) {
+  //             WR1OddsCount+= postSnapReadOddsAdjustment();
+  //             delete postSnapStrings.WR1oddsIncrease[key1];
+  //             // console.log(postSnapStrings.WR1oddsIncrease[key1])
+  //             // console.log(WR1OddsCount + "====== WR1");
+  //             // console.log(WR1OddsCount + " WR1 odds count just hit positive");
+  //           }
+  //           if(defensiveSpanText === postSnapStrings.WR1oddsDecrease[key1] || defensiveSpanText === firstReadStrings.WR1oddsDecrease[key4]) {
+  //             WR1OddsCount-= postSnapReadOddsAdjustment();
+  //             delete postSnapStrings.WR1oddsIncrease[key1];
+  //             // console.log(postSnapStrings.WR1oddsDecrease[key1])
+  //             // console.log(WR1OddsCount + "====== WR1")
+  //             // console.log(WR1OddsCount + " WR1 odds count just hit negative");
+  //           }
+  //           if(defensiveSpanText === postSnapStrings.WR2oddsIncrease[key1] || defensiveSpanText === firstReadStrings.WR2oddsIncrease[key4]) {
+  //             WR2OddsCount+= postSnapReadOddsAdjustment();
+  //             delete postSnapStrings.WR1oddsIncrease[key1];
+  //             // console.log(WR2OddsCount + "====== WR2")
+  //             // console.log(WR2OddsCount + " WR2 odds count just hit positive");
+  //             // break;
+  //             // console.log(postSnapStrings.WR2oddsIncrease[key1])
+  //           }
+  //           if(defensiveSpanText === postSnapStrings.WR2oddsDecrease[key1] || defensiveSpanText === firstReadStrings.WR2oddsDecrease[key4]) {
+  //             WR2OddsCount-= postSnapReadOddsAdjustment();
+  //             delete postSnapStrings.WR1oddsIncrease[key1];
+  //             // console.log(postSnapStrings.WR3oddsDecrease[key1])
+  //             // console.log(WR2OddsCount + "====== WR2");
+  //             // console.log(WR2OddsCount + " WR2 odds count just hit negative");
+  //           }
+  //           if(defensiveSpanText === postSnapStrings.WR3oddsIncrease[key1] || defensiveSpanText === firstReadStrings.WR3oddsIncrease[key4]) {
+  //             WR3OddsCount+= postSnapReadOddsAdjustment();
+  //             delete postSnapStrings.WR1oddsIncrease[key1];
+  //             // console.log(postSnapStrings.WR3oddsIncrease[key1])
+  //             // console.log(WR3OddsCount + "====== WR3");
+  //             // console.log(WR3OddsCount + " WR3 odds count just hit positive");
+  //           }
+  //           if(defensiveSpanText === postSnapStrings.WR3oddsDecrease[key1] || defensiveSpanText === firstReadStrings.WR3oddsDecrease[key4]) {
+  //             WR3OddsCount-= postSnapReadOddsAdjustment();
+  //             delete postSnapStrings.WR1oddsIncrease[key1];
+  //             // console.log(postSnapStrings.WR3oddsDecrease[key1]);
+  //             // console.log(WR3OddsCount + "====== WR3");
+  //             // console.log(WR3OddsCount + " WR3 odds count just hit negative");
+  //           }
+  //           if(defensiveSpanText === postSnapStrings.GlobalIncrease[key1] || defensiveSpanText === firstReadStrings.GlobalIncrease[key4]) {
+  //             GlobalOddsCount+=postSnapReadOddsAdjustment();
+  //             delete postSnapStrings.WR1oddsIncrease[key1];
+  //             // console.log(postSnapStrings.GlobalIncrease[key1])
+  //             // console.log(GlobalOddsCount + "====== Global");
+  //             // console.log(GlobalOddsCount + " Global odds count just hit positive");
+  //           }
+  //           if(defensiveSpanText === postSnapStrings.GlobalDecrease[key1] || defensiveSpanText === firstReadStrings.GlobalDecrease[key4]) {
+  //             GlobalOddsCount-= postSnapReadOddsAdjustment();
+  //             delete postSnapStrings.WR1oddsIncrease[key1];
+  //             // console.log(postSnapStrings.GlobalDecrease[key1])
+  //             // console.log(GlobalOddsCount + "====== Global")
+  //             // console.log(GlobalOddsCount + " Global odds count just hit negative");
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }  
+  // console.log(WR1OddsCount +  "    WR1 odds count");
+  // console.log(WR2OddsCount +  "    WR2 odds count");
+  // console.log(WR3OddsCount +  "    WR3 odds count");
+  // // console.log(GlobalOddsCount +"   Global odds count");
+  //     console.log(PlayResults.CurrentWR1Odds +   "     WR1 odds");
+  //   console.log(PlayResults.CurrentWR2Odds +   "     WR2 odds");
+  //   console.log(PlayResults.CurrentWR3Odds +   "     WR3 odds");
 
-  PlayResults.WR1OddsAdjustment = PlayResults.WR1OddsAdjustment + Number(WR1OddsCount/2);
-  PlayResults.WR2OddsAdjustment = PlayResults.WR2OddsAdjustment + Number(WR2OddsCount/2);
-  PlayResults.WR3OddsAdjustment = PlayResults.WR3OddsAdjustment + Number(WR3OddsCount/2);
-  PlayResults.GlobalOddsAdjustment = PlayResults.GlobalOddsAdjustment + (GlobalOddsCount/2);
-  PlayResults.CurrentWR1Odds = PlayResults.WR1initialOdds + PlayResults.WR1timeIncreaseOdds + PlayResults.GlobalOddsAdjustment + PlayResults.WR1oddsAdjustment;
-  PlayResults.CurrentWR2Odds = PlayResults.WR2initialOdds + PlayResults.WR2timeIncreaseOdds + PlayResults.GlobalOddsAdjustment + PlayResults.WR2oddsAdjustment;
-  PlayResults.CurrentWR3Odds = PlayResults.WR3initialOdds + PlayResults.WR3timeIncreaseOdds + PlayResults.GlobalOddsAdjustment + PlayResults.WR3oddsAdjustment;
-  // console.log(JSON.stringify(PlayResults,null, 4));
-    });
-  })
-  observer.observe(list, {
-    attributes: true, 
-    childList: true, 
-    characterData: true
-  });
+  // PlayResults.WR1OddsAdjustment = PlayResults.WR1OddsAdjustment + Number(WR1OddsCount/2);
+  // PlayResults.WR2OddsAdjustment = PlayResults.WR2OddsAdjustment + Number(WR2OddsCount/2);
+  // PlayResults.WR3OddsAdjustment = PlayResults.WR3OddsAdjustment + Number(WR3OddsCount/2);
+  // PlayResults.GlobalOddsAdjustment = PlayResults.GlobalOddsAdjustment + (GlobalOddsCount/2);
+  // PlayResults.CurrentWR1Odds = PlayResults.WR1initialOdds + PlayResults.WR1timeIncreaseOdds + PlayResults.GlobalOddsAdjustment + PlayResults.WR1oddsAdjustment;
+  // PlayResults.CurrentWR2Odds = PlayResults.WR2initialOdds + PlayResults.WR2timeIncreaseOdds + PlayResults.GlobalOddsAdjustment + PlayResults.WR2oddsAdjustment;
+  // PlayResults.CurrentWR3Odds = PlayResults.WR3initialOdds + PlayResults.WR3timeIncreaseOdds + PlayResults.GlobalOddsAdjustment + PlayResults.WR3oddsAdjustment;
+  // // console.log(JSON.stringify(PlayResults,null, 4));
+  //   });
+  // })
+  // observer.observe(list, {
+  //   attributes: true, 
+  //   childList: true, 
+  //   characterData: true
+  // });
 });
