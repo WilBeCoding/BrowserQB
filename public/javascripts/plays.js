@@ -287,6 +287,582 @@ var passingPlays = {
       }
     }
   }
+  Smash: {
+    Man: {
+      safetyReads: {
+        safetyRead1: {
+          value:'Two safeties high',
+          isActive: true,
+          odds: false
+        },
+        safetyRead2: {
+          value: 'Strong Safety is cheating forward',
+          isActive: true,
+          odds: false
+        }
+      },
+      oLineReads: {
+        oLineStatus1: {
+          value:'The line is holding their blocks',
+          isActive: true,
+          timeElement: false
+        },
+        oLineStatus2: {
+          value: 'O-Line placeholder',
+          isActive: true,
+          timeElement: false,
+        }
+      },
+      WR1: {
+        hitchRoute1: {
+          value: "The CB drops back into coverage",
+          isActive: true,
+          odds: false,
+        },
+        hitchRoute2: {
+          value: "The FS is 15yds deep",
+          isActive: true,
+          odds: false,
+        },
+        hitchRoute3: {
+          value: "Mismatch with the LOLB",
+          isActive: true,
+          odds: false, 
+        }
+      },
+      WR2: {
+        outsidePostRoute1: {
+          value: "The FS is deep",
+          isActive: true,
+          odds: false, 
+        },
+        outsidePostRoute2: {
+          value: "CB is backpedaling",
+          isActive: true,
+          odds: false,
+        },
+        outsidePostRoute3: {
+          value: "WR is double covered",
+          isActive: true,
+          odds: false,
+        }
+      },
+      WR3: {
+        crossRoute1: {
+          value: "Nobody is following WR3",
+          isActive: true,
+          odds: false,
+        },
+        crossRoute2: {
+          value: "The MLB steps in front of the route",
+          isActive: true,
+          odds: false,
+        },
+        crossRoute3: {
+          value: 'The LOLB is in coverage',
+          isActive: true,
+          odds: false,
+        }
+      },
+      WR4: {
+        insidePostRoute1: {
+          value:'The SS is deep',
+          isActive: true,
+          odds: false,
+        },
+        insidePostRoute2: {
+          value: 'The CB is backpedaling',
+          isActive: true,
+          odds: false, 
+        },
+        insidePostRoute3: {
+          value:'WR is double covered',
+          isActive: true,
+          odds: false,
+        }
+      }
+    }
+  },
+  FourVerticals: {
+    Man: {
+      safetyReads: {
+        safetyRead1: {
+          value:'placeholder',
+          isActive: true,
+          odds: false
+        },
+        safetyRead2: {
+          value: 'placeholder',
+          isActive: true,
+          odds: false
+        }
+      },
+      oLineReads: {
+        oLineStatus1: {
+          value:'The line is holding their blocks',
+          isActive: true,
+          timeElement: false
+        },
+        oLineStatus2: {
+          value: 'O-Line placeholder',
+          isActive: true,
+          timeElement: false,
+        }
+      },
+      WR1: {
+        goRoute1: {
+          value: "placeholder",
+          isActive: true,
+          odds: false,
+        },
+        goRoute2: {
+          value: "placeholder",
+          isActive: true,
+          odds: false,
+        },
+        goRoute3: {
+          value: "placeholder",
+          isActive: true,
+          odds: false, 
+        }
+      },
+      WR2: {
+        goRoute1: {
+          value: "placeholder",
+          isActive: true,
+          odds: false, 
+        },
+        goRoute2: {
+          value: "placeholder",
+          isActive: true,
+          odds: false,
+        },
+        goRoute3: {
+          value: "placeholder",
+          isActive: true,
+          odds: false,
+        }
+      },
+      WR3: {
+        goRoute1: {
+          value: "placeholder",
+          isActive: true,
+          odds: false,
+        },
+        goRoute2: {
+          value: "placeholder",
+          isActive: true,
+          odds: false,
+        },
+        goRoute3: {
+          value: "placeholder",
+          isActive: true,
+          odds: false,
+        }
+      },
+      WR4: {
+        goRoute1: {
+          value:"placeholder",
+          isActive: true,
+          odds: false,
+        },
+        goRoute2: {
+          value: "placeholder",
+          isActive: true,
+          odds: false, 
+        },
+        goRoute3: {
+          value: "placeholder",
+          isActive: true,
+          odds: false,
+        }
+      }
+    }
+  },
+  BobsYourUncle: {
+    Man: {
+      safetyReads: {
+        safetyRead1: {
+          value:'Two safeties high',
+          isActive: true,
+          odds: false
+        },
+        safetyRead2: {
+          value: 'Strong Safety is cheating forward',
+          isActive: true,
+          odds: false
+        }
+      },
+      oLineReads: {
+        oLineStatus1: {
+          value:'The line is holding their blocks',
+          isActive: true,
+          timeElement: false
+        },
+        oLineStatus2: {
+          value: 'O-Line placeholder',
+          isActive: true,
+          timeElement: false,
+        }
+      },
+      WR1: {
+        insidePostRoute1: {
+          value: "The CB drops back into coverage",
+          isActive: true,
+          odds: false,
+        },
+        insidePostRoute2: {
+          value: "The FS is 15yds deep",
+          isActive: true,
+          odds: false,
+        },
+        insidePostRoute3: {
+          value: "Mismatch with the LOLB",
+          isActive: true,
+          odds: false, 
+        }
+      },
+      WR2: {
+        hbFlatRoute1: {
+          value: "The FS is deep",
+          isActive: true,
+          odds: false, 
+        },
+        hbFlatRoute2: {
+          value: "CB is backpedaling",
+          isActive: true,
+          odds: false,
+        },
+        hbFlatRoute3: {
+          value: "WR is double covered",
+          isActive: true,
+          odds: false,
+        }
+      },
+      WR3: {
+        texasRoute1: {
+          value: "Nobody is following WR3",
+          isActive: true,
+          odds: false,
+        },
+        texasRoute2: {
+          value: "The MLB steps in front of the route",
+          isActive: true,
+          odds: false,
+        },
+        texasRoute3: {
+          value: 'The LOLB is in coverage',
+          isActive: true,
+          odds: false,
+        }
+      },
+      WR4: {
+        goRoute1: {
+          value:'The SS is deep',
+          isActive: true,
+          odds: false,
+        },
+        goRoute2: {
+          value: 'The CB is backpedaling',
+          isActive: true,
+          odds: false, 
+        },
+        goRoute3: {
+          value:'WR is double covered',
+          isActive: true,
+          odds: false,
+        }
+      }
+    }
+  }
+  Smash: {
+    Cover3: {
+      safetyReads: {
+        safetyRead1: {
+          value:'Two safeties high',
+          isActive: true,
+          odds: false
+        },
+        safetyRead2: {
+          value: 'Strong Safety is cheating forward',
+          isActive: true,
+          odds: false
+        }
+      },
+      oLineReads: {
+        oLineStatus1: {
+          value:'The line is holding their blocks',
+          isActive: true,
+          timeElement: false
+        },
+        oLineStatus2: {
+          value: 'O-Line placeholder',
+          isActive: true,
+          timeElement: false,
+        }
+      },
+      WR1: {
+        hitchRoute1: {
+          value: "The CB drops back into coverage",
+          isActive: true,
+          odds: false,
+        },
+        hitchRoute2: {
+          value: "The FS is 15yds deep",
+          isActive: true,
+          odds: false,
+        },
+        hitchRoute3: {
+          value: "Mismatch with the LOLB",
+          isActive: true,
+          odds: false, 
+        }
+      },
+      WR2: {
+        outsidePostRoute1: {
+          value: "The FS is deep",
+          isActive: true,
+          odds: false, 
+        },
+        outsidePostRoute2: {
+          value: "CB is backpedaling",
+          isActive: true,
+          odds: false,
+        },
+        outsidePostRoute3: {
+          value: "WR is double covered",
+          isActive: true,
+          odds: false,
+        }
+      },
+      WR3: {
+        crossRoute1: {
+          value: "Nobody is following WR3",
+          isActive: true,
+          odds: false,
+        },
+        crossRoute2: {
+          value: "The MLB steps in front of the route",
+          isActive: true,
+          odds: false,
+        },
+        crossRoute3: {
+          value: 'The LOLB is in coverage',
+          isActive: true,
+          odds: false,
+        }
+      },
+      WR4: {
+        insidePostRoute1: {
+          value:'The SS is deep',
+          isActive: true,
+          odds: false,
+        },
+        insidePostRoute2: {
+          value: 'The CB is backpedaling',
+          isActive: true,
+          odds: false, 
+        },
+        insidePostRoute3: {
+          value:'WR is double covered',
+          isActive: true,
+          odds: false,
+        }
+      }
+    }
+  },
+  FourVerticals: {
+    Cover3: {
+      safetyReads: {
+        safetyRead1: {
+          value:'placeholder',
+          isActive: true,
+          odds: false
+        },
+        safetyRead2: {
+          value: 'placeholder',
+          isActive: true,
+          odds: false
+        }
+      },
+      oLineReads: {
+        oLineStatus1: {
+          value:'The line is holding their blocks',
+          isActive: true,
+          timeElement: false
+        },
+        oLineStatus2: {
+          value: 'O-Line placeholder',
+          isActive: true,
+          timeElement: false,
+        }
+      },
+      WR1: {
+        goRoute1: {
+          value: "placeholder",
+          isActive: true,
+          odds: false,
+        },
+        goRoute2: {
+          value: "placeholder",
+          isActive: true,
+          odds: false,
+        },
+        goRoute3: {
+          value: "placeholder",
+          isActive: true,
+          odds: false, 
+        }
+      },
+      WR2: {
+        goRoute1: {
+          value: "placeholder",
+          isActive: true,
+          odds: false, 
+        },
+        goRoute2: {
+          value: "placeholder",
+          isActive: true,
+          odds: false,
+        },
+        goRoute3: {
+          value: "placeholder",
+          isActive: true,
+          odds: false,
+        }
+      },
+      WR3: {
+        goRoute1: {
+          value: "placeholder",
+          isActive: true,
+          odds: false,
+        },
+        goRoute2: {
+          value: "placeholder",
+          isActive: true,
+          odds: false,
+        },
+        goRoute3: {
+          value: "placeholder",
+          isActive: true,
+          odds: false,
+        }
+      },
+      WR4: {
+        goRoute1: {
+          value:"placeholder",
+          isActive: true,
+          odds: false,
+        },
+        goRoute2: {
+          value: "placeholder",
+          isActive: true,
+          odds: false, 
+        },
+        goRoute3: {
+          value: "placeholder",
+          isActive: true,
+          odds: false,
+        }
+      }
+    }
+  },
+  BobsYourUncle: {
+    Cover3: {
+      safetyReads: {
+        safetyRead1: {
+          value:'Two safeties high',
+          isActive: true,
+          odds: false
+        },
+        safetyRead2: {
+          value: 'Strong Safety is cheating forward',
+          isActive: true,
+          odds: false
+        }
+      },
+      oLineReads: {
+        oLineStatus1: {
+          value:'The line is holding their blocks',
+          isActive: true,
+          timeElement: false
+        },
+        oLineStatus2: {
+          value: 'O-Line placeholder',
+          isActive: true,
+          timeElement: false,
+        }
+      },
+      WR1: {
+        insidePostRoute1: {
+          value: "The CB drops back into coverage",
+          isActive: true,
+          odds: false,
+        },
+        insidePostRoute2: {
+          value: "The FS is 15yds deep",
+          isActive: true,
+          odds: false,
+        },
+        insidePostRoute3: {
+          value: "Mismatch with the LOLB",
+          isActive: true,
+          odds: false, 
+        }
+      },
+      WR2: {
+        hbFlatRoute1: {
+          value: "The FS is deep",
+          isActive: true,
+          odds: false, 
+        },
+        hbFlatRoute2: {
+          value: "CB is backpedaling",
+          isActive: true,
+          odds: false,
+        },
+        hbFlatRoute3: {
+          value: "WR is double covered",
+          isActive: true,
+          odds: false,
+        }
+      },
+      WR3: {
+        texasRoute1: {
+          value: "Nobody is following WR3",
+          isActive: true,
+          odds: false,
+        },
+        texasRoute2: {
+          value: "The MLB steps in front of the route",
+          isActive: true,
+          odds: false,
+        },
+        texasRoute3: {
+          value: 'The LOLB is in coverage',
+          isActive: true,
+          odds: false,
+        }
+      },
+      WR4: {
+        goRoute1: {
+          value:'The SS is deep',
+          isActive: true,
+          odds: false,
+        },
+        goRoute2: {
+          value: 'The CB is backpedaling',
+          isActive: true,
+          odds: false, 
+        },
+        goRoute3: {
+          value:'WR is double covered',
+          isActive: true,
+          odds: false,
+        }
+      }
+    }
+  }
 }
 
 var passingPlays = {
