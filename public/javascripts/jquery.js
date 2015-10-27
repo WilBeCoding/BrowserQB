@@ -1,5 +1,8 @@
 $( document ).ready(function() {
 
+  var postSnapReadOddsAdjustment =  function randomInt(){
+                                      return Number((Math.random() * (18 - 10)) + 10);
+                                    };
   var passingPlays = {
     Smash: {
       Cover2: {
@@ -7,12 +10,12 @@ $( document ).ready(function() {
           safetyRead1: {
             value:'Two safeties high',
             isActive: true,
-            odds: false
+            odds: postSnapReadOddsAdjustment(),
           },
           safetyRead2: {
             value: 'Strong Safety is cheating forward',
             isActive: true,
-            odds: false
+            odds: postSnapReadOddsAdjustment()
           }
         },
         oLineReads: {
@@ -31,68 +34,68 @@ $( document ).ready(function() {
           hitchRoute1: {
             value: "The CB drops back into coverage",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           hitchRoute2: {
             value: "The FS is 15yds deep",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           hitchRoute3: {
             value: "Mismatch with the LOLB",
             isActive: true,
-            odds: false, 
+            odds: postSnapReadOddsAdjustment(), 
           }
         },
         WR2: {
           outsidePostRoute1: {
             value: "The FS is deep",
             isActive: true,
-            odds: false, 
+            odds: postSnapReadOddsAdjustment(), 
           },
           outsidePostRoute2: {
             value: "CB is backpedaling",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           outsidePostRoute3: {
             value: "WR is double covered",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           }
         },
         WR3: {
           crossRoute1: {
             value: "Nobody is following WR3",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           crossRoute2: {
             value: "The MLB steps in front of the route",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           crossRoute3: {
             value: 'The LOLB is in coverage',
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           }
         },
         WR4: {
           insidePostRoute1: {
             value:'The SS is deep',
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           insidePostRoute2: {
             value: 'The CB is backpedaling',
             isActive: true,
-            odds: false, 
+            odds: postSnapReadOddsAdjustment(), 
           },
           insidePostRoute3: {
             value:'WR is double covered',
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           }
         }
       },
@@ -101,12 +104,12 @@ $( document ).ready(function() {
           safetyRead1: {
             value:'Two safeties high',
             isActive: true,
-            odds: false
+            odds: postSnapReadOddsAdjustment()
           },
           safetyRead2: {
             value: 'Strong Safety is cheating forward',
             isActive: true,
-            odds: false
+            odds: postSnapReadOddsAdjustment()
           }
         },
         oLineReads: {
@@ -125,68 +128,68 @@ $( document ).ready(function() {
           hitchRoute1: {
             value: "The CB drops back into coverage",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           hitchRoute2: {
             value: "The FS is 15yds deep",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           hitchRoute3: {
             value: "Mismatch with the LOLB",
             isActive: true,
-            odds: false, 
+            odds: postSnapReadOddsAdjustment(), 
           }
         },
         WR2: {
           outsidePostRoute1: {
             value: "The FS is deep",
             isActive: true,
-            odds: false, 
+            odds: postSnapReadOddsAdjustment(), 
           },
           outsidePostRoute2: {
             value: "CB is backpedaling",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           outsidePostRoute3: {
             value: "WR is double covered",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           }
         },
         WR3: {
           crossRoute1: {
             value: "Nobody is following WR3",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           crossRoute2: {
             value: "The MLB steps in front of the route",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           crossRoute3: {
             value: 'The LOLB is in coverage',
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           }
         },
         WR4: {
           insidePostRoute1: {
             value:'The SS is deep',
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           insidePostRoute2: {
             value: 'The CB is backpedaling',
             isActive: true,
-            odds: false, 
+            odds: postSnapReadOddsAdjustment(), 
           },
           insidePostRoute3: {
             value:'WR is double covered',
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           }
         }
       },
@@ -195,12 +198,12 @@ $( document ).ready(function() {
           safetyRead1: {
             value:'Two safeties high',
             isActive: true,
-            odds: false
+            odds: postSnapReadOddsAdjustment()
           },
           safetyRead2: {
             value: 'Strong Safety is cheating forward',
             isActive: true,
-            odds: false
+            odds: postSnapReadOddsAdjustment()
           }
         },
         oLineReads: {
@@ -219,68 +222,68 @@ $( document ).ready(function() {
           hitchRoute1: {
             value: "The CB drops back into coverage",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           hitchRoute2: {
             value: "The FS is 15yds deep",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           hitchRoute3: {
             value: "Mismatch with the LOLB",
             isActive: true,
-            odds: false, 
+            odds: postSnapReadOddsAdjustment(), 
           }
         },
         WR2: {
           outsidePostRoute1: {
             value: "The FS is deep",
             isActive: true,
-            odds: false, 
+            odds: postSnapReadOddsAdjustment(), 
           },
           outsidePostRoute2: {
             value: "CB is backpedaling",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           outsidePostRoute3: {
             value: "WR is double covered",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           }
         },
         WR3: {
           crossRoute1: {
             value: "Nobody is following WR3",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           crossRoute2: {
             value: "The MLB steps in front of the route",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           crossRoute3: {
             value: 'The LOLB is in coverage',
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           }
         },
         WR4: {
           insidePostRoute1: {
             value:'The SS is deep',
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           insidePostRoute2: {
             value: 'The CB is backpedaling',
             isActive: true,
-            odds: false, 
+            odds: postSnapReadOddsAdjustment(), 
           },
           insidePostRoute3: {
             value:'WR is double covered',
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           }
         }
       }
@@ -291,12 +294,12 @@ $( document ).ready(function() {
           safetyRead1: {
             value:'placeholder',
             isActive: true,
-            odds: false
+            odds: postSnapReadOddsAdjustment()
           },
           safetyRead2: {
             value: 'placeholder',
             isActive: true,
-            odds: false
+            odds: postSnapReadOddsAdjustment()
           }
         },
         oLineReads: {
@@ -315,68 +318,68 @@ $( document ).ready(function() {
           goRoute1: {
             value: "placeholder",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           goRoute2: {
             value: "placeholder",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           goRoute3: {
             value: "placeholder",
             isActive: true,
-            odds: false, 
+            odds: postSnapReadOddsAdjustment(), 
           }
         },
         WR2: {
           goRoute1: {
             value: "placeholder",
             isActive: true,
-            odds: false, 
+            odds: postSnapReadOddsAdjustment(), 
           },
           goRoute2: {
             value: "placeholder",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           goRoute3: {
             value: "placeholder",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           }
         },
         WR3: {
           goRoute1: {
             value: "placeholder",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           goRoute2: {
             value: "placeholder",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           goRoute3: {
             value: "placeholder",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           }
         },
         WR4: {
           goRoute1: {
             value:"placeholder",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           goRoute2: {
             value: "placeholder",
             isActive: true,
-            odds: false, 
+            odds: postSnapReadOddsAdjustment(), 
           },
           goRoute3: {
             value: "placeholder",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           }
         }
       },
@@ -385,12 +388,12 @@ $( document ).ready(function() {
           safetyRead1: {
             value:'placeholder',
             isActive: true,
-            odds: false
+            odds: postSnapReadOddsAdjustment()
           },
           safetyRead2: {
             value: 'placeholder',
             isActive: true,
-            odds: false
+            odds: postSnapReadOddsAdjustment()
           }
         },
         oLineReads: {
@@ -409,68 +412,68 @@ $( document ).ready(function() {
           goRoute1: {
             value: "placeholder",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           goRoute2: {
             value: "placeholder",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           goRoute3: {
             value: "placeholder",
             isActive: true,
-            odds: false, 
+            odds: postSnapReadOddsAdjustment(), 
           }
         },
         WR2: {
           goRoute1: {
             value: "placeholder",
             isActive: true,
-            odds: false, 
+            odds: postSnapReadOddsAdjustment(), 
           },
           goRoute2: {
             value: "placeholder",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           goRoute3: {
             value: "placeholder",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           }
         },
         WR3: {
           goRoute1: {
             value: "placeholder",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           goRoute2: {
             value: "placeholder",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           goRoute3: {
             value: "placeholder",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           }
         },
         WR4: {
           goRoute1: {
             value:"placeholder",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           goRoute2: {
             value: "placeholder",
             isActive: true,
-            odds: false, 
+            odds: postSnapReadOddsAdjustment(), 
           },
           goRoute3: {
             value: "placeholder",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           }
         }
       },
@@ -479,12 +482,12 @@ $( document ).ready(function() {
           safetyRead1: {
             value:'placeholder',
             isActive: true,
-            odds: false
+            odds: postSnapReadOddsAdjustment()
           },
           safetyRead2: {
             value: 'placeholder',
             isActive: true,
-            odds: false
+            odds: postSnapReadOddsAdjustment()
           }
         },
         oLineReads: {
@@ -503,68 +506,68 @@ $( document ).ready(function() {
           goRoute1: {
             value: "placeholder",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           goRoute2: {
             value: "placeholder",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           goRoute3: {
             value: "placeholder",
             isActive: true,
-            odds: false, 
+            odds: postSnapReadOddsAdjustment(), 
           }
         },
         WR2: {
           goRoute1: {
             value: "placeholder",
             isActive: true,
-            odds: false, 
+            odds: postSnapReadOddsAdjustment(), 
           },
           goRoute2: {
             value: "placeholder",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           goRoute3: {
             value: "placeholder",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           }
         },
         WR3: {
           goRoute1: {
             value: "placeholder",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           goRoute2: {
             value: "placeholder",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           goRoute3: {
             value: "placeholder",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           }
         },
         WR4: {
           goRoute1: {
             value:"placeholder",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           goRoute2: {
             value: "placeholder",
             isActive: true,
-            odds: false, 
+            odds: postSnapReadOddsAdjustment(), 
           },
           goRoute3: {
             value: "placeholder",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           }
         }
       }
@@ -575,12 +578,12 @@ $( document ).ready(function() {
           safetyRead1: {
             value:'Two safeties high',
             isActive: true,
-            odds: false
+            odds: postSnapReadOddsAdjustment()
           },
           safetyRead2: {
             value: 'Strong Safety is cheating forward',
             isActive: true,
-            odds: false
+            odds: postSnapReadOddsAdjustment()
           }
         },
         oLineReads: {
@@ -599,68 +602,68 @@ $( document ).ready(function() {
           insidePostRoute1: {
             value: "The CB drops back into coverage",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           insidePostRoute2: {
             value: "The FS is 15yds deep",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           insidePostRoute3: {
             value: "Mismatch with the LOLB",
             isActive: true,
-            odds: false, 
+            odds: postSnapReadOddsAdjustment(), 
           }
         },
         WR2: {
           hbFlatRoute1: {
             value: "The FS is deep",
             isActive: true,
-            odds: false, 
+            odds: postSnapReadOddsAdjustment(), 
           },
           hbFlatRoute2: {
             value: "CB is backpedaling",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           hbFlatRoute3: {
             value: "WR is double covered",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           }
         },
         WR3: {
           texasRoute1: {
             value: "Nobody is following WR3",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           texasRoute2: {
             value: "The MLB steps in front of the route",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           texasRoute3: {
             value: 'The LOLB is in coverage',
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           }
         },
         WR4: {
           goRoute1: {
             value:'The SS is deep',
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           goRoute2: {
             value: 'The CB is backpedaling',
             isActive: true,
-            odds: false, 
+            odds: postSnapReadOddsAdjustment(), 
           },
           goRoute3: {
             value:'WR is double covered',
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           }
         }
       },
@@ -669,12 +672,12 @@ $( document ).ready(function() {
           safetyRead1: {
             value:'Two safeties high',
             isActive: true,
-            odds: false
+            odds: postSnapReadOddsAdjustment()
           },
           safetyRead2: {
             value: 'Strong Safety is cheating forward',
             isActive: true,
-            odds: false
+            odds: postSnapReadOddsAdjustment()
           }
         },
         oLineReads: {
@@ -693,68 +696,68 @@ $( document ).ready(function() {
           insidePostRoute1: {
             value: "The CB drops back into coverage",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           insidePostRoute2: {
             value: "The FS is 15yds deep",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           insidePostRoute3: {
             value: "Mismatch with the LOLB",
             isActive: true,
-            odds: false, 
+            odds: postSnapReadOddsAdjustment(), 
           }
         },
         WR2: {
           hbFlatRoute1: {
             value: "The FS is deep",
             isActive: true,
-            odds: false, 
+            odds: postSnapReadOddsAdjustment(), 
           },
           hbFlatRoute2: {
             value: "CB is backpedaling",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           hbFlatRoute3: {
             value: "WR is double covered",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           }
         },
         WR3: {
           texasRoute1: {
             value: "Nobody is following WR3",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           texasRoute2: {
             value: "The MLB steps in front of the route",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           texasRoute3: {
             value: 'The LOLB is in coverage',
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           }
         },
         WR4: {
           goRoute1: {
             value:'The SS is deep',
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           goRoute2: {
             value: 'The CB is backpedaling',
             isActive: true,
-            odds: false, 
+            odds: postSnapReadOddsAdjustment(), 
           },
           goRoute3: {
             value:'WR is double covered',
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           }
         }
       },
@@ -763,12 +766,12 @@ $( document ).ready(function() {
           safetyRead1: {
             value:'Two safeties high',
             isActive: true,
-            odds: false
+            odds: postSnapReadOddsAdjustment()
           },
           safetyRead2: {
             value: 'Strong Safety is cheating forward',
             isActive: true,
-            odds: false
+            odds: postSnapReadOddsAdjustment()
           }
         },
         oLineReads: {
@@ -787,68 +790,68 @@ $( document ).ready(function() {
           insidePostRoute1: {
             value: "The CB drops back into coverage",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           insidePostRoute2: {
             value: "The FS is 15yds deep",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           insidePostRoute3: {
             value: "Mismatch with the LOLB",
             isActive: true,
-            odds: false, 
+            odds: postSnapReadOddsAdjustment(), 
           }
         },
         WR2: {
           hbFlatRoute1: {
             value: "The FS is deep",
             isActive: true,
-            odds: false, 
+            odds: postSnapReadOddsAdjustment(), 
           },
           hbFlatRoute2: {
             value: "CB is backpedaling",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           hbFlatRoute3: {
             value: "WR is double covered",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           }
         },
         WR3: {
           texasRoute1: {
             value: "Nobody is following WR3",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           texasRoute2: {
             value: "The MLB steps in front of the route",
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           texasRoute3: {
             value: 'The LOLB is in coverage',
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           }
         },
         WR4: {
           goRoute1: {
             value:'The SS is deep',
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           },
           goRoute2: {
             value: 'The CB is backpedaling',
             isActive: true,
-            odds: false, 
+            odds: postSnapReadOddsAdjustment(), 
           },
           goRoute3: {
             value:'WR is double covered',
             isActive: true,
-            odds: false,
+            odds: postSnapReadOddsAdjustment(),
           }
         }
       }
@@ -902,7 +905,6 @@ $( document ).ready(function() {
   var bobsYourUncleSelected = false;
   var lost = false;
   var clearSackTimerBooleanTrigger = false;
-  var oddsDemoInterval = 0;
   var timesWon = 0;
   var lost = false;
   var timesWonData = 0;
@@ -927,6 +929,7 @@ $( document ).ready(function() {
   var WR1OddsCount = 0;
   var WR2OddsCount = 0;
   var WR3OddsCount = 0;
+  var WR4OddsCount = 0;
   var GlobalOddsCount = 0;
   var yardsToFirst = 10;
   var interception = 0;
@@ -940,9 +943,6 @@ $( document ).ready(function() {
                             return Number((Math.random() * (5 - 1)) + 1);
                           };
 
-  var postSnapReadOddsAdjustment =  function randomInt(){
-                                      return Number((Math.random() * (18 - 10)) + 10);
-                                    };
   var showPage = function(page) {
     $('.howToPlayPage').hide();
     $('.howToPlayPage').each(function(n) {
@@ -973,27 +973,22 @@ $( document ).ready(function() {
   }
 
   function currentOdds(WRodds) {
-    // console.log(PlayResults)
-    PlayResults.CurrentWR1Odds = PlayResults.WR1initialOdds + PlayResults.WR1timeIncreaseOdds + PlayResults.GlobalOddsAdjustment + PlayResults.WR1oddsAdjustment;
-    PlayResults.CurrentWR2Odds = PlayResults.WR2initialOdds + PlayResults.WR2timeIncreaseOdds + PlayResults.GlobalOddsAdjustment + PlayResults.WR2oddsAdjustment;
-    PlayResults.CurrentWR3Odds = PlayResults.WR3initialOdds + PlayResults.WR3timeIncreaseOdds + PlayResults.GlobalOddsAdjustment + PlayResults.WR3oddsAdjustment;
-    PlayResults.CurrentWR4Odds = PlayResults.WR4initialOdds + PlayResults.WR4timeIncreaseOdds + PlayResults.GlobalOddsAdjustment + PlayResults.WR4oddsAdjustment;
+    console.log(PlayResults)
     // console.log(PlayResults.CurrentWR1Odds +   "     WR1 odds");
     // console.log(PlayResults.CurrentWR2Odds +   "     WR2 odds");
     // console.log(PlayResults.CurrentWR3Odds +   "     WR3 odds");
-
-
     // console.log(PlayResults.CurrentWR2Odds + "                PlayResults.CurrentWR2Odds");
     // console.log(WR2oddsVar + "                 WR2oddsVar");
     var yardsClass = document.getElementsByClassName('yards');
     clearTimeout(sackTimer);
-    clearTimeout(blitzSackedTime)
+    clearTimeout(blitzSackedTime);
     clearTimeout(checkState);
     clearInterval(timerId);
     $('.WRbuttons').addClass('placeholderWRbuttons');
     $('.WRbuttons').removeClass('WRbuttons');
+    // console.log(WRodds+     "        ----------- WR odds")
     if(WRodds < 5) {
-      $('.defensiveSpan').text("Pass is intercepeted!");
+      $('.defensiveSpan').text("Pass is intercepted!");
       $('.footballIMG').animate({'left': '24.5%'}, "fast");
       yardLine = 20;
       yardsToFirst = 10;
@@ -1022,10 +1017,10 @@ $( document ).ready(function() {
       yardsToFirst -= 25;        
     }
     if(WRodds > 90) {
-      $('.footballIMG').animate({'left': '86.5%'}, 'slow');
+      $('.footballIMG').animate({'left': '86.5%'}, 'fast');
       yardLine = 100;
     }
-    var checkState = setTimeout(checkGameState,325);
+    var checkState = setTimeout(checkGameState,650);
     // console.log(JSON.stringify(PlayResults,null, 4));
   }
 
@@ -1071,7 +1066,6 @@ $( document ).ready(function() {
     location.reload();
   }
 
-
   function loser() {
     clearTimeout(checkGameStateReturnToDefaultTimeout);
     console.log("lost function hits")
@@ -1079,79 +1073,15 @@ $( document ).ready(function() {
     setTimeout(refresh, 1500);
   }
 
-
   function won() {
     var initials = document.getElementById("initials").value;
-    // clearInterval(touchdownTimeout);
-    // var data = {initials:initials, timesLost: Number(timesLost), timesWon: Number(timesWonData) + Number(1)};
     $('.defensiveSpan').text("You Won!")
-    // $.get("/data/"+ $('#initials').val(), function( data ) {
-    //   for(var i = 0; i < data.length; i++) {
-    //     if(data[i]['user'].initials === $('#initials').val()) {
-    //       data[i]['user'].timesWon = data[i]['user'].timesWon;
-    //       // console.log(data[i]['user'].initials);
-    //       // timesLostData = data[i]['user'].timesLost;
-    //       // timesWonData = Number(data[i]['user'].timesWon);
-    //     }
-    //   }
-    //   // debugger;
-    //   $.ajax({
-    //       type: 'POST',
-    //       url: "/",
-    //       data: {initials:initials, timesLost: timesLostData, timesWon:Number(timesWon) + Number(1)},
-    //       success: function(req, res, data) {
-    //         // console.log(data);
-    //         // May want some code here. Not sure why. CarpeYolo
-          setTimeout(refresh, 2200);
-    //       }
-    //     })
-    // })
-    // debugger;
+    setTimeout(refresh, 2200);
   }
 
   function touchdownFunction() {
     $('.footballIMG').animate({'left': '24.5%'}, "slow");
-    // console.log("touchdownFunction fires");
   }
-
-  function pickRandomSubObject() {
-    // console.log("interval pass strings is hitting")
-                              var result;
-                              var output;
-                              var count = 0;
-                              for(var prop in postSnapStrings)
-                                  if (Math.random() < 1/++count) {
-                                     result = prop;
-                                  }
-                                  var count2 = 0;
-                                  for (var prop in postSnapStrings[result])
-                                    // console.log(prop);
-                                    // console.log(postSnapStrings[result]);
-                                      if (Math.random() < 1/++count2) {
-                                         output = postSnapStrings[result][prop];
-                                      }
-                                      // console.log(defensiveSpanText);
-                                      // console.log(JSON.stringify(PlayResults,null, 4));
-                                  return output
-                              }
-
-  var firstRead = function pickRandomSubObject() {
-                              var result;
-                              var output;
-                              var count = 0;
-                              for (var prop in firstReadStrings)
-                                  if (Math.random() < 1/++count) {
-                                     result = prop;
-                                  }
-                                  var count = 0;
-                                  for (var prop in firstReadStrings[result])
-                                      if (Math.random() < 1/++count) {
-                                         output = firstReadStrings[result][prop];
-                                      }
-                                      // console.log(JSON.stringify(PlayResults,null, 4));
-
-                                  return output
-                              }
 
   function scoreboardUpdate() {
     if(downCount === 1) {
@@ -1463,7 +1393,6 @@ $( document ).ready(function() {
     $('.birdsEyeImg').addClass('placeholderBirdsEyeView');
     $('.placeholderBirdsEyeView').removeClass('birdsEyeImg');
     timerId = window.setInterval(function(){
-      // debugger
       $('.defensiveSpan').text(displayReads());
     }, 850);
   })
@@ -1496,6 +1425,10 @@ $( document ).ready(function() {
   })
 
   function returnToDefault () {
+    prog1 = false;
+    prog2 = false;
+    prog3 = false;
+    prog4 = false;
     console.log("return to default function hits");
     blitz = 0;
     clearSackTimerBooleanTrigger = false;
@@ -1559,6 +1492,7 @@ $( document ).ready(function() {
     $('#playClock').text(" ");
     $('.placeholderTable').addClass('table');
     $('.table').removeClass('placeholderTable');
+    setIsActiveTrue();
   }
 
   function getRndmQBRead(WR) {
@@ -1574,128 +1508,183 @@ $( document ).ready(function() {
                                      output = prop
                                      console.log(prop +   "      prop")
                                   }
-                                return passingPlays[offensivePlay][defensivePlay][WR][output].value
+                                return passingPlays[offensivePlay][defensivePlay][WR][output]
                               }
 
   $('.wr1').on('click', function() {
+    calculateOdds();
     currentOdds(PlayResults.CurrentWR1Odds);
+    clearInterval(timerId)
   })
 
   $('.wr2').on('click', function() {  
+    calculateOdds();
     currentOdds(PlayResults.CurrentWR2Odds);
+    clearInterval(timerId)
   })  
 
   $('.wr3').on('click', function() {
+    calculateOdds();
     currentOdds(PlayResults.CurrentWR3Odds)
+    clearInterval(timerId)
   })
 
   $('.wr4').on('click', function() {
+    calculateOdds();
     currentOdds(PlayResults.CurrentWR4Odds)
+    clearInterval(timerId)
   })
 
-
+  function calculateOdds(){
+    PlayResults.CurrentWR1Odds = PlayResults.WR1initialOdds + PlayResults.WR1timeIncreaseOdds + PlayResults.GlobalOddsAdjustment + PlayResults.WR1oddsAdjustment;
+    PlayResults.CurrentWR2Odds = PlayResults.WR2initialOdds + PlayResults.WR2timeIncreaseOdds + PlayResults.GlobalOddsAdjustment + PlayResults.WR2oddsAdjustment;
+    PlayResults.CurrentWR3Odds = PlayResults.WR3initialOdds + PlayResults.WR3timeIncreaseOdds + PlayResults.GlobalOddsAdjustment + PlayResults.WR3oddsAdjustment;
+    PlayResults.CurrentWR4Odds = PlayResults.WR4initialOdds + PlayResults.WR4timeIncreaseOdds + PlayResults.GlobalOddsAdjustment + PlayResults.WR4oddsAdjustment;
+  }
 
   function displayReads(){
+    console.log("display reads function is running");
     defensivePlay = 'Cover2';
     if($('#progression1').val() === 'p1WR1' && prog1 === false) {
-      console.log("WR1 === prog1");
+      console.log("this first prog hits")
+      var subObject = getRndmQBRead('WR1');
+      subObject.isActive = false;
       prog1 = true;
-      $('.defensiveSpan').text(getRndmQBRead('WR1'))
+      $('.defensiveSpan').text(subObject.value);
+      PlayResults.WR1oddsAdjustment += subObject.odds
+      return
     }
     if($('#progression1').val() === 'p1WR2' && prog1 === false) {
-      $('.defensiveSpan').text(getRndmQBRead('WR2'))
+      var subObject = getRndmQBRead('WR2');
+      subObject.isActive = false;
+      $('.defensiveSpan').text(subObject.value)
       prog1 = true;
-      console.log("WR2 === prog1");
+      PlayResults.WR2oddsAdjustment += subObject.odds
       return
     }
     if($('#progression1').val() === 'p1WR3' && prog1 === false) {
-      $('.defensiveSpan').text(getRndmQBRead('WR3'))
+      var subObject = getRndmQBRead('WR3');
+      subObject.isActive = false;
+      $('.defensiveSpan').text(subObject.value)
       prog1 = true;
-      console.log("WR3 === prog1");
+      PlayResults.WR3oddsAdjustment += subObject.odds
       return
     }
     if($('#progression1').val() === 'p1WR4'&& prog1 === false) {
-      $('.defensiveSpan').text(getRndmQBRead('WR4'))
+      var subObject = getRndmQBRead('WR4');
+      subObject.isActive = false;
+      $('.defensiveSpan').text(subObject.value)
       prog1 = true;
-      console.log("WR4 === prog1");
+      PlayResults.WR4oddsAdjustment += subObject.odds
       return
     }
     if($('#progression2').val() === 'p2WR1' && prog2 === false) {
-      $('.defensiveSpan').text(getRndmQBRead('WR1'))
+      var subObject = getRndmQBRead('WR1');
+      subObject.isActive = false;
+      $('.defensiveSpan').text(subObject.value)
       prog2 = true;
-      console.log("WR1 === prog2");
+      PlayResults.WR1oddsAdjustment += subObject.odds
       return
     }
     if($('#progression2').val() === 'p2WR2' && prog2 === false) {
-      $('.defensiveSpan').text(getRndmQBRead('WR2'))
+      var subObject = getRndmQBRead('WR2');
+      subObject.isActive = false;
+      $('.defensiveSpan').text(subObject.value)
       prog2 = true;
-      console.log("WR2 === prog2");
+      PlayResults.WR2oddsAdjustment += subObject.odds
       return
     }
     if($('#progression2').val() === 'p2WR3' && prog2 === false) {
-      $('.defensiveSpan').text(getRndmQBRead('WR3'))
+      var subObject = getRndmQBRead('WR3');
+      subObject.isActive = false;
+      $('.defensiveSpan').text(subObject.value)
       prog2 = true;
-      console.log("WR3 === prog2");
+      PlayResults.WR3oddsAdjustment += subObject.odds
       return
     }
     if($('#progression2').val() === 'p2WR4' && prog2 === false) {
-      $('.defensiveSpan').text(getRndmQBRead('WR4'))
+      var subObject = getRndmQBRead('WR4');
+      subObject.isActive = false;
+      $('.defensiveSpan').text(subObject.value)
       prog2 = true;
-      console.log("WR4 === prog2");
+      PlayResults.WR4oddsAdjustment += subObject.odds
       return
     }
     if($('#progression3').val() === 'p3WR1' && prog3 === false) {
-      $('.defensiveSpan').text(getRndmQBRead('WR1'))
+      var subObject = getRndmQBRead('WR1');
+      subObject.isActive = false;
+      $('.defensiveSpan').text(subObject.value)
       prog3 = true;
-      console.log("WR1 === prog3");
+      PlayResults.WR1oddsAdjustment += subObject.odds
       return
     }
     if($('#progression3').val() === 'p3WR2' && prog3 === false) {
-      $('.defensiveSpan').text(getRndmQBRead('WR2'))
+      var subObject = getRndmQBRead('WR2');
+      subObject.isActive = false;
+      $('.defensiveSpan').text(subObject.value)
       prog3 = true;
-      console.log("WR2 === prog3");
+      PlayResults.WR2oddsAdjustment += subObject.odds
       return
     }
     if($('#progression3').val() === 'p3WR3' && prog3 === false) {
-      $('.defensiveSpan').text(getRndmQBRead('WR3'))
+      var subObject = getRndmQBRead('WR3');
+      subObject.isActive = false;
+      $('.defensiveSpan').text(subObject.value)
       prog3 = true;
-      console.log("WR3 === prog3");
+      PlayResults.WR3oddsAdjustment += subObject.odds
       return
     }
     if($('#progression3').val() === 'p3WR4' && prog3 === false) {
-      $('.defensiveSpan').text(getRndmQBRead('WR4'))
+      var subObject = getRndmQBRead('WR4');
+      subObject.isActive = false;
+      $('.defensiveSpan').text(subObject.value)
       prog3 = true;
-      console.log("WR4 === prog3");
+      PlayResults.WR4oddsAdjustment += subObject.odds
       return
     }
     if($('#progression4').val() === 'p4WR1' && prog4 === false) {
-      $('.defensiveSpan').text(getRndmQBRead('WR1'))
+      var subObject = getRndmQBRead('WR1');
+      subObject.isActive = false;
+      $('.defensiveSpan').text(subObject.value)
       prog4 = true;
-      console.log("WR1 === prog4");
+      PlayResults.WR1oddsAdjustment += subObject.odds
       return
     }
     if($('#progression4').val() === 'p4WR2' && prog4 === false) {
-      $('.defensiveSpan').text(getRndmQBRead('WR2'))
+      var subObject = getRndmQBRead('WR2');
+      subObject.isActive = false;
+      $('.defensiveSpan').text(subObject.value)
       prog4 = true;
-      console.log("WR2 === prog4");
+      PlayResults.WR2oddsAdjustment += subObject.odds
       return
     }
     if($('#progression4').val() === 'p4WR3' && prog4 === false) {
-      $('.defensiveSpan').text(getRndmQBRead('WR3'))
+      var subObject = getRndmQBRead('WR3');
+      subObject.isActive = false;
+      $('.defensiveSpan').text(subObject.value)
       prog4 = true;
-      console.log("WR3 === prog4");
+      PlayResults.WR3oddsAdjustment += subObject.odds
       return
     }
     if($('#progression4').val() === 'p4WR4' && prog4 === false) {
-      $('.defensiveSpan').text(getRndmQBRead('WR4'))
+      var subObject = getRndmQBRead('WR4');
+      subObject.isActive = false;
+      $('.defensiveSpan').text(subObject.value)
       prog4 = true;
-      console.log("WR4 === prog4");
+      PlayResults.WR4oddsAdjustment += subObject.odds
       return
     }
   }
 
+  function setIsActiveTrue(){
+      for(prop in passingPlays)
+        for(subProp in passingPlays[prop])
+            for(subSubProp in passingPlays[prop][subProp])
+                for(subSubSubProp in passingPlays[prop][subProp][subSubProp])
+                    return passingPlays[prop][subProp][subSubProp][subSubSubProp].isActive = true
+  }
+
     function checkGameState() {
-      // debugger
       downCount++
       if(yardLine >= '100') {
         $('.defensiveSpan').text("Touchdown!")
@@ -1707,16 +1696,16 @@ $( document ).ready(function() {
       }
       // console.log(drive + "Drive Top of game state function");
       // console.log(score  +  " this is the score at top of gamestate function");
-      if(drive === 4 && score !== 14 || drive === 3 && score !==7) {
-         console.log("Lost Condition Hits")
+      else if(drive === 4 && score !== 14 || drive === 3 && score !==7) {
+        console.log("Lose Condition Hits")
         clearTimeout(sackedReturnToDefault);
         clearInterval(timerId);
         clearTimeout(sackTimer);
         clearTimeout(returnToSackDefaultEndSacks);
         lost = true;
       }
-      else if(score === 14) {
-        console.log("won condition hit");
+      if(score === 14) {
+        console.log("Win condition hit");
         wonGame = true;
         clearTimeout(sackedReturnToDefault);
         clearInterval(timerId);
@@ -1738,7 +1727,7 @@ $( document ).ready(function() {
       }
       if(lost === true) {
         console.log("lost true hits")
-        settimeout(loser, 850);
+        setTimeout(loser, 850);
       }
       if(wonGame === true) {
         setTimeout(won, 650)
