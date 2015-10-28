@@ -52,42 +52,6 @@ block content
         span#playClock
     div.placeholderButtons
       div.bottomButtonContainer
-        //- div.progressionChoice
-        //-   p Progression
-        //-   label 1
-        //-     select(id="progression1")
-        //-       option(value='p1WR1') WR1
-        //-       option(value='p1WR2') WR2
-        //-       option(value='p1WR3') WR3
-        //-       option(value='p1WR4') WR4
-        //-   div
-        //-     label 2
-        //-       select(id="progression2")
-        //-         option(value='p2WR1') WR1 
-        //-         option(value='p2WR2') WR2 
-        //-         option(value='p2WR3') WR3
-        //-         option(value='p2WR4') WR4
-        //-   div
-        //-     label 3
-        //-       select(id="progression3")
-        //-         option(value='p3WR1') WR1 
-        //-         option(value='p3WR2') WR2
-        //-         option(value='p3WR3') WR3 
-        //-         option(value='p3WR4') WR4
-        //-   div
-        //-     label 4
-        //-       select(id="progression4")
-        //-         option(value='p4WR1') WR1  
-        //-         option(value='p4WR2') WR2  
-        //-         option(value='p4WR3') WR3  
-        //-         option(value='p4WR4') WR4
-        //-   div
-        //-     label 5
-        //-     select(id="progression5")
-        //-       option(value='p5WR1') WR1 
-        //-       option(value='p5WR2') WR2
-        //-       option(value='p5WR3') WR3
-        //-       option(value='p5WR4') WR4
         div.hikeButtonContainer
           div.huthutHIKEbttn
             input(type="button" value="Hut Hut Hike!").buttonSnap.button.button-3d
@@ -246,7 +210,31 @@ block content
           p Two safeties back
           p CBs playing soft
           p
+          input(type='button' value='Learn About Cover 3').nextPage
+          p 
           input(type='button' value= 'Back').lastPage
+          p
+          input(type='button' value='Back To The Field!').closeHowToButton
+        div.pages
+          div.howToPlayPage
+          h1 Cover 3
+          br
+          p Cover 3 is a zone defense in which 3 defenders play deep
+          p Short to Medium routes are effectives against cover 3
+          p
+          p
+          input(type='button' value='Learn About Man Coverage').nextPage 
+          input(type='button' value= 'Back').lastPage
+          p
+          input(type='button' value='Back To The Field!').closeHowToButton
+        div.pages
+          div.howToPlayPage
+          h1 Man Coverage
+          br
+          p Man Coverage is when every one of your WRs has a man assigned to defend him all play
+          p Throwing the ball at the right time is paramount
+          p
+          input(type='button' value='Back').lastPage
           p
           input(type='button' value='Back To The Field!').closeHowToButton
     div.topLeft

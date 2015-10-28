@@ -1184,18 +1184,18 @@ var fifthRead;
 
   $('.progressionSubmissionBtn5').click(function() {
     fifthRead = this.value;
-    $(".progressionContainer").fadeOut("slow");
-    $('.progressionMask').fadeOut("slow");
-    $(".progressionHider").fadeOut("slow");
-    $('.progressionDiv').fadeOut("slow");
+    $(".progressionContainer").fadeOut("fast");
+    $('.progressionMask').fadeOut("fast");
+    $(".progressionHider").fadeOut("fast");
+    $('.progressionDiv').fadeOut("fast");
     $('.progressionPages').hide();
   })
 
   function progressionPaginate(){
-    $('.progressionContainer').fadeIn('slow');
-    $('.progressionMask').fadeIn('slow');
-    $('.progressionHider').fadeIn('slow');
-    $('.progressionDiv').fadeIn('slow');
+    $('.progressionContainer').fadeIn('fast');
+    $('.progressionMask').fadeIn('fast');
+    $('.progressionHider').fadeIn('fast');
+    $('.progressionDiv').fadeIn('fast');
     $('.progressionPages').eq(0).show()
   }
 
@@ -1214,17 +1214,14 @@ var fifthRead;
     $('.pages').eq(0).hide();
     $('.pages').eq(1).show();
   })
-
   $('.nextPage').eq(1).click(function(){
     $('.pages').eq(1).hide();
     $('.pages').eq(2).show();
   })
-
   $('.nextPage').eq(2).click(function(){
     $('.pages').eq(2).hide();
     $('.pages').eq(3).show();
   })
-
   $('.nextPage').eq(3).click(function(){
     $('.pages').eq(3).hide();
     $('.pages').eq(4).show();
@@ -1245,7 +1242,10 @@ var fifthRead;
     $('.pages').eq(7).hide();
     $('.pages').eq(8).show();
   })
-
+  $('.nextPage').eq(8).click(function(){
+    $('.pages').eq(8).hide();
+    $('.pages').eq(9).show();
+  })
   // BREAK
   $('.lastPage').eq(0).click(function(){
     $('.pages').eq(1).hide();
@@ -1275,12 +1275,24 @@ var fifthRead;
     $('.pages').eq(5).show();
   })
   $('.lastPage').eq(6).click(function(){
-    $('.pages').eq(5).hide();
+    $('.pages').eq(7).hide();
     $('.pages').eq(6).show();
   })
   $('.lastPage').eq(7).click(function(){
     $('.pages').eq(8).hide();
     $('.pages').eq(7).show();
+  })
+  $('.lastPage').eq(8).click(function(){
+    $('.pages').eq(9).hide();
+    $('.pages').eq(8).show();
+  })
+  $('.lastPage').eq(9).click(function(){
+    $('.pages').eq(10).hide();
+    $('.pages').eq(9).show();
+  })
+  $('.lastPage').eq(11).click(function(){
+    $('.pages').eq(12).hide();
+    $('.pages').eq(11).show();
   })
 
   $(".closeHowToButton").click(function () {

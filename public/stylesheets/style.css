@@ -291,10 +291,11 @@ body {
 
 .preSnapReadContainer {
   color: blue;
-  height: 98%;
+  height: 100%;
   width: 100%;
+  position: relative;
   /* align-content: center; */
-  /* margin-top: 4%; */ }
+  /* margin-top: -11%; */ }
 
 .bottomButtonContainer {
   background-color: purple;
@@ -503,8 +504,8 @@ table {
 
 .progressionContainer::after {
   content: '';
-  background-image: url(../images/Rivers.jpg);
-  /* background-size: cover; */
+  background-image: url(../images/AaronRodgers.jpg);
+  background-size: contain;
   position: absolute;
   top: 0;
   right: 0;
