@@ -106,7 +106,7 @@ var passingPlays = {
         safetyRead2: {
           value: 'placeholder',
           isActive: true,
-          odds: false
+          odds: false`
         }
       },
       oLineReads: {

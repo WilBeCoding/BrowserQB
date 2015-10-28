@@ -10,6 +10,41 @@ block content
       div
         p.score
     div.field
+      div.progressionContainer
+        div.progressionMask
+      div.progressionHider
+        div.progressionDiv
+          div.progressionPages
+            h1 First Read
+            input(type='button' value='WR1').progressionSubmissionBtn1.progButtons.progression1
+            input(type='button' value='WR2').progressionSubmissionBtn1.progButtons.progression1 
+            input(type='button' value='WR3').progressionSubmissionBtn1.progButtons.progression1 
+            input(type='button' value='WR4').progressionSubmissionBtn1.progButtons.progression1
+          div.progressionPages
+            h1 Second Read
+            input(type='button' value='WR1').progressionSubmissionBtn2.progButtons.progression2
+            input(type='button' value='WR2').progressionSubmissionBtn2.progButtons.progression2 
+            input(type='button' value='WR3').progressionSubmissionBtn2.progButtons.progression2 
+            input(type='button' value='WR4').progressionSubmissionBtn2.progButtons.progression2
+          div.progressionPages
+            h1 Third Read
+            input(type='button' value='WR1').progressionSubmissionBtn3.progButtons.progression3
+            input(type='button' value='WR2').progressionSubmissionBtn3.progButtons.progression3 
+            input(type='button' value='WR3').progressionSubmissionBtn3.progButtons.progression3 
+            input(type='button' value='WR4').progressionSubmissionBtn3.progButtons.progression3
+          div.progressionPages
+            h1 Fourth Read
+            input(type='button' value='WR1').progressionSubmissionBtn4.progButtons.progression4
+            input(type='button' value='WR2').progressionSubmissionBtn4.progButtons.progression4 
+            input(type='button' value='WR3').progressionSubmissionBtn4.progButtons.progression4 
+            input(type='button' value='WR4').progressionSubmissionBtn4.progButtons.progression4
+          div.progressionPages
+            h1 Fifth Read
+            input(type='button' value='WR1').progressionSubmissionBtn5.progButtons.progression5
+            input(type='button' value='WR2').progressionSubmissionBtn5.progButtons.progression5 
+            input(type='button' value='WR3').progressionSubmissionBtn5.progButtons.progression5 
+            input(type='button' value='WR4').progressionSubmissionBtn5.progButtons.progression5
+
       img(src="http://findicons.com/files/icons/924/sportset/128/american_football_128x128.png").footballIMG
       div.defensiveRead
       span.defensiveSpan
@@ -17,42 +52,42 @@ block content
         span#playClock
     div.placeholderButtons
       div.bottomButtonContainer
-        div.progressionChoice
-          p Progression
-          label 1
-            select(id="progression1")
-              option(value='p1WR1') WR1
-              option(value='p1WR2') WR2
-              option(value='p1WR3') WR3
-              option(value='p1WR4') WR4
-          div
-            label 2
-              select(id="progression2")
-                option(value='p2WR1') WR1 
-                option(value='p2WR2') WR2 
-                option(value='p2WR3') WR3
-                option(value='p2WR4') WR4
-          div
-            label 3
-              select(id="progression3")
-                option(value='p3WR1') WR1 
-                option(value='p3WR2') WR2
-                option(value='p3WR3') WR3 
-                option(value='p3WR4') WR4
-          div
-            label 4
-              select(id="progression4")
-                option(value='p4WR1') WR1  
-                option(value='p4WR2') WR2  
-                option(value='p4WR3') WR3  
-                option(value='p4WR4') WR4
-          div
-            label 5
-            select(id="progression5")
-              option(value='p5WR1') WR1 
-              option(value='p5WR2') WR2
-              option(value='p5WR3') WR3
-              option(value='p5WR4') WR4
+        //- div.progressionChoice
+        //-   p Progression
+        //-   label 1
+        //-     select(id="progression1")
+        //-       option(value='p1WR1') WR1
+        //-       option(value='p1WR2') WR2
+        //-       option(value='p1WR3') WR3
+        //-       option(value='p1WR4') WR4
+        //-   div
+        //-     label 2
+        //-       select(id="progression2")
+        //-         option(value='p2WR1') WR1 
+        //-         option(value='p2WR2') WR2 
+        //-         option(value='p2WR3') WR3
+        //-         option(value='p2WR4') WR4
+        //-   div
+        //-     label 3
+        //-       select(id="progression3")
+        //-         option(value='p3WR1') WR1 
+        //-         option(value='p3WR2') WR2
+        //-         option(value='p3WR3') WR3 
+        //-         option(value='p3WR4') WR4
+        //-   div
+        //-     label 4
+        //-       select(id="progression4")
+        //-         option(value='p4WR1') WR1  
+        //-         option(value='p4WR2') WR2  
+        //-         option(value='p4WR3') WR3  
+        //-         option(value='p4WR4') WR4
+        //-   div
+        //-     label 5
+        //-     select(id="progression5")
+        //-       option(value='p5WR1') WR1 
+        //-       option(value='p5WR2') WR2
+        //-       option(value='p5WR3') WR3
+        //-       option(value='p5WR4') WR4
         div.hikeButtonContainer
           div.huthutHIKEbttn
             input(type="button" value="Hut Hut Hike!").buttonSnap.button.button-3d
@@ -92,118 +127,124 @@ block content
         div.pages
           p.howToPlayPage.current
           h1 How To Play!
-          p Select your play by clicking on one of the play images
-          p Then you'll be put under-center and are ready to make your pre-snap read!
+          p To win score on 2 out of 3 drives
+          p At the play selection screen you have three pass plays to choose from. 
+          p
+          p Smash
+          p Four Verticles
+          p Bob's Your Uncle
+          p 
+          p Pay close attention to the routes your recievers are running
           input(type='button' value='What to do when under center').nextPage
           br
           input(type='button' value='Back To The Field!').closeHowToButton
           br
-          p *Right now only pass plays are available. Run plays are in development!*
+          p "Short Passes Are The New Run" -Mohn Jadden 
         div.pages
           div.howToPlayPage
           h1 Under Center
-          p Use the bird's eye-view to determine what the Defense might do 
-          p For example if a linebacker is on the line he might be blitzing.
-          p If the cornerbacks are playing close to your wide-recievers it may take them longer to get open
-          input(type='button' value= 'Getting To Know Your Wide-Recievers').nextPage
+          p After you've selected your play you're brought to the Under Center screen.
+          p Here is where you make a pre-snap read and determine your progression
+          h2.div Pre-Snap Read
+          p The Defense could be running any number of coverages. 
+          p Man Coverage
+          p Zone Coverage
+          p Mixed Coverage
+          p
+          p In order to know what receivers will be open use the picture of the defensive formation
+          p Ask yourself, "Where are the safeties?, How much space are the CBs giving my WRs?, What routes look good against this coverage?" and any other questions that can lead to improving your progression
+          input(type='button' value= 'Learn More About Your Progression').nextPage
           p
           input(type='button' value= 'Back').lastPage
           p
           input(type='button' value='Back To The Field!').closeHowToButton
         div.pages
           div.howToPlayPage
-          h1 Getting To Know Your Wideouts
-          p After hiking the ball three buttons will appear beneath the field
-          p Each button corresponds to one of your Wide-Recievers
-          p WR1 represents the wide-reciever on the left side of the field
-          p WR2 represents the wide-reciever in the middle of the field
-          p WR3 represents the wide-reciever on the right side of the field
-          h2 Each wide-reciever has their own style of play!
-          p WR3 is your speedster so look for him to break away from his man!
-          p *WR1 and WR2's play styles are in development*
-          p *For now you'll have to rely soley on your reads!*
-          input(type='button' value='How To Know Which WR To Throw To').nextPage
+          h1 Progression Is Paramount
+          p Your progression is the order you read your WR's routes
+          p If your progression is WR1, WR1, WR2, WR3, WR4 
+          p The first two reads will be about WR1's route
+          p The third read would be about WR2's route
+          p The fourth read is about WR3 and the fifth is WR4.
+          p
+          p Pay close attention to what route the WR is running. 
+          p Different routes are effective againt different coverages
+          p
+          p You choose your progression order when under center
+          p You have a max of 5 progression reads
+          input(type='button' value='Understanding Your Reads').nextPage
           p
           input(type='button' value= 'Back').lastPage
           p
           input(type='button' value='Back To The Field!').closeHowToButton
         div.pages
           div.howToPlayPage
-          h1 Who To Throw To
-          p After hiking the ball you'll see text flash on the field.
-          p Each sentence represents a Quarterback's post-snap read
-          p Each read changes the odds of the WRs making a play
-          p
-          input(type='button' value='What Read Does What?').nextPage
-          p
-          input(type='button' value= 'Back').lastPage
-          p
-          input(type='button' value='Back To The Field!').closeHowToButton
-        div.pages
-          div.howToPlayPage
-          h1 Reads Impacting WR1
+          h1 Understanding Your Reads
           br
-          h2 Positive Reads
-          p "The Safety Is Cheating Right!"
-          | "The LOLB is blitzing!"
-          p "Left Cornerback Blitz!"
-          h2 Negative Reads
-          p "WR1 Pressed!"
-          | "The LOLB dropped into coverage!"
-          p "The Safety is cheating left!"
+          p After hiking the ball you'll see your reads flash on the field.
+          p Each read represents what is happening to the WR you selected in your progression.
+          p Every read impacts the odds of a successful pass
           p
-          input(type='button' value='Reads Impacting WR2').nextPage
+          p Be sure to remember the order of your reads
+          input(type='button' value='The Anatomy Of Smash').nextPage
           p
           input(type='button' value= 'Back').lastPage
           p
           input(type='button' value='Back To The Field!').closeHowToButton
         div.pages
           div.howToPlayPage
-          h1 Reads Impacting WR2
+          h1 Smash Anatomy
+          p There are 4 routes in the Smash play
           br
-          h2 Positive Reads
-          p "The MLB is blitzking!"
-          | " Safety Blitz!"
-          p "The Safety is on the line!"
-          h2 Negative Reads
-          p "WR2 Pressed!"
-          | "The MLB dropped back into coverage!"
-          p "The Safety is staying mid-field!"
+          p WR1 is running a hitch route
+          p A hitch route is good against soft coverage where the safety is deep and the cornerback is short
+          p Against man coverage or a zone scheme where the cornerback is mid field throwing the hitch route is not the best decision
           p
-          input(type='button' value='Reads Impacting WR3').nextPage
+          p WR2 is running an outside post route
+          p This route is effective against zone coverage when the safety isn't on the left side of the field and the CB isn't deep
+          p WR3 is running a cross route
+          p This route is effective in man coverage or a soft zone when the CBs play back
+          p
+          p WR4 is running an inside post route
+          p I'll update when this is a good route to go for later
+          input(type='button' value='The Anatomy of Four Verticals').nextPage
           p
           input(type='button' value= 'Back').lastPage
           p
           input(type='button' value='Back To The Field!').closeHowToButton
         div.pages
           div.howToPlayPage
-          h1 Reads impacting WR3
+          h1 Four Vertical Anatomy
           br
-          h2 Positive Reads
-          p "The Safety is cheating left!"
-          | "Right Cornerback Blitz"
-          p "The ROLB is blitzing!"
-          | "WR3 beat his man!"
-          h2 Negative Reads
-          p "WR3 Pressed!"
-          | "The ROLB dropped back into coverage!"
-          p "The Safety is cheating right!"
+          h2 Every WR sprints towards the endzone
+          p This play is effective when the CBs are pressing
+          p The goal of the play is to outnumber the defenders down the field
+          p It is very difficult for two safeties to cover 4 WRs
+          input(type='button' value='The Anatomy of Bobs your uncle').nextPage
           p
-          input(type='button' value='Reads Impacting All WRs').nextPage
+          input(type='button' value= 'Back').lastPage
+          p
+          input(type='button' value='Back To The Field!').closeHowToButton
+        div.pages
+          div.howToPlayPage
+          h1 Bob's Your Uncle's Anatomy
+          br
+          p WR1 is running an inside post route
+          p
+          p WR2 is running a delayed flat route
+          p
+          p WR3 is running a mid-field quazi slant route thing
+          input(type='button' value='Defensive Plays').nextPage
           p
             input(type='button' value= 'Back').lastPage
           input(type='button' value='Back To The Field!').closeHowToButton
         div.pages
           div.howToPlayPage
-          h1 Reads Impacting Everyone
+          h1 Cover 2
           br
-          h2 Positive Reads
-          p "All Out Blitz!"
-          | "The line is holding strong"
-          h2 Negative Reads
-          p "WRs stuffed at the line!"
-          | "The Defensive End is barreling towards you!"
-          p
+          p Cover 2 is a zone defense so defenders are responsible for areas on the field and not individual WRs
+          p Two safeties back
+          p CBs playing soft
            iframe(width='420', height='315', src='https://www.youtube.com/embed/DttfyOeU3vw', frameborder='0', allowfullscreen='') Dammit Donald!
           p
           input(type='button' value= 'Back').lastPage
@@ -221,4 +262,5 @@ block content
         div.bobsyouruncle
           span Bob's Your Uncle
           img(src='../images/bobsyouruncle.png' name='bobsyouruncle').passImage#playImages.BobsYourUncle
+          input(type="button" value="How To Play").howToPlayButton
      
