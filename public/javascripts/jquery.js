@@ -193,7 +193,7 @@ $( document ).ready(function() {
           }
         }
       },
-      Man: {
+      ManCoverage: {
         safetyReads: {
           safetyRead1: {
             value:'Two safeties high',
@@ -477,7 +477,7 @@ $( document ).ready(function() {
           }
         }
       },
-      Man: {
+      ManCoverage: {
         safetyReads: {
           safetyRead1: {
             value:'placeholder',
@@ -667,7 +667,7 @@ $( document ).ready(function() {
           }
         }
       },
-      Man: {
+      ManCoverage: {
         safetyReads: {
           safetyRead1: {
             value:'Two safeties high',
@@ -984,7 +984,8 @@ $( document ).ready(function() {
   }
 
   function currentOdds(WRodds) {
-    console.log(PlayResults)
+    console.log(WRodds, '   ------------------- WR odds')
+    // console.log(PlayResults)
     // console.log(PlayResults.CurrentWR1Odds +   "     WR1 odds");
     // console.log(PlayResults.CurrentWR2Odds +   "     WR2 odds");
     // console.log(PlayResults.CurrentWR3Odds +   "     WR3 odds");
@@ -1000,7 +1001,7 @@ $( document ).ready(function() {
     // console.log(WRodds+     "        ----------- WR odds")
     if(WRodds < 5) {
       $('.defensiveSpan').text("Pass is intercepted!");
-      $('.footballIMG').animate({'left': '24.5%'}, "fast");
+      $('.footballIMG').animate({'left': '22.2%'}, "fast");
       yardLine = 20;
       yardsToFirst = 10;
       drive++
@@ -1011,24 +1012,24 @@ $( document ).ready(function() {
     }
     if(WRodds >= 25 && WRodds < 50) {
       $('.defensiveSpan').text("Pass complete for an 8 yard gain!");
-      $('.footballIMG').animate({'left': '+=6%'}, 'slow');
+      $('.footballIMG').animate({'left': '+=7.6%'}, 'slow');
       yardLine+=8
       yardsToFirst-=8
     }
     if(WRodds >= 50 && WRodds < 70) {
       $('.defensiveSpan').text("Pass complete for a 15 yard gain!");
-      $('.footballIMG').animate({'left': '+=9.5%'},'slow');
+      $('.footballIMG').animate({'left': '+=12.4%'},'slow');
       yardLine += 15;
       yardsToFirst -=15
     }
     if(WRodds >= 70 && WRodds < 90) {
       $('.defensiveSpan').text("Pass complete for a 25 yard gain!");
-      $('.footballIMG').animate({'left': '+=19.8%'}, 'slow');;
+      $('.footballIMG').animate({'left': '+=20.7%'}, 'slow');;
       yardLine += 25;
       yardsToFirst -= 25;        
     }
     if(WRodds > 90) {
-      $('.footballIMG').animate({'left': '86.5%'}, 'fast');
+      $('.footballIMG').animate({'left': '95.9%'}, 'fast');
       yardLine = 100;
     }
     var checkState = setTimeout(checkGameState,650);
@@ -1043,7 +1044,7 @@ $( document ).ready(function() {
     clearInterval(timerId);
     // sackedReturnToDefault = setTimeout(returnToDefault, 2850);
     $('.defensiveSpan').text("SACKED!");
-    $('.footballIMG').animate({'left': '-=4.5%'}, "slow");
+    $('.footballIMG').animate({'left': '-=7%'}, "slow");
     $('.WRbuttons').addClass('placeholderWRbuttons');
     $('.WRbuttons').removeClass('WRbuttons');
     scoreboardUpdate();
@@ -1056,7 +1057,7 @@ $( document ).ready(function() {
     clearSackTimerBooleanTrigger = true;
     clearTimeout(sackTimer);
     // console.log("How many times does clearSackTimer hit?")
-      blitzSackedTime = setTimeout(blitzSacked, 3000);
+    blitzSackedTime = setTimeout(blitzSacked, 3000);
   }
 
   function blitzSacked(){
@@ -1066,7 +1067,7 @@ $( document ).ready(function() {
     yardLine-= 10;
     yardsToFirst+= 10;
     $('.defensiveSpan').text("SACKED!");
-    $('.footballIMG').animate({'left': '-=4.5%'}, "slow");
+    $('.footballIMG').animate({'left': '-=9.7%'}, "slow");
     $('.WRbuttons').addClass('placeholderWRbuttons');
     $('.WRbuttons').removeClass('WRbuttons');
     checkState = setTimeout(checkGameState, 850);
@@ -1091,7 +1092,7 @@ $( document ).ready(function() {
   }
 
   function touchdownFunction() {
-    $('.footballIMG').animate({'left': '24.5%'}, "slow");
+    $('.footballIMG').animate({'left': '22.2%'}, "slow");
     yardLine = 20;
   }
 
@@ -1142,6 +1143,32 @@ $( document ).ready(function() {
                         }
                     }, 1000);
   }
+
+  function checkPlayclock(){
+    console.log("checkPlayClockRuns");
+    if($('#playClock').innerHTML === '00'){
+      console.log("checkplayclock hits inside the if statement");
+      clearInterval(timerId)
+      $('.defensivePlay').text("Delay Of Game!")
+      setTimeout(fifteenYardPenalty, 400);
+    }
+  }
+
+  function fifteenYardPenalty(){
+    $('.defensivePlay').text("15 yard penalty!");
+    yardLine -= 15;
+    yardsToFirst -= 15;
+    $('.footballIMG').animate({'left': '14.5%'}, 'fast');
+  }
+
+  function hideProgressionPage(){
+    $(".progressionContainer").fadeOut("fast");
+    $('.progressionMask').fadeOut("fast");
+    $(".progressionHider").fadeOut("fast");
+    $('.progressionDiv').fadeOut("fast");
+    $('.progressionPages').hide();
+  }
+
 var firstRead;
 var secondRead;
 var thirdRead;
@@ -1184,12 +1211,9 @@ var fifthRead;
 
   $('.progressionSubmissionBtn5').click(function() {
     fifthRead = this.value;
-    $(".progressionContainer").fadeOut("fast");
-    $('.progressionMask').fadeOut("fast");
-    $(".progressionHider").fadeOut("fast");
-    $('.progressionDiv').fadeOut("fast");
-    $('.progressionPages').hide();
+    hideProgressionPage();
   })
+
 
   function progressionPaginate(){
     $('.progressionContainer').fadeIn('fast');
@@ -1384,6 +1408,7 @@ var fifthRead;
     $('.placeholderBirdsEyeView').addClass('birdsEyeImg');
     $('.birdsEyeImg').removeClass('placeholderBirdsEyeView');
     $('.buttons').css('background', 'white');
+    checkingThePlayClockTimeout = setTimeout(checkPlayclock, 33000);
     progressionPaginate();
   });
 
@@ -1408,6 +1433,7 @@ var fifthRead;
     $('.birdsEyeImg').removeClass('placeholderBirdsEyeView');
     $('.buttons').css('background', 'white');
     progressionPaginate();
+    checkingThePlayClockTimeout = setTimeout(checkPlayclock, 4500);
   });
 
   $('.bobsYourUncle').on('click', function() {
@@ -1429,12 +1455,15 @@ var fifthRead;
     $('.placeholderBirdsEyeView').addClass('birdsEyeImg');
     $('.birdsEyeImg').removeClass('placeholderBirdsEyeView');
     $('.buttons').css('background', 'white');
+    checkingThePlayClockTimeout = setTimeout(checkPlayclock, 4500);
     progressionPaginate();
   });
 
   $('.buttonSnap').on('click', function() {
     // $('.defensiveSpan').text(firstRead());
+    hideProgressionPage();
     clearInterval(playClockId);
+    clearTimeout(checkingThePlayClockTimeout);
     // sackTimer = setTimeout(sacked,5000);
     $('.progressionChoice').addClass('placeholderProgressionChoice'); 
     $('.placholderProgressionChoice').removeClass('progressionChoice'); 
@@ -1463,13 +1492,15 @@ var fifthRead;
                                      result = prop;
                                   }
                           defensivePlay = result
+                          console.log(defensivePlay, ' --------------------------------- defensivePlay inside getRndmDefensivePlay')
                           return result
             }
 
   function getRndmDefensivePlayImg() {
       var imageSrc = defensiveCoverageImgs[getRndmDefensivePlay()].src
       $('.birdsEyeImg').attr('src', imageSrc)
-      return imageSrc
+      console.log(imageSrc)
+      console.log(defensivePlay, '-------- DefensivePlay inside getRndmDefensivePlayImg')
   }
 
   $(window).load(function() {
@@ -1505,9 +1536,6 @@ var fifthRead;
     PlayResults.WR1initialOdds = initialWRodds();
     PlayResults.WR2initialOdds = initialWRodds();
     PlayResults.WR3initialOdds = initialWRodds();
-    PlayResults.WR1OddsAdj = 0;
-    PlayResults.WR2OddsAdj = 0;
-    PlayResults.WR3OddsAdj = 0;
     PlayResults.GlobalOddsAdj = 0;
     PlayResults.CurrentWR1Odds = 0; 
     PlayResults.CurrentWR2Odds = 0; 
@@ -1571,24 +1599,28 @@ var fifthRead;
   $('.wr1').on('click', function() {
     calculateOdds();
     setTimeout(currentOdds(PlayResults.CurrentWR1Odds, 200));
+    console.log(PlayResults);
     clearInterval(timerId)
   })
 
   $('.wr2').on('click', function() {  
     calculateOdds();
     setTimeout(currentOdds(PlayResults.CurrentWR2Odds, 200));
+    console.log(PlayResults);
     clearInterval(timerId)
   })  
 
   $('.wr3').on('click', function() {
     calculateOdds();
     setTimeout(currentOdds(PlayResults.CurrentWR3Odds));
+    console.log(PlayResults);
     clearInterval(timerId)
   })
 
   $('.wr4').on('click', function() {
     calculateOdds();
     setTimeout(currentOdds(PlayResults.CurrentWR4Odds, 200));
+    console.log(PlayResults);
     clearInterval(timerId)
   })
 
@@ -1597,6 +1629,8 @@ var fifthRead;
     PlayResults.CurrentWR2Odds = PlayResults.WR2initialOdds + PlayResults.WR2timeIncreaseOdds + PlayResults.GlobalOddsAdjustment + PlayResults.WR2oddsAdjustment;
     PlayResults.CurrentWR3Odds = PlayResults.WR3initialOdds + PlayResults.WR3timeIncreaseOdds + PlayResults.GlobalOddsAdjustment + PlayResults.WR3oddsAdjustment;
     PlayResults.CurrentWR4Odds = PlayResults.WR4initialOdds + PlayResults.WR4timeIncreaseOdds + PlayResults.GlobalOddsAdjustment + PlayResults.WR4oddsAdjustment;
+
+    console.log(PlayResults, ' -------------PlayResults at the end of calculateOdds function');
   }
 
   function displayReads(){
@@ -1934,7 +1968,7 @@ var fifthRead;
         clearTimeout(sackTimer);
         clearTimeout(returnToSackDefaultEndSacks);
         $('.defensiveSpan').text("TURNOVER ON DOWNS!");
-        $('.footballIMG').animate({'left': '24.5%'}, "fast");
+        $('.footballIMG').animate({'left': '22.2%'}, "fast");
       }
       if(lost === true) {
         // console.log("lost true hits")
