@@ -257,8 +257,22 @@ body {
   width: 100vw;
   opacity: 1;
   position: relative;
-  margin-top: 10%;
+  /* margin-top: 10%; */
   font-size: 35px;
+  padding-top: 10%;
+  /* margin-bottom: -10%; */
+  font-weight: bold;
+  text-align: center; }
+
+.container .field .offensiveLineSpan {
+  height: 35%;
+  width: 100vw;
+  opacity: 1;
+  position: relative;
+  /* margin-top: 20%; */
+  /* margin-bottom: -139%; */
+  font-size: 35px;
+  padding-top: -2.5%;
   font-weight: bold;
   text-align: center; }
 
@@ -420,6 +434,9 @@ table {
   margin-left: 30%; }
 
 .placeholderHowToPlayDiv {
+  display: none; }
+
+.placeholderOffensiveLineSpan {
   display: none; }
 
 .howToContainer {

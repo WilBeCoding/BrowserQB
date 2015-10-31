@@ -935,7 +935,12 @@ $( document ).ready(function() {
   var yardsToFirst = 10;
   var interception = 0;
   var pageSize = 1;
+  var toBeSacked = false;
+  var oLineTimeOut = 0;
+  var offensiveLine;
+  var finalRead = false;
   var progressionPageSize = 1;
+  var offensiveLineBuckles = false;
   var list = document.querySelector('.defensiveSpan');
   var audio = document.getElementsByTagName("audio")[0];
   var initialWRodds =  function randomInt() {
@@ -944,6 +949,34 @@ $( document ).ready(function() {
   var wrTimeIncreaseOdds= function randomInt(){
                             return Number((Math.random() * (5 - 1)) + 1);
                           };
+  function sackOddsInt() {
+                          return Number((Math.random() * (100 - 0)) + 0);
+                        };  
+
+  function goodOffensiveLinePlay(){
+    console.log("good offensive line play hits");
+    oLineTimeOut = setTimeout(clearOlineSpan, 850);
+    return $('.offensiveLineSpan').text('The offensive line is holding their blocks');
+  }
+
+  function badOffensiveLinePlay(){
+    console.log("bad offensive line play hits");
+     sackOdds+=10;
+     offensiveLineBuckles = true;
+     oLineTimeOut = setTimeout(clearOlineSpan, 850);
+    return $('.offensiveLineSpan').text('The offensive line is buckling!');
+  }
+
+  function oLineBuckling(){
+    console.log("olinebuckling hits");
+    if(offensiveLineBuckles = true) {
+      sackOdds+=10
+    }
+  }
+
+  function sackTimeout() {
+     return Number((Math.random() * (1500 - 800)) + 800);
+  };  
 
   var showPage = function(page) {
     $('.howToPlayPage').hide();
@@ -1036,6 +1069,7 @@ $( document ).ready(function() {
     // console.log(JSON.stringify(PlayResults,null, 4));
   }
 
+
   function sacked(){
     // console.log("sacked function hits");
     downCount++;
@@ -1048,8 +1082,20 @@ $( document ).ready(function() {
     $('.WRbuttons').addClass('placeholderWRbuttons');
     $('.WRbuttons').removeClass('WRbuttons');
     scoreboardUpdate();
-    checkState = setTimeout(checkGameState, 2500);
+    checkState = setTimeout(checkGameState, 1500);
     // console.log("checkstate hits in sacked function");
+  }
+
+  function checkOffensiveLine(){
+    console.log(offensiveLine, ' --------- offensiveLine')
+    $('.placeholderOffensiveLineSpan').addClass('offensiveLineSpan');
+    $('.offensiveLineSpan').removeClass('placeholderOffensiveLineSpan');
+    if(offensiveLine >= 50 && toBeSacked === false) {
+      goodOffensiveLinePlay()
+    }
+    else if(offensiveLine < 50){
+      badOffensiveLinePlay();
+    }
   }
 
   function clearSackTimer() {
@@ -1094,6 +1140,11 @@ $( document ).ready(function() {
   function touchdownFunction() {
     $('.footballIMG').animate({'left': '22.2%'}, "slow");
     yardLine = 20;
+  }
+
+  function clearOlineSpan(){
+    $('.offensiveLineSpan').addClass('placeholderOffensiveLineSpan');
+    $('.placeholderOffensiveLineSpan').removeClass('offensiveLineSpan');
   }
 
   function scoreboardUpdate() {
@@ -1205,7 +1256,7 @@ var fifthRead;
 
   $('.progressionSubmissionBtn4').click(function() {
     $('.progressionPages').eq(3).hide(); 
-    $('.progressionPages').eq(4).show(); 
+    $('.progressionPages').eq(4).show();
     fourthRead = this.value;
   })
 
@@ -1479,7 +1530,7 @@ var fifthRead;
     $('.placeholderBirdsEyeView').removeClass('birdsEyeImg');
     timerId = window.setInterval(function(){
       $('.defensiveSpan').text(displayReads());
-    }, 1500);
+    }, 850);
   })
 
   function getRndmDefensivePlay() {
@@ -1548,6 +1599,7 @@ var fifthRead;
     WR2OddsCount = 0;
     WR3OddsCount = 0;
     GlobalOddsCount = 0;
+    finalRead = false;
     smashSelected = false;
     fourVerticalsSelected = false;
     bobsYourUncle = false;
@@ -1597,6 +1649,7 @@ var fifthRead;
                               }
 
   $('.wr1').on('click', function() {
+    clearTimeout(oLineTimeOut);
     calculateOdds();
     setTimeout(currentOdds(PlayResults.CurrentWR1Odds, 200));
     console.log(PlayResults);
@@ -1604,6 +1657,7 @@ var fifthRead;
   })
 
   $('.wr2').on('click', function() {  
+    clearTimeout(oLineTimeOut);
     calculateOdds();
     setTimeout(currentOdds(PlayResults.CurrentWR2Odds, 200));
     console.log(PlayResults);
@@ -1611,6 +1665,7 @@ var fifthRead;
   })  
 
   $('.wr3').on('click', function() {
+    clearTimeout(oLineTimeOut);
     calculateOdds();
     setTimeout(currentOdds(PlayResults.CurrentWR3Odds));
     console.log(PlayResults);
@@ -1618,6 +1673,7 @@ var fifthRead;
   })
 
   $('.wr4').on('click', function() {
+    clearTimeout(oLineTimeOut);
     calculateOdds();
     setTimeout(currentOdds(PlayResults.CurrentWR4Odds, 200));
     console.log(PlayResults);
@@ -1634,6 +1690,11 @@ var fifthRead;
   }
 
   function displayReads(){
+    offensiveLine = sackOddsInt();
+    sackOdds = sackOddsInt();
+    if(sackOdds <= 15){
+      toBeSacked = true;
+    }
     console.log(defensivePlay);
     console.log("display reads function is running");
     if(firstRead === 'WR1' && prog1 === false) {
@@ -1750,6 +1811,11 @@ var fifthRead;
         })();
       }
     else if(thirdRead === 'WR1' && prog3 === false) {
+      checkOffensiveLine()
+      if(sackOdds <= 15){
+        sacked();
+        return
+      }
         prog3 = true;
         (function getRead(){
           console.log("getRead hits inside prog3 WR1");
@@ -1764,6 +1830,11 @@ var fifthRead;
         })();
       }
     else if(thirdRead === 'WR2' && prog3 === false) {
+      checkOffensiveLine()
+      if(sackOdds <= 15){
+        sacked();
+        return
+      }
         prog3 = true;
         (function getRead(){
           console.log("getRead hits inside prog3 WR2");
@@ -1778,6 +1849,11 @@ var fifthRead;
         })();
       }
     else if(thirdRead === 'WR3' && prog3 === false) {
+      checkOffensiveLine()
+      if(sackOdds <= 15){
+        sacked();
+        return
+      }
         prog3 = true;
         (function getRead(){
           console.log("getRead hits inside prog3 WR3");
@@ -1792,6 +1868,11 @@ var fifthRead;
         })();
       }
     else if(thirdRead === 'WR4' && prog3 === false) {
+      checkOffensiveLine()
+      if(sackOdds <= 15){
+        sacked();
+        return
+      }
         prog3 = true;
         (function getRead(){
           console.log("getRead hits inside prog3 WR4");
@@ -1806,6 +1887,13 @@ var fifthRead;
         })();
       }
       else if(fourthRead === 'WR1' && prog4 === false) {
+        debugger;
+        oLineBuckling();
+        oLineBuckling()
+        if(sackOdds <= 30){
+          sacked();
+          return
+        }
           prog4 = true;
           (function getRead(){
             console.log("getRead hits inside prog4 WR1");
@@ -1820,6 +1908,11 @@ var fifthRead;
           })();
         }
     else if(fourthRead === 'WR2' && prog4 === false) {
+      oLineBuckling();
+      if(sackOdds <= 30){
+        sacked();
+        return
+      }
       prog4 = true;
         (function getRead(){
           console.log("getRead hits inside prog4 WR2");
@@ -1835,6 +1928,11 @@ var fifthRead;
         })();
       }
     else if(fourthRead === 'WR3' && prog4 === false) {
+      oLineBuckling();
+      if(sackOdds <= 30){
+        sacked();
+        return
+      }
         (function getRead(){
           console.log("getRead hits inside prog4 WR3");
           var subObject = getRndmQBRead('WR3');
@@ -1849,6 +1947,11 @@ var fifthRead;
         })();
       }
     else if(fourthRead === 'WR4' && prog4 === false) {
+      oLineBuckling();
+      if(sackOdds <= 30){
+        sacked();
+        return
+      }
         (function getRead(){
           console.log("getRead hits inside prog4 WR4");
           var subObject = getRndmQBRead('WR4');
@@ -1863,6 +1966,12 @@ var fifthRead;
         })();
       }
     else if(fifthRead === 'WR1' && prog5 === false) {
+      oLineBuckling();
+      finalRead = true;
+      if(sackOdds <= 45){
+        sacked();
+        return
+      }
             prog5 = true;
         (function getRead(){
           console.log("getRead hits inside prog5 wr1");
@@ -1877,6 +1986,12 @@ var fifthRead;
         })();
       }
     else if(fifthRead === 'WR2' && prog5 === false) {
+      oLineBuckling();
+      finalRead = true;
+      if(sackOdds <= 45){
+        sacked();
+        return
+      }
             prog5 = true;
         (function getRead(){
           console.log("getRead hits inside prog5 WR2");
@@ -1891,6 +2006,12 @@ var fifthRead;
         })();
       }
     else if(fifthRead === 'WR3' && prog5 === false) {
+      oLineBuckling();
+      finalRead = true;
+      if(sackOdds <= 45){
+        sacked();
+        return
+      }
             prog5 = true;
         (function getRead(){
           console.log("getRead hits inside prog5 WR3");
@@ -1905,6 +2026,12 @@ var fifthRead;
         })();
       }
     else if(fifthRead === 'WR4' && prog5 === false) {
+      oLineBuckling();
+      finalRead = true;
+      if(sackOdds <= 45){
+        sacked();
+        return
+      }
             prog5 = true;
         (function getRead(){
           console.log("getRead hits inside prog5 WR4");
@@ -1917,6 +2044,9 @@ var fifthRead;
             getRead();
           }
         })();
+      }
+      if(finalRead === true) {
+        setTimeout(sackOdds, sackTimeout())
       }
   }
 
