@@ -888,10 +888,16 @@ $( document ).ready(function() {
   }
 
   var defensiveCoverageImgs = {
-        Cover2: {src:"../images/cover2.jpg"},
+        Cover2: {src:"../images/cover2.png"},
         Cover3: {src:"../images/cover3.png"},
-        ManCoverage: {src:"../images/manCoverage.png"}
+        ManDefense: ''
       }
+  
+  var manCoverages = {
+    ManCoverageVsSmash: {src:"../images/ManVsSmash.jpg"} ,
+    ManCoverageVsFourVertical: {src:"../images/manCoverage.png"},
+    ManCoverageVsBobsYourUncle: {src:"../images/ManVsBob.jpg"} 
+  }
 
   var WR1clicked = 0;
   var WR2clicked = 0;
@@ -903,7 +909,7 @@ $( document ).ready(function() {
   var prog3 = false;
   var prog4 = false;
   var prog5 = false;
-  var defensivePlay;
+  var defensivePlayImagez;
   var offensivePlay;
   var smashSelected = false;
   var fourVerticalsSelected = false;
@@ -927,6 +933,7 @@ $( document ).ready(function() {
   var yardLine = 20;
   var score = 0;
   var drive = 1;
+  var ManDefense;
   var playClockId = 0;
   var display;
   var timerId = 0;
@@ -942,6 +949,7 @@ $( document ).ready(function() {
   var toBeSacked = false;
   var oLineTimeOut = 0;
   var offensiveLine;
+  var manDefense = false;
   var finalRead = false;
   var progressionPageSize = 1;
   var offensiveLineBuckles = false;
@@ -1220,13 +1228,13 @@ $( document ).ready(function() {
     if($('#playClock').innerHTML === '00'){
       console.log("checkplayclock hits inside the if statement");
       clearInterval(timerId)
-      $('.defensivePlay').text("Delay Of Game!")
+      $('.defensiveSpan').text("Delay Of Game!")
       setTimeout(fifteenYardPenalty, 400);
     }
   }
 
   function fifteenYardPenalty(){
-    $('.defensivePlay').text("15 yard penalty!");
+    $('.defensiveSpan').text("15 yard penalty!");
     yardLine -= 15;
     yardsToFirst -= 15;
     $('.footballIMG').animate({'left': '14.5%'}, 'fast');
@@ -1532,6 +1540,7 @@ var fifthRead;
     $('.placeholderBirdsEyeView').addClass('birdsEyeImg');
     $('.birdsEyeImg').removeClass('placeholderBirdsEyeView');
     $('.buttons').css('background', 'white');
+    checkForManDefense();
     checkingThePlayClockTimeout = setTimeout(checkPlayclock, 33000);
     progressionPaginate();
   });
@@ -1556,11 +1565,13 @@ var fifthRead;
     $('.placeholderBirdsEyeView').addClass('birdsEyeImg');
     $('.birdsEyeImg').removeClass('placeholderBirdsEyeView');
     $('.buttons').css('background', 'white');
+    checkForManDefense();
     progressionPaginate();
     checkingThePlayClockTimeout = setTimeout(checkPlayclock, 4500);
   });
 
-  $('.bobsYourUncle').on('click', function() {
+  $('.BobsYourUncle').on('click', function() {
+    console.log("bob gets clicked");
     bobsYourUncleSelected = true;
     playClockId = 0;
     var thirtySeconds = 30;
@@ -1579,6 +1590,7 @@ var fifthRead;
     $('.placeholderBirdsEyeView').addClass('birdsEyeImg');
     $('.birdsEyeImg').removeClass('placeholderBirdsEyeView');
     $('.buttons').css('background', 'white');
+    checkForManDefense();
     checkingThePlayClockTimeout = setTimeout(checkPlayclock, 4500);
     progressionPaginate();
   });
@@ -1615,17 +1627,38 @@ var fifthRead;
                                   if (Math.random() < 1/++count) {
                                      result = prop;
                                   }
-                          defensivePlay = result
+                          defensivePlay = result;
+                          defensivePlayImagez = result;
                           console.log(defensivePlay, ' --------------------------------- defensivePlay inside getRndmDefensivePlay')
                           return result
             }
+  function checkForManDefense() {
+    console.log(defensivePlayImagez, 'defensiveplay inside check for man defense');
+    console.log(smashSelected, ' smash selected');
+    console.log(fourVerticalsSelected, ' four verts selected');
+    console.log(bobsYourUncleSelected, ' bobs your uncle selected');
+    // console.log('check for man defense hits');
+    if(defensivePlayImagez === 'ManDefense' && smashSelected === true) {
+      // console.log('Man Vs SMash Hits');
+      // console.log(manCoverages.ManCoverageVsSmash.src)
+      $('.birdsEyeImg').attr('src', manCoverages.ManCoverageVsSmash.src);
+    }
+    if(defensivePlayImagez === 'ManDefense' && fourVerticalsSelected === true) {
+      $('.birdsEyeImg').attr('src', 'https://media.giphy.com/media/PkX6O4vfRwjao/giphy.gif')
+      // console.log('ManVsFourVertsHits');
+    }
+    if(defensivePlayImagez === 'ManDefense' && bobsYourUncleSelected === true) {
+      console.log('bobs your uncle hits inside img function')
+      $('.birdsEyeImg').attr('src',manCoverages.ManCoverageVsBobsYourUncle.src)
+    }
+  }
 
   function getRndmDefensivePlayImg() {
       var imageSrc = defensiveCoverageImgs[getRndmDefensivePlay()].src
       $('.birdsEyeImg').attr('src', imageSrc)
       console.log(imageSrc);
       console.log($('.birdsEyeImg').attr('src', imageSrc));
-      console.log(defensivePlay, '-------- DefensivePlay inside getRndmDefensivePlayImg')
+      // console.log(defensivePlay, '-------- DefensivePlay inside getRndmDefensivePlayImg')
   }
 
   $(window).load(function() {
@@ -1781,7 +1814,7 @@ var fifthRead;
     if(sackOdds <= 15){
       toBeSacked = true;
     }
-    console.log(defensivePlay);
+    // console.log(defensivePlay);
     console.log("display reads function is running");
     if(firstRead === 'WR1' && prog1 === false) {
       console.log(" get read hits in prog1 but not in function");
