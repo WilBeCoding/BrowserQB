@@ -968,7 +968,7 @@ $( document ).ready(function() {
   function checkProgressionSelections(){
     if(WR1clicked === 3){
       $('.WR1submissionBtn').prop('disabled',true);
-      console.log("Does this shit in wr1??")
+      // console.log("Does this shit in wr1??")
     }
     if(WR2clicked === 3){
       $('.WR2submissionBtn').prop('disabled',true);
@@ -982,13 +982,13 @@ $( document ).ready(function() {
   }
 
   function goodOffensiveLinePlay(){
-    console.log("good offensive line play hits");
+    // console.log("good offensive line play hits");
     oLineTimeOut = setTimeout(clearOlineSpan, 850);
     return $('.offensiveLineSpan').text('The offensive line is holding their blocks');
   }
 
   function badOffensiveLinePlay(){
-    console.log("bad offensive line play hits");
+    // console.log("bad offensive line play hits");
      sackOdds+=10;
      offensiveLineBuckles = true;
      oLineTimeOut = setTimeout(clearOlineSpan, 850);
@@ -996,7 +996,7 @@ $( document ).ready(function() {
   }
 
   function oLineBuckling(){
-    console.log("olinebuckling hits");
+    // console.log("olinebuckling hits");
     if(offensiveLineBuckles = true) {
       sackOdds+=10
     }
@@ -1046,7 +1046,7 @@ $( document ).ready(function() {
 
   function currentOdds(WRodds) {
     console.log(WRodds, '   ------------------- WR odds')
-    // console.log(PlayResults)
+    console.log(PlayResults, ' ------PlayResults in currentOdds function')
     // console.log(PlayResults.CurrentWR1Odds +   "     WR1 odds");
     // console.log(PlayResults.CurrentWR2Odds +   "     WR2 odds");
     // console.log(PlayResults.CurrentWR3Odds +   "     WR3 odds");
@@ -1115,7 +1115,7 @@ $( document ).ready(function() {
   }
 
   function checkOffensiveLine(){
-    console.log(offensiveLine, ' --------- offensiveLine')
+    // console.log(offensiveLine, ' --------- offensiveLine')
     $('.placeholderOffensiveLineSpan').addClass('offensiveLineSpan');
     $('.offensiveLineSpan').removeClass('placeholderOffensiveLineSpan');
     if(offensiveLine >= 50 && toBeSacked === false) {
@@ -1168,11 +1168,15 @@ $( document ).ready(function() {
   function touchdownFunction() {
     $('.footballIMG').animate({'left': '22.2%'}, "slow");
     yardLine = 20;
+    yardsToFirst = 10;
+    down = 1;
   }
 
   function clearOlineSpan(){
     $('.offensiveLineSpan').addClass('placeholderOffensiveLineSpan');
     $('.placeholderOffensiveLineSpan').removeClass('offensiveLineSpan');
+    $('.offensiveLineSpanContainer').addClass('placeholderOffensiveLineSpanContainer'); 
+    $('.placeholderOffensiveLineSpanContainer').removeClass('offensiveLineSpanContainer'); 
   }
 
   function scoreboardUpdate() {
@@ -1224,9 +1228,9 @@ $( document ).ready(function() {
   }
 
   function checkPlayclock(){
-    console.log("checkPlayClockRuns");
+    // console.log("checkPlayClockRuns");
     if($('#playClock').innerHTML === '00'){
-      console.log("checkplayclock hits inside the if statement");
+      // console.log("checkplayclock hits inside the if statement");
       clearInterval(timerId)
       $('.defensiveSpan').text("Delay Of Game!")
       setTimeout(fifteenYardPenalty, 400);
@@ -1268,7 +1272,7 @@ var fifthRead;
     $('.progressionPages').eq(0).hide(); 
     $('.progressionPages').eq(1).show();
     firstRead = this.value;
-    console.log(this, '  ----------- this after selecting first read')
+    // console.log(this, '  ----------- this after selecting first read')
     if(this.value === 'WR1'){
       WR1clicked++
     }
@@ -1571,7 +1575,7 @@ var fifthRead;
   });
 
   $('.BobsYourUncle').on('click', function() {
-    console.log("bob gets clicked");
+    // console.log("bob gets clicked");
     bobsYourUncleSelected = true;
     playClockId = 0;
     var thirtySeconds = 30;
@@ -1596,11 +1600,11 @@ var fifthRead;
   });
 
   $('.buttonSnap').on('click', function() {
-    // $('.defensiveSpan').text(firstRead());
+    $('.placeholderOffensiveLineSpanContainer').addClass('offensiveLineSpanContainer');
+    $('.offensiveLineSpanContainer').removeClass('placeholderOffensiveLineSpanContainer');
     hideProgressionPage();
     clearInterval(playClockId);
     clearTimeout(checkingThePlayClockTimeout);
-    // sackTimer = setTimeout(sacked,5000);
     $('.progressionChoice').addClass('placeholderProgressionChoice'); 
     $('.placholderProgressionChoice').removeClass('progressionChoice'); 
     $('.snap').addClass('placeHolderSnap');
@@ -1629,14 +1633,14 @@ var fifthRead;
                                   }
                           defensivePlay = result;
                           defensivePlayImagez = result;
-                          console.log(defensivePlay, ' --------------------------------- defensivePlay inside getRndmDefensivePlay')
+                          // console.log(defensivePlay, ' --------------------------------- defensivePlay inside getRndmDefensivePlay')
                           return result
             }
   function checkForManDefense() {
-    console.log(defensivePlayImagez, 'defensiveplay inside check for man defense');
-    console.log(smashSelected, ' smash selected');
-    console.log(fourVerticalsSelected, ' four verts selected');
-    console.log(bobsYourUncleSelected, ' bobs your uncle selected');
+    // console.log(defensivePlayImagez, 'defensiveplay inside check for man defense');
+    // console.log(smashSelected, ' smash selected');
+    // console.log(fourVerticalsSelected, ' four verts selected');
+    // console.log(bobsYourUncleSelected, ' bobs your uncle selected');
     // console.log('check for man defense hits');
     if(defensivePlayImagez === 'ManCoverage' && smashSelected === true) {
       // console.log('Man Vs SMash Hits');
@@ -1648,7 +1652,7 @@ var fifthRead;
       // console.log('ManVsFourVertsHits');
     }
     if(defensivePlayImagez === 'ManCoverage' && bobsYourUncleSelected === true) {
-      console.log('bobs your uncle hits inside img function')
+      // console.log('bobs your uncle hits inside img function')
       $('.birdsEyeImg').attr('src',manCoverages.ManCoverageVsBobsYourUncle.src)
     }
   }
@@ -1656,8 +1660,8 @@ var fifthRead;
   function getRndmDefensivePlayImg() {
       var imageSrc = defensiveCoverageImgs[getRndmDefensivePlay()].src
       $('.birdsEyeImg').attr('src', imageSrc)
-      console.log(imageSrc);
-      console.log($('.birdsEyeImg').attr('src', imageSrc));
+      // console.log(imageSrc);
+      // console.log($('.birdsEyeImg').attr('src', imageSrc));
       // console.log(defensivePlay, '-------- DefensivePlay inside getRndmDefensivePlayImg')
   }
 
@@ -1701,7 +1705,11 @@ var fifthRead;
     PlayResults.WR1timeIncreaseOdds = wrTimeIncreaseOdds(); 
     PlayResults.WR2timeIncreaseOdds = wrTimeIncreaseOdds(); 
     PlayResults.WR3timeIncreaseOdds = wrTimeIncreaseOdds(); 
-    PlayResults.GlobalOddsAdjustment = 0;
+    PlayResults.GlobalOddsAdjustment = 0; 
+    PlayResults.WR1oddsAdjustment = 0; 
+    PlayResults.WR2oddsAdjustment = 0; 
+    PlayResults.WR3oddsAdjustment = 0; 
+    PlayResults.WR4oddsAdjustment = 0; 
     WR1OddsCount = 0;
     WR2OddsCount = 0;
     WR3OddsCount = 0;
@@ -1739,6 +1747,7 @@ var fifthRead;
     $('.buttonSnapPlaceholder').addClass('buttonSnap');
     $('.buttonSnap').removeClass('buttonSnapPlaceholder');
     $('.defensiveSpan').text(" ");
+    $('.offensiveLineSpan').text(" ");
     $('#playClock').removeClass('hiddenPlayClock');
     $('#playClock').addClass('playClock');
     $('#playClock').text(" ");
@@ -1800,12 +1809,15 @@ var fifthRead;
   })
 
   function calculateOdds(){
+    console.log(PlayResults.WR1initialOdds, '   - - - - - -  - - - - --  - WR1intial odds in calcOdds') 
+    console.log(PlayResults.WR1timeIncreaseOdds, '   - - - - - -  - - - - --  - WR1intial timeIncrease in calcOdds')  
+    console.log(PlayResults.WR1oddsAdjustment, '   - - - - - -  - - - - --  - WR1intial odds Adjustmenst in calcOdds')
+
     PlayResults.CurrentWR1Odds = PlayResults.WR1initialOdds + PlayResults.WR1timeIncreaseOdds + PlayResults.GlobalOddsAdjustment + PlayResults.WR1oddsAdjustment;
     PlayResults.CurrentWR2Odds = PlayResults.WR2initialOdds + PlayResults.WR2timeIncreaseOdds + PlayResults.GlobalOddsAdjustment + PlayResults.WR2oddsAdjustment;
     PlayResults.CurrentWR3Odds = PlayResults.WR3initialOdds + PlayResults.WR3timeIncreaseOdds + PlayResults.GlobalOddsAdjustment + PlayResults.WR3oddsAdjustment;
     PlayResults.CurrentWR4Odds = PlayResults.WR4initialOdds + PlayResults.WR4timeIncreaseOdds + PlayResults.GlobalOddsAdjustment + PlayResults.WR4oddsAdjustment;
-
-    console.log(PlayResults, ' -------------PlayResults at the end of calculateOdds function');
+    console.log(PlayResults.CurrentWR1Odds, ' ------------- CurrentWR1Odds at the end of calculateOdds function');
   }
 
   function displayReads(){
@@ -1815,14 +1827,14 @@ var fifthRead;
       toBeSacked = true;
     }
     // console.log(defensivePlay);
-    console.log("display reads function is running");
+    // console.log("display reads function is running");
     if(firstRead === 'WR1' && prog1 === false) {
-      console.log(" get read hits in prog1 but not in function");
+      // console.log(" get read hits in prog1 but not in function");
       prog1 = true;
       (function getRead(){
         var subObject = getRndmQBRead('WR1');
         if(subObject.isActive) {
-        console.log("getRead hits inside prog1 WR1");
+        // console.log("getRead hits inside prog1 WR1");
           subObject.isActive = false;
           PlayResults.WR1oddsAdjustment += subObject.odds
           return $('.defensiveSpan').text(subObject.value);
@@ -1834,7 +1846,7 @@ var fifthRead;
     else if(firstRead === 'WR2' && prog1 === false) {
         prog1 = true;
         (function getRead(){
-          console.log("getRead hits inside prog1 WR2");
+          // console.log("getRead hits inside prog1 WR2");
           var subObject = getRndmQBRead('WR2');
           if(subObject.isActive) {
             subObject.isActive = false;
@@ -1848,7 +1860,7 @@ var fifthRead;
     else if(firstRead === 'WR3' && prog1 === false) {
         prog1 = true;
         (function getRead(){
-          console.log("getRead hits inside prog1 WR3");
+          // console.log("getRead hits inside prog1 WR3");
           var subObject = getRndmQBRead('WR3');
           if(subObject.isActive) {
             subObject.isActive = false;
@@ -1862,7 +1874,7 @@ var fifthRead;
     else if(firstRead === 'WR4'&& prog1 === false) {
         prog1 = true;
         (function getRead(){
-          console.log("getRead hits inside prog1 WR4");
+          // console.log("getRead hits inside prog1 WR4");
           var subObject = getRndmQBRead('WR4');
           if(subObject.isActive) {
             subObject.isActive = false;
@@ -1876,7 +1888,7 @@ var fifthRead;
     else if(secondRead === 'WR1' && prog2 === false) {
         prog2 = true;
         (function getRead(){
-          console.log("getRead hits inside prog2 WR1");
+          // console.log("getRead hits inside prog2 WR1");
           var subObject = getRndmQBRead('WR1');
           if(subObject.isActive) {
             subObject.isActive = false;
@@ -1890,7 +1902,7 @@ var fifthRead;
     else if(secondRead === 'WR2' && prog2 === false) {
         prog2 = true;
         (function getRead(){
-          console.log("getRead hits inside prog2 WR2");
+          // console.log("getRead hits inside prog2 WR2");
           var subObject = getRndmQBRead('WR2');
           if(subObject.isActive) {
             subObject.isActive = false;
@@ -1904,7 +1916,7 @@ var fifthRead;
     else if(secondRead === 'WR3' && prog2 === false) {
         prog2 = true;
         (function getRead(){
-          console.log("getRead hits inside prog2 WR3");
+          // console.log("getRead hits inside prog2 WR3");
           var subObject = getRndmQBRead('WR3');
           if(subObject.isActive) {
             subObject.isActive = false;
@@ -1918,7 +1930,7 @@ var fifthRead;
     else if(secondRead === 'WR4' && prog2 === false) {
         prog2 = true;
         (function getRead(){
-          console.log("getRead hits inside prog2 WR4");
+          // console.log("getRead hits inside prog2 WR4");
           var subObject = getRndmQBRead('WR4');
           if(subObject.isActive) {
             subObject.isActive = false;
@@ -1937,7 +1949,7 @@ var fifthRead;
       }
         prog3 = true;
         (function getRead(){
-          console.log("getRead hits inside prog3 WR1");
+          // console.log("getRead hits inside prog3 WR1");
           var subObject = getRndmQBRead('WR1');
           if(subObject.isActive) {
             subObject.isActive = false;
@@ -1956,7 +1968,7 @@ var fifthRead;
       }
         prog3 = true;
         (function getRead(){
-          console.log("getRead hits inside prog3 WR2");
+          // console.log("getRead hits inside prog3 WR2");
           var subObject = getRndmQBRead('WR2');
           if(subObject.isActive) {
             subObject.isActive = false;
@@ -1975,7 +1987,7 @@ var fifthRead;
       }
         prog3 = true;
         (function getRead(){
-          console.log("getRead hits inside prog3 WR3");
+          // console.log("getRead hits inside prog3 WR3");
           var subObject = getRndmQBRead('WR3');
           if(subObject.isActive) {
             subObject.isActive = false;
@@ -1994,7 +2006,7 @@ var fifthRead;
       }
         prog3 = true;
         (function getRead(){
-          console.log("getRead hits inside prog3 WR4");
+          // console.log("getRead hits inside prog3 WR4");
           var subObject = getRndmQBRead('WR4');
           if(subObject.isActive) {
             subObject.isActive = false;
@@ -2006,7 +2018,6 @@ var fifthRead;
         })();
       }
       else if(fourthRead === 'WR1' && prog4 === false) {
-        debugger;
         oLineBuckling();
         oLineBuckling()
         if(sackOdds <= 30){
@@ -2015,7 +2026,7 @@ var fifthRead;
         }
           prog4 = true;
           (function getRead(){
-            console.log("getRead hits inside prog4 WR1");
+            // console.log("getRead hits inside prog4 WR1");
             var subObject = getRndmQBRead('WR1');
             if(subObject.isActive) {
               subObject.isActive = false;
@@ -2034,7 +2045,7 @@ var fifthRead;
       }
       prog4 = true;
         (function getRead(){
-          console.log("getRead hits inside prog4 WR2");
+          // console.log("getRead hits inside prog4 WR2");
           var subObject = getRndmQBRead('WR2');
           if(subObject.isActive) {
             subObject.isActive = false;
@@ -2053,7 +2064,7 @@ var fifthRead;
         return
       }
         (function getRead(){
-          console.log("getRead hits inside prog4 WR3");
+          // console.log("getRead hits inside prog4 WR3");
           var subObject = getRndmQBRead('WR3');
           if(subObject.isActive) {
             subObject.isActive = false;
@@ -2072,10 +2083,10 @@ var fifthRead;
         return
       }
         (function getRead(){
-          console.log("getRead hits inside prog4 WR4");
+          // console.log("getRead hits inside prog4 WR4");
           var subObject = getRndmQBRead('WR4');
           if(subObject.isActive) {
-            console.log("if statement hits in FOURTH READ PROG4")
+            // console.log("if statement hits in FOURTH READ PROG4")
             subObject.isActive = false;
             PlayResults.WR4oddsAdjustment += subObject.odds
             return $('.defensiveSpan').text(subObject.value);
@@ -2093,7 +2104,7 @@ var fifthRead;
       }
             prog5 = true;
         (function getRead(){
-          console.log("getRead hits inside prog5 wr1");
+          // console.log("getRead hits inside prog5 wr1");
           var subObject = getRndmQBRead('WR1');
           if(subObject.isActive) {
             subObject.isActive = false;
@@ -2113,7 +2124,7 @@ var fifthRead;
       }
             prog5 = true;
         (function getRead(){
-          console.log("getRead hits inside prog5 WR2");
+          // console.log("getRead hits inside prog5 WR2");
           var subObject = getRndmQBRead('WR2');
           if(subObject.isActive) {
             subObject.isActive = false;
@@ -2133,7 +2144,7 @@ var fifthRead;
       }
             prog5 = true;
         (function getRead(){
-          console.log("getRead hits inside prog5 WR3");
+          // console.log("getRead hits inside prog5 WR3");
           var subObject = getRndmQBRead('WR3');
           if(subObject.isActive) {
             subObject.isActive = false;
@@ -2153,7 +2164,7 @@ var fifthRead;
       }
             prog5 = true;
         (function getRead(){
-          console.log("getRead hits inside prog5 WR4");
+          // console.log("getRead hits inside prog5 WR4");
           var subObject = getRndmQBRead('WR4');
           if(subObject.isActive) {
             subObject.isActive = false;
