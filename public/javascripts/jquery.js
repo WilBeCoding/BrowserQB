@@ -893,6 +893,10 @@ $( document ).ready(function() {
         ManCoverage: {src:"../images/manCoverage.png"}
       }
 
+  var WR1clicked = 0;
+  var WR2clicked = 0;
+  var WR3clicked = 0;
+  var WR4clicked = 0;
   var checkGameStateReturnToDefaultTimeout;
   var prog1 = false;
   var prog2 = false;
@@ -952,6 +956,22 @@ $( document ).ready(function() {
   function sackOddsInt() {
                           return Number((Math.random() * (100 - 0)) + 0);
                         };  
+
+  function checkProgressionSelections(){
+    if(WR1clicked === 3){
+      $('.WR1submissionBtn').prop('disabled',true);
+      console.log("Does this shit in wr1??")
+    }
+    if(WR2clicked === 3){
+      $('.WR2submissionBtn').prop('disabled',true);
+    }
+    if(WR3clicked === 3){
+      $('.WR3submissionBtn').prop('disabled',true);
+    }
+    if(WR4clicked === 3){
+      $('.WR4submissionBtn').prop('disabled',true);
+    }
+  }
 
   function goodOffensiveLinePlay(){
     console.log("good offensive line play hits");
@@ -1240,24 +1260,77 @@ var fifthRead;
     $('.progressionPages').eq(0).hide(); 
     $('.progressionPages').eq(1).show();
     firstRead = this.value;
+    console.log(this, '  ----------- this after selecting first read')
+    if(this.value === 'WR1'){
+      WR1clicked++
+    }
+    if(this.value === 'WR2'){
+      WR2clicked++
+    }
+    if(this.value === 'WR3'){
+      WR3clicked++
+    }
+    if(this.value === 'WR4'){
+      WR4clicked++
+    }
+    checkProgressionSelections();
   })
 
-    $('.progressionSubmissionBtn2').click(function() {
+  $('.progressionSubmissionBtn2').click(function() {
     $('.progressionPages').eq(1).hide(); 
     $('.progressionPages').eq(2).show();
     secondRead = this.value
+    if(this.value === 'WR1'){
+      WR1clicked++
+    }
+    if(this.value === 'WR2'){
+      WR2clicked++
+    }
+    if(this.value === 'WR3'){
+      WR3clicked++
+    }
+    if(this.value === 'WR4'){
+      WR4clicked++
+    }
+    checkProgressionSelections();  
   })
 
   $('.progressionSubmissionBtn3').click(function() {
     $('.progressionPages').eq(2).hide(); 
     $('.progressionPages').eq(3).show(); 
     thirdRead = this.value;
+    if(this.value === 'WR1'){
+      WR1clicked++
+    }
+    if(this.value === 'WR2'){
+      WR2clicked++
+    }
+    if(this.value === 'WR3'){
+      WR3clicked++
+    }
+    if(this.value === 'WR4'){
+      WR4clicked++
+    }
+    checkProgressionSelections();
   })
 
   $('.progressionSubmissionBtn4').click(function() {
     $('.progressionPages').eq(3).hide(); 
     $('.progressionPages').eq(4).show();
     fourthRead = this.value;
+    if(this.value === 'WR1'){
+      WR1clicked++
+    }
+    if(this.value === 'WR2'){
+      WR2clicked++
+    }
+    if(this.value === 'WR3'){
+      WR3clicked++
+    }
+    if(this.value === 'WR4'){
+      WR4clicked++
+    }
+    checkProgressionSelections();
   })
 
   $('.progressionSubmissionBtn5').click(function() {
@@ -1550,7 +1623,8 @@ var fifthRead;
   function getRndmDefensivePlayImg() {
       var imageSrc = defensiveCoverageImgs[getRndmDefensivePlay()].src
       $('.birdsEyeImg').attr('src', imageSrc)
-      console.log(imageSrc)
+      console.log(imageSrc);
+      console.log($('.birdsEyeImg').attr('src', imageSrc));
       console.log(defensivePlay, '-------- DefensivePlay inside getRndmDefensivePlayImg')
   }
 
@@ -1603,6 +1677,14 @@ var fifthRead;
     smashSelected = false;
     fourVerticalsSelected = false;
     bobsYourUncle = false;
+    WR1clicked = 0;
+    WR2clicked = 0;
+    WR3clicked = 0;
+    WR4clicked = 0;
+    $('.WR1submissionBtn').prop('disabled',false);
+    $('.WR2submissionBtn').prop('disabled',false);
+    $('.WR3submissionBtn').prop('disabled',false);
+    $('.WR4submissionBtn').prop('disabled',false);
     getRndmDefensivePlayImg();
     $('.placeholderProgressionChoice').addClass('progressionChoice'); 
     $('.progressionChoice').removeClass('placeholderProgressionChoice'); 
@@ -1650,6 +1732,7 @@ var fifthRead;
 
   $('.wr1').on('click', function() {
     clearTimeout(oLineTimeOut);
+    clearOlineSpan();
     calculateOdds();
     setTimeout(currentOdds(PlayResults.CurrentWR1Odds, 200));
     console.log(PlayResults);
@@ -1658,6 +1741,7 @@ var fifthRead;
 
   $('.wr2').on('click', function() {  
     clearTimeout(oLineTimeOut);
+    clearOlineSpan();
     calculateOdds();
     setTimeout(currentOdds(PlayResults.CurrentWR2Odds, 200));
     console.log(PlayResults);
@@ -1666,6 +1750,7 @@ var fifthRead;
 
   $('.wr3').on('click', function() {
     clearTimeout(oLineTimeOut);
+    clearOlineSpan();
     calculateOdds();
     setTimeout(currentOdds(PlayResults.CurrentWR3Odds));
     console.log(PlayResults);
@@ -1674,6 +1759,7 @@ var fifthRead;
 
   $('.wr4').on('click', function() {
     clearTimeout(oLineTimeOut);
+    clearOlineSpan();
     calculateOdds();
     setTimeout(currentOdds(PlayResults.CurrentWR4Odds, 200));
     console.log(PlayResults);

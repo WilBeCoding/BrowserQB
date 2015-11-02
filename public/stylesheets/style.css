@@ -46,7 +46,6 @@ body {
   flex-direction: row;
   width: 100%;
   height: 70%;
-  background-color: green;
   -webkit-justify-content: space-around;
   -ms-flex-pack: distribute;
   justify-content: space-around;
@@ -60,7 +59,6 @@ body {
   -ms-flex-direction: column;
   flex-direction: column;
   height: 98%;
-  background-color: purple;
   width: 33.25%;
   text-align: center;
   font-family: 'Alfa Slab One', cursive;
@@ -75,7 +73,6 @@ body {
   -ms-flex-direction: column;
   flex-direction: column;
   height: 98%;
-  background-color: red;
   width: 33.25%;
   position: relative;
   text-align: center; }
@@ -86,7 +83,6 @@ body {
 
 .huthutHIKEbttn {
   margin: 0 auto;
-  background-color: orange;
   height: 100%;
   width: 100%; }
 
@@ -100,7 +96,6 @@ body {
   height: 98%;
   position: relative;
   width: 33.25%;
-  background-color: orange;
   font-family: 'Alfa Slab One', cursive;
   text-align: center; }
 
@@ -295,15 +290,13 @@ body {
   margin: 0 auto;
   margin-left: 45%;
   width: 100%;
-  height: 50%;
-  background-color: orange; }
+  height: 50%; }
 
 .buttonSnap {
   color: red;
   margin-left: 47%; }
 
 .hikeButtonContainer {
-  color: orange;
   height: 100%;
   padding-left: w;
   width: 100%; }
@@ -317,7 +310,6 @@ body {
   /* margin-top: -11%; */ }
 
 .bottomButtonContainer {
-  background-color: purple;
   height: 100%;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -361,7 +353,7 @@ body {
 
 .container .buttons .WRbuttons .wr3 {
   text-align: center;
-  padding-right: 25%;
+  /* padding-right: 25%; */
   height: 100px;
   width: 30px; }
 
