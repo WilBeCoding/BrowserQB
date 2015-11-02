@@ -890,7 +890,7 @@ $( document ).ready(function() {
   var defensiveCoverageImgs = {
         Cover2: {src:"../images/cover2.png"},
         Cover3: {src:"../images/cover3.png"},
-        ManDefense: ''
+        ManCoverage: ''
       }
   
   var manCoverages = {
@@ -1638,16 +1638,16 @@ var fifthRead;
     console.log(fourVerticalsSelected, ' four verts selected');
     console.log(bobsYourUncleSelected, ' bobs your uncle selected');
     // console.log('check for man defense hits');
-    if(defensivePlayImagez === 'ManDefense' && smashSelected === true) {
+    if(defensivePlayImagez === 'ManCoverage' && smashSelected === true) {
       // console.log('Man Vs SMash Hits');
       // console.log(manCoverages.ManCoverageVsSmash.src)
       $('.birdsEyeImg').attr('src', manCoverages.ManCoverageVsSmash.src);
     }
-    if(defensivePlayImagez === 'ManDefense' && fourVerticalsSelected === true) {
+    if(defensivePlayImagez === 'ManCoverage' && fourVerticalsSelected === true) {
       $('.birdsEyeImg').attr('src', 'https://media.giphy.com/media/PkX6O4vfRwjao/giphy.gif')
       // console.log('ManVsFourVertsHits');
     }
-    if(defensivePlayImagez === 'ManDefense' && bobsYourUncleSelected === true) {
+    if(defensivePlayImagez === 'ManCoverage' && bobsYourUncleSelected === true) {
       console.log('bobs your uncle hits inside img function')
       $('.birdsEyeImg').attr('src',manCoverages.ManCoverageVsBobsYourUncle.src)
     }
