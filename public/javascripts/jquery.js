@@ -1768,10 +1768,6 @@ var fifthRead;
     $('#playClock').text(" ");
     $('.placeholderTable').addClass('table');
     $('.table').removeClass('placeholderTable');
-    if(downCount === 5){
-      downCount = 1;
-      yardsToFirst = 10;
-    }
     setIsActiveTrue();
   }
 
@@ -2255,6 +2251,10 @@ var fifthRead;
         clearTimeout(returnToSackDefaultEndSacks);
         $('.defensiveSpan').text("TURNOVER ON DOWNS!");
         $('.footballIMG').animate({'left': '22.2%'}, "fast");
+        if(downCount === 5){
+          downCount = 1;
+          yardsToFirst = 10;
+        }
       }
       if(lost === true) {
         clearTimeout(NotIfYouLose);
