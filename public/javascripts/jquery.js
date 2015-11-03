@@ -1100,7 +1100,6 @@ $( document ).ready(function() {
 
   function sacked(){
     // console.log("sacked function hits");
-    downCount++;
     yardLine-= 7;
     yardsToFirst+=7;
     clearInterval(timerId);
@@ -1109,7 +1108,6 @@ $( document ).ready(function() {
     $('.footballIMG').animate({'left': '-=7%'}, "slow");
     $('.WRbuttons').addClass('placeholderWRbuttons');
     $('.WRbuttons').removeClass('WRbuttons');
-    scoreboardUpdate();
     checkState = setTimeout(checkGameState, 1500);
     // console.log("checkstate hits in sacked function");
   }
@@ -1180,6 +1178,8 @@ $( document ).ready(function() {
   }
 
   function scoreboardUpdate() {
+    console.log(yardsToFirst, ' ------****----- yardsToFirst in scoreboardupdate function')
+    console.log(downCount + '----------- =-=-=-=- downcount within the scoreboardUpdate');
     if(downCount === 1) {
       $('.down').text("1st and " + yardsToFirst);
     }
@@ -1367,6 +1367,7 @@ var fifthRead;
     $('.pages').eq(0).show()
     $('.topLeft').css('z-index', '-1');
     $('.topRight').css('z-index', '-1');
+    $('.introImg').css('z-index', '0');
   });
 
 
@@ -1463,6 +1464,7 @@ var fifthRead;
     $('.pages').hide();
     $('.topLeft').css('z-index', '0');
     $('.topRight').css('z-index', '0');
+    $('.introImg').css('z-index', '1');
   });
 
   function validate(){
@@ -1488,7 +1490,7 @@ var fifthRead;
   $('.startGameBtn').on('click', function() {
     $('.introImg').css('display', 'none');
     if ($('header').width() < 481){
-      $("label").css('margin-left', '70%');
+      // $("label").css('margin-left', '70%');
       $('.field').css('-webkit-filter','none'); 
     }
     var initials = document.getElementById("initials").value;
@@ -1548,6 +1550,10 @@ var fifthRead;
     checkForManDefense();
     checkingThePlayClockTimeout = setTimeout(checkPlayclock, 33000);
     progressionPaginate();
+    $('.wr1Label').text('Curl'); 
+    $('.wr2Label').text('Outside Post'); 
+    $('.wr3Label').text('Cross'); 
+    $('.wr4Label').text('Inside Post'); 
   });
 
   $('.fourVerticals').on('click', function() {
@@ -1572,6 +1578,10 @@ var fifthRead;
     $('.buttons').css('background', 'white');
     checkForManDefense();
     progressionPaginate();
+    $('.wr1Label').text('Go'); 
+    $('.wr2Label').text('Go'); 
+    $('.wr3Label').text('Go'); 
+    $('.wr4Label').text('Go'); 
     checkingThePlayClockTimeout = setTimeout(checkPlayclock, 4500);
   });
 
@@ -1604,6 +1614,8 @@ var fifthRead;
     $('.placeholderOffensiveLineSpanContainer').addClass('offensiveLineSpanContainer');
     $('.offensiveLineSpanContainer').removeClass('placeholderOffensiveLineSpanContainer');
     hideProgressionPage();
+    $('.placeHolderDefensiveSpan').addClass('defensiveSpan');
+    $('.defensiveSpan').removeClass('placeHolderDefensiveSpan');
     clearInterval(playClockId);
     clearTimeout(checkingThePlayClockTimeout);
     $('.progressionChoice').addClass('placeholderProgressionChoice'); 
@@ -1676,6 +1688,7 @@ var fifthRead;
   })
 
   function returnToDefault () {
+    scoreboardUpdate();
     prog1 = false;
     prog2 = false;
     prog3 = false;
@@ -1692,9 +1705,6 @@ var fifthRead;
       downCount = 1;
       yardsToFirst = 10;
     }
-    $('.yards').text(yardsToFirst);
-    $('.down').text(downCount);
-    scoreboardUpdate();
     interception = 0;
     PlayResults.WR1initialOdds = initialWRodds();
     PlayResults.WR2initialOdds = initialWRodds();
@@ -1730,7 +1740,7 @@ var fifthRead;
     getRndmDefensivePlayImg();
     $('.placeholderProgressionChoice').addClass('progressionChoice'); 
     $('.progressionChoice').removeClass('placeholderProgressionChoice'); 
-    $('.buttons').css("margin-top", "25px");
+    // $('.buttons').css("margin-top", "25px");
     $('.placeHolderTopRight').addClass('topRight');
     $('.placeHolderTopLeft').addClass('topLeft');
     $('.topRight').removeClass('placeHolderTopRight');
@@ -1738,6 +1748,7 @@ var fifthRead;
     $('.buttons').addClass('placeholderButtons');
     $('.placeholderButtons').removeClass('buttons');
     $('.snap').addClass('placeHoldersnap');
+    $('.offensiveLineSpanContainer').addClass('placeholderOffensiveLineSpanContainer')
     $('.placeholderButtons').removeClass('snap');
     $('.birdsEyeImg').addClass('placeholderBirdsEyeView');
     $('.placeholderBirdsEyeView').removeClass('birdsEyeImg');
@@ -1747,13 +1758,20 @@ var fifthRead;
     $('.snap').removeClass('placeHoldersnap');
     $('.buttonSnapPlaceholder').addClass('buttonSnap');
     $('.buttonSnap').removeClass('buttonSnapPlaceholder');
-    $('.defensiveSpan').text(" ");
-    $('.offensiveLineSpan').text(" ");
+    // console.log('hits right above defensive span text change')
+    $('.defensiveSpan').text("");
+    $('.defensiveSpan').addClass('placeHolderDefensiveSpan');
+    $('.placeHolderDefensiveSpan').removeClass('defensiveSpan');
+    $('.offensiveLineSpan').text("");
     $('#playClock').removeClass('hiddenPlayClock');
     $('#playClock').addClass('playClock');
     $('#playClock').text(" ");
     $('.placeholderTable').addClass('table');
     $('.table').removeClass('placeholderTable');
+    if(downCount === 5){
+      downCount = 1;
+      yardsToFirst = 10;
+    }
     setIsActiveTrue();
   }
 
@@ -1777,8 +1795,11 @@ var fifthRead;
     clearTimeout(oLineTimeOut);
     clearOlineSpan();
     calculateOdds();
-    setTimeout(currentOdds(PlayResults.CurrentWR1Odds, 200));
-    console.log(PlayResults);
+    // WRodds = 10;
+    setTimeout(currentOdds(10, 200));
+
+    // setTimeout(currentOdds(PlayResults.CurrentWR1Odds, 200));
+    // console.log(PlayResults);
     clearInterval(timerId)
   })
 
@@ -1786,8 +1807,10 @@ var fifthRead;
     clearTimeout(oLineTimeOut);
     clearOlineSpan();
     calculateOdds();
-    setTimeout(currentOdds(PlayResults.CurrentWR2Odds, 200));
-    console.log(PlayResults);
+    WRodds = 30;
+    setTimeout(currentOdds(30, 200));
+    // setTimeout(currentOdds(PlayResults.CurrentWR2Odds, 200));
+    // console.log(PlayResults);
     clearInterval(timerId)
   })  
 
@@ -1796,7 +1819,7 @@ var fifthRead;
     clearOlineSpan();
     calculateOdds();
     setTimeout(currentOdds(PlayResults.CurrentWR3Odds));
-    console.log(PlayResults);
+    // console.log(PlayResults);
     clearInterval(timerId)
   })
 
@@ -1805,20 +1828,20 @@ var fifthRead;
     clearOlineSpan();
     calculateOdds();
     setTimeout(currentOdds(PlayResults.CurrentWR4Odds, 200));
-    console.log(PlayResults);
+    // console.log(PlayResults);
     clearInterval(timerId)
   })
 
   function calculateOdds(){
-    console.log(PlayResults.WR1initialOdds, '   - - - - - -  - - - - --  - WR1intial odds in calcOdds') 
-    console.log(PlayResults.WR1timeIncreaseOdds, '   - - - - - -  - - - - --  - WR1intial timeIncrease in calcOdds')  
-    console.log(PlayResults.WR1oddsAdjustment, '   - - - - - -  - - - - --  - WR1intial odds Adjustmenst in calcOdds')
+    // console.log(PlayResults.WR1initialOdds, '   - - - - - -  - - - - --  - WR1intial odds in calcOdds') 
+    // console.log(PlayResults.WR1timeIncreaseOdds, '   - - - - - -  - - - - --  - WR1intial timeIncrease in calcOdds')  
+    // console.log(PlayResults.WR1oddsAdjustment, '   - - - - - -  - - - - --  - WR1intial odds Adjustmenst in calcOdds')
 
     PlayResults.CurrentWR1Odds = PlayResults.WR1initialOdds + PlayResults.WR1timeIncreaseOdds + PlayResults.GlobalOddsAdjustment + PlayResults.WR1oddsAdjustment;
     PlayResults.CurrentWR2Odds = PlayResults.WR2initialOdds + PlayResults.WR2timeIncreaseOdds + PlayResults.GlobalOddsAdjustment + PlayResults.WR2oddsAdjustment;
     PlayResults.CurrentWR3Odds = PlayResults.WR3initialOdds + PlayResults.WR3timeIncreaseOdds + PlayResults.GlobalOddsAdjustment + PlayResults.WR3oddsAdjustment;
     PlayResults.CurrentWR4Odds = PlayResults.WR4initialOdds + PlayResults.WR4timeIncreaseOdds + PlayResults.GlobalOddsAdjustment + PlayResults.WR4oddsAdjustment;
-    console.log(PlayResults.CurrentWR1Odds, ' ------------- CurrentWR1Odds at the end of calculateOdds function');
+    // console.log(PlayResults.CurrentWR1Odds, ' ------------- CurrentWR1Odds at the end of calculateOdds function');
   }
 
   function displayReads(){
@@ -2190,6 +2213,17 @@ var fifthRead;
                     return
   }
 
+  function checkIfLost(){
+    if(drive === 4 && score !== 14 || drive === 3 && score !==7) {
+      // console.log("Lose Condition Hits")
+      clearTimeout(sackedReturnToDefault);
+      clearInterval(timerId);
+      clearTimeout(sackTimer);
+      clearTimeout(returnToSackDefaultEndSacks);
+      lost = true;
+    }
+  }
+
     function checkGameState() {
       downCount++
       if(yardLine >= '100') {
@@ -2200,16 +2234,8 @@ var fifthRead;
         downCount = 1;
         setTimeout(touchdownFunction, 1500);
       }
-      // console.log(drive + "Drive Top of game state function");
-      // console.log(score  +  " this is the score at top of gamestate function");
-      else if(drive === 4 && score !== 14 || drive === 3 && score !==7) {
-        // console.log("Lose Condition Hits")
-        clearTimeout(sackedReturnToDefault);
-        clearInterval(timerId);
-        clearTimeout(sackTimer);
-        clearTimeout(returnToSackDefaultEndSacks);
-        lost = true;
-      }
+      console.log(downCount + "Downcount at the top of the game state function");
+      console.log(yardsToFirst +  " this is the yardsToFirst at top of gamestate function");
       if(score === 14) {
         // console.log("Win condition hit");
         wonGame = true;
@@ -2218,11 +2244,10 @@ var fifthRead;
         clearTimeout(sackTimer);
         clearTimeout(returnToSackDefaultEndSacks);
       }
-      else if(downCount === 5 && yardLine < 100 && yardsToFirst) {
+      else if(downCount === 5 && yardLine < 100 && yardsToFirst > 0) {
         drive++;
-        downCount = 1;
-        yardsToFirst = 10;
-          setTimeout(returnToDefault,2000)
+        checkIfLost();
+          NotIfYouLose = setTimeout(returnToDefault,2000)
         // console.log("turnover condition hit");
         clearTimeout(sackedReturnToDefault);
         clearInterval(timerId);
@@ -2232,6 +2257,7 @@ var fifthRead;
         $('.footballIMG').animate({'left': '22.2%'}, "fast");
       }
       if(lost === true) {
+        clearTimeout(NotIfYouLose);
         // console.log("lost true hits")
         setTimeout(loser, 850);
       }
@@ -2240,8 +2266,10 @@ var fifthRead;
       }else{    
       checkGameStateReturnToDefaultTimeout = setTimeout(returnToDefault, 2500);
       }
+      // downCount+
       // console.log("Game State Function Hits")
       // console.log(drive + "Drive at Bottom of game state function");
     }
+
   
 });
