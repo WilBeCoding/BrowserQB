@@ -1479,13 +1479,14 @@ var fifthRead;
     if(initials.length > 3) {
       $('.startGameBtn').prop('disabled', false);
       if(event.keyCode == 13){
-          $(".startGameBtn").click();
+          $("#initialsButton").click();
       }
     }
       $(document).unbind('keypress');
   });
 
   $('.startGameBtn').on('click', function() {
+    $('.introImg').css('display', 'none');
     if ($('header').width() < 481){
       $("label").css('margin-left', '70%');
       $('.field').css('-webkit-filter','none'); 
@@ -1493,7 +1494,7 @@ var fifthRead;
     var initials = document.getElementById("initials").value;
     $('.pregame').addClass('placeholderPregame');
     $('.placeholderPregame').removeClass('pregame');
-    $('.topLeft').css('margin-right', 0);
+    // $('.topLeft').css('margin-right', 0);
     $('.placeholderTable').addClass('table');
     $('.table').removeClass('placeholderTable');
     $('.placeHolderTopRight').addClass('topRight');

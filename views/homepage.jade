@@ -10,6 +10,7 @@ block content
       div
         p.score
     div.field
+      img(src='../images/browserQbCover.jpg').introImg
       div.progressionContainer
         div.progressionMask
       div.progressionHider
@@ -75,9 +76,6 @@ block content
     div.pregame
       h1 Welcome to BrowserQB!
       p You have 3 drives to score 14 points. 
-      br
-      br
-      br
       div.center
         form(action="/", method='post' id="mainInitials")
           label Enter your name to start playing!
@@ -88,7 +86,7 @@ block content
           input(type="button" value="How To Play").howToPlayButton
     div.howToContainer
       div.mask
-    div.hider      
+    div.hider
       div.howToPlayDiv
         div.pages
           p.howToPlayPage.current
@@ -157,18 +155,16 @@ block content
           input(type='button' value='Back To The Field!').closeHowToButton
           h1 Smash Anatomy
           p There are 4 routes in the Smash play
-          br
           p WR1 is running a hitch route
           p A hitch route is good against soft coverage where the safety is deep and the cornerback is short
           p Against man coverage or a zone scheme where the cornerback is mid field throwing the hitch route is not the best decision
-          p
+          pe
           p WR2 is running an outside post route
           p This route is effective against zone coverage when the safety isn't on the left side of the field and the CB isn't deep
           p WR3 is running a cross route
           p This route is effective in man coverage or a soft zone when the CBs play back
           p
           p WR4 is running an inside post route
-          p I'll update when this is a good route to go for later
         div.pages
           div.howToPlayPage
           input(type='button' value='The Anatomy of Bobs your uncle').nextPage
@@ -197,33 +193,29 @@ block content
           input(type='button' value='Learn About Cover 3').nextPage
           input(type='button' value= 'Back').lastPage
           input(type='button' value='Back To The Field!').closeHowToButton
-          h1 Cover 2
-          br
-          p Cover 2 is a zone defense so defenders are responsible for areas on the field and not individual WRs
-          p Two safeties back
-          p CBs playing soft
-          p
+          h1 Cover 2 via Wikipedia
+          p Teams that play Cover 2 shells usually ascribe to the "bend-but-don't-break" philosophy, preferring to keep offensive players in front of them for short gains while limiting long passes. This is in stark contrast to a more aggressive Cover 1 type scheme which leaves the offensive team's wide receivers in single man-to-man coverage with only one deep helper. By splitting the deep field between two defenders, the defense can drastically reduce the number of long gains.
+          | The main weakness of the Cover 2 shell occurs in the middle of the field between the safeties. The safeties attempt to gain width upon the snap of the ball to cover any long passes to quick wide receivers down the sideline. This movement creates a natural hole between the safeties that can be attacked. By sending a receiver (usually a tight end) into the hole, the offense forces the safety to make a decision: play the vulnerable hole in the middle of the field or help out on the wide receiver. The quarterback reads the safety's decision and decides on the best matchup (i.e. which mismatch is better—TE vs S or WR vs CB). Also many NFL teams find a weakness between the corner and the safety on a deep out route. There is a little gap in between and the best quarterbacks can hit the gap with the right timing.
+          | Cover 2 also clogs up the QB's throwing lanes. A linebacker can be assigned deep to cover the area between the safeties and the linebackers, similar to Cover 3. Dropping a CB to one of the zones can allow a safety to blitz or drop down into the box area.
         div.pages
           div.howToPlayPage
           input(type='button' value='Learn About Man Coverage').nextPage 
           input(type='button' value= 'Back').lastPage
           input(type='button' value='Back To The Field!').closeHowToButton
           h1 Cover 3
-          br
-          p Cover 3 is a zone defense in which 3 defenders play deep
-          p Short to Medium routes are effectives against cover 3
-          p
-          p
+          p Cover 3 refers to 3 deep defenders each guarding one-third of the deep zone. Cover 3 schemes are usually used to defend against passes, mainly those towards the deep middle of the field. Unlike Cover 2 schemes that create a natural hole between safeties, Cover 3's extra deep defender is able to patrol the middle area effectively.
+          |The most basic Cover 3 scheme involves 2 CBs and a safety. Upon snap, the CBs work for depth, backpedaling into their assigned zone. One safety moves toward the center of the field. The other safety is free to rotate into the flat area (about 2-4 yards beyond the line of scrimmage), provide pass coverage help, or blitz.
+          p Cover 3 schemes are susceptible to short, timed passes to the outside due to the hard drop of both CBs. This puts pressure on the OLBs to get into their drop quickly. Another disadvantage of cover 3 schemes is they are relatively easy to diagnose by opposing QBs. Because of this teams will often employ slight wrinkles in their coverage to confuse offenses. An example of this includes employing man coverage on one side and zone on another or swaping coverage zones between defenders.
+          p Source - Wikipedia
         div.pages
           div.howToPlayPage
           input(type='button' value='Back').lastPage
           input(type='button' value='Back To The Field!').closeHowToButton
           h1 Man Coverage
-          br
-          p Man Coverage is when every one of your WRs has a man assigned to defend him all play
-          p Throwing the ball at the right time is paramount
-          p
-    div.topLeft
+          p Simply stated, man-to-man coverage is when any defensive back, or maybe even a linebacker, is assigned to cover a specific offensive player, such as a running back, tight end, or wide receiver. The defender must cover (stay with) this player all over the field until the play ends. His responsibility is to make sure the receiver doesn’t catch a pass. The most important rule of man-to-man coverage (which is also known as man coverage) is that the defensive back must keep his eyes on the player that he’s guarding or is responsible for watching.
+          p Source dummies.com
+          p Man coverage can be mixed with zone coverage so one or two defenders remain in a zone
+    div.placeHolderTopLeft
       h1 Pass Plays
       input(type="button" value="How To Play").howToPlayButton
       div.passPlays

@@ -35,8 +35,7 @@ body {
   height: 42%;
   width: 100%;
   text-align: center;
-  margin-top: -155px;
-  display: none; }
+  /* margin-top: -1%; */ }
 
 .container .passPlays {
   display: -webkit-flex;
@@ -333,6 +332,15 @@ body {
   -ms-flex-direction: row;
   flex-direction: row; }
 
+.introImg {
+  height: 100%;
+  width: 25%;
+  z-index: 1;
+  position: absolute;
+  margin: 0 auto;
+  padding-top: 0%;
+  padding-left: 39%; }
+
 .container .buttons .WRbuttons {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -457,6 +465,18 @@ table {
   right: 0;
   bottom: 0;
   left: 0; }
+
+.pregameContainer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0; }
+
+.pregameMask {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 10, 20, 0.6); }
 
 .placeholderProgressionChoice {
   display: none; }
@@ -641,7 +661,6 @@ table {
 
   .container .pregame {
     height: 100%;
-    margin-top: -85%;
     position: relative; }
 
   .container .passImage {
@@ -652,15 +671,6 @@ table {
             align-self: center;
     border: 1px solid black; }
 
-  .container .runImage {
-    height: 25%;
-    width: 100%;
-    -ms-flex-item-align: center;
-    -webkit-align-self: center;
-            align-self: center;
-    margin-right: 15%;
-    margin-top: -10%; }
-
   h1 {
     font-size: 25px; }
 
@@ -669,9 +679,6 @@ table {
 
   .container .table {
     position: relative; }
-
-  .container .runPlaysText {
-    margin-right: 15%; }
 
   table {
     top: 0; }
