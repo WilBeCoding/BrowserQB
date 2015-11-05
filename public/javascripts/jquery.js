@@ -1705,6 +1705,7 @@ var fifthRead;
       downCount = 1;
       yardsToFirst = 10;
     }
+    scoreboardUpdate();
     interception = 0;
     PlayResults.WR1initialOdds = initialWRodds();
     PlayResults.WR2initialOdds = initialWRodds();
